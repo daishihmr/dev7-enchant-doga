@@ -1,0 +1,7 @@
+glob:.metadata
+glob:.project
+glob:.settings
+glob:.classpath
+glob:target
+glob:*.$3P
+\.git
