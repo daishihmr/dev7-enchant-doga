@@ -1,0 +1,9 @@
+atr _BodyM__noname
+{
+	col ( 1.000 )
+	amb ( 1.000 )
+	dif ( 0.000 )
+	spc ( 0.000 45.507 0.000 )
+	colormap ( "twitter.png" )
+	mapsize ( 0 0 255 255 )
+}

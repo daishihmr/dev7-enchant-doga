@@ -1,0 +1,37 @@
+/*							Parts Assembler
+                                  Version 1.3
+Parts: 
+	P4\P405.SUF
+	P4\P401.SUF
+	P4\P402.SUF
+Info:
+	DisplayOffset: ( -96.000   0.000  32.000 )
+	DisplayScale: 1.999999999998
+	MeshFlag: 1
+	MeshSpacing: 50
+	ShowStatus: 0
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 50
+	RotSpacing: 10
+	SelectedOnly: 0
+	DispRelative: 0
+Palette:
+	0: atr "‹à‘®_”ZŠD" { col ( rgb ( 0.400 0.400 0.450 ) ) amb ( 0.200 ) dif ( 0.800 ) ref ( 0.300 ) spc ( 0.900 1.000 0.860 ) mapsize ( -0.010 0.000 0.990 1.000 ) }
+	1: atr "‹à‘®_”–ŠD" { col ( 0.710 ) amb ( 0.200 ) dif ( 0.800 ) ref ( 0.500 ) spc ( 0.900 0.926 0.650 ) }
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -69  10 -70 )
+	{	mov (   141  -128    64 ) eye deg( 60 ) }
+	{	mov (    38    13   -33 ) target }
+	{	mov (    -1     7   -44 ) rotz(   84 ) roty(    0 ) rotx(    0 )
+		scal ( 0.179 -0.578 0.216 ) obj P405 /* "P4\P405.SUF" atr "‹à‘®_”–ŠD" */
+	}
+	{	mov (    -3     7   -39 ) rotz(  -96 ) roty(    0 ) rotx( -180 )
+		scal ( 0.204 -0.639 0.086 ) obj P401 /* "P4\P401.SUF" atr "‹à‘®_”ZŠD" */
+	}
+	{	mov (     1     5   -43 ) rotz(  -90 ) roty(    0 ) rotx(   50 )
+		scal ( 0.208 0.327 0.450 ) obj P402 /* "P4\P402.SUF" atr "‹à‘®_”–ŠD" */
+	}
+}

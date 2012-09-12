@@ -1,0 +1,52 @@
+/*							Parts Assembler
+                                  Version 1.3
+Parts: 
+	P3\P310.SUF
+	OT\OT16.SUF
+	P3\P305.SUF
+Info:
+	DisplayOffset: ( -22.627  45.255 135.765 )
+	DisplayScale: 1.414213562372
+	MeshFlag: 1
+	MeshSpacing: 50
+	ShowStatus: 0
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 20
+	RotSpacing: 10
+	SelectedOnly: 0
+	DispRelative: 0
+Palette:
+	0: atr "äÓñ{_1" { col ( rgb ( 0.770 0.570 0.250 ) ) amb ( 0.330 ) dif ( 0.800 ) spc ( 0.050 0.100 0.000 ) colormap ( FUZZY.PIC ) }
+	1: atr "ã‡ëÆ_ê¬äD" { col ( rgb ( 0.430 0.430 0.560 ) ) amb ( 0.200 ) dif ( 0.800 ) ref ( 0.300 ) spc ( 0.900 0.926 0.650 ) mapsize ( 0 1 4 5 ) colormap ( FUZZY.PIC ) bumpmap ( "L3\machine\mecha3bump.png" ) }
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -69  14  70 )
+	{	mov (   100  -140  -120 ) eye deg( 60 ) }
+	{	mov (     9    -2   -71 ) target }
+	{	mov (    -4     2  -112 ) rotz(  -90 ) roty(   50 ) rotx(  -90 )
+		scal ( 0.138 0.138 0.194 ) obj P310 /* "P3\P310.SUF" atr "ã‡ëÆ_ê¬äD" */
+	}
+	{	mov (    -1    11   -50 ) rotz(   90 ) roty(  -70 ) rotx( -180 )
+		scal ( 0.138 0.138 0.138 ) obj OT16 /* "OT\OT16.SUF" atr "äÓñ{_1" */
+	}
+	{	mov (    18    -1  -105 ) rotz(  -90 ) roty(   44 ) rotx(  -90 )
+		scal ( 0.138 0.138 0.200 ) obj P310 /* "P3\P310.SUF" atr "ã‡ëÆ_ê¬äD" */
+	}
+	{	mov (    -7     2  -107 ) rotz(   90 ) roty(  -45 ) rotx(  -90 )
+		scal ( -0.128 0.128 0.186 ) obj P310 /* "P3\P310.SUF" atr "ã‡ëÆ_ê¬äD" */
+	}
+	{	mov (   -28     4  -100 ) rotz(   90 ) roty(  -48 ) rotx(  -90 )
+		scal ( -0.110 0.110 0.155 ) obj P310 /* "P3\P310.SUF" atr "ã‡ëÆ_ê¬äD" */
+	}
+	{	mov (    43   -15   -58 ) rotz(  -77 ) roty(   60 ) rotx(   38 )
+		scal ( 0.103 0.082 0.185 ) obj P305 /* "P3\P305.SUF" atr "ã‡ëÆ_ê¬äD" */
+	}
+	{	mov (    45   -19   -62 ) rotz(  128 ) roty(  -57 ) rotx(  -60 )
+		scal ( 0.157 0.114 0.298 ) obj P305 /* "P3\P305.SUF" atr "äÓñ{_1" */
+	}
+	{	mov (    47   -33   -94 ) rotz( -158 ) roty(   61 ) rotx(  -36 )
+		scal ( 0.076 0.051 0.188 ) obj P305 /* "P3\P305.SUF" atr "ã‡ëÆ_ê¬äD" */
+	}
+}

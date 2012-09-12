@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>jp.dev7</groupId>
+	<artifactId>dev7-doga-parent</artifactId>
+	<version>4.4-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>../dev7-doga-parser</module>
+		<module>../dev7-doga-converter</module>
+		<module>../dev7-doga-enchantjs</module>
+	</modules>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<executions>
+						<execution>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>dev7-enchant-doga</id>
+ 			<url>file:///D:\study\dev7-enchant-doga\maven-repo</url>
+            <!-- <url>file:///Users/daishi_hmr/Documents/workspaces/dogarepo/product</url> -->
+		</repository>
+		<snapshotRepository>
+			<id>dev7-enchant-doga-snapshot</id>
+ 			<url>file:///D:\study\dev7-enchant-doga\maven-repo-snapshot</url>
+            <!-- <url>file:///Users/daishi_hmr/Documents/workspaces/dogarepo/snapshot</url> -->
+		</snapshotRepository>
+	</distributionManagement>
+
+</project>

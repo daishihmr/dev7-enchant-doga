@@ -1,0 +1,46 @@
+/*							Parts Assembler
+                                  Version 2.04.080709(:
+Parts: 
+	F1\F105.suf
+	F1\F110.suf
+	W1\W109.suf
+	D:\study\websocket\workspace\websocket-jetty\obj.SUF
+Light: (   50  -50  -71 ) ( 1.00 1.00 1.00)
+Info:
+	DisplayOffset: (   0.000   0.000   0.000 )
+	DisplayScale: 0.176776695297
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 0
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 50
+	RotSpacing: 10
+	SelectedOnly: 0
+	DispRelative: 0
+Palette:
+	0: atr "#01 ‚ ‚¨" { col ( rgb ( 1.000 0.150 0.750 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+	1: atr "#02" { col ( rgb ( 0.600 0.900 1.000 ) ) amb ( 0.200 ) dif ( 0.800 ) tra ( 0.630 ) spc ( 0.700 1.000 0.000 ) }
+	2: atr noname { col ( rgb ( 0.700 1.000 0.050 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -38 -59 -70 )
+	{	mov ( 2270.97 821.503 882.046 ) eye deg( 45 ) }
+	{	mov ( -784.972 176.644 -37.6039 ) target }
+	{	mov ( 0 0 0 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+		scal ( 1 1 1 ) obj F105 /* "F1\F105.suf" atr "#02" */
+	}
+	{	mov ( -650 0 -50 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+		scal ( 1 1 1 ) obj F110 /* "F1\F110.suf" atr "noname" */
+	}
+	{	mov ( 592 -45 -50 ) rotz ( -30 ) roty ( 0 ) rotx ( 0 )
+		scal ( 0.9 0.9 0.9 ) obj W109 /* "W1\W109.suf" atr "#01 ‚ ‚¨" */
+	}
+	{	mov ( 592 45 -50 ) rotz ( 30 ) roty ( 0 ) rotx ( 0 )
+		scal ( 0.9 -0.9 0.9 ) obj W109 /* "W1\W109.suf" atr "#01 ‚ ‚¨" */
+	}
+	{	mov ( -650 0 0 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+		scal ( 1 1 1 ) obj test /* "D:\study\websocket\workspace\websocket-jetty\obj.SUF" atr "#02" */
+	}
+}

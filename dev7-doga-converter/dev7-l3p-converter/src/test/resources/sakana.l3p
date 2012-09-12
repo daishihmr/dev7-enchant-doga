@@ -1,0 +1,66 @@
+/*							Parts Assembler
+                                  Version 2.04.100723(:
+Parts: 
+	LIFE\Human\Arm_Hand\hand01.suf
+	LIFE\Human\Foot_Leg\heel01.suf
+	LIFE\Human\Head\head42.suf
+	LIFE\fish\hire05.suf
+	basic\ball\ball10.suf
+	life\insect\insect01\body04.suf
+Light: (   32   32  -89 ) ( 1.00 1.00 1.00)
+BackGround: rgb ( 1.0000 1.0000 1.0000 )
+Info:
+	DisplayOffset: ( -47.000  33.000  31.000 )
+	DisplayScale: 0.125000000000
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 50
+	RotSpacing: 5
+	SelectedOnly: 0
+	DispRelative: 0
+Palette:
+	0: atr "#01" { col ( rgb ( 0.300 0.280 0.250 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+	1: atr noname { col ( rgb ( 0.940 0.770 0.770 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 )  40  57 -70 )
+	{	mov ( -2349.13 -398.603 592.472 ) eye deg( 45 ) }
+	{	mov ( 0 0 0 ) target }
+	{	mov ( -98 0 -202 ) rotz ( -180 ) roty ( 0 ) rotx ( 0 )
+		scal ( 1 1 1 ) obj head42 /* "LIFE\Human\Head\head42.suf" atr "noname" */
+	}
+	{	mov ( -198 350 -2 ) rotz ( -180 ) roty ( -65 ) rotx ( 0 )
+		scal ( 1 1 0.7 ) obj hand01 /* "LIFE\Human\Arm_Hand\hand01.suf" atr "noname" */
+	}
+	{	mov ( -198 -350 -2 ) rotz ( -180 ) roty ( -65 ) rotx ( 0 )
+		scal ( 1 -1 0.7 ) obj hand01 /* "LIFE\Human\Arm_Hand\hand01.suf" atr "noname" */
+	}
+	{	mov ( -148 0 348 ) rotz ( -180 ) roty ( 0 ) rotx ( 0 )
+		scal ( 1 1 1 ) obj hire05 /* "LIFE\fish\hire05.suf" atr "noname" */
+	}
+	{	mov ( -198 200 348 ) rotz ( -180 ) roty ( 0 ) rotx ( 20 )
+		scal ( 1 1 1 ) obj hire05 /* "LIFE\fish\hire05.suf" atr "noname" */
+	}
+	{	mov ( -198 -200 348 ) rotz ( -180 ) roty ( 0 ) rotx ( -20 )
+		scal ( 1 -1 1 ) obj hire05 /* "LIFE\fish\hire05.suf" atr "noname" */
+	}
+	{	mov ( -355 150 307 ) rotz ( -180 ) roty ( 0 ) rotx ( 0 )
+		scal ( 0.1 0.1 0.1 ) obj ball10 /* "basic\ball\ball10.suf" atr "#01" */
+	}
+	{	mov ( -355 -150 307 ) rotz ( -180 ) roty ( 0 ) rotx ( 0 )
+		scal ( 0.1 -0.1 0.1 ) obj ball10 /* "basic\ball\ball10.suf" atr "#01" */
+	}
+	{	mov ( 34 0 -134 ) rotz ( -180 ) roty ( 25 ) rotx ( 0 )
+		scal ( 1 1 1 ) obj c_body04 /* "life\insect\insect01\body04.suf" atr "noname" */
+	}
+	{	mov ( -183 150 -184 ) rotz ( -180 ) roty ( 0 ) rotx ( 0 )
+		scal ( 0.7 0.7 1 ) obj heel01 /* "LIFE\Human\Foot_Leg\heel01.suf" atr "noname" */
+	}
+	{	mov ( -183 -150 -184 ) rotz ( -180 ) roty ( 0 ) rotx ( 0 )
+		scal ( 0.7 -0.7 1 ) obj heel01 /* "LIFE\Human\Foot_Leg\heel01.suf" atr "noname" */
+	}
+}

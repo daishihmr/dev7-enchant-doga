@@ -1,0 +1,185 @@
+/*							Parts Assembler
+                                  Version 1.3
+Parts: 
+	C3\C303.SUF
+	C3\C301.SUF
+	P2\P207.SUF
+	TK\TK03.SUF
+	P2\P214.SUF
+	P3\P305.SUF
+	P1\P110.SUF
+	P3\P310.SUF
+	P4\P404.SUF
+	BG\BG01.SUF
+	P4\P401.SUF
+	EG\EG03.SUF
+	P1\P103.SUF
+	P2\P213.SUF
+	P2\P208.SUF
+	BL\BL10.SUF
+Info:
+	DisplayOffset: (  36.000  -8.000   8.000 )
+	DisplayScale: 0.250000000000
+	MeshFlag: 1
+	MeshSpacing: 50
+	ShowStatus: 0
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 20
+	RotSpacing: 10
+	SelectedOnly: 0
+	DispRelative: 0
+Palette:
+	0: atr "ÉmÉYÉã" { col ( rgb ( 0.400 0.400 0.450 ) ) amb ( 0.500 ) dif ( 0.800 ) ref ( 0.300 ) spc ( 0.700 1.262 0.700 ) mapsize ( 0 0 4 4 ) bumpmap ( "L3\machine\mecha3bump.png" ) }
+	1: atr "ÉmÉYÉãÇQ" { col ( rgb ( 0.570 0.270 0.210 ) ) amb ( 1.000 ) dif ( 1.000 ) tra ( 0.050 ) spc ( 0.000 45.507 1.000 ) mapsize ( 0 0 4 4 ) bumpmap ( "L3\machine\mecha3bump.png" ) }
+	2: atr "É}ÉbÉg_çï" { amb ( 1.000 ) dif ( 1.000 ) spc ( 0.000 45.507 1.000 ) }
+	3: atr "äÓñ{_1" { col ( rgb ( 0.770 0.570 0.250 ) ) amb ( 0.330 ) dif ( 0.800 ) spc ( 0.050 0.101 0.000 ) colormap ( FUZZY.PIC ) }
+	4: atr "äÓñ{_2" { col ( rgb ( 0.950 0.840 0.630 ) ) amb ( 0.330 ) dif ( 0.800 ) spc ( 0.050 0.100 0.000 ) colormap ( FUZZY.PIC ) }
+	5: atr "ã‡ëÆ_äD" { col ( rgb ( 0.650 0.650 0.700 ) ) amb ( 0.200 ) dif ( 0.800 ) ref ( 0.300 ) spc ( 0.900 1.000 0.650 ) mapsize ( 0 0 4 4 ) bumpmap ( "L3\machine\mecha3bump.png" 1.000 0.000 ) }
+	6: atr "ã‡ëÆ_çïäD" { col ( rgb ( 0.150 0.150 0.290 ) ) amb ( 0.200 ) dif ( 0.800 ) ref ( 0.300 ) spc ( 0.900 1.000 0.650 ) mapsize ( 0 0 2 2 ) colormap ( FUZZY.PIC ) bumpmap ( "L3\machine\mecha3bump.png" 1.245 -0.245 ) }
+	7: atr "ã‡ëÆ_çïäDñ≥ín" { col ( rgb ( 0.150 0.150 0.290 ) ) amb ( 0.200 ) dif ( 0.800 ) ref ( 0.300 ) spc ( 0.900 1.000 0.650 ) mapsize ( 0 0 2 2 ) colormap ( FUZZY.PIC ) }
+	8: atr "ã‡ëÆ_ê¬äD" { col ( rgb ( 0.430 0.430 0.560 ) ) amb ( 0.200 ) dif ( 0.800 ) ref ( 0.300 ) spc ( 0.900 0.926 0.650 ) mapsize ( 0 1 4 5 ) colormap ( FUZZY.PIC ) bumpmap ( "L3\machine\mecha3bump.png" ) }
+	9: atr "ê‘" { col ( rgb ( 0.970 0.230 0.100 ) ) amb ( 0.330 ) dif ( 0.800 ) spc ( 0.050 0.101 0.000 ) }
+	10: atr "ï∂éö" { col ( 1.000 ) amb ( 0.500 ) dif ( 0.500 ) spc ( 0.000 0.020 0.000 ) opt ( draw rgb ( 1.000 0.000 0.000 ) rate 0.002  shader 3 ( 0.000 0.500 1.000 ) ( 0.500 0.500 0.750 ) ( 0.500 10.000 1.000 ) ) }
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -23 -66 -70 )
+	{	mov (   715   488    79 ) eye deg( 60 ) }
+	{	mov (  -233    38    43 ) target }
+	{	mov (   163   134   245 ) rotz(   -7 ) roty(  -43 ) rotx(    6 )
+		scal ( 0.451 0.361 0.451 ) obj C303 /* "C3\C303.SUF" atr "ï∂éö" */
+	}
+	{	mov (   162    93   242 ) rotz(   -7 ) roty(  -43 ) rotx(    6 )
+		scal ( 0.451 0.361 0.451 ) obj C301 /* "C3\C301.SUF" atr "ï∂éö" */
+	}
+	{	mov (  -220    71    86 ) rotz(  -20 ) roty(  -30 ) rotx(  -80 )
+		scal ( 1.000 -0.604 1.300 ) obj P207 /* "P2\P207.SUF" atr "ã‡ëÆ_çïäDñ≥ín" */
+	}
+	{	mov (  -225   176    87 ) rotz(  -23 ) roty(  -39 ) rotx(    4 )
+		scal ( 1.400 1.000 1.268 ) obj TK03 /* "TK\TK03.SUF" atr "ã‡ëÆ_äD" */
+	}
+	{	mov (  -230   176   263 ) rotz(  -20 ) roty(   20 ) rotx(  -70 )
+		scal ( 0.656 -0.855 0.855 ) obj TK03 /* "TK\TK03.SUF" atr "ã‡ëÆ_äD" */
+	}
+	{	mov (   105   -83   109 ) rotz(  -92 ) roty(  -29 ) rotx( -138 )
+		scal ( 0.200 -0.200 0.340 ) obj P214 /* "P2\P214.SUF" atr "äÓñ{_2" */
+	}
+	{	mov (   104   -96   117 ) rotz(  -30 ) roty(   40 ) rotx(  140 )
+		scal ( 0.190 -0.240 0.200 ) obj P305 /* "P3\P305.SUF" atr "ê‘" */
+	}
+	{	mov (   104    96   117 ) rotz(   30 ) roty(   40 ) rotx( -140 )
+		scal ( 0.190 0.240 0.200 ) obj P305 /* "P3\P305.SUF" atr "ê‘" */
+	}
+	{	mov (   105    83   109 ) rotz(   92 ) roty(  -29 ) rotx(  138 )
+		scal ( 0.200 0.200 0.340 ) obj P214 /* "P2\P214.SUF" atr "äÓñ{_2" */
+	}
+	{	mov (   207   102   193 ) rotz( -174 ) roty(  -47 ) rotx(  -10 )
+		scal ( 0.095 -0.095 0.095 ) obj P110 /* "P1\P110.SUF" atr "É}ÉbÉg_çï" */
+	}
+	{	mov (   221   120   178 ) rotz( -174 ) roty(  -47 ) rotx(  -10 )
+		scal ( 0.095 0.095 0.095 ) obj P110 /* "P1\P110.SUF" atr "É}ÉbÉg_çï" */
+	}
+	{	mov (   207   135   195 ) rotz( -174 ) roty(  -47 ) rotx(  -10 )
+		scal ( 0.095 -0.095 0.095 ) obj P110 /* "P1\P110.SUF" atr "É}ÉbÉg_çï" */
+	}
+	{	mov (   221    91   174 ) rotz( -174 ) roty(  -47 ) rotx(  -10 )
+		scal ( 0.095 0.095 0.095 ) obj P110 /* "P1\P110.SUF" atr "É}ÉbÉg_çï" */
+	}
+	{	mov (   223   148   180 ) rotz( -174 ) roty(  -47 ) rotx(  -10 )
+		scal ( 0.095 -0.095 0.095 ) obj P110 /* "P1\P110.SUF" atr "É}ÉbÉg_çï" */
+	}
+	{	mov (     8    80   192 ) rotz(  -10 ) roty(  -70 ) rotx(  -80 )
+		scal ( 0.552 -0.600 1.000 ) obj P310 /* "P3\P310.SUF" atr "ã‡ëÆ_ê¬äD" */
+	}
+	{	mov (     8   -80   192 ) rotz(   10 ) roty(  -70 ) rotx(   80 )
+		scal ( 0.552 0.600 1.000 ) obj P310 /* "P3\P310.SUF" atr "ã‡ëÆ_ê¬äD" */
+	}
+	{	mov (     7     5   146 ) rotz(    0 ) roty(   79 ) rotx(  -90 )
+		scal ( 0.926 -0.926 0.740 ) obj P404 /* "P4\P404.SUF" atr "ã‡ëÆ_ê¬äD" */
+	}
+	{	mov (     7    -5   146 ) rotz(    0 ) roty(   79 ) rotx(   90 )
+		scal ( 0.926 0.926 0.740 ) obj P404 /* "P4\P404.SUF" atr "ã‡ëÆ_ê¬äD" */
+	}
+	{	mov (   -30   148   -52 ) rotz(  -92 ) roty(    5 ) rotx( -170 )
+		scal ( 0.400 -0.400 0.364 ) obj BG01 /* "BG\BG01.SUF" atr "äÓñ{_1" */
+	}
+	{	mov (   -30  -148   -52 ) rotz(   92 ) roty(    5 ) rotx(  170 )
+		scal ( 0.400 0.400 0.364 ) obj BG01 /* "BG\BG01.SUF" atr "äÓñ{_1" */
+	}
+	{	mov (    46     0    92 ) rotz(  -90 ) roty(    0 ) rotx(   24 )
+		scal ( 0.737 0.900 0.801 ) obj P401 /* "P4\P401.SUF" atr "ã‡ëÆ_ê¬äD" */
+	}
+	{	mov (  -330    88   158 ) rotz(    0 ) roty(  -10 ) rotx(   90 )
+		scal ( 0.272 -0.163 0.272 ) obj EG03 /* "EG\EG03.SUF" atr "ÉmÉYÉã" */
+	}
+	{	mov (  -427    93   141 ) rotz(  -90 ) roty(    0 ) rotx(  100 )
+		scal ( 0.326 -0.408 0.272 ) obj P103 /* "P1\P103.SUF" atr "ÉmÉYÉãÇQ" */
+	}
+	{	mov (  -389    93    12 ) rotz(  -90 ) roty(    0 ) rotx(  -68 )
+		scal ( 0.326 -0.408 -0.272 ) obj P103 /* "P1\P103.SUF" atr "ÉmÉYÉãÇQ" */
+	}
+	{	mov (  -297    88    49 ) rotz(    0 ) roty(  -22 ) rotx(  -90 )
+		scal ( 0.272 -0.163 -0.272 ) obj EG03 /* "EG\EG03.SUF" atr "ÉmÉYÉã" */
+	}
+	{	mov (  -297   -88    49 ) rotz(    0 ) roty(  -22 ) rotx(   90 )
+		scal ( 0.272 0.163 -0.272 ) obj EG03 /* "EG\EG03.SUF" atr "ÉmÉYÉã" */
+	}
+	{	mov (  -389   -93    12 ) rotz(   90 ) roty(    0 ) rotx(   68 )
+		scal ( 0.326 0.408 -0.272 ) obj P103 /* "P1\P103.SUF" atr "ÉmÉYÉãÇQ" */
+	}
+	{	mov (  -427   -93   141 ) rotz(   90 ) roty(    0 ) rotx( -100 )
+		scal ( 0.326 0.408 0.272 ) obj P103 /* "P1\P103.SUF" atr "ÉmÉYÉãÇQ" */
+	}
+	{	mov (  -330   -88   158 ) rotz(    0 ) roty(  -10 ) rotx(  -90 )
+		scal ( 0.272 0.163 0.272 ) obj EG03 /* "EG\EG03.SUF" atr "ÉmÉYÉã" */
+	}
+	{	mov (  -225  -176    87 ) rotz(   23 ) roty(  -39 ) rotx(   -4 )
+		scal ( 1.400 -1.000 1.268 ) obj TK03 /* "TK\TK03.SUF" atr "ã‡ëÆ_äD" */
+	}
+	{	mov (  -230  -176   263 ) rotz(   20 ) roty(   20 ) rotx(   70 )
+		scal ( 0.656 0.855 0.855 ) obj TK03 /* "TK\TK03.SUF" atr "ã‡ëÆ_äD" */
+	}
+	{	mov (  -201   -71   249 ) rotz(   10 ) roty(   20 ) rotx(   90 )
+		scal ( 1.000 0.500 1.300 ) obj P207 /* "P2\P207.SUF" atr "ã‡ëÆ_çïäDñ≥ín" */
+	}
+	{	mov (  -220   -71    86 ) rotz(   20 ) roty(  -30 ) rotx(   80 )
+		scal ( 1.000 0.604 1.300 ) obj P207 /* "P2\P207.SUF" atr "ã‡ëÆ_çïäDñ≥ín" */
+	}
+	{	mov (  -201   -23   178 ) rotz(    0 ) roty(   40 ) rotx(   90 )
+		scal ( 0.780 -1.300 1.300 ) obj P310 /* "P3\P310.SUF" atr "ã‡ëÆ_çïäD" */
+	}
+	{	mov (     0     0   120 ) rotz(  180 ) roty(   10 ) rotx(  180 )
+		scal ( 0.700 0.800 0.850 ) obj P213 /* "P2\P213.SUF" atr "äÓñ{_1" */
+	}
+	{	mov (  -200   -88   246 ) rotz(    0 ) roty(  -30 ) rotx(    0 )
+		scal ( 1.300 0.500 1.400 ) obj P208 /* "P2\P208.SUF" atr "ã‡ëÆ_äD" */
+	}
+	{	mov (  -200    88   246 ) rotz(    0 ) roty(  -30 ) rotx(    0 )
+		scal ( 1.300 -0.500 1.400 ) obj P208 /* "P2\P208.SUF" atr "ã‡ëÆ_äD" */
+	}
+	{	mov (  -201    23   178 ) rotz(    0 ) roty(   40 ) rotx(  -90 )
+		scal ( 0.780 1.300 1.300 ) obj P310 /* "P3\P310.SUF" atr "ã‡ëÆ_çïäD" */
+	}
+	{	mov (  -201    71   249 ) rotz(  -10 ) roty(   20 ) rotx(  -90 )
+		scal ( 1.000 -0.500 1.300 ) obj P207 /* "P2\P207.SUF" atr "ã‡ëÆ_çïäDñ≥ín" */
+	}
+	{	mov (    39     0   215 ) rotz(  180 ) roty(  -23 ) rotx(    0 )
+		scal ( 0.300 0.455 0.400 ) obj BL10 /* "BL\BL10.SUF" atr "ã‡ëÆ_çïäD" */
+	}
+	{	mov (   223  -148   180 ) rotz(  174 ) roty(  -47 ) rotx(   10 )
+		scal ( 0.095 0.095 0.095 ) obj P110 /* "P1\P110.SUF" atr "É}ÉbÉg_çï" */
+	}
+	{	mov (   221   -91   174 ) rotz(  174 ) roty(  -47 ) rotx(   10 )
+		scal ( 0.095 -0.095 0.095 ) obj P110 /* "P1\P110.SUF" atr "É}ÉbÉg_çï" */
+	}
+	{	mov (   207  -135   195 ) rotz(  174 ) roty(  -47 ) rotx(   10 )
+		scal ( 0.095 0.095 0.095 ) obj P110 /* "P1\P110.SUF" atr "É}ÉbÉg_çï" */
+	}
+	{	mov (   221  -120   178 ) rotz(  174 ) roty(  -47 ) rotx(   10 )
+		scal ( 0.095 -0.095 0.095 ) obj P110 /* "P1\P110.SUF" atr "É}ÉbÉg_çï" */
+	}
+	{	mov (   207  -102   193 ) rotz(  174 ) roty(  -47 ) rotx(   10 )
+		scal ( 0.095 0.095 0.095 ) obj P110 /* "P1\P110.SUF" atr "É}ÉbÉg_çï" */
+	}
+}

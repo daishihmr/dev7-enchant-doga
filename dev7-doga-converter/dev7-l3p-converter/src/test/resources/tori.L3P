@@ -1,0 +1,64 @@
+/*							Parts Assembler
+                                  Version 2.04.100723(:
+Parts: 
+	LIFE\bird\bird_bdy01.suf
+	LIFE\bird\tail02.suf
+	LIFE\bird\tiptoe01.suf
+	LIFE\bird\wing04.suf
+	animal\head\hd07.suf
+	animal\head\mth02.suf
+	basic\ball\ball02.suf
+Light: (   32   32  -89 ) ( 1.00 1.00 1.00)
+BackGround: rgb ( 1.0000 1.0000 1.0000 )
+Info:
+	DisplayOffset: (  62.000 -27.000   0.000 )
+	DisplayScale: 0.125000000000
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 0
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 50
+	RotSpacing: 10
+	SelectedOnly: 0
+	DispRelative: 0
+Palette:
+	0: atr "#01" { col ( rgb ( 0.400 0.350 0.440 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+	1: atr noname { col ( rgb ( 0.820 0.130 0.130 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -24 -66 -70 )
+	{	mov ( 3080.2 1412.18 2498.21 ) eye deg( 45 ) }
+	{	mov ( 0 0 0 ) target }
+	{	mov ( -352 0 -240 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+		scal ( 1.4 1.4 1.4 ) obj tail02 /* "LIFE\bird\tail02.suf" atr "#01" */
+	}
+	{	mov ( 100 350 10 ) rotz ( -30 ) roty ( 30 ) rotx ( -60 )
+		scal ( 2 2 2 ) obj wing04 /* "LIFE\bird\wing04.suf" atr "#01" */
+	}
+	{	mov ( -102 0 -240 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+		scal ( 1 1 1 ) obj bird_bdy01 /* "LIFE\bird\bird_bdy01.suf" atr "#01" */
+	}
+	{	mov ( 600 0 250 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+		scal ( 1 1 1 ) obj hd07 /* "animal\head\hd07.suf" atr "#01" */
+	}
+	{	mov ( 650 200 350 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+		scal ( 0.3 0.3 0.3 ) obj ball02 /* "basic\ball\ball02.suf" atr "noname" */
+	}
+	{	mov ( 650 -200 350 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+		scal ( 0.3 -0.3 0.3 ) obj ball02 /* "basic\ball\ball02.suf" atr "noname" */
+	}
+	{	mov ( 650 0 150 ) rotz ( 0 ) roty ( 10 ) rotx ( 0 )
+		scal ( 1 1 1 ) obj mth02 /* "animal\head\mth02.suf" atr "#01" */
+	}
+	{	mov ( -150 -250 -550 ) rotz ( 0 ) roty ( 30 ) rotx ( -10 )
+		scal ( 1.3 -1.3 1.3 ) obj tiptoe01 /* "LIFE\bird\tiptoe01.suf" atr "#01" */
+	}
+	{	mov ( -150 250 -550 ) rotz ( 0 ) roty ( 30 ) rotx ( 10 )
+		scal ( 1.3 1.3 1.3 ) obj tiptoe01 /* "LIFE\bird\tiptoe01.suf" atr "#01" */
+	}
+	{	mov ( 100 -350 10 ) rotz ( 30 ) roty ( 30 ) rotx ( 60 )
+		scal ( 2 -2 2 ) obj wing04 /* "LIFE\bird\wing04.suf" atr "#01" */
+	}
+}

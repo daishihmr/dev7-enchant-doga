@@ -1,0 +1,31 @@
+/*							Parts Assembler
+                                  Version 1.3
+Parts: 
+	P2\P214.SUF
+Info:
+	DisplayOffset: (   0.000   0.000 -67.882 )
+	DisplayScale: 1.414213562372
+	MeshFlag: 1
+	MeshSpacing: 50
+	ShowStatus: 0
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 20
+	RotSpacing: 5
+	SelectedOnly: 0
+	DispRelative: 0
+Palette:
+	0: atr "布地_黒" { col ( rgb ( 0.090 0.190 0.310 ) ) amb ( 0.100 ) dif ( 0.600 ) spc ( 0.500 0.070 0.300 ) mapsize ( 0.000 0.000 0.667 0.667 ) bumpmap ( MESH1.PIC ) }
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 )  -6 -70  70 )
+	{	mov (   165   128   -20 ) eye deg( 60 ) }
+	{	mov (    20     9    45 ) target }
+	{	mov (    13     0   114 ) rotz(  -90 ) roty(    0 ) rotx(   -8 )
+		scal ( 0.159 0.200 -0.600 ) obj P214 /* "P2\P214.SUF" atr "布地_黒" */
+	}
+	{	mov (    -4     0   -18 ) rotz(    0 ) roty(    3 ) rotx(    0 )
+		scal ( 0.159 0.200 0.582 ) obj P214 /* "P2\P214.SUF" atr "布地_黒" */
+	}
+}

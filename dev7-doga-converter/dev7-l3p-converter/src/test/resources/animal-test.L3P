@@ -1,0 +1,37 @@
+/*							Parts Assembler
+                                  Version 2.04.080709(:
+Parts: 
+	LIFE\Human\Head\head42.suf
+	animal\head\hd01.suf
+	life\animal\head\hd01.suf
+Light: (   32   32  -89 ) ( 1.00 1.00 1.00)
+Info:
+	DisplayOffset: (   0.000   0.000   0.000 )
+	DisplayScale: 0.125000000000
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 10
+	RotSpacing: 5
+	SelectedOnly: 0
+	DispRelative: 0
+Palette:
+	0: atr noname { col ( 1.000 ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -58 -39  70 )
+	{	mov ( 1874.53 -453.344 -221.094 ) eye deg( 45 ) }
+	{	mov ( 39.081 -84.2557 -154.53 ) target }
+	{	mov ( 0 -340 -40 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+		scal ( 1 1 1 ) obj hd01 /* "animal\head\hd01.suf" atr "noname" */
+	}
+	{	mov ( 0 320 -60 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+		scal ( 1 1 1 ) obj hd01 /* "life\animal\head\hd01.suf" atr "noname" */
+	}
+	{	mov ( 0 0 0 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+		scal ( 1 1 1 ) obj head42 /* "LIFE\Human\Head\head42.suf" atr "noname" */
+	}
+}

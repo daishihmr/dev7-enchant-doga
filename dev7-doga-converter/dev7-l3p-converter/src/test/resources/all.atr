@@ -1,0 +1,161 @@
+atr BodyM {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr BodyD {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr BodyM_BL {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr BodyD_BL {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr BodyM_RD {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr BodyD_RD {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr BodyM_GR {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr BodyD_GR {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr BodyM_MG {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr BodyD_MG {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr White {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr Glass {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr GrayG {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr Brown {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr WhiLg {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr BluLg {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr RedLg {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr YelLg {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr Black {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr BeamBlu {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr BeamBluLg {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr BeamRed {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
+atr BeamRedLg {
+	col ( 1.00 )
+	tra ( 0.00 )
+	amb ( 0.50 )
+	dif ( 0.50 )
+	spc ( 0.00 0.00 0.00 )
+}
