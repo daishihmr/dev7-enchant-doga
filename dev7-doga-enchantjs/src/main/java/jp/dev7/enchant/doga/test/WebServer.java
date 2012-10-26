@@ -14,6 +14,7 @@ import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
+import org.eclipse.jetty.servlet.ServletHandler;
 
 /**
  * テスト用.
@@ -28,6 +29,11 @@ public class WebServer {
 
 	public void start() throws Exception {
 		final HandlerList list = new HandlerList();
+
+		final ServletHandler sh = new ServletHandler();
+		sh.addServletWithMapping(ConvertServlet.class, "/data.l3c.js");
+		list.addHandler(sh);
+
 		final ResourceHandler rh = new ResourceHandler() {
 			@Override
 			public void handle(String target, Request baseRequest,
