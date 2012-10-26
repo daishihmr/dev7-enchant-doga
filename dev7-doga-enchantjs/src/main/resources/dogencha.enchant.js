@@ -87,7 +87,7 @@ enchant.Game._loadFuncs["js"] = function(src, callback, ext) {
 			});
 		}
 
-		var result = Unit.build(_tree(data.root));
+		var result = enchant.gl.dogencha.Unit.build(_tree(data.root));
 
 		result.poses = {};
 		each(data.poses, function(k, v) {
@@ -136,10 +136,12 @@ enchant.Game._loadFuncs["js"] = function(src, callback, ext) {
 	}
 };
 
+enchant.gl.dogencha = {};
+
 /**
  * DoGA L3Cモデルのユニット.
  */
-var Unit = enchant.Class.create(enchant.gl.Sprite3D, {
+enchant.gl.dogencha.Unit = enchant.Class.create(enchant.gl.Sprite3D, {
 	initialize : function(entity, basePosition) {
 		enchant.gl.Sprite3D.call(this);
 
@@ -330,7 +332,7 @@ var Unit = enchant.Class.create(enchant.gl.Sprite3D, {
 		return _getPose(this, null);
 	},
 	clone : function() {
-		var clone = new Unit(this._entity.clone(), [ this.baseX, this.baseY,
+		var clone = new enchant.gl.dogencha.Unit(this._entity.clone(), [ this.baseX, this.baseY,
 				this.baseZ ]);
 		for ( var i = 0, end = this.childUnits.length; i < end; i++) {
 			clone.addChildUnit(this.childUnits[i].clone());
@@ -343,16 +345,16 @@ var Unit = enchant.Class.create(enchant.gl.Sprite3D, {
 	}
 });
 
-Unit.prototype.quat = new enchant.gl.Quat(0, 0, 0, 0);
-Unit.prototype.baseX = 0;
-Unit.prototype.baseY = 0;
-Unit.prototype.baseZ = 0;
-Unit.build = function(arg) {
-	var node = new Unit(arg.node, arg.basePosition);
+enchant.gl.dogencha.Unit.prototype.quat = new enchant.gl.Quat(0, 0, 0, 0);
+enchant.gl.dogencha.Unit.prototype.baseX = 0;
+enchant.gl.dogencha.Unit.prototype.baseY = 0;
+enchant.gl.dogencha.Unit.prototype.baseZ = 0;
+enchant.gl.dogencha.Unit.build = function(arg) {
+	var node = new enchant.gl.dogencha.Unit(arg.node, arg.basePosition);
 	var child = arg.child;
 	if (child instanceof Array) {
 		for ( var i = 0, end = child.length; i < end; i++) {
-			node.addChildUnit(Unit.build(child[i]));
+			node.addChildUnit(enchant.gl.dogencha.Unit.build(child[i]));
 		}
 	}
 	return node;
