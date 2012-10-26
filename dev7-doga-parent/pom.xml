@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>jp.dev7</groupId>
 	<artifactId>dev7-doga-parent</artifactId>
-	<version>4.4-SNAPSHOT</version>
+	<version>4.5</version>
 	<packaging>pom</packaging>
 
 	<modules>

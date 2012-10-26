@@ -4,8 +4,7 @@
 	<parent>
 		<artifactId>dev7-doga-converter</artifactId>
 		<groupId>jp.dev7</groupId>
-		<version>4.4-SNAPSHOT</version>
-		<relativePath>..</relativePath>
+		<version>4.5</version>
 	</parent>
 	<artifactId>dev7-l3p-converter</artifactId>
 
