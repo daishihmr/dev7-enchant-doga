@@ -1,0 +1,55 @@
+/*							Parts Assembler
+                                  Version 2.04.080709(:
+Parts: 
+	G1\G112.suf
+	JT\JT12.suf
+	P3\P316.suf
+	S2\S206.suf
+	W1\W116.suf
+Light: (   32   32  -89 ) ( 1.00 1.00 1.00)
+BackGround: "Cyber1"
+Info:
+	DisplayOffset: ( -60.000 -767.000 -672.000 )
+	DisplayScale: 0.353553390592
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 50
+	RotSpacing: 5
+	SelectedOnly: 0
+	DispRelative: 0
+Palette:
+	0: atr "#01" { col ( rgb ( 1.000 1.000 0.100 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+	1: atr body { col ( rgb ( 0.150 0.200 0.250 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+	2: atr body2 { col ( rgb ( 0.410 0.210 0.440 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+	3: atr wepon { col ( rgb ( 0.850 0.850 0.800 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 )  53 -45 -70 )
+	{	mov ( 868.068 8746.56 888.378 ) eye deg( 45 ) }
+	{	mov ( 1402.37 2149.12 784.386 ) target }
+	{	mov ( 382.657 2311.92 700 ) rotz ( 0 ) roty ( 0 ) rotx ( -180 )
+		scal ( 2.5 2 1.7 ) obj G112 /* "G1\G112.suf" atr "wepon" */
+	}
+	{	mov ( 127 2360 700 ) rotz ( 0 ) roty ( 0 ) rotx ( -85 )
+		scal ( 1 1 1 ) obj S206 /* "S2\S206.suf" atr "wepon" */
+	}
+	{	mov ( 127 1810 700 ) rotz ( 0 ) roty ( 0 ) rotx ( -90 )
+		scal ( 1 1 1 ) obj JT12 /* "JT\JT12.suf" atr "wepon" */
+	}
+	{	mov ( 977 2310 700 ) rotz ( -90 ) roty ( 0 ) rotx ( -90 )
+		scal ( 1.4 1.4 0.7 ) obj P316 /* "P3\P316.suf" atr "#01" */
+	}
+	{	mov ( 827 2310 700 ) rotz ( -90 ) roty ( 0 ) rotx ( -90 )
+		scal ( 1.4 1.4 0.7 ) obj P316 /* "P3\P316.suf" atr "#01" */
+	}
+	{	mov ( 677 2310 700 ) rotz ( -90 ) roty ( 0 ) rotx ( -90 )
+		scal ( 1.4 1.4 0.7 ) obj P316 /* "P3\P316.suf" atr "#01" */
+	}
+	{	mov ( 127 2410 700 ) rotz ( 0 ) roty ( 0 ) rotx ( -90 )
+		scal ( 1.5 1.5 1.5 ) obj W116 /* "W1\W116.suf" atr "wepon" */
+	}
+}

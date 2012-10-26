@@ -131,6 +131,15 @@ public class L3cConverter {
 		return node;
 	}
 
+	private Quat4d createQuat(double rotX, double rotY, double rotZ) {
+		Quat4d q = newQuat(0, 0, 0, 0);
+		q.mul(newQuat(0, 1, 0, rotY));
+		q.mul(newQuat(1, 0, 0, rotX));
+		q.mul(newQuat(0, 0, 1, rotZ));
+		q.normalize();
+		return q;
+	}
+
 	private Quat4d newQuat(double x, double y, double z, double rad) {
 		double l = Math.sqrt(x * x + y * y + z * z);
 		if (l != 0.0 && l != -0.0 && !Double.isNaN(l) && !Double.isInfinite(l)) {
@@ -140,15 +149,7 @@ public class L3cConverter {
 		}
 		double s = Math.sin(rad / 2);
 		double c = Math.cos(rad / 2);
-		return new Quat4d(-x * s, -y * s, -z * s, c);
-	}
-
-	private Quat4d createQuat(double rotX, double rotY, double rotZ) {
-		Quat4d q = newQuat(0, 0, 1, rotZ);
-		q.mul(newQuat(1, 0, 0, rotX));
-		q.mul(newQuat(0, 1, 0, rotY));
-		q.normalize();
-		return q;
+		return new Quat4d(x * s, y * s, z * s, c);
 	}
 
 	private EnchantUnit convert(Unit unit, L3pConverter l3pConverter,

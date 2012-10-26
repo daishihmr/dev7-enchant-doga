@@ -1,0 +1,40 @@
+/*							Parts Assembler
+                                  Version 2.04.080709(:
+Parts: 
+	OT\OT12.suf
+	basic\trapezoid\trape20.suf
+Light: (   32   32  -89 ) ( 1.00 1.00 1.00)
+BackGround: "Cyber1"
+Info:
+	DisplayOffset: (  26.000   0.000   0.000 )
+	DisplayScale: 0.125000000000
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 50
+	RotSpacing: 5
+	SelectedOnly: 0
+	DispRelative: 0
+Palette:
+	0: atr "#01" { col ( rgb ( 1.000 1.000 0.100 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+	1: atr body { col ( rgb ( 0.150 0.200 0.250 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+	2: atr body2 { col ( rgb ( 0.410 0.210 0.440 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+	3: atr wepon { col ( rgb ( 0.850 0.850 0.800 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -70  -4 -70 )
+	{	mov ( 3680.67 -3326.83 1108.42 ) eye deg( 45 ) }
+	{	mov ( 125.184 -195.56 618.821 ) target }
+	{	mov ( 0 -600 0 ) rotz ( 90 ) roty ( 90 ) rotx ( 180 )
+		scal ( 0.9 0.8 0.8 ) obj OT12 /* "OT\OT12.suf" atr "body2" */
+	}
+	{	mov ( 0 0 0 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+		scal ( 1 1 1 ) obj trape20 /* "basic\trapezoid\trape20.suf" atr "body" */
+	}
+	{	mov ( 0 0 0 ) rotz ( 180 ) roty ( 0 ) rotx ( 180 )
+		scal ( 1 1 0.7 ) obj trape20 /* "basic\trapezoid\trape20.suf" atr "body" */
+	}
+}

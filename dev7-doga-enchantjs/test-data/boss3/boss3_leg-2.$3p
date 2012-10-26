@@ -1,0 +1,59 @@
+/*							Parts Assembler
+                                  Version 2.04.080709(:
+Parts: 
+	JT\JT10.suf
+	armor\armor05.suf
+	armor\armor10.suf
+	basic\trapezoid\trape15.suf
+	rohand\rohand04.suf
+	rohead\rohead04.suf
+Light: (   32   32  -89 ) ( 1.00 1.00 1.00)
+BackGround: "Cyber1"
+Info:
+	DisplayOffset: (  30.879 -51.619 149.660 )
+	DisplayScale: 0.176776695297
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 50
+	RotSpacing: 5
+	SelectedOnly: 0
+	DispRelative: 0
+Palette:
+	0: atr "#01" { col ( rgb ( 1.000 1.000 0.100 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+	1: atr body { col ( rgb ( 0.150 0.200 0.250 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+	2: atr body2 { col ( rgb ( 0.410 0.210 0.440 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+	3: atr wepon { col ( rgb ( 0.850 0.850 0.800 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -44 -55 -70 )
+	{	mov ( 5522.7 737.165 767.924 ) eye deg( 45 ) }
+	{	mov ( -216.039 101.719 -1322.17 ) target }
+	{	mov ( 107.675 0 -139.773 ) rotz ( -42.7314 ) roty ( 31.3934 ) rotx ( 4.1402 )
+		scal ( 3.2 1.4 1.9 ) obj armor10 /* "armor\armor10.suf" atr "body2" */
+	}
+	{	mov ( 107.675 0 -139.773 ) rotz ( 42.7314 ) roty ( 31.3934 ) rotx ( -4.1402 )
+		scal ( 3.2 1.4 1.9 ) obj armor10 /* "armor\armor10.suf" atr "body2" */
+	}
+	{	mov ( 50 0 -1900 ) rotz ( 0 ) roty ( 60 ) rotx ( 0 )
+		scal ( 1.4 0.72 1 ) obj rohand04 /* "rohand\rohand04.suf" atr "#01" */
+	}
+	{	mov ( 0 -150 -1950 ) rotz ( 20 ) roty ( 60 ) rotx ( -150 )
+		scal ( 1.8 1.1 2.4 ) obj rohead04 /* "rohead\rohead04.suf" atr "#01" */
+	}
+	{	mov ( 250 0 0 ) rotz ( 0 ) roty ( 75 ) rotx ( 0 )
+		scal ( 1.5 2.2 1.6 ) obj armor05 /* "armor\armor05.suf" atr "body2" */
+	}
+	{	mov ( 0 0 0 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+		scal ( 1.9 1.3 1.9 ) obj JT10 /* "JT\JT10.suf" atr "wepon" */
+	}
+	{	mov ( 0 150 -1950 ) rotz ( -20 ) roty ( 60 ) rotx ( 150 )
+		scal ( 1.8 -1.1 2.4 ) obj rohead04 /* "rohead\rohead04.suf" atr "#01" */
+	}
+	{	mov ( -50 0 -250 ) rotz ( -180 ) roty ( 5 ) rotx ( 180 )
+		scal ( 0.5 0.3 1.7 ) obj trape15 /* "basic\trapezoid\trape15.suf" atr "wepon" */
+	}
+}

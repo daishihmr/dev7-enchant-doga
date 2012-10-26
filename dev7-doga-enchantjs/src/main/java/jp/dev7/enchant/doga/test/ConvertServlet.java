@@ -19,8 +19,9 @@ public class ConvertServlet extends HttpServlet {
 		resp.setContentType("application/json");
 		final L3cConverter converter = new L3cConverter();
 		try {
-			converter.convertAndWriteJson(new File("test-data/darkhero.l3c"),
-					resp.getWriter());
+			String modelFile = "test-data/boss3/boss3.l3c";
+			converter
+					.convertAndWriteJson(new File(modelFile), resp.getWriter());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

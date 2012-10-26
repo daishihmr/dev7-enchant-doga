@@ -1,0 +1,62 @@
+/*							Parts Assembler
+                                  Version 2.04.080709(:
+Parts: 
+	G1\G112.suf
+	JT\JT12.suf
+	P2\P216.suf
+	P3\P316.suf
+	armor\armor06.suf
+	basic\cube\cube02.suf
+	basic\trapezoid\trape16.suf
+	roetc\roetc14.suf
+Light: (   32   32  -89 ) ( 1.00 1.00 1.00)
+BackGround: "Cyber1"
+Info:
+	DisplayOffset: ( -38.796   0.000 152.483 )
+	DisplayScale: 0.176776695296
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 50
+	RotSpacing: 5
+	SelectedOnly: 0
+	DispRelative: 0
+Palette:
+	0: atr "#01" { col ( rgb ( 1.000 1.000 0.100 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+	1: atr body { col ( rgb ( 0.150 0.200 0.250 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+	2: atr body2 { col ( rgb ( 0.410 0.210 0.440 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+	3: atr eye { col ( rgb ( 0.920 0.090 0.090 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+	4: atr wepon { col ( rgb ( 0.850 0.850 0.800 ) ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -15 -69 -70 )
+	{	mov ( 8404.57 5366.81 4926.75 ) eye deg( 45 ) }
+	{	mov ( 145.235 78.646 227.914 ) target }
+	{	mov ( -804.786 0 -888.988 ) rotz ( 0 ) roty ( 0 ) rotx ( 90 )
+		scal ( 2.55941 3.7399 3.17891 ) obj G112 /* "G1\G112.suf" atr "wepon" */
+	}
+	{	mov ( -670.8 0 -487.2 ) rotz ( 0 ) roty ( 0 ) rotx ( -180 )
+		scal ( 0.8 0.8 0.8 ) obj JT12 /* "JT\JT12.suf" atr "wepon" */
+	}
+	{	mov ( -327.428 0 -886.926 ) rotz ( -180 ) roty ( -90 ) rotx ( 0 )
+		scal ( 0.944745 0.944745 0.940013 ) obj P316 /* "P3\P316.suf" atr "#01" */
+	}
+	{	mov ( 815.209 0 -888.922 ) rotz ( 90 ) roty ( 0 ) rotx ( 0 )
+		scal ( 0.795772 8.27144 0.795772 ) obj roetc14 /* "roetc\roetc14.suf" atr "wepon" */
+	}
+	{	mov ( 56.2546 -41.9058 -887.022 ) rotz ( 0 ) roty ( 0 ) rotx ( 90 )
+		scal ( 0.940013 0.0718754 0.342562 ) obj trape16 /* "basic\trapezoid\trape16.suf" atr "wepon" */
+	}
+	{	mov ( 56.2546 41.9058 -887.022 ) rotz ( 0 ) roty ( 0 ) rotx ( -90 )
+		scal ( 0.940013 -0.0718754 0.342562 ) obj trape16 /* "basic\trapezoid\trape16.suf" atr "wepon" */
+	}
+	{	mov ( -167.243 0 -888.922 ) rotz ( -180 ) roty ( -90 ) rotx ( 0 )
+		scal ( 0.944745 0.944745 0.940013 ) obj P316 /* "P3\P316.suf" atr "#01" */
+	}
+	{	mov ( -3.79421 0 -888.922 ) rotz ( -180 ) roty ( -90 ) rotx ( 0 )
+		scal ( 0.944745 0.944745 0.940013 ) obj P316 /* "P3\P316.suf" atr "#01" */
+	}
+}
