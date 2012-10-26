@@ -1,0 +1,162 @@
+atr GUN_1
+{
+	col ( 0.350 )
+	amb ( 0.200 )
+	dif ( 0.800 )
+	ref ( 0.300 )
+	spc ( 0.900 0.926 0.650 )
+	mapsize ( 0.000 -1.640 4.000 2.360 )
+	colormap ( FUZZY.PIC )
+	bumpmap ( "L3\machine\mecha3bump.png" )
+}
+atr GUN_2
+{
+	col ( rgb ( 0.540 0.510 0.530 ) )
+	amb ( 0.200 )
+	dif ( 0.800 )
+	ref ( 0.300 )
+	spc ( 0.900 1.000 0.650 )
+	colormap ( FUZZY.PIC )
+}
+atr GUN_3
+{
+	col ( rgb ( 0.650 0.650 0.700 ) )
+	amb ( 0.200 )
+	dif ( 0.800 )
+	ref ( 0.300 )
+	spc ( 0.900 1.000 0.650 )
+	mapsize ( -1.040 0.920 2.960 4.920 )
+	colormap ( FUZZY.PIC )
+	bumpmap ( "L3\machine\mecha3bump.png" )
+}
+atr "GUN_î≠åı"
+{
+	col ( rgb ( 1.000 0.250 0.150 ) )
+	amb ( 1.000 )
+	spc ( 0.000 0.020 0.000 )
+	colormap ( FUZZY.PIC )
+	opt ( emittion 0.000 1.430 )
+}
+atr "ÉmÉYÉã"
+{
+	col ( rgb ( 0.400 0.400 0.450 ) )
+	amb ( 0.500 )
+	dif ( 0.800 )
+	ref ( 0.300 )
+	spc ( 0.700 1.262 0.700 )
+	mapsize ( 0 0 4 4 )
+	bumpmap ( "L3\machine\mecha3bump.png" )
+}
+atr "ÉmÉYÉãÇQ"
+{
+	col ( rgb ( 0.570 0.270 0.210 ) )
+	amb ( 1.000 )
+	dif ( 1.000 )
+	tra ( 0.050 )
+	spc ( 0.000 45.507 1.000 )
+	mapsize ( 0 0 4 4 )
+	bumpmap ( "L3\machine\mecha3bump.png" )
+}
+atr "É}ÉbÉg_çï"
+{
+	amb ( 1.000 )
+	dif ( 1.000 )
+	spc ( 0.000 45.507 1.000 )
+}
+atr "ÉÇÉmÉAÉC"
+{
+	col ( rgb ( 1.000 0.000 0.000 ) )
+	amb ( 1.000 )
+	opt ( emittion 0.000 0.490 )
+}
+atr "äÓñ{_1"
+{
+	col ( rgb ( 0.770 0.570 0.250 ) )
+	amb ( 0.330 )
+	dif ( 0.800 )
+	spc ( 0.050 0.100 0.000 )
+	colormap ( FUZZY.PIC )
+}
+atr "äÓñ{_2"
+{
+	col ( rgb ( 0.950 0.840 0.630 ) )
+	amb ( 0.330 )
+	dif ( 0.800 )
+	spc ( 0.050 0.100 0.000 )
+	colormap ( FUZZY.PIC )
+}
+atr "äÓñ{_2ñ¿ç "
+{
+	col ( rgb ( 0.950 0.840 0.630 ) )
+	amb ( 0.330 )
+	dif ( 0.800 )
+	spc ( 0.050 0.101 0.000 )
+	mapsize ( 0.000 0.000 0.500 0.500 )
+	colormap ( meisai2.pic )
+	colormap ( FUZZY.PIC )
+}
+atr "äÓñ{_3"
+{
+	col ( rgb ( 0.780 0.650 0.390 ) )
+	amb ( 0.330 )
+	dif ( 0.800 )
+	spc ( 0.050 0.101 0.000 )
+	colormap ( FUZZY.PIC )
+}
+atr "ã‡ëÆ_äD"
+{
+	col ( rgb ( 0.650 0.650 0.700 ) )
+	amb ( 0.200 )
+	dif ( 0.800 )
+	ref ( 0.300 )
+	spc ( 0.900 1.000 0.650 )
+	mapsize ( 0 0 4 4 )
+	bumpmap ( "L3\machine\mecha3bump.png" 1.000 0.000 )
+}
+atr "ã‡ëÆ_çïäD"
+{
+	col ( rgb ( 0.150 0.150 0.290 ) )
+	amb ( 0.200 )
+	dif ( 0.800 )
+	ref ( 0.300 )
+	spc ( 0.900 1.000 0.650 )
+	mapsize ( 0 0 2 2 )
+	colormap ( FUZZY.PIC )
+	bumpmap ( "L3\machine\mecha3bump.png" 1.245 -0.245 )
+}
+atr "ã‡ëÆ_çïäDñ≥ín"
+{
+	col ( rgb ( 0.150 0.150 0.290 ) )
+	amb ( 0.200 )
+	dif ( 0.800 )
+	ref ( 0.300 )
+	spc ( 0.900 1.000 0.650 )
+	mapsize ( 0 0 2 2 )
+	colormap ( FUZZY.PIC )
+}
+atr "ã‡ëÆ_ê¬äD"
+{
+	col ( rgb ( 0.430 0.430 0.560 ) )
+	amb ( 0.200 )
+	dif ( 0.800 )
+	ref ( 0.300 )
+	spc ( 0.900 0.926 0.650 )
+	mapsize ( 0 1 4 5 )
+	colormap ( FUZZY.PIC )
+	bumpmap ( "L3\machine\mecha3bump.png" )
+}
+atr "ê‘"
+{
+	col ( rgb ( 0.970 0.230 0.100 ) )
+	amb ( 0.330 )
+	dif ( 0.800 )
+	spc ( 0.050 0.101 0.000 )
+}
+atr "ï∂éö"
+{
+	col ( 1.000 )
+	amb ( 0.500 )
+	dif ( 0.500 )
+	spc ( 0.000 0.020 0.000 )
+	opt ( draw rgb ( 1.000 0.000 0.000 ) rate 0.002  shader 3 ( 0.000 0.500 1.000 ) ( 0.500 0.500 0.750 ) ( 0.500 10.000 1.000 ) )
+}

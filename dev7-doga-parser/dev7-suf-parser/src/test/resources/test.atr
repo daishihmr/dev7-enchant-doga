@@ -1,0 +1,14 @@
+atr _BodyD_kuma_noname
+{
+	col ( 0.650 )
+	amb ( 0.200 )
+	dif ( 0.800 )
+	spc ( 0.700 1.000 0.000 )
+}
+atr _BodyM_kuma_noname
+{
+	col ( 1.000 )
+	amb ( 0.200 )
+	dif ( 0.800 )
+	spc ( 0.700 1.000 0.000 )
+}

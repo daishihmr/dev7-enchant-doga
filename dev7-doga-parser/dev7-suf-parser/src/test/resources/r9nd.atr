@@ -1,0 +1,78 @@
+atr "_BodyM_R-9ND-Daishi-The-Rubicon_noname"
+{
+	col ( 1.000 )
+	amb ( 0.200 )
+	dif ( 0.800 )
+	spc ( 0.700 1.000 0.000 )
+	colormap ( "D:\devel\3d\common\atr\L3\effect\horizon.png" )
+	mapsize ( 0 0 255 255 )
+}
+atr "_BodyM_R-9ND-Daishi-The-Rubicon_#01"
+{
+	col ( rgb ( 0.600 0.900 1.000 ) )
+	amb ( 0.200 )
+	dif ( 0.800 )
+	spc ( 0.700 1.000 0.000 )
+}
+atr "_BodyD_R-9ND-Daishi-The-Rubicon_noname"
+{
+	col ( 0.650 )
+	amb ( 0.200 )
+	dif ( 0.800 )
+	spc ( 0.700 1.000 0.000 )
+	colormap ( "D:\devel\3d\common\atr\L3\effect\horizon.png" )
+	mapsize ( 0 0 255 255 )
+}
+atr "_BluLg_R-9ND-Daishi-The-Rubicon_noname"
+{
+	col ( rgb ( 0.250 0.450 0.900 ) )
+	amb ( 1.000 )
+	dif ( 0.000 )
+}
+atr "_Black_R-9ND-Daishi-The-Rubicon_noname"
+{
+	col ( rgb ( 0.050 0.100 0.200 ) )
+	amb ( 1.000 )
+	dif ( 0.000 )
+}
+atr "_GrayG_R-9ND-Daishi-The-Rubicon_noname"
+{
+	col ( 0.350 )
+	amb ( 0.200 )
+	dif ( 0.800 )
+	spc ( 0.700 1.000 0.000 )
+	colormap ( "D:\devel\3d\common\atr\L3\effect\horizon.png" )
+	mapsize ( 0 0 255 255 )
+}
+atr "_BeamBlu_R-9ND-Daishi-The-Rubicon_noname"
+{
+	col ( rgb ( 0.250 0.450 1.000 ) )
+	amb ( 1.000 )
+	dif ( 0.000 )
+	tra ( 0.800 )
+}
+atr "_Brown_R-9ND-Daishi-The-Rubicon_noname"
+{
+	col ( rgb ( 0.450 0.300 0.150 ) )
+	amb ( 0.200 )
+	dif ( 0.800 )
+	spc ( 0.700 1.000 0.000 )
+	colormap ( "D:\devel\3d\common\atr\L3\effect\horizon.png" )
+	mapsize ( 0 0 255 255 )
+}
+atr "_BodyM_R-9ND-Daishi-The-Rubicon_—Í"
+{
+	col ( rgb ( 1.000 0.700 0.150 ) )
+	amb ( 1.000 )
+	dif ( 0.000 )
+	tra ( 0.120 )
+	ref ( 0.030 )
+	spc ( 0.650 0.452776 0.000 )
+}
+atr "_BodyM_R-9ND-Daishi-The-Rubicon_—Í2"
+{
+	col ( 1.000 )
+	amb ( 1.000 )
+	dif ( 0.000 )
+	opt ( emittion 0.000 5.000 )
+}

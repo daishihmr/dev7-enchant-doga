@@ -1,0 +1,184 @@
+/*							Parts Assembler
+                                  Version 2.04.080709(:
+Parts: 
+	BG\BG01.SUF
+	BL\BL10.SUF
+	C3\C301.SUF
+	C3\C303.SUF
+	EF\EF10.SUF
+	EG\EG03.SUF
+	G2\G202.SUF
+	JT\JT02.SUF
+	OT\OT16.SUF
+	P1\P103.SUF
+	P1\P107.SUF
+	P1\P110.SUF
+	P1\P112.SUF
+	P1\P114.SUF
+	P2\P205.SUF
+	P2\P207.SUF
+	P2\P208.SUF
+	P2\P211.SUF
+	P2\P212.SUF
+	P2\P213.SUF
+	P2\P214.SUF
+	P2\P215.SUF
+	P3\P301.SUF
+	P3\P305.SUF
+	P3\P308.SUF
+	P3\P309.SUF
+	P3\P310.SUF
+	P3\P311.SUF
+	P3\P312.SUF
+	P3\P313.SUF
+	P3\P314.SUF
+	P4\P401.SUF
+	P4\P402.SUF
+	P4\P403.SUF
+	P4\P404.SUF
+	P4\P405.SUF
+	P4\P409.SUF
+	S1\S106.SUF
+	SL\SL14.SUF
+	T1\T103.SUF
+	T1\T104.SUF
+	T1\T105.SUF
+	TK\TK03.SUF
+	W2\W207.SUF
+Pose:
+0: Pose1 ( labelled 24 ( HIP move ( 0 0 0 ) rot ( 0 0 0 ) ) ( LTHIGH move ( 0 0 0 ) rot ( 15 -10 10 ) ) ( LSHIN move ( 0 0 0 ) rot ( 0 10 -2 ) ) ( LFOOT move ( 0 0 0 ) rot ( -14 4 14 ) ) ( LTOE move ( 0 0 0 ) rot ( 0 0 0 ) ) ( WAIST move ( 0 0 0 ) rot ( 0 0 0 ) ) ( BREAST move ( 0 0 0 ) rot ( 0 0 0 ) ) ( LSHOULDER move ( 0 0 0 ) rot ( 0 0 0 ) ) ( LUPPERARM move ( 0 0 0 ) rot ( 20 0 0 ) ) ( LFOREARM move ( 0 0 0 ) rot ( 0 -45 0 ) ) ( LHAND move ( 0 0 0 ) rot ( 1 -17 -2 ) ) ( NECK move ( 0 0 0 ) rot ( 0 0 0 ) ) ( HEAD move ( 0 0 0 ) rot ( 0 0 0 ) ) ( RSHOULDER move ( 0 0 0 ) rot ( 0 0 0 ) ) ( RUPPERARM move ( 0 0 0 ) rot ( -20 0 0 ) ) ( RFOREARM move ( 0 0 0 ) rot ( 0 -45 0 ) ) ( RHAND move ( 0 0 0 ) rot ( 2 -9 0 ) ) ( unlabelled move ( 0 0 0 ) rot ( 0 40 -90 ) ) ( unlabelled move ( 0 0 0 ) rot ( -90 -50 180 ) ) ( unlabelled move ( 0 0 0 ) rot ( 0 0 0 ) ) ( RTHIGH move ( 0 0 0 ) rot ( -15 -10 -10 ) ) ( RSHIN move ( 0 0 0 ) rot ( 0 10 2 ) ) ( RFOOT move ( 0 0 0 ) rot ( 14 4 -14 ) ) ( RTOE move ( 0 0 0 ) rot ( 0 0 0 ) ) )
+1: Pose2 ( labelled 24 ( HIP move ( 0 0 0 ) rot ( 0 0 0 ) ) ( LTHIGH move ( 0 0 0 ) rot ( 15 -5 0 ) ) ( LSHIN move ( 0 0 0 ) rot ( 0 10 -3 ) ) ( LFOOT move ( 0 0 0 ) rot ( -16 1 21 ) ) ( LTOE move ( 0 0 0 ) rot ( 0 0 0 ) ) ( WAIST move ( 0 0 0 ) rot ( 0 0 -5 ) ) ( BREAST move ( 0 0 0 ) rot ( 0 0 -10 ) ) ( LSHOULDER move ( 0 0 0 ) rot ( -10 -15 0 ) ) ( LUPPERARM move ( 0 0 0 ) rot ( 37 -27 -7 ) ) ( LFOREARM move ( 0 0 0 ) rot ( 2 -15 1 ) ) ( LHAND move ( 0 0 0 ) rot ( -4 -22 19 ) ) ( NECK move ( 0 0 0 ) rot ( 0 0 0 ) ) ( HEAD move ( 0 0 0 ) rot ( 0 0 20 ) ) ( RSHOULDER move ( 0 0 0 ) rot ( 0 0 -5 ) ) ( RUPPERARM move ( 0 0 0 ) rot ( 0 12 0 ) ) ( RFOREARM move ( 0 0 0 ) rot ( 179 -81 -174 ) ) ( RHAND move ( 0 0 0 ) rot ( 5 -2 1 ) ) ( unlabelled move ( 0 0 0 ) rot ( 0 30 -40 ) ) ( unlabelled move ( 0 0 0 ) rot ( -30 -2 87 ) ) ( unlabelled move ( 0 0 0 ) rot ( 0 15 -41 ) ) ( RTHIGH move ( 0 0 0 ) rot ( -15 -5 0 ) ) ( RSHIN move ( 0 0 0 ) rot ( 0 10 3 ) ) ( RFOOT move ( 0 0 0 ) rot ( 16 1 -21 ) ) ( RTOE move ( 0 0 0 ) rot ( 0 0 0 ) ) )
+2: Pose3 ( labelled 24 ( HIP move ( 0 0 0 ) rot ( 0 0 0 ) ) ( LTHIGH move ( 0 0 0 ) rot ( 20 -15 0 ) ) ( LSHIN move ( 0 0 0 ) rot ( 0 10 -3 ) ) ( LFOOT move ( 0 0 0 ) rot ( -17 11 17 ) ) ( LTOE move ( 0 0 0 ) rot ( 0 0 0 ) ) ( WAIST move ( 0 0 0 ) rot ( 0 0 -5 ) ) ( BREAST move ( 0 0 0 ) rot ( 0 0 -10 ) ) ( LSHOULDER move ( 0 0 0 ) rot ( -10 -15 0 ) ) ( LUPPERARM move ( 0 0 0 ) rot ( 37 -27 -7 ) ) ( LFOREARM move ( 0 0 0 ) rot ( 2 -15 1 ) ) ( LHAND move ( 0 0 0 ) rot ( -4 -22 19 ) ) ( NECK move ( 0 0 0 ) rot ( 0 0 0 ) ) ( HEAD move ( 0 0 0 ) rot ( 0 10 35 ) ) ( RSHOULDER move ( 0 0 0 ) rot ( 0 0 -5 ) ) ( RUPPERARM move ( 0 0 0 ) rot ( 0 12 0 ) ) ( RFOREARM move ( 0 0 0 ) rot ( 179 -81 -174 ) ) ( RHAND move ( 0 0 0 ) rot ( 5 -2 1 ) ) ( unlabelled move ( 0 0 0 ) rot ( 0 30 -40 ) ) ( unlabelled move ( 0 0 0 ) rot ( -30 -2 87 ) ) ( unlabelled move ( 0 0 0 ) rot ( 0 15 -41 ) ) ( RTHIGH move ( 0 0 0 ) rot ( -15 5 0 ) ) ( RSHIN move ( 0 0 0 ) rot ( 1 19 5 ) ) ( RFOOT move ( 0 0 0 ) rot ( 16 1 -21 ) ) ( RTOE move ( 0 0 0 ) rot ( 7 -19 -1 ) ) )
+3: Pose4 ( labelled 24 ( HIP move ( 0 0 0 ) rot ( 0 0 0 ) ) ( LTHIGH move ( 0 0 0 ) rot ( 50 35 80 ) ) ( LSHIN move ( 0 0 0 ) rot ( 0 10 -3 ) ) ( LFOOT move ( 0 0 0 ) rot ( -17 11 17 ) ) ( LTOE move ( 0 0 0 ) rot ( 0 0 0 ) ) ( WAIST move ( 0 0 0 ) rot ( 0 0 -5 ) ) ( BREAST move ( 0 0 0 ) rot ( 0 0 -10 ) ) ( LSHOULDER move ( 0 0 0 ) rot ( 45 -15 0 ) ) ( LUPPERARM move ( 0 0 0 ) rot ( 37 -27 -7 ) ) ( LFOREARM move ( 0 0 0 ) rot ( 2 -15 1 ) ) ( LHAND move ( 0 0 0 ) rot ( -4 -22 19 ) ) ( NECK move ( 0 0 0 ) rot ( 0 0 0 ) ) ( HEAD move ( 0 0 0 ) rot ( 0 10 35 ) ) ( RSHOULDER move ( 0 0 0 ) rot ( 0 0 -5 ) ) ( RUPPERARM move ( 0 0 0 ) rot ( -75 10 0 ) ) ( RFOREARM move ( 0 0 0 ) rot ( 179 -81 -174 ) ) ( RHAND move ( 0 0 0 ) rot ( 5 -2 1 ) ) ( unlabelled move ( 0 0 0 ) rot ( -30 5 -120 ) ) ( unlabelled move ( 0 0 0 ) rot ( -16.1021 -25.6589 33.6901 ) ) ( unlabelled move ( -0.000000000001 0 0 ) rot ( 0 15 -41 ) ) ( RTHIGH move ( 0 0 0 ) rot ( -15 5 0 ) ) ( RSHIN move ( 0 0 0 ) rot ( 1 19 5 ) ) ( RFOOT move ( 0 0 0 ) rot ( 16 1 -21 ) ) ( RTOE move ( 0 0 0 ) rot ( 7 -19 -1 ) ) )
+Light: (   32   32  -89 ) ( 1.00 1.00 1.00)
+BackGround: "‰F’ˆ‹óŠÔ"
+Info:
+	DisplayOffset: ( -135.764  50.912 -362.040 )
+	DisplayScale: 0.353553390596
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 0
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 20
+	RotSpacing: 5
+	SelectedOnly: 0
+	DispRelative: 0
+:)*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -34 -61 -70 )
+	{	mov ( 2184.32 672.814 951.689 ) eye deg( 60 ) }
+	{	mov ( -221.155 -20.3797 907.98 ) target }
+  { mov ( 0 0 1020 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+    /* Unit Label: HIP */
+    { obj MSHip (: "HeavyMS\MSHip.l3p" :) }
+    { mov ( 10 103 -22 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+      /* Unit Moveable Label: LTHIGH CounterLabel: RTHIGH */
+      { obj MSThigh (: "HeavyMS\MSThigh.l3p" :) }
+      { mov ( -20 -30 -419 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+        /* Unit Moveable Label: LSHIN CounterLabel: RSHIN */
+        { obj MSLeg (: "HeavyMS\MSLeg.l3p" :) }
+        { mov ( -20 0 -491 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+          /* Unit Moveable Label: LFOOT CounterLabel: RFOOT */
+          { obj MSFoot (: "HeavyMS\MSFoot.l3p" :) }
+          { mov ( 100 0 -50 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+            /* Unit Moveable Label: LTOE CounterLabel: RTOE */
+            { obj MSToe (: "HeavyMS\MSToe.l3p" :) }
+          }
+        }
+      }
+    }
+    { mov ( 0 0 90 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+      /* Unit Moveable Label: WAIST */
+      { obj MSWaist (: "HeavyMS\MSWaist.l3p" :) }
+      { mov ( -30 0 136 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+        /* Unit Moveable Label: BREAST */
+        { obj MSBust (: "HeavyMS\MSBust.l3p" :) }
+        { mov ( 5 60 240 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+          /* Unit Moveable Label: LSHOULDER CounterLabel: RSHOULDER */
+          { obj MSShld (: "HeavyMS\MSShld.l3p" :) }
+          { mov ( 10 140 -6 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+            /* Unit Moveable Label: LUPPERARM CounterLabel: RUPPERARM */
+            { obj MSUarm (: "HeavyMS\MSUarm.l3p" :) }
+            { mov ( 0 20 -272 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+              /* Unit Moveable Label: LFOREARM CounterLabel: RFOREARM */
+              { obj MSFarm (: "HeavyMS\MSFarm.l3p" :) }
+              { mov ( 0 0 -260 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+                /* Unit Moveable Label: LHAND CounterLabel: RHAND */
+                { scal ( 1.1 1.1 1.1 )
+                  obj MSHand (: "HeavyMS\MSHand.l3p" :) }
+              }
+            }
+          }
+        }
+        { mov ( 30 0 270 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+          /* Unit Moveable Label: NECK */
+          { obj MSNeck (: "HeavyMS\MSNeck.l3p" :) }
+          { mov ( 20 0 110 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+            /* Unit Moveable Label: HEAD */
+            { scal ( 0.35 0.35 0.35 )
+              obj MSHead (: "HeavyMS\MSHead.l3p" :) }
+          }
+        }
+        { mov ( 5 -60 240 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+          /* Unit Moveable Label: RSHOULDER CounterLabel: LSHOULDER */
+          { scal ( 1 -1 1 )
+            obj MSShld (: "HeavyMS\MSShld.l3p" :) }
+          { mov ( 10 -160 -26 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+            /* Unit Moveable Label: RUPPERARM CounterLabel: LUPPERARM */
+            { scal ( 1 -1 1 )
+              obj MSUarm (: "HeavyMS\MSUarm.l3p" :) }
+            { mov ( 0 -20 -272 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+              /* Unit Moveable Label: RFOREARM CounterLabel: LFOREARM */
+              { scal ( 1 -1 1 )
+                obj MSFarm (: "HeavyMS\MSFarm.l3p" :) }
+              { mov ( 0 0 -260 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+                /* Unit Moveable Label: RHAND CounterLabel: LHAND */
+                { scal ( 1.1 -1.1 1.1 )
+                  obj MSHand (: "HeavyMS\MSHand.l3p" :) }
+              }
+            }
+          }
+        }
+        { mov ( -210 -124 -6 ) rotz ( -90 ) roty ( 40 ) rotx ( 0 )
+          /* Unit Moveable */
+          { scal ( 0.2 0.2 0.2 )
+            mov ( 907 -13 0 )
+            obj MSJoint (: "HeavyMS\MSJoint.l3p" :) }
+          { mov ( 363 -3 -3 ) rotz ( 180 ) roty ( -50 ) rotx ( -90 )
+            /* Unit Moveable */
+            { scal ( 0.35 0.35 0.35 )
+              mov ( 2550 -360 5 )
+              obj MSGun (: "HeavyMS\MSGun.l3p" :) }
+            { mov ( 1206 -59 3 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+              /* Unit Moveable */
+              { scal ( 0.35 0.35 0.35 )
+                obj MSHundle (: "HeavyMS\MSHundle.l3p" :) }
+            }
+          }
+        }
+      }
+    }
+    { mov ( 10 -103 -22 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+      /* Unit Moveable Label: RTHIGH CounterLabel: LTHIGH */
+      { scal ( 1 -1 1 )
+        obj MSThigh (: "HeavyMS\MSThigh.l3p" :) }
+      { mov ( -20 30 -419 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+        /* Unit Moveable Label: RSHIN CounterLabel: LSHIN */
+        { scal ( 1 -1 1 )
+          obj MSLeg (: "HeavyMS\MSLeg.l3p" :) }
+        { mov ( -20 0 -491 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+          /* Unit Moveable Label: RFOOT CounterLabel: LFOOT */
+          { scal ( 1 -1 1 )
+            obj MSFoot (: "HeavyMS\MSFoot.l3p" :) }
+          { mov ( 100 0 -50 ) rotz ( 0 ) roty ( 0 ) rotx ( 0 )
+            /* Unit Moveable Label: RTOE CounterLabel: LTOE */
+            { scal ( 1 -1 1 )
+              obj MSToe (: "HeavyMS\MSToe.l3p" :) }
+          }
+        }
+      }
+    }
+  }
+}

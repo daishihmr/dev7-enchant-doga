@@ -1,0 +1,53 @@
+/*							Parts Assembler
+                                  Version 1.3
+Parts: 
+	P2\P214.SUF
+	T1\T105.SUF
+Info:
+	DisplayOffset: (   0.000   0.000 -113.137 )
+	DisplayScale: 1.414213562368
+	MeshFlag: 1
+	MeshSpacing: 50
+	ShowStatus: 0
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 20
+	RotSpacing: 10
+	SelectedOnly: 0
+	DispRelative: 0
+Palette:
+	0: atr "布地_黒" { col ( rgb ( 0.090 0.190 0.310 ) ) amb ( 0.100 ) dif ( 0.600 ) spc ( 0.500 0.070 0.300 ) mapsize ( 0.000 0.000 0.667 0.667 ) bumpmap ( MESH1.PIC ) }
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -17 -68 -70 )
+	{	mov (   315   186   148 ) eye deg( 60 ) }
+	{	mov (   -22   -16    72 ) target }
+	{	mov (     4     0   -20 ) rotz(    0 ) roty(   -5 ) rotx(    0 )
+		scal ( 0.273 0.442 0.600 ) obj P214 /* "P2\P214.SUF" atr "布地_黒" */
+	}
+	{	mov (     0    27     8 ) rotz(  -51 ) roty(  -76 ) rotx( -144 )
+		scal ( 0.287 -0.316 0.463 ) obj T105 /* "T1\T105.SUF" atr "布地_黒" */
+	}
+	{	mov (   -17    20   159 ) rotz(   11 ) roty(  -10 ) rotx( -166 )
+		scal ( 0.300 -0.400 0.316 ) obj P214 /* "P2\P214.SUF" atr "布地_黒" */
+	}
+	{	mov (   -10    16    96 ) rotz(   11 ) roty(   -5 ) rotx( -160 )
+		scal ( 0.300 -0.400 0.210 ) obj P214 /* "P2\P214.SUF" atr "布地_黒" */
+	}
+	{	mov (    -7    24    67 ) rotz(   11 ) roty(   -4 ) rotx( -160 )
+		scal ( 0.300 -0.300 0.276 ) obj P214 /* "P2\P214.SUF" atr "布地_黒" */
+	}
+	{	mov (    -7   -24    67 ) rotz(  -11 ) roty(   -4 ) rotx(  160 )
+		scal ( 0.300 0.300 0.276 ) obj P214 /* "P2\P214.SUF" atr "布地_黒" */
+	}
+	{	mov (   -10   -16    96 ) rotz(  -11 ) roty(   -5 ) rotx(  160 )
+		scal ( 0.300 0.400 0.210 ) obj P214 /* "P2\P214.SUF" atr "布地_黒" */
+	}
+	{	mov (   -17   -20   159 ) rotz(  -11 ) roty(  -10 ) rotx(  166 )
+		scal ( 0.300 0.400 0.316 ) obj P214 /* "P2\P214.SUF" atr "布地_黒" */
+	}
+	{	mov (     0   -27     8 ) rotz(   51 ) roty(  -76 ) rotx(  144 )
+		scal ( 0.287 0.316 0.463 ) obj T105 /* "T1\T105.SUF" atr "布地_黒" */
+	}
+}

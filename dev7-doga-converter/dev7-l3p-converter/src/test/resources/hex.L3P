@@ -1,0 +1,30 @@
+/*							Parts Assembler
+                                  Version 2.04.080709(:
+Parts: 
+	P3\P312.suf
+Light: (   32   32  -89 ) ( 1.00 1.00 1.00)
+BackGround: "‰F’ˆ‹óŠÔ"
+Info:
+	DisplayOffset: (   0.000   0.000   0.000 )
+	DisplayScale: 0.125000000000
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 50
+	RotSpacing: 5
+	SelectedOnly: 0
+	DispRelative: 0
+Palette:
+	0: atr noname { col ( 1.000 ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -70 -10 -70 )
+	{	mov ( 1490.35 -1170.35 1172.75 ) eye deg( 45 ) }
+	{	mov ( -40.3215 -22.3469 24.7484 ) target }
+	{	mov ( -250 0 0 ) rotz ( 0 ) roty ( 90 ) rotx ( 0 )
+		scal ( 3 3 4.9 ) obj P312 /* "P3\P312.suf" atr "noname" */
+	}
+}

@@ -1,0 +1,650 @@
+/*							Parts Assembler
+                                  Version 1.3
+Parts: 
+	P2\P211.suf
+	P2\P215.suf
+	P2\P213.suf
+	nozzle\nozzle10.suf
+	TK\TK06.suf
+	P2\P216.suf
+	P4\P407.suf
+	T1\T103.suf
+	P3\P309.suf
+	T1\T102.suf
+	P4\P409.suf
+	S1\S108.suf
+	S2\S207.suf
+	S2\S213.suf
+	SD\SD14.suf
+	l3_samp\parts\ball\ball2.SUF
+	P4\P402.suf
+	TK\TK05.suf
+	roarm\roarm06.suf
+	P2\P202.suf
+	P3\P308.suf
+	P2\P214.suf
+	nozzle\nozzle01.suf
+	P4\P401.suf
+	P4\P412.suf
+	P2\P208.suf
+Info:
+	DisplayOffset: ( 303.999   8.000 -72.000 )
+	DisplayScale: 0.500000000000
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 20
+	RotSpacing: 2
+	SelectedOnly: 0
+	DispRelative: 0
+Palette:
+	0: atr "#01" { col ( 1.000 ) amb ( 0.200 ) dif ( 0.800 ) spc ( 0.700 1.000 0.000 ) }
+	1: atr bd0_1 { col ( rgb ( 0.420 0.540 0.650 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( YOGORE.PIC 0.800 1.000 ) colormap ( "L3\nature\zyuhi_bump.png" 0.800 1.000 ) mapsize ( 0.000 0.000 0.500 0.500 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	2: atr bd0_2 { col ( 1.000 ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	3: atr bd0_3 { col ( rgb ( 0.340 0.440 0.720 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	4: atr bd1_1 { col ( 1.000 ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( YOGORE.PIC 0.900 1.000 ) colormap ( "L3\nature\zyuhi_bump.png" 0.850 1.000 ) mapsize ( 0 0 1 1 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	5: atr bd2_1 { col ( rgb ( 0.430 0.500 0.780 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	6: atr bd2_2 { col ( rgb ( 0.130 0.530 0.670 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	7: atr bd3_1 { col ( rgb ( 0.130 0.530 0.670 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	8: atr bd3_2 { col ( rgb ( 0.130 0.530 0.670 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( YOGORE.PIC 0.800 1.000 ) colormap ( "L3\nature\zyuhi_bump.png" 0.600 1.000 ) mapsize ( 0 0 1 1 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	9: atr bd4_1 { col ( rgb ( 0.950 0.950 0.980 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( YOGORE.PIC 0.850 1.000 ) colormap ( "L3\nature\zyuhi_bump.png" 0.800 1.000 ) mapsize ( 0 0 1 1 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	10: atr bt1_1 { col ( 1.000 ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( YOGORE.PIC 0.800 1.000 ) colormap ( "L3\nature\zyuhi_bump.png" 0.800 1.000 ) mapsize ( 0 0 1 1 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	11: atr bt_2 { col ( rgb ( 0.880 0.880 0.900 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( YOGORE.PIC 0.800 1.000 ) colormap ( "L3\nature\zyuhi_bump.png" 0.800 1.000 ) mapsize ( 0 0 1 1 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	12: atr eg01 { col ( rgb ( 0.600 0.900 1.000 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( "L3\nature\zyuhi_bump.png" 0.600 1.000 ) colormap ( "L3\effect\line2.png" 0.400 1.000 ) mapsize ( 0.000 0.000 0.667 0.667 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.626 0.250 ) ( 0.626 0.856 0.750 ) ( 0.856 10.000 1.000 ) ) }
+	13: atr eg1_1 { col ( rgb ( 0.600 0.900 1.000 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( "L3\nature\zyuhi_bump.png" 0.600 1.000 ) colormap ( "L3\effect\line2.png" 0.400 1.000 ) mapsize ( 0.000 0.000 0.667 0.667 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.626 0.250 ) ( 0.626 0.856 0.750 ) ( 0.856 10.000 1.000 ) ) }
+	14: atr eg1_2 { col ( rgb ( 0.110 0.500 0.690 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( "L3\nature\zyuhi_bump.png" 0.700 1.000 ) colormap ( "L3\effect\line2.png" 0.400 1.000 ) mapsize ( 0 0 1 1 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.626 0.250 ) ( 0.626 0.856 0.750 ) ( 0.856 10.000 1.000 ) ) }
+	15: atr hd1_1 { col ( rgb ( 0.110 0.500 0.690 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( "L3\effect\line1.png" 0.500 1.000 ) colormap ( KEMURI.PIC 0.500 1.000 ) bumpmap ( "L3\effect\line1.png" ) mapsize ( 0 0 1 1 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	16: atr hd1_2 { col ( 1.000 ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( YOGORE.PIC 0.800 1.000 ) mapsize ( 0 0 1 1 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	17: atr hd1_3 { col ( rgb ( 0.520 0.680 0.820 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( YOGORE.PIC 0.800 1.000 ) colormap ( "L3\nature\zyuhi_bump.png" 0.600 1.000 ) mapsize ( 0 0 1 1 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	18: atr noname { col ( 1.000 ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	19: atr tl1_1 { col ( 1.000 ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( YOGORE.PIC 0.950 1.000 ) colormap ( "L3\nature\zyuhi_bump.png" 0.900 1.000 ) mapsize ( 0 0 1 1 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	20: atr tp1_1 { col ( 1.000 ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( YOGORE.PIC 0.950 1.000 ) colormap ( "L3\nature\zyuhi_bump.png" 0.900 1.000 ) mapsize ( 0 0 1 1 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	21: atr wg1_1 { col ( rgb ( 0.460 0.430 0.780 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	22: atr wg1_2 { col ( rgb ( 0.130 0.530 0.670 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( YOGORE.PIC 0.900 1.000 ) colormap ( "L3\nature\zyuhi_bump.png" 0.850 1.000 ) mapsize ( 0 0 1 1 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	23: atr wg1_3 { col ( rgb ( 0.260 0.200 0.630 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( YOGORE.PIC 0.900 1.000 ) colormap ( "L3\nature\zyuhi_bump.png" 0.850 1.000 ) mapsize ( 0 0 1 1 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	24: atr wg1_4 { col ( rgb ( 0.110 0.070 0.380 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( YOGORE.PIC 0.900 1.000 ) colormap ( "L3\nature\zyuhi_bump.png" 0.850 1.000 ) mapsize ( 0 0 1 1 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	25: atr wg1_5 { col ( rgb ( 0.800 0.830 0.850 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( "L3\nature\zyuhi_bump.png" 0.900 1.000 ) mapsize ( 0 0 1 1 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	26: atr wg2_1 { col ( 1.000 ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) colormap ( YOGORE.PIC 0.900 1.000 ) colormap ( "L3\nature\zyuhi_bump.png" 0.900 1.000 ) mapsize ( 0.000 0.000 0.500 0.500 ) opt ( castshadow receiveshadow celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 emphasis 0.500 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+	27: atr ws1_1 { col ( rgb ( 0.260 0.200 0.630 ) ) amb ( 0.500 ) dif ( 0.500 ) spc ( 1.000 0.010 0.000 ) opt ( celllookedge celllookspecular 0.999 0.999 draw rgb ( 0.400 0.400 0.450 ) rate 0.002 shader 3 ( 0.000 0.544 0.350 ) ( 0.544 0.854 0.750 ) ( 0.854 10.000 1.000 ) ) }
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 )  -2 -70 -70 )
+	{	mov ( 1737.8983 1588.1096 361.2533 ) eye deg( 45 ) }
+	{	mov ( -75.5802 -81.2277 32.3736 ) target }
+	{	mov ( -700 0 0 ) rotz( 0 ) roty( 0 ) rotx( 0 )
+		scal ( 1.3 0.5 1 ) obj P211 /* "P2\P211.suf" atr "bt_2" */
+	}
+	{	mov ( -650 0 0 ) rotz( 0 ) roty( 0 ) rotx( 0 )
+		scal ( 1 3.9 0.5 ) obj P211 /* "P2\P211.suf" atr "noname" */
+	}
+	{	mov ( -639.6264 -100 -107.3019 ) rotz( -180 ) roty( 86 ) rotx( 176 )
+		scal ( 0.3 -0.3 2.1 ) obj P215 /* "P2\P215.suf" atr "bd3_1" */
+	}
+	{	mov ( -619.6751 -100 -108.697 ) rotz( 0 ) roty( -86 ) rotx( 4 )
+		scal ( 0.25 -0.25 0.4 ) obj P213 /* "P2\P213.suf" atr "bd3_1" */
+	}
+	{	mov ( -619.6751 100 -108.697 ) rotz( 0 ) roty( -86 ) rotx( -4 )
+		scal ( 0.25 0.25 0.4 ) obj P213 /* "P2\P213.suf" atr "bd3_1" */
+	}
+	{	mov ( -639.6264 100 -107.3019 ) rotz( 180 ) roty( 86 ) rotx( -176 )
+		scal ( 0.3 0.3 2.1 ) obj P215 /* "P2\P215.suf" atr "bd3_1" */
+	}
+	{	mov ( -60 0 -110 ) rotz( 0 ) roty( 6 ) rotx( 180 )
+		scal ( 0.9 1.85 1.35 ) obj nozzle10 /* "nozzle\nozzle10.suf" atr "hd1_3" */
+	}
+	{	mov ( -780 0 560 ) rotz( -180 ) roty( -46 ) rotx( 0 )
+		scal ( 0.85 1 1 ) obj TK06 /* "TK\TK06.suf" atr "tl1_1" */
+	}
+	{	mov ( -740 -300 -20 ) rotz( -0 ) roty( -90 ) rotx( 0 )
+		scal ( 0.675 -0.675 2.5 ) obj P216 /* "P2\P216.suf" atr "eg1_2" */
+	}
+	{	mov ( -1110 -300 -20 ) rotz( -0 ) roty( 90 ) rotx( 0 )
+		scal ( 0.6 -0.6 2.5 ) obj P407 /* "P4\P407.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 -341.25 51.4471 ) rotz( -180 ) roty( 0 ) rotx( -30 )
+		scal ( 0.33 -0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 -258.75 -91.4471 ) rotz( -180 ) roty( 0 ) rotx( 150 )
+		scal ( 0.33 -0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 -371.4471 21.25 ) rotz( -180 ) roty( 0 ) rotx( -60 )
+		scal ( 0.33 -0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 -228.5529 -61.25 ) rotz( -180 ) roty( 0 ) rotx( 120 )
+		scal ( 0.33 -0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 -382.5 -20 ) rotz( -180 ) roty( 0 ) rotx( -90 )
+		scal ( 0.33 -0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 -217.5 -20 ) rotz( -180 ) roty( 0 ) rotx( 90 )
+		scal ( 0.33 -0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 -371.4471 -61.25 ) rotz( -180 ) roty( 0 ) rotx( -120 )
+		scal ( 0.33 -0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 -228.5529 21.25 ) rotz( -180 ) roty( 0 ) rotx( 60 )
+		scal ( 0.33 -0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 -341.25 -91.4471 ) rotz( -180 ) roty( 0 ) rotx( -150 )
+		scal ( 0.33 -0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 -258.75 51.4471 ) rotz( -180 ) roty( 0 ) rotx( 30 )
+		scal ( 0.33 -0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 -300 -102.5 ) rotz( -180 ) roty( 0 ) rotx( 180 )
+		scal ( 0.33 -0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 -300 62.5 ) rotz( -180 ) roty( 0 ) rotx( 0 )
+		scal ( 0.33 -0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 300 62.5 ) rotz( 180 ) roty( 0 ) rotx( 0 )
+		scal ( 0.33 0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 300 -102.5 ) rotz( 180 ) roty( 0 ) rotx( -180 )
+		scal ( 0.33 0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 258.75 51.4471 ) rotz( 180 ) roty( 0 ) rotx( -30 )
+		scal ( 0.33 0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 341.25 -91.4471 ) rotz( 180 ) roty( 0 ) rotx( 150 )
+		scal ( 0.33 0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 228.5529 21.25 ) rotz( 180 ) roty( 0 ) rotx( -60 )
+		scal ( 0.33 0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 371.4471 -61.25 ) rotz( 180 ) roty( 0 ) rotx( 120 )
+		scal ( 0.33 0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 217.5 -20 ) rotz( 180 ) roty( 0 ) rotx( -90 )
+		scal ( 0.33 0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 382.5 -20 ) rotz( 180 ) roty( 0 ) rotx( 90 )
+		scal ( 0.33 0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 228.5529 -61.25 ) rotz( 180 ) roty( 0 ) rotx( -120 )
+		scal ( 0.33 0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 371.4471 21.25 ) rotz( 180 ) roty( 0 ) rotx( 60 )
+		scal ( 0.33 0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 258.75 -91.4471 ) rotz( 180 ) roty( 0 ) rotx( -150 )
+		scal ( 0.33 0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -897.9 341.25 51.4471 ) rotz( 180 ) roty( 0 ) rotx( 30 )
+		scal ( 0.33 0.44 0.55 ) obj T103 /* "T1\T103.suf" atr "eg1_1" */
+	}
+	{	mov ( -1110 300 -20 ) rotz( -0 ) roty( 90 ) rotx( 0 )
+		scal ( 0.6 0.6 2.5 ) obj P407 /* "P4\P407.suf" atr "eg1_1" */
+	}
+	{	mov ( -740 300 -20 ) rotz( -0 ) roty( -90 ) rotx( 0 )
+		scal ( 0.675 0.675 2.5 ) obj P216 /* "P2\P216.suf" atr "eg1_2" */
+	}
+	{	mov ( -350 300 -50 ) rotz( 50 ) roty( 10 ) rotx( -40 )
+		scal ( 1.7 -0.6 0.6 ) obj P309 /* "P3\P309.suf" atr "wg2_1" */
+	}
+	{	mov ( -350 -300 -50 ) rotz( -50 ) roty( 10 ) rotx( 40 )
+		scal ( 1.7 0.6 0.6 ) obj P309 /* "P3\P309.suf" atr "wg2_1" */
+	}
+	{	mov ( 298.9547 0 -69.9452 ) rotz( 0 ) roty( 6 ) rotx( 0 )
+		scal ( 1 1 1.5 ) obj T102 /* "T1\T102.suf" atr "hd1_2" */
+	}
+	{	mov ( 502.0402 0 -51.07 ) rotz( 0 ) roty( 6 ) rotx( 0 )
+		scal ( 2.6 0.5 1 ) obj P211 /* "P2\P211.suf" atr "hd1_2" */
+	}
+	{	mov ( 300 0 20 ) rotz( -180 ) roty( 4 ) rotx( 180 )
+		scal ( 0.7 0.8 1.2 ) obj T102 /* "T1\T102.suf" atr "hd1_3" */
+	}
+	{	mov ( 640 75 -60 ) rotz( -45 ) roty( 90 ) rotx( 0 )
+		scal ( 0.2 0.2 0.2 ) obj P409 /* "P4\P409.suf" atr "noname" */
+	}
+	{	mov ( 673 50 -100 ) rotz( -45 ) roty( 90 ) rotx( 0 )
+		scal ( 0.2 0.2 0.2 ) obj P409 /* "P4\P409.suf" atr "noname" */
+	}
+	{	mov ( 595 -95 -20 ) rotz( 45 ) roty( 90 ) rotx( 0 )
+		scal ( 0.2 -0.2 0.2 ) obj P409 /* "P4\P409.suf" atr "noname" */
+	}
+	{	mov ( 320 0 -200 ) rotz( 0 ) roty( 4 ) rotx( 0 )
+		scal ( 0.4 0.71 0.5 ) obj S108 /* "S1\S108.suf" atr "hd1_3" */
+	}
+	{	mov ( -260 0 -200 ) rotz( 0 ) roty( -8 ) rotx( -180 )
+		scal ( 0.5 0.9 0.9 ) obj S207 /* "S2\S207.suf" atr "bt1_1" */
+	}
+	{	mov ( -520 0 -20 ) rotz( 0 ) roty( 0 ) rotx( 0 )
+		scal ( 0.5 0.5 0.5 ) obj S213 /* "S2\S213.suf" atr "tl1_1" */
+	}
+	{	mov ( -440 0 -180 ) rotz( 0 ) roty( 8 ) rotx( 90 )
+		scal ( 0.3 1.9 0.8 ) obj SD14 /* "SD\SD14.suf" atr "bt1_1" */
+	}
+	{	mov ( 0 0 20 ) rotz( 0 ) roty( 0 ) rotx( 0 )
+		scal ( 0.65 0.65 0.35 ) obj ball2 /* "l3_samp\parts\ball\ball2.SUF" atr "bd4_1" */
+	}
+	{	mov ( 279 0 29.5 ) rotz( -180 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( 0 0 -6.5 ) rotz( 90 ) roty( 0 ) rotx( 0 )
+		scal ( -1.89 1.89 1.17 ) obj P402 /* "P4\P402.suf" atr "bd2_2" */
+	}
+	{	mov ( 0 0 -6.5 ) rotz( -90 ) roty( 0 ) rotx( 0 )
+		scal ( 1.89 1.89 1.17 ) obj P402 /* "P4\P402.suf" atr "bd2_2" */
+	}
+	{	mov ( -279 0 29.5 ) rotz( 0 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( 269.4933 -72.2105 29.5 ) rotz( 165 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( -269.4933 72.2105 29.5 ) rotz( -15 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( 241.6211 -139.5 29.5 ) rotz( 150 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( -241.6211 139.5 29.5 ) rotz( -30 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( 197.2828 -197.2828 29.5 ) rotz( 135 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( -197.2828 197.2828 29.5 ) rotz( -45 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( 139.5 -241.6211 29.5 ) rotz( 120 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( -139.5 241.6211 29.5 ) rotz( -60 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( 72.2105 -269.4933 29.5 ) rotz( 105 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( -72.2105 269.4933 29.5 ) rotz( -75 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( 0 -279 29.5 ) rotz( 90 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( 0 279 29.5 ) rotz( -90 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( -72.2105 -269.4933 29.5 ) rotz( 75 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( 72.2105 269.4933 29.5 ) rotz( -105 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( -139.5 -241.6211 29.5 ) rotz( 60 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( 139.5 241.6211 29.5 ) rotz( -120 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( -197.2828 -197.2828 29.5 ) rotz( 45 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( 197.2828 197.2828 29.5 ) rotz( -135 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( -241.6211 -139.5 29.5 ) rotz( 30 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( 241.6211 139.5 29.5 ) rotz( -150 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( -269.4933 -72.2105 29.5 ) rotz( 15 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( 269.4933 72.2105 29.5 ) rotz( -165 ) roty( -65 ) rotx( 0 )
+		scal ( 0.225 0.45 0.945 ) obj T103 /* "T1\T103.suf" atr "bd0_1" */
+	}
+	{	mov ( 318.1051 41.8793 -50.175 ) rotz( -172.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( -318.1051 -41.8793 -50.175 ) rotz( 7.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( 318.1051 -41.8793 -50.175 ) rotz( 172.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( -318.1051 41.8793 -50.175 ) rotz( -7.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( 296.4268 -122.784 -50.175 ) rotz( 157.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( -296.4268 122.784 -50.175 ) rotz( -22.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( 254.5474 -195.3211 -50.175 ) rotz( 142.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( -254.5474 195.3211 -50.175 ) rotz( -37.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( 195.3211 -254.5474 -50.175 ) rotz( 127.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( -195.3211 254.5474 -50.175 ) rotz( -52.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( 122.784 -296.4267 -50.175 ) rotz( 112.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( -122.784 296.4267 -50.175 ) rotz( -67.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( 41.8793 -318.1051 -50.175 ) rotz( 97.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( -41.8793 318.1051 -50.175 ) rotz( -82.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( -41.8793 -318.1051 -50.175 ) rotz( 82.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( 41.8793 318.1051 -50.175 ) rotz( -97.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( -122.784 -296.4268 -50.175 ) rotz( 67.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( 122.784 296.4268 -50.175 ) rotz( -112.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( -195.3211 -254.5474 -50.175 ) rotz( 52.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( 195.3211 254.5474 -50.175 ) rotz( -127.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( -254.5474 -195.3211 -50.175 ) rotz( 37.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( 254.5474 195.3211 -50.175 ) rotz( -142.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( -296.4267 -122.784 -50.175 ) rotz( 22.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( 296.4267 122.784 -50.175 ) rotz( -157.5 ) roty( 65 ) rotx( 0 )
+		scal ( 0.2587 0.5175 -1.0868 ) obj T103 /* "T1\T103.suf" atr "bd0_3" */
+	}
+	{	mov ( 630 0 -80 ) rotz( 45 ) roty( 4 ) rotx( 4 )
+		scal ( 0.65 0.65 0.65 ) obj P211 /* "P2\P211.suf" atr "hd1_1" */
+	}
+	{	mov ( 310 0 -10 ) rotz( -180 ) roty( 75 ) rotx( -180 )
+		scal ( 0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( -310 0 -10 ) rotz( 180 ) roty( -75 ) rotx( -180 )
+		scal ( -0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( 299.437 -80.2339 -10 ) rotz( 165 ) roty( 75 ) rotx( -180 )
+		scal ( 0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( -299.437 80.2339 -10 ) rotz( 165 ) roty( -75 ) rotx( -180 )
+		scal ( -0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( 268.4679 -155 -10 ) rotz( 150 ) roty( 75 ) rotx( -180 )
+		scal ( 0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( -268.4679 155 -10 ) rotz( 150 ) roty( -75 ) rotx( -180 )
+		scal ( -0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( 219.2031 -219.2031 -10 ) rotz( 135 ) roty( 75 ) rotx( -180 )
+		scal ( 0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( -219.2031 219.2031 -10 ) rotz( 135 ) roty( -75 ) rotx( -180 )
+		scal ( -0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( 155 -268.4679 -10 ) rotz( 120 ) roty( 75 ) rotx( -180 )
+		scal ( 0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( -155 268.4679 -10 ) rotz( 120 ) roty( -75 ) rotx( -180 )
+		scal ( -0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( 80.2339 -299.437 -10 ) rotz( 105 ) roty( 75 ) rotx( -180 )
+		scal ( 0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( -80.2339 299.437 -10 ) rotz( 105 ) roty( -75 ) rotx( -180 )
+		scal ( -0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( 0 -310 -10 ) rotz( 90 ) roty( 75 ) rotx( -180 )
+		scal ( 0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( 0 310 -10 ) rotz( 90 ) roty( -75 ) rotx( -180 )
+		scal ( -0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( -80.2339 -299.437 -10 ) rotz( 75 ) roty( 75 ) rotx( -180 )
+		scal ( 0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( 80.2339 299.437 -10 ) rotz( 75 ) roty( -75 ) rotx( -180 )
+		scal ( -0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( -155 -268.4679 -10 ) rotz( 60 ) roty( 75 ) rotx( -180 )
+		scal ( 0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( 155 268.4679 -10 ) rotz( 60 ) roty( -75 ) rotx( -180 )
+		scal ( -0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( -219.2031 -219.2031 -10 ) rotz( 45 ) roty( 75 ) rotx( -180 )
+		scal ( 0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( 219.2031 219.2031 -10 ) rotz( 45 ) roty( -75 ) rotx( -180 )
+		scal ( -0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( -268.4679 -155 -10 ) rotz( 30 ) roty( 75 ) rotx( -180 )
+		scal ( 0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( 268.4679 155 -10 ) rotz( 30 ) roty( -75 ) rotx( -180 )
+		scal ( -0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( -299.437 -80.2339 -10 ) rotz( 15 ) roty( 75 ) rotx( -180 )
+		scal ( 0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( 299.437 80.2339 -10 ) rotz( 15 ) roty( -75 ) rotx( -180 )
+		scal ( -0.21 0.092 0.345 ) obj TK05 /* "TK\TK05.suf" atr "bd1_1" */
+	}
+	{	mov ( 580 0 -60 ) rotz( 45 ) roty( 4 ) rotx( 4 )
+		scal ( 0.8 0.8 0.8 ) obj P211 /* "P2\P211.suf" atr "hd1_1" */
+	}
+	{	mov ( 670 0 -100 ) rotz( 45 ) roty( 4 ) rotx( 4 )
+		scal ( 0.5 0.5 0.5 ) obj P211 /* "P2\P211.suf" atr "hd1_1" */
+	}
+	{	mov ( 595 95 -20 ) rotz( -45 ) roty( 90 ) rotx( 0 )
+		scal ( 0.2 0.2 0.2 ) obj P409 /* "P4\P409.suf" atr "noname" */
+	}
+	{	mov ( 673 -50 -100 ) rotz( 45 ) roty( 90 ) rotx( 0 )
+		scal ( 0.2 -0.2 0.2 ) obj P409 /* "P4\P409.suf" atr "noname" */
+	}
+	{	mov ( 640 -75 -60 ) rotz( 45 ) roty( 90 ) rotx( 0 )
+		scal ( 0.2 -0.2 0.2 ) obj P409 /* "P4\P409.suf" atr "noname" */
+	}
+	{	mov ( -200 0 200 ) rotz( -0 ) roty( 90 ) rotx( 0 )
+		scal ( 0.7 0.7 0.5 ) obj roarm06 /* "roarm\roarm06.suf" atr "tp1_1" */
+	}
+	{	mov ( -80 0 200 ) rotz( 0 ) roty( 10 ) rotx( 0 )
+		scal ( 0.275 0.15 0.125 ) obj ball2 /* "l3_samp\parts\ball\ball2.SUF" atr "ws1_1" */
+	}
+	{	mov ( -95 0 270 ) rotz( 0 ) roty( 6 ) rotx( 0 )
+		scal ( 0.3 0.6 0.11 ) obj P211 /* "P2\P211.suf" atr "bd2_1" */
+	}
+	{	mov ( -340 420 20 ) rotz( 170 ) roty( 65 ) rotx( 125 )
+		scal ( 0.4 0.2 4.4 ) obj P202 /* "P2\P202.suf" atr "wg2_1" */
+	}
+	{	mov ( -340 360 -20 ) rotz( 170 ) roty( 66 ) rotx( 124 )
+		scal ( 0.4 0.15 4.4 ) obj P202 /* "P2\P202.suf" atr "wg2_1" */
+	}
+	{	mov ( -340 -420 20 ) rotz( -170 ) roty( 65 ) rotx( -125 )
+		scal ( 0.4 -0.2 4.4 ) obj P202 /* "P2\P202.suf" atr "wg2_1" */
+	}
+	{	mov ( -340 -360 -20 ) rotz( -170 ) roty( 66 ) rotx( -124 )
+		scal ( 0.4 -0.15 4.4 ) obj P202 /* "P2\P202.suf" atr "wg2_1" */
+	}
+	{	mov ( -120 0 270 ) rotz( 0 ) roty( 15 ) rotx( 0 )
+		scal ( 0.3 0.3 0.2 ) obj P308 /* "P3\P308.suf" atr "bd2_2" */
+	}
+	{	mov ( -563 0 243 ) rotz( 0 ) roty( 0 ) rotx( 0 )
+		scal ( 0.6 0.15 0.6 ) obj TK05 /* "TK\TK05.suf" atr "tl1_1" */
+	}
+	{	mov ( -560 160 240 ) rotz( 0 ) roty( 0 ) rotx( 90 )
+		scal ( 1 1 0.7 ) obj P407 /* "P4\P407.suf" atr "tl1_1" */
+	}
+	{	mov ( -560 -160 240 ) rotz( 0 ) roty( 0 ) rotx( -90 )
+		scal ( 1 -1 0.7 ) obj P407 /* "P4\P407.suf" atr "tl1_1" */
+	}
+	{	mov ( -940 0 320 ) rotz( 180 ) roty( -16 ) rotx( 0 )
+		scal ( 0.85 1 1 ) obj TK06 /* "TK\TK06.suf" atr "tl1_1" */
+	}
+	{	mov ( -560 40 240 ) rotz( 0 ) roty( 0 ) rotx( -90 )
+		scal ( 0.7 0.7 0.7 ) obj P214 /* "P2\P214.suf" atr "tl1_1" */
+	}
+	{	mov ( -560 -40 240 ) rotz( 0 ) roty( 0 ) rotx( 90 )
+		scal ( 0.7 -0.7 0.7 ) obj P214 /* "P2\P214.suf" atr "tl1_1" */
+	}
+	{	mov ( -340 0 160 ) rotz( 0 ) roty( -6 ) rotx( 0 )
+		scal ( 1.2 1.2 1 ) obj P211 /* "P2\P211.suf" atr "bd2_1" */
+	}
+	{	mov ( -340 100 170 ) rotz( 10 ) roty( -6 ) rotx( -90 )
+		scal ( 0.45 0.35 0.25 ) obj nozzle01 /* "nozzle\nozzle01.suf" atr "bd2_1" */
+	}
+	{	mov ( -340 -100 170 ) rotz( -10 ) roty( -6 ) rotx( 90 )
+		scal ( 0.45 -0.35 0.25 ) obj nozzle01 /* "nozzle\nozzle01.suf" atr "bd2_1" */
+	}
+	{	mov ( -180 0 110 ) rotz( 0 ) roty( -10 ) rotx( 8 )
+		scal ( 0.6 0.6 1.4 ) obj P401 /* "P4\P401.suf" atr "bd2_1" */
+	}
+	{	mov ( -180 0 110 ) rotz( 0 ) roty( -10 ) rotx( -8 )
+		scal ( 0.6 -0.6 1.4 ) obj P401 /* "P4\P401.suf" atr "bd2_1" */
+	}
+	{	mov ( -80 -80 200 ) rotz( 34 ) roty( 12 ) rotx( 0 )
+		scal ( 0.8 0.8 0.8 ) obj P412 /* "P4\P412.suf" atr "bd2_2" */
+	}
+	{	mov ( -80 80 200 ) rotz( -34 ) roty( 12 ) rotx( 0 )
+		scal ( 0.8 -0.8 0.8 ) obj P412 /* "P4\P412.suf" atr "bd2_2" */
+	}
+	{	mov ( 60 0 190 ) rotz( 0 ) roty( 12 ) rotx( 0 )
+		scal ( 0.3 0.2 0.2 ) obj P211 /* "P2\P211.suf" atr "bd2_2" */
+	}
+	{	mov ( 401.3951 0 -200.0487 ) rotz( 0 ) roty( 4 ) rotx( 0 )
+		scal ( 2.4 0.75 0.05 ) obj P211 /* "P2\P211.suf" atr "hd1_2" */
+	}
+	{	mov ( 400 0 -220 ) rotz( 0 ) roty( 4 ) rotx( 0 )
+		scal ( 2.4 0.75 0.05 ) obj P211 /* "P2\P211.suf" atr "hd1_2" */
+	}
+	{	mov ( 398.6049 0 -239.9513 ) rotz( 0 ) roty( 4 ) rotx( 0 )
+		scal ( 2.4 0.75 0.05 ) obj P211 /* "P2\P211.suf" atr "hd1_2" */
+	}
+	{	mov ( 800 0 -80 ) rotz( 0 ) roty( 4 ) rotx( 0 )
+		scal ( 0.4 0.6 0.05 ) obj P211 /* "P2\P211.suf" atr "hd1_2" */
+	}
+	{	mov ( 780 0 -100 ) rotz( 0 ) roty( 4 ) rotx( 0 )
+		scal ( 0.4 0.6 0.05 ) obj P211 /* "P2\P211.suf" atr "hd1_2" */
+	}
+	{	mov ( -560 0 240 ) rotz( 0 ) roty( 0 ) rotx( 0 )
+		scal ( 0.7 0.2 0.7 ) obj TK05 /* "TK\TK05.suf" atr "tl1_1" */
+	}
+	{	mov ( -368 342 0 ) rotz( -130 ) roty( 90 ) rotx( 0 )
+		scal ( 1.4 0.125 1.4 ) obj P208 /* "P2\P208.suf" atr "wg1_5" */
+	}
+	{	mov ( -368 342 0 ) rotz( -40 ) roty( 60 ) rotx( 90 )
+		scal ( 1.4 0.125 1.4 ) obj P208 /* "P2\P208.suf" atr "wg1_5" */
+	}
+	{	mov ( -368 342 0 ) rotz( -40 ) roty( 30 ) rotx( 90 )
+		scal ( 1.4 0.125 1.4 ) obj P208 /* "P2\P208.suf" atr "wg1_5" */
+	}
+	{	mov ( -368 342 0 ) rotz( -40 ) roty( 0 ) rotx( 90 )
+		scal ( 1.4 0.125 1.4 ) obj P208 /* "P2\P208.suf" atr "wg1_5" */
+	}
+	{	mov ( -368 342 0 ) rotz( -40 ) roty( -30 ) rotx( 90 )
+		scal ( 1.4 0.125 1.4 ) obj P208 /* "P2\P208.suf" atr "wg1_5" */
+	}
+	{	mov ( -368 342 0 ) rotz( -40 ) roty( -60 ) rotx( 90 )
+		scal ( 1.4 0.125 1.4 ) obj P208 /* "P2\P208.suf" atr "wg1_5" */
+	}
+	{	mov ( -400 300 0 ) rotz( -40 ) roty( -60 ) rotx( 90 )
+		scal ( 1.4 0.2 3.4 ) obj P208 /* "P2\P208.suf" atr "wg1_4" */
+	}
+	{	mov ( -400 300 0 ) rotz( -40 ) roty( -30 ) rotx( 90 )
+		scal ( 1.4 0.2 3.4 ) obj P208 /* "P2\P208.suf" atr "wg1_4" */
+	}
+	{	mov ( -400 300 0 ) rotz( -40 ) roty( 0 ) rotx( 90 )
+		scal ( 1.4 0.2 3.4 ) obj P208 /* "P2\P208.suf" atr "wg1_4" */
+	}
+	{	mov ( -400 300 0 ) rotz( -40 ) roty( 30 ) rotx( 90 )
+		scal ( 1.4 0.2 3.4 ) obj P208 /* "P2\P208.suf" atr "wg1_4" */
+	}
+	{	mov ( -400 300 0 ) rotz( -40 ) roty( 60 ) rotx( 90 )
+		scal ( 1.4 0.2 3.4 ) obj P208 /* "P2\P208.suf" atr "wg1_4" */
+	}
+	{	mov ( -400 300 0 ) rotz( -130 ) roty( 90 ) rotx( 0 )
+		scal ( 1.4 0.2 3.4 ) obj P208 /* "P2\P208.suf" atr "wg1_4" */
+	}
+	{	mov ( -400 300 0 ) rotz( -130 ) roty( 90 ) rotx( 0 )
+		scal ( 0.7 0.7 1.7 ) obj P213 /* "P2\P213.suf" atr "wg1_1" */
+	}
+	{	mov ( -400 300 0 ) rotz( 50 ) roty( 90 ) rotx( 0 )
+		scal ( 0.7 0.7 0.7 ) obj P214 /* "P2\P214.suf" atr "wg1_1" */
+	}
+	{	mov ( -340 370 -40 ) rotz( 0 ) roty( 0 ) rotx( 0 )
+		scal ( 0.6 0.6 0.3 ) obj P216 /* "P2\P216.suf" atr "wg1_3" */
+	}
+	{	mov ( -340 370 40 ) rotz( 0 ) roty( 0 ) rotx( 0 )
+		scal ( 0.6 0.6 0.3 ) obj P216 /* "P2\P216.suf" atr "wg1_3" */
+	}
+	{	mov ( -340 380 0 ) rotz( 50 ) roty( 0 ) rotx( -90 )
+		scal ( 0.6 0.6 0.7 ) obj P216 /* "P2\P216.suf" atr "wg1_2" */
+	}
+	{	mov ( -340 -380 0 ) rotz( -50 ) roty( 0 ) rotx( 90 )
+		scal ( 0.6 -0.6 0.7 ) obj P216 /* "P2\P216.suf" atr "wg1_2" */
+	}
+	{	mov ( -340 -370 40 ) rotz( 0 ) roty( 0 ) rotx( 0 )
+		scal ( 0.6 -0.6 0.3 ) obj P216 /* "P2\P216.suf" atr "wg1_3" */
+	}
+	{	mov ( -340 -370 -40 ) rotz( 0 ) roty( 0 ) rotx( 0 )
+		scal ( 0.6 -0.6 0.3 ) obj P216 /* "P2\P216.suf" atr "wg1_3" */
+	}
+	{	mov ( -400 -300 0 ) rotz( -50 ) roty( 90 ) rotx( 0 )
+		scal ( 0.7 -0.7 0.7 ) obj P214 /* "P2\P214.suf" atr "wg1_1" */
+	}
+	{	mov ( -400 -300 0 ) rotz( 130 ) roty( 90 ) rotx( 0 )
+		scal ( 0.7 -0.7 1.7 ) obj P213 /* "P2\P213.suf" atr "wg1_1" */
+	}
+	{	mov ( -400 -300 0 ) rotz( 130 ) roty( 90 ) rotx( 0 )
+		scal ( 1.4 -0.2 3.4 ) obj P208 /* "P2\P208.suf" atr "wg1_4" */
+	}
+	{	mov ( -400 -300 0 ) rotz( 40 ) roty( 60 ) rotx( -90 )
+		scal ( 1.4 -0.2 3.4 ) obj P208 /* "P2\P208.suf" atr "wg1_4" */
+	}
+	{	mov ( -400 -300 0 ) rotz( 40 ) roty( 30 ) rotx( -90 )
+		scal ( 1.4 -0.2 3.4 ) obj P208 /* "P2\P208.suf" atr "wg1_4" */
+	}
+	{	mov ( -400 -300 0 ) rotz( 40 ) roty( 0 ) rotx( -90 )
+		scal ( 1.4 -0.2 3.4 ) obj P208 /* "P2\P208.suf" atr "wg1_4" */
+	}
+	{	mov ( -400 -300 0 ) rotz( 40 ) roty( -30 ) rotx( -90 )
+		scal ( 1.4 -0.2 3.4 ) obj P208 /* "P2\P208.suf" atr "wg1_4" */
+	}
+	{	mov ( -400 -300 0 ) rotz( 40 ) roty( -60 ) rotx( -90 )
+		scal ( 1.4 -0.2 3.4 ) obj P208 /* "P2\P208.suf" atr "wg1_4" */
+	}
+	{	mov ( -368 -342 0 ) rotz( 40 ) roty( -60 ) rotx( -90 )
+		scal ( 1.4 -0.125 1.4 ) obj P208 /* "P2\P208.suf" atr "wg1_5" */
+	}
+	{	mov ( -368 -342 0 ) rotz( 40 ) roty( -30 ) rotx( -90 )
+		scal ( 1.4 -0.125 1.4 ) obj P208 /* "P2\P208.suf" atr "wg1_5" */
+	}
+	{	mov ( -368 -342 0 ) rotz( 40 ) roty( 0 ) rotx( -90 )
+		scal ( 1.4 -0.125 1.4 ) obj P208 /* "P2\P208.suf" atr "wg1_5" */
+	}
+	{	mov ( -368 -342 0 ) rotz( 40 ) roty( 30 ) rotx( -90 )
+		scal ( 1.4 -0.125 1.4 ) obj P208 /* "P2\P208.suf" atr "wg1_5" */
+	}
+	{	mov ( -368 -342 0 ) rotz( 40 ) roty( 60 ) rotx( -90 )
+		scal ( 1.4 -0.125 1.4 ) obj P208 /* "P2\P208.suf" atr "wg1_5" */
+	}
+	{	mov ( -368 -342 0 ) rotz( 130 ) roty( 90 ) rotx( 0 )
+		scal ( 1.4 -0.125 1.4 ) obj P208 /* "P2\P208.suf" atr "wg1_5" */
+	}
+}
