@@ -5,7 +5,6 @@
 		<artifactId>dev7-doga-parent</artifactId>
 		<groupId>jp.dev7</groupId>
 		<version>4.5</version>
-		<relativePath>../dev7-doga-parent</relativePath>
 	</parent>
 	<artifactId>dev7-doga-converter</artifactId>
 	<packaging>pom</packaging>

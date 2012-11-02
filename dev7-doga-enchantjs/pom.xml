@@ -4,7 +4,6 @@
 	<parent>
 		<groupId>jp.dev7</groupId>
 		<artifactId>dev7-doga-parent</artifactId>
-		<relativePath>../dev7-doga-parent</relativePath>
 		<version>4.5</version>
 	</parent>
 	<artifactId>dev7-doga-enchantjs</artifactId>
