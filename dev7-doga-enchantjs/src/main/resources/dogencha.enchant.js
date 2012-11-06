@@ -4,8 +4,8 @@
      * @namespace
      */
     enchant.gl.dogencha = {};
-    //    enchant.gl.dogencha.DOMAIN = "doga.dev7.jp";
-    enchant.gl.dogencha.DOMAIN = "localhost:9000";
+    enchant.gl.dogencha.DOMAIN = "doga.dev7.jp";
+    // enchant.gl.dogencha.DOMAIN = "localhost:9000";
 
     /**
      * ajaxで取得したL3Pオブジェクトを元に、Sprite3Dを作成する.
