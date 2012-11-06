@@ -1,129 +1,114 @@
 (function() {
 
-    /** ロード処理. */
-    enchant.Game._loadFuncs["js"] = function(src, callback, ext) {
-        var g = this;
-        if (callback == null) {
-            callback = function() {
-            };
-        }
+    /**
+     * @namespace
+     */
+    enchant.gl.dogencha = {};
+    //    enchant.gl.dogencha.DOMAIN = "doga.dev7.jp";
+    enchant.gl.dogencha.DOMAIN = "localhost:9000";
 
-        function endsWith(string, value) {
-            return string.indexOf(value) === string.length - value.length;
-        }
-        function each(obj, func) {
-            for ( var k in obj) {
-                if (obj.hasOwnProperty(k)) {
-                    func(k, obj[k]);
-                }
-            }
-        }
-        function ajax(src, build) {
-            var req = new XMLHttpRequest();
-            req.open('GET', src, true);
-            req.onreadystatechange = function(e) {
-                if (req.readyState == 4) {
-                    if (req.status != 200 && req.status != 0) {
-                        throw new Error(req.status + ': '
-                                + 'Cannot load an asset: ' + src);
-                    }
-                    g.assets[src] = build(req.responseText);
-                    callback();
-                }
-            };
-            req.send(null);
-        }
+    /**
+     * ajaxで取得したL3Pオブジェクトを元に、Sprite3Dを作成する.
+     */
+    function buildL3p(obj) {
+        var root = new Sprite3D();
+        each(obj, function(atrName, data) {
+            var part = new Sprite3D();
+            var mesh = new Mesh();
+            mesh.vertices = data.vertices;
+            mesh.normals = data.normals;
+            mesh.texCoords = data.texCoords;
+            mesh.indices = data.indices;
+            mesh.setBaseColor("#ffffffff");
 
-        function buildL3p(obj) {
-            var root = new Sprite3D();
-            each(obj, function(atrName, data) {
-                var part = new Sprite3D();
-                var mesh = new Mesh();
-                mesh.vertices = data.vertices;
-                mesh.normals = data.normals;
-                mesh.texCoords = data.texCoords;
-                mesh.indices = data.indices;
-                mesh.setBaseColor("#ffffffff");
+            var tex = new Texture();
+            tex.ambient = data.texture.ambient;
+            tex.diffuse = data.texture.diffuse;
+            tex.specular = data.texture.specular;
+            tex.emission = data.texture.emission;
+            tex.shininess = data.texture.shininess;
+            // TODO いつか対応する
+            // if (data.texture.src) {
+            // tex.src = data.texture.src;
+            // }
+            mesh.texture = tex;
+            part.mesh = mesh;
 
-                var tex = new Texture();
-                tex.ambient = data.texture.ambient;
-                tex.diffuse = data.texture.diffuse;
-                tex.specular = data.texture.specular;
-                tex.emission = data.texture.emission;
-                tex.shininess = data.texture.shininess;
-                // TODO いつか対応する
-                // if (data.texture.src) {
-                // tex.src = data.texture.src;
-                // }
-                mesh.texture = tex;
-                part.mesh = mesh;
+            part.name = data.name;
 
-                part.name = data.name;
+            root.addChild(part);
+        });
+        return root;
+    }
 
-                root.addChild(part);
-            });
-            return root;
-        }
-
-        function buildL3c(data) {
-            function _tree(_unit) {
-                var _result = {};
-                _result.node = buildL3p(_unit.l3p);
-                _result.basePosition = _unit.basePosition;
-                if (_unit.childUnits instanceof Array) {
-                    _result.child = _unit.childUnits.map(function(c) {
-                        return _tree(c);
-                    });
-                }
-                return _result;
-            }
-            function _setupPoseNode(poseNode) {
-                poseNode.quat = (function() {
-                    var newQuat = new Quat(0, 0, 0, 0);
-                    newQuat._quat = quat4.create(poseNode.quat);
-                    return newQuat;
-                })();
-                each(poseNode.childUnits, function(i, v) {
-                    v.parentNode = poseNode;
-                    _setupPoseNode(v);
+    /**
+     * ajaxで取得したL3Cオブジェクトを元に、Sprite3Dを作成する.
+     */
+    function buildL3c(data) {
+        function _tree(_unit) {
+            var _result = {};
+            _result.node = buildL3p(_unit.l3p);
+            _result.basePosition = _unit.basePosition;
+            if (_unit.childUnits instanceof Array) {
+                _result.child = _unit.childUnits.map(function(c) {
+                    return _tree(c);
                 });
             }
-
-            var result = enchant.gl.dogencha.Unit.build(_tree(data.root));
-
-            result.poses = {};
-            each(data.poses, function(k, v) {
-                result.poses[v.name] = v.root;
-                _setupPoseNode(result.poses[v.name]);
+            return _result;
+        }
+        function _setupPoseNode(poseNode) {
+            poseNode.quat = (function() {
+                var newQuat = new Quat(0, 0, 0, 0);
+                newQuat._quat = quat4.create(poseNode.quat);
+                return newQuat;
+            })();
+            each(poseNode.childUnits, function(i, v) {
+                v.parentNode = poseNode;
+                _setupPoseNode(v);
             });
-
-            if (result.poses._initialPose) {
-                result.setPose(result.poses._initialPose);
-            }
-            return result;
         }
 
-        if (endsWith(src, ".l3p.js")) {
+        var result = enchant.gl.dogencha.Unit.build(_tree(data.root));
+
+        result.poses = {};
+        each(data.poses, function(k, v) {
+            result.poses[v.name] = v.root;
+            _setupPoseNode(result.poses[v.name]);
+        });
+
+        if (result.poses._initialPose) {
+            result.setPose(result.poses._initialPose);
+        }
+        return result;
+    }
+
+    var loadFunc = function(game, src, callback, ext, ajaxFunc) {
+        calback = callback || function() {
+        };
+
+        if (endsWith(src, ".l3p.js") || endsWith(src, ".l3p.jsonp")) {
             console.info("request l3p [" + src + "]");
-            ajax(src, function(text) {
+            ajaxFunc(src, function(data) {
                 console.info("load l3p [" + src + "] ok");
                 try {
-                    var root = buildL3p(JSON.parse(text));
+                    var root = buildL3p(data);
                     console.info("parse l3p [" + src + "] ok");
-                    return root;
+                    game.assets[src] = root;
+                    callback();
                 } catch (e) {
                     console.error("l3p [" + src + "] のビルド中にエラー");
                     throw e;
                 }
             });
-        } else if (endsWith(src, ".l3c.js")) {
+        } else if (endsWith(src, ".l3c.js") || endsWith(src, ".l3c.jsonp")) {
             console.info("request l3c [" + src + "]");
-            ajax(src, function(text) {
+            ajaxFunc(src, function(data) {
                 console.info("load l3c [" + src + "] ok");
                 try {
-                    var result = buildL3c(JSON.parse(text));
+                    var result = buildL3c(data);
                     console.info("parse l3c [" + src + "] ok");
-                    return result;
+                    game.assets[src] = result;
+                    callback();
                 } catch (e) {
                     console.error("l3c [" + src + "] のビルド中にエラー");
                     throw e;
@@ -131,14 +116,25 @@
             });
         } else {
             console.debug("request js [" + src + "]");
-            ajax(src, function(text) {
+            ajaxFunc(src, function(data) {
                 console.info("load js [" + src + "] ok");
-                return text;
+                game.assets[src] = data;
+                callback();
             });
         }
     };
 
-    enchant.gl.dogencha = {};
+    var origJsonpLoadFunc = enchant.Game._loadFuncs["jsonp"];
+    enchant.Game._loadFuncs["jsonp"] = function(src, callback, ext) {
+        if (src.indexOf(enchant.gl.dogencha.DOMAIN) != -1) {
+            loadFunc(this, src, callback, ext, getJsonp);
+        } else {
+            origJsonpLoadFunc.apply(this, arguments);
+        }
+    };
+    enchant.Game._loadFuncs["js"] = function(src, callback, ext) {
+        loadFunc(this, src, callback, ext, getJson);
+    };
 
     /**
      * DoGA L3Cモデルのユニット.
@@ -362,10 +358,12 @@
         return node;
     };
 
+    /** クォータニオンの内積. */
     quat4.dot = function(quat, quat2) {
         return quat[0] * quat2[0] + quat[1] * quat2[1] + quat[2] * quat2[2]
                 + quat[3] * quat2[3];
     };
+    /** 逆回転クォータニオン */
     quat4.reverse = function(quat, dest) {
         if (!dest || quat == dest) {
             quat[0] *= -1;
@@ -380,6 +378,11 @@
         dest[3] = -quat[3];
         return dest;
     };
+    /**
+     *  複製する.
+     *  
+     *  @scope enchant.gl.Quat.prototype
+     */
     enchant.gl.Quat.prototype.clone = function() {
         var clone = new Quat(0, 0, 0, 0);
         clone._quat[0] = this._quat[0];
@@ -389,4 +392,40 @@
         return clone;
     };
 
-});
+    function getJson(src, success) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', src, true);
+        xhr.onreadystatechange = function(e) {
+            if (xhr.readyState == 4) {
+                if (xhr.status != 200 && xhr.status != 0) {
+                    throw new Error(xhr.status + ': '
+                            + 'Cannot load an asset: ' + src);
+                }
+                success(JSON.parse(xhr.responseText));
+            }
+        };
+        xhr.send(null);
+    }
+    function getJsonp(url, success) {
+        var callbackName = "dogencha" + ("" + Math.random()).replace(/\D/g, "")
+                + "_" + new Date().getTime();
+        var elm = document.createElement("script");
+        elm.src = url + "?callback=" + callbackName;
+        document.body.appendChild(elm);
+        window[callbackName] = function() {
+            success.apply(null, arguments);
+        };
+    }
+
+    function endsWith(string, value) {
+        return string.indexOf(value) === string.length - value.length;
+    }
+    function each(obj, func) {
+        for ( var k in obj) {
+            if (obj.hasOwnProperty(k)) {
+                func(k, obj[k]);
+            }
+        }
+    }
+
+})();

@@ -1,7 +1,9 @@
 enchant();
 window.onload = function() {
+    var modelUrl = "http://localhost:9000/jsonp/radio_hmr/fighter/fighter.l3p.jsonp";
+
     var game = new Game();
-    game.preload("/data.l3c.js")
+    game.preload("/data.l3c.js", modelUrl);
     game.onload = function() {
         var scene = new Scene3D();
         scene.backgroundColor = [ 1, 1, 1, 1 ];
@@ -38,6 +40,8 @@ window.onload = function() {
                 };
             }
         }
+
+        scene.addChild(game.assets[modelUrl]);
     };
     game.start();
 };
