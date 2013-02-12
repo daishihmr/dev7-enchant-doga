@@ -1,0 +1,25 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	BR\BR05.SUF
+	SD\SD03.SUF
+	S1\S108.SUF
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 )  -1  70 -70 )
+	{	mov (  1011  -725   746 ) eye deg( 60 ) }
+	{	mov (   160    93   -95 ) target }
+	{	mov (  -400     0    76 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.700 1.000 0.500 ) obj BR05 /* BR\BR05.SUF */
+	}
+	{	mov (   -50   100     0 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.800 -1.000 1.000 ) obj SD03 /* SD\SD03.SUF */
+	}
+	{	mov (   -50  -100     0 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.800 1.000 1.000 ) obj SD03 /* SD\SD03.SUF */
+	}
+	{	mov (     0     0     0 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.000 1.000 0.600 ) obj S108 /* S1\S108.SUF */
+	}
+}

@@ -1,9 +1,6 @@
-package jp.dev7.enchant.doga.converter.l3p;
+package jp.dev7.enchant.doga.converter.fsc;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.StringWriter;
 import java.util.List;
 
 import javax.vecmath.Matrix4d;
@@ -14,19 +11,16 @@ import javax.vecmath.Vector3d;
 import jp.dev7.enchant.doga.converter.EnchantMesh;
 import jp.dev7.enchant.doga.converter.suf.SufConverter;
 import jp.dev7.enchant.doga.parser.atr.AtrFileParser;
-import jp.dev7.enchant.doga.parser.atr.autogen.ParseException;
 import jp.dev7.enchant.doga.parser.atr.data.Atr;
-import jp.dev7.enchant.doga.parser.atr.data.Color;
-import jp.dev7.enchant.doga.parser.l3p.L3pFileParser;
-import jp.dev7.enchant.doga.parser.l3p.data.L3p;
-import jp.dev7.enchant.doga.parser.l3p.data.Part;
+import jp.dev7.enchant.doga.parser.fsc.FscFileParser;
+import jp.dev7.enchant.doga.parser.fsc.data.Fsc;
+import jp.dev7.enchant.doga.parser.fsc.data.Part;
 import jp.dev7.enchant.doga.parser.suf.SufFileParser;
 import jp.dev7.enchant.doga.parser.suf.data.Obj;
 import jp.dev7.enchant.doga.parser.suf.data.Prim;
 import jp.dev7.enchant.doga.parser.suf.data.Suf;
 import jp.dev7.enchant.doga.parser.suf.data.Vertex;
 import jp.dev7.enchant.doga.util.Utils;
-import net.arnx.jsonic.JSON;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,66 +28,19 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 
-public class L3pConverter {
+public class FscConverter {
 
-    private final Logger logger = LoggerFactory.getLogger(L3pConverter.class);
+    private final Logger logger = LoggerFactory.getLogger(FscConverter.class);
     private final SufConverter sufConverter;
 
-    public L3pConverter() throws IOException, ParseException {
+    public FscConverter() throws Exception {
         sufConverter = new SufConverter();
-        sufConverter.loadGenieAtr();
+        sufConverter.loadGenieAtr("genie_wh.atr");
     }
 
-    public String convertToJson(File l3pFile) throws Exception {
-        final StringWriter result = new StringWriter();
-        convertAndWriteJson(l3pFile, result);
-        return result.toString();
-    }
-
-    public String convertToJson(File l3pFile, Matrix4d transform)
-            throws Exception {
-        final StringWriter result = new StringWriter();
-        convertAndWriteJson(l3pFile, transform, result);
-        return result.toString();
-    }
-
-    public void convertAndWriteJson(File l3pFile, OutputStream out)
-            throws Exception {
-        final List<EnchantMesh> result = convert(l3pFile);
-        JSON.encode(result, out, false);
-    }
-
-    public void convertAndWriteJson(File l3pFile, Matrix4d transform,
-            OutputStream out) throws Exception {
-        final List<EnchantMesh> result = convert(l3pFile, transform);
-        JSON.encode(result, out, false);
-    }
-
-    public void convertAndWriteJson(File l3pFile, Appendable appendable)
-            throws Exception {
-        final List<EnchantMesh> result = convert(l3pFile);
-        JSON.encode(result, appendable, false);
-    }
-
-    public void convertAndWriteJson(File l3pFile, Matrix4d transform,
-            Appendable appendable) throws Exception {
-        final List<EnchantMesh> result = convert(l3pFile, transform);
-        JSON.encode(result, appendable, false);
-    }
-
-    public List<EnchantMesh> convert(File l3pFile) throws Exception {
-        final Matrix4d transform = new Matrix4d();
-        transform.setIdentity();
-        return convert(l3pFile, transform);
-    }
-
-    public List<EnchantMesh> convert(final File file, final Matrix4d transform)
-            throws Exception {
-        final L3pFileParser fileParser = new L3pFileParser();
-        final L3p data = fileParser.parse(file);
-
-        sufConverter.putAllAtr(data.getPalette());
-        logger.debug("atrMap = " + sufConverter.getAtrMap());
+    public List<EnchantMesh> convert(File file) throws Exception {
+        final FscFileParser fileParser = new FscFileParser();
+        final Fsc data = fileParser.parse(file);
 
         final Suf dest = new Suf();
         int i = 0;
@@ -176,7 +123,7 @@ public class L3pConverter {
                 new Function<EnchantMesh, EnchantMesh>() {
                     @Override
                     public EnchantMesh apply(EnchantMesh input) {
-                        return Utils.transform(input, transform);
+                        return input;
                     }
                 });
     }
@@ -215,9 +162,7 @@ public class L3pConverter {
         for (Prim origPrim : obj.getPrimitives()) {
             final Prim destPrim = new Prim();
 
-            String destAtrName = convertAtr(origPrim.getAtrName(),
-                    part.getPaletteName(), obj.getName());
-            destPrim.setAtrName(destAtrName);
+            destPrim.setAtrName(origPrim.getAtrName());
 
             for (Vertex vertex : origPrim.getVertices()) {
                 final Vertex destVertex = new Vertex();
@@ -257,44 +202,6 @@ public class L3pConverter {
         }
 
         return result;
-    }
-
-    private String convertAtr(String genieName, String paletteName,
-            String objName) {
-        if (genieName == null && paletteName == null) {
-            // noop
-            return null;
-        } else if (genieName != null && paletteName == null) {
-            return genieName;
-        } else if (genieName == null && paletteName != null) {
-            return paletteName;
-        } else if (genieName.toLowerCase().startsWith("bodyd")
-                || genieName.toLowerCase().startsWith("bodym")) {
-            final String destAtrName = paletteName + "_"
-                    + (objName + "_" + genieName).toLowerCase();
-            if (!sufConverter.getAtrMap().containsKey(destAtrName)) {
-                final Atr destAtr = new Atr();
-
-                final Atr genieAtr = sufConverter.getAtrMap().get(genieName);
-                final Color gcol = genieAtr.getCol();
-                final Atr paletteAtr = sufConverter.getAtrMap()
-                        .get(paletteName);
-                final Color ocol = paletteAtr.getCol();
-
-                destAtr.setName(destAtrName);
-                destAtr.setCol(new Color(ocol.red * gcol.red, ocol.green
-                        * gcol.green, ocol.blue * gcol.blue));
-                destAtr.setAmb(paletteAtr.getAmb());
-                destAtr.setDif(paletteAtr.getDif());
-                destAtr.setSpc(paletteAtr.getSpc());
-                destAtr.setMapSize(paletteAtr.getMapSize());
-                destAtr.setOptEmittion(paletteAtr.getOptEmittion());
-                sufConverter.putAtr(destAtr);
-            }
-            return destAtrName;
-        } else {
-            return genieName;
-        }
     }
 
     private Matrix4d scale(double scaleX, double scaleY, double scaleZ) {

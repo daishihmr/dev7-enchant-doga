@@ -1,0 +1,63 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	S1\S108.SUF
+	SD\SD07.SUF
+	SL\SL05.SUF
+	OT\OT05.SUF
+	P1\P104.SUF
+	W2\W203.SUF
+	JT\JT01.SUF
+	S1\S106.SUF
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 )  -4  70 -70 )
+	{	mov (  1932 -1408  1507 ) eye deg( 60 ) }
+	{	mov (   171   143   -74 ) target }
+	{	mov (  -250  -400   200 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.700 1.700 1.000 ) obj S108 /* S1\S108.SUF */
+	}
+	{	mov (  -700     0   450 ) rotz( -180 ) roty(    0 ) rotx(  -90 )
+		scal ( 0.800 0.464 0.400 ) obj SD07 /* SD\SD07.SUF */
+	}
+	{	mov (   300     0   400 ) rotz(  180 ) roty(  -10 ) rotx(    0 )
+		scal ( 1.000 1.000 0.800 ) obj SL05 /* SL\SL05.SUF */
+	}
+	{	mov (   708  -400   210 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.000 1.900 1.000 ) obj OT05 /* OT\OT05.SUF */
+	}
+	{	mov (   708   400   210 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.000 -1.900 1.000 ) obj OT05 /* OT\OT05.SUF */
+	}
+	{	mov (  1054   562   188 ) rotz(    0 ) roty(    8 ) rotx(  -90 )
+		scal ( 2.200 -0.800 1.000 ) obj P104 /* P1\P104.SUF */
+	}
+	{	mov (  1054  -562   188 ) rotz(    0 ) roty(    8 ) rotx(   90 )
+		scal ( 2.200 0.800 1.000 ) obj P104 /* P1\P104.SUF */
+	}
+	{	mov ( -1348     0   400 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( -1.000 0.800 1.300 ) obj W203 /* W2\W203.SUF */
+	}
+	{	mov ( -1148  -550   250 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.300 2.900 1.300 ) obj OT05 /* OT\OT05.SUF */
+	}
+	{	mov (  1208    50   300 ) rotz(   90 ) roty(   80 ) rotx(    0 )
+		scal ( 0.800 -0.800 0.800 ) obj P104 /* P1\P104.SUF */
+	}
+	{	mov (  1208   -50   300 ) rotz(  -90 ) roty(   80 ) rotx(    0 )
+		scal ( 0.800 0.800 0.800 ) obj P104 /* P1\P104.SUF */
+	}
+	{	mov (  1258     0   150 ) rotz(  180 ) roty(  -10 ) rotx(  180 )
+		scal ( 1.000 1.400 1.000 ) obj JT01 /* JT\JT01.SUF */
+	}
+	{	mov ( -1148   550   250 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.300 -2.900 1.300 ) obj OT05 /* OT\OT05.SUF */
+	}
+	{	mov (  -250   400   200 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.700 -1.700 1.000 ) obj S108 /* S1\S108.SUF */
+	}
+	{	mov (     0     0   300 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.700 1.000 1.000 ) obj S106 /* S1\S106.SUF */
+	}
+}

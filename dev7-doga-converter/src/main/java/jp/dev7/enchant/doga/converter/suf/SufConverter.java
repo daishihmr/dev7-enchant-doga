@@ -42,7 +42,12 @@ public class SufConverter {
     }
 
     public void loadGenieAtr() throws IOException, ParseException {
-        final File genieAtr = new File(Props.commonDir(), "atr/genie.atr");
+        loadGenieAtr("genie.atr");
+    }
+
+    public void loadGenieAtr(String atrFileName) throws IOException,
+            ParseException {
+        final File genieAtr = new File(Props.commonDir(), "atr/" + atrFileName);
         final List<Atr> genie = AtrFileParser.parse(genieAtr);
         for (Atr atr : genie) {
             atr.setColorMap1(null);

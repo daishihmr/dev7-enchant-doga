@@ -1,0 +1,31 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	F1\F106.SUF
+	SD\SD07.SUF
+	EG\EG02.SUF
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 )  -7  70 -70 )
+	{	mov (   918  -851   746 ) eye deg( 60 ) }
+	{	mov (   -50   -71     0 ) target }
+	{	mov (   -50     0   150 ) rotz(    0 ) roty(   10 ) rotx(    0 )
+		scal ( 1.000 1.000 1.000 ) obj F106 /* F1\F106.SUF */
+	}
+	{	mov (   -50     0  -150 ) rotz(    0 ) roty(  -10 ) rotx(    0 )
+		scal ( 1.000 1.000 -1.000 ) obj F106 /* F1\F106.SUF */
+	}
+	{	mov (   -50  -150     0 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.800 0.800 0.800 ) obj SD07 /* SD\SD07.SUF */
+	}
+	{	mov (   -50   150     0 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.800 -0.800 0.800 ) obj SD07 /* SD\SD07.SUF */
+	}
+	{	mov (  -625  -350     0 ) rotz(    0 ) roty(    0 ) rotx(   60 )
+		scal ( 2.500 2.500 2.500 ) obj EG02 /* EG\EG02.SUF */
+	}
+	{	mov (  -625   350     0 ) rotz(    0 ) roty(    0 ) rotx(  -60 )
+		scal ( 2.500 -2.500 2.500 ) obj EG02 /* EG\EG02.SUF */
+	}
+}

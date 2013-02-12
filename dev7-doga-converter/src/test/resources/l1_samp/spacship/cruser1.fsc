@@ -1,0 +1,25 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	BR\BR07.SUF
+	S1\S105.SUF
+	F2\F202.SUF
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 )  -1  70 -70 )
+	{	mov (  1230  -979   878 ) eye deg( 60 ) }
+	{	mov (   159    49   -48 ) target }
+	{	mov (  -750     0   200 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.700 0.700 0.700 ) obj BR07 /* BR\BR07.SUF */
+	}
+	{	mov (     0   200     0 ) rotz(    0 ) roty(    0 ) rotx(  -10 )
+		scal ( 1.000 -0.500 1.800 ) obj S105 /* S1\S105.SUF */
+	}
+	{	mov (     0  -200     0 ) rotz(    0 ) roty(    0 ) rotx(   10 )
+		scal ( 1.000 0.500 1.800 ) obj S105 /* S1\S105.SUF */
+	}
+	{	mov (     0     0     0 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.000 1.700 0.500 ) obj F202 /* F2\F202.SUF */
+	}
+}
