@@ -1,11 +1,10 @@
-package jp.dev7.enchant.doga.parser.l3p;
+package jp.dev7.enchant.doga.parser.atr;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jp.dev7.enchant.doga.parser.atr.AtrFileParser;
 import jp.dev7.enchant.doga.parser.atr.autogen.ParseException;
 import jp.dev7.enchant.doga.parser.atr.data.Atr;
 

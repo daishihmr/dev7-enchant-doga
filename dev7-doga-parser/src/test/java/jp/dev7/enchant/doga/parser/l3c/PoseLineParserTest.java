@@ -1,6 +1,7 @@
 package jp.dev7.enchant.doga.parser.l3c;
 
-import jp.dev7.enchant.doga.parser.l3c.data.Pose;
+import jp.dev7.enchant.doga.parser.pose.PoseLineParser;
+import jp.dev7.enchant.doga.parser.pose.data.Pose;
 import junit.framework.TestCase;
 
 public class PoseLineParserTest extends TestCase {

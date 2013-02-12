@@ -1,5 +1,6 @@
 package jp.dev7.enchant.doga.parser.l3p;
 
+import jp.dev7.enchant.doga.parser.atr.AtrLineParser;
 import jp.dev7.enchant.doga.parser.atr.data.Atr;
 import junit.framework.TestCase;
 

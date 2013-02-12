@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import jp.dev7.enchant.doga.parser.atr.AtrLineParser;
 import jp.dev7.enchant.doga.parser.atr.data.Atr;
 import jp.dev7.enchant.doga.parser.l3p.autogen.ASTFram;
 import jp.dev7.enchant.doga.parser.l3p.autogen.ASTFunc;

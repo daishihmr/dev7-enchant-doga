@@ -21,10 +21,10 @@ import jp.dev7.enchant.doga.converter.EnchantUnit;
 import jp.dev7.enchant.doga.converter.l3p.L3pConverter;
 import jp.dev7.enchant.doga.converter.suf.SufConverter;
 import jp.dev7.enchant.doga.parser.l3c.L3cFileParser;
-import jp.dev7.enchant.doga.parser.l3c.PoseLineParser;
 import jp.dev7.enchant.doga.parser.l3c.data.L3c;
-import jp.dev7.enchant.doga.parser.l3c.data.Pose;
 import jp.dev7.enchant.doga.parser.l3c.data.Unit;
+import jp.dev7.enchant.doga.parser.pose.PoseLineParser;
+import jp.dev7.enchant.doga.parser.pose.data.Pose;
 import jp.dev7.enchant.doga.util.Utils;
 import net.arnx.jsonic.JSON;
 

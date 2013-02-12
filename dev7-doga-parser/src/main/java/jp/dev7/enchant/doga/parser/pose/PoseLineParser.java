@@ -1,8 +1,7 @@
-package jp.dev7.enchant.doga.parser.l3c;
+package jp.dev7.enchant.doga.parser.pose;
 
 import java.io.StringReader;
 
-import jp.dev7.enchant.doga.parser.l3c.data.Pose;
 import jp.dev7.enchant.doga.parser.pose.autogen.ASTName;
 import jp.dev7.enchant.doga.parser.pose.autogen.ASTNum;
 import jp.dev7.enchant.doga.parser.pose.autogen.ASTPose;
@@ -11,6 +10,7 @@ import jp.dev7.enchant.doga.parser.pose.autogen.ASTUnitPose;
 import jp.dev7.enchant.doga.parser.pose.autogen.PoseParser;
 import jp.dev7.enchant.doga.parser.pose.autogen.PoseParserVisitor;
 import jp.dev7.enchant.doga.parser.pose.autogen.SimpleNode;
+import jp.dev7.enchant.doga.parser.pose.data.Pose;
 
 public class PoseLineParser {
 
