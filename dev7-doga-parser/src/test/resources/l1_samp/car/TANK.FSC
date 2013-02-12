@@ -1,0 +1,53 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	F1\F108.SUF
+	SD\SD05.SUF
+	BR\BR13.SUF
+	TK\TK02.SUF
+	BG\BG01.SUF
+	BL\BL10.SUF
+	F1\F101.SUF
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 )   0  70 -70 )
+	{	mov (  1463 -1351  1095 ) eye deg( 60 ) }
+	{	mov (    35    69    71 ) target }
+	{	mov (   100   218   684 ) rotz( -180 ) roty(    5 ) rotx( -180 )
+		scal ( 0.900 -1.300 0.900 ) obj F108 /* F1\F108.SUF */
+	}
+	{	mov (     0  -450     0 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.200 1.000 1.000 ) obj SD05 /* SD\SD05.SUF */
+	}
+	{	mov (     0   450     0 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.200 -1.000 1.000 ) obj SD05 /* SD\SD05.SUF */
+	}
+	{	mov (   300     0   250 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.200 1.200 0.900 ) obj BR13 /* BR\BR13.SUF */
+	}
+	{	mov (  -650     0   350 ) rotz( -180 ) roty(    0 ) rotx(    0 )
+		scal ( 1.900 1.000 1.000 ) obj TK02 /* TK\TK02.SUF */
+	}
+	{	mov (   150   350   500 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.400 0.400 0.100 ) obj BG01 /* BG\BG01.SUF */
+	}
+	{	mov (  -750     0   450 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.600 1.400 0.500 ) obj BL10 /* BL\BL10.SUF */
+	}
+	{	mov (  -400   350   500 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( -0.400 0.400 0.100 ) obj BG01 /* BG\BG01.SUF */
+	}
+	{	mov (  -400  -350   500 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( -0.400 -0.400 0.100 ) obj BG01 /* BG\BG01.SUF */
+	}
+	{	mov (   150  -350   500 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.400 -0.400 0.100 ) obj BG01 /* BG\BG01.SUF */
+	}
+	{	mov (  -308     0   566 ) rotz(    0 ) roty(   -8 ) rotx(    0 )
+		scal ( 0.700 0.700 1.000 ) obj F101 /* F1\F101.SUF */
+	}
+	{	mov (   100  -218   684 ) rotz(  180 ) roty(    5 ) rotx(  180 )
+		scal ( 0.900 1.300 0.900 ) obj F108 /* F1\F108.SUF */
+	}
+}

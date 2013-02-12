@@ -1,4 +1,4 @@
-package jp.dev7.enchant.doga.parser.l3c;
+package jp.dev7.enchant.doga.parser.pose;
 
 import jp.dev7.enchant.doga.parser.pose.PoseLineParser;
 import jp.dev7.enchant.doga.parser.pose.data.Pose;

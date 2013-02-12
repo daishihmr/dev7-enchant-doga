@@ -1,0 +1,38 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	TK\TK09.SUF
+	BR\BR08.SUF
+	S2\S209.SUF
+	G2\G207.SUF
+	BL\BL07.SUF
+	OT\OT08.SUF
+	SL\SL08.SUF
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 )   8  70 -70 )
+	{	mov (  2661 -2864  1778 ) eye deg( 60 ) }
+	{	mov (   446   -43  1372 ) target }
+	{	mov (     0     0     0 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.000 1.000 1.000 ) obj TK09 /* TK\TK09.SUF */
+	}
+	{	mov (   200   250   500 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.900 0.800 3.100 ) obj BR08 /* BR\BR08.SUF */
+	}
+	{	mov (   -50  -200  1000 ) rotz(    0 ) roty(  -50 ) rotx(    0 )
+		scal ( 1.000 1.000 1.000 ) obj S209 /* S2\S209.SUF */
+	}
+	{	mov (  -350   250   500 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.000 1.500 2.800 ) obj G207 /* G2\G207.SUF */
+	}
+	{	mov (  1350  -200  1650 ) rotz(  180 ) roty(   90 ) rotx(  180 )
+		scal ( 1.900 1.000 1.000 ) obj BL07 /* BL\BL07.SUF */
+	}
+	{	mov (   850  -200  1900 ) rotz(    0 ) roty(  -50 ) rotx(    0 )
+		scal ( 1.500 0.500 1.000 ) obj OT08 /* OT\OT08.SUF */
+	}
+	{	mov (  1400  -200   600 ) rotz(   90 ) roty(  -90 ) rotx(    0 )
+		scal ( 0.300 1.000 0.500 ) obj SL08 /* SL\SL08.SUF */
+	}
+}

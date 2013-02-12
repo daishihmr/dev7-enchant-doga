@@ -1,0 +1,45 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	SL\SL02.SUF
+	W1\W115.SUF
+	EG\EG06.SUF
+	G2\G209.SUF
+	W1\W113.SUF
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -16  68 -70 )
+	{	mov (  1257 -1060   977 ) eye deg( 60 ) }
+	{	mov (  -133  -212     0 ) target }
+	{	mov (  -150   732   -28 ) rotz(  -90 ) roty(   65 ) rotx(  -90 )
+		scal ( 0.700 -0.700 0.700 ) obj SL02 /* SL\SL02.SUF */
+	}
+	{	mov (  -150  -732   -28 ) rotz(   90 ) roty(   65 ) rotx(   90 )
+		scal ( 0.700 0.700 0.700 ) obj SL02 /* SL\SL02.SUF */
+	}
+	{	mov (   -50  -100   -50 ) rotz(    0 ) roty(    0 ) rotx(  115 )
+		scal ( 0.800 0.800 1.300 ) obj W115 /* W1\W115.SUF */
+	}
+	{	mov (  -650  -150  -150 ) rotz(    0 ) roty(    0 ) rotx(  -45 )
+		scal ( 0.500 1.000 -1.000 ) obj EG06 /* EG\EG06.SUF */
+	}
+	{	mov (  -650   150  -150 ) rotz(    0 ) roty(    0 ) rotx(   45 )
+		scal ( 0.500 -1.000 -1.000 ) obj EG06 /* EG\EG06.SUF */
+	}
+	{	mov (  -650   150   150 ) rotz(    0 ) roty(    0 ) rotx(  -45 )
+		scal ( 0.500 -1.000 1.000 ) obj EG06 /* EG\EG06.SUF */
+	}
+	{	mov (  -650  -150   150 ) rotz(    0 ) roty(    0 ) rotx(   45 )
+		scal ( 0.500 1.000 1.000 ) obj EG06 /* EG\EG06.SUF */
+	}
+	{	mov (     0     0     0 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.700 0.800 0.800 ) obj G209 /* G2\G209.SUF */
+	}
+	{	mov (     0     0     0 ) rotz(    0 ) roty(    0 ) rotx(   90 )
+		scal ( -1.000 1.000 1.000 ) obj W113 /* W1\W113.SUF */
+	}
+	{	mov (   -50   100   -50 ) rotz(    0 ) roty(    0 ) rotx( -115 )
+		scal ( 0.800 -0.800 1.300 ) obj W115 /* W1\W115.SUF */
+	}
+}

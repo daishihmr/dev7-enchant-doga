@@ -1,0 +1,29 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	W2\W206.SUF
+	S1\S107.SUF
+	BR\BR14.SUF
+	TK\TK06.SUF
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 )   2  70 -70 )
+	{	mov (  3180 -2379  1074 ) eye deg( 60 ) }
+	{	mov (   885    71   -79 ) target }
+	{	mov (   -33    56   300 ) rotz(  -80 ) roty(    0 ) rotx(    0 )
+		scal ( 2.614 3.775 1.452 ) obj W206 /* W2\W206.SUF */
+	}
+	{	mov (    44  -317   300 ) rotz(  -80 ) roty(    0 ) rotx(  180 )
+		scal ( -2.614 3.775 1.452 ) obj W206 /* W2\W206.SUF */
+	}
+	{	mov (    60  -200    40 ) rotz(    0 ) roty(    0 ) rotx( -180 )
+		scal ( 2.700 3.200 1.800 ) obj S107 /* S1\S107.SUF */
+	}
+	{	mov (   150  -550   400 ) rotz(    0 ) roty(    0 ) rotx(   90 )
+		scal ( 1.300 1.000 1.000 ) obj BR14 /* BR\BR14.SUF */
+	}
+	{	mov (  -450  -200  -400 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 3.500 1.900 1.700 ) obj TK06 /* TK\TK06.SUF */
+	}
+}

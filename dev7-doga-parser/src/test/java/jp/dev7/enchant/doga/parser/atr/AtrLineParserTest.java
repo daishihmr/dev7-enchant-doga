@@ -1,4 +1,4 @@
-package jp.dev7.enchant.doga.parser.l3p;
+package jp.dev7.enchant.doga.parser.atr;
 
 import jp.dev7.enchant.doga.parser.atr.AtrLineParser;
 import jp.dev7.enchant.doga.parser.atr.data.Atr;
