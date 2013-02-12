@@ -1,0 +1,209 @@
+options {
+	STATIC = false;
+	MULTI = true;
+	VISITOR = true;
+	NODE_EXTENDS = "jp.dev7.enchant.doga.parser.BaseNode";
+}
+
+PARSER_BEGIN(AtrParser)
+package jp.dev7.enchant.doga.parser.atr.autogen;
+public class AtrParser {
+}
+PARSER_END(AtrParser)
+
+SKIP:
+{
+	" " | "\r" | "\t" | "\n"
+}
+
+MORE: { "/*": COMMENT_TEXT }
+<COMMENT_TEXT> SPECIAL_TOKEN: { <COMMENT: "*/">: DEFAULT }
+<COMMENT_TEXT> MORE: { < ~[] > }
+
+TOKEN:
+{
+        <ATR: "atr">
+    |   <COLON: ":">
+    |   <OPT: "opt">
+    |   <FUNCNAME: ("col" | "rgb" | "amb" | "dif" | "spc" | "tra" | "ref"
+            | "colormap" | "bumpmap" | "tramap" | "spcmap" | "refmap" | "glowpowermap"
+            | "mapwind" | "mapview" | "mapsize" )>
+
+    |   <CASTSHADOW: "castshadow">
+    |   <RECEIVESHADOW: "receiveshadow">
+    |   <CELLLOOKEDGE: "celllookedge">
+    |   <CELLLOOKSPECULAR: "celllookspecular">
+    |   <EDGECANCEL: "edgecancel">
+    |   <EMITTION: "emittion">
+    |   <EMPHASIS: "emphasis">
+    |   <DRAW: "draw">
+    |   <RATE: "rate">
+    |   <SHADER: "shader">
+
+    |   <NUM: (("-")?(["0"-"9"])+)?("."(["0"-"9"])+)?(("E-")(["0"-"9"])+)?>
+    |   <NAME: [         "a"-"z", "A"-"Z", "_", "#", ".", ":", "\\", "[", "]", "-", "\u3040"-"\u309f", "\u30a0"-"\u30ff", "\u4e00"-"\u9fff", "\uff10"-"\uff19", "\uff21"-"\uff3a", "\uff41"-"\uff5a", "\uff1f", "\uff01", "\uff08", "\uff09"]
+              (["0"-"9", "a"-"z", "A"-"Z", "_", "#", ".", ":", "\\", "[", "]", "-", "\u3040"-"\u309f", "\u30a0"-"\u30ff", "\u4e00"-"\u9fff", "\uff10"-"\uff19", "\uff21"-"\uff3a", "\uff41"-"\uff5a", "\uff1f", "\uff01", "\uff08", "\uff09"])*>
+    |   <BLOCK_START: "{">
+    |   <BLOCK_END: "}">
+    |   <DATA_START: "(">
+    |   <DATA_END: ")">
+    |   <DQ: "\"">
+}
+
+ASTStart Start():
+{}
+{
+    (Atr())* { return jjtThis; }
+}
+
+void Atr():
+{}
+{
+    <ATR> AtrName()
+    <BLOCK_START>
+        (Func())*
+    <BLOCK_END>
+}
+
+void AtrName():
+{
+    Token t;
+}
+{
+    (<DQ>)?
+    (
+        (
+             t = <ATR> | t = <OPT> | t = <FUNCNAME>  |t = <CELLLOOKEDGE>
+            | t = <CELLLOOKSPECULAR> | t = <EDGECANCEL> | t = <EMITTION>
+            | t = <DRAW> | t = <SHADER>
+        { jjtThis.nodeValue = t.image; }
+        )
+        |
+        (
+            jjtThis.nodeValue = SpcContainerd()
+        )
+    )
+    (<DQ>)?
+}
+
+String SpcContainerd() #void:
+{
+    String s = "";
+    Token t;
+}
+{
+    ( t = <NAME> { s += t.image + " "; } )+
+    {
+        return s.trim();
+    }
+}
+
+void Func():
+{}
+{
+    ( jjtThis.nodeValue = FuncName() <DATA_START> (Num() | FilePath() | Func())+ <DATA_END>)
+    | jjtThis.nodeValue = Opt()
+}
+
+String FuncName() #void:
+{
+    Token t;
+}
+{
+    t = <FUNCNAME>
+    {
+        return t.image;
+    }
+}
+
+String Num():
+{
+    Token t;
+}
+{
+    t = <NUM>
+    {
+        jjtThis.nodeValue = t.image;
+        return t.image;
+    }
+}
+
+String FilePath():
+{
+    Token t;
+}
+{
+    (<DQ>)?
+    (t = <NAME>)
+    (<DQ>)?
+    {
+        jjtThis.nodeValue = t.image;
+        return t.image;
+    }
+}
+
+String Opt() #void:
+{}
+{
+    <OPT> <DATA_START> (
+            <CASTSHADOW>
+        |   <RECEIVESHADOW>
+        |   <CELLLOOKEDGE>
+        |   Celllookspecular()
+        |   Edgecancel()
+        |   Draw()
+        |   Rate()
+        |   Emphasis()
+        |   Shader()
+        |   Emittion()
+        |   <NAME>
+    )+ <DATA_END>
+    {
+       return "opt";
+    }
+}
+
+void Celllookspecular() #void:
+{}
+{
+    <CELLLOOKSPECULAR> Num() Num()
+}
+
+void Edgecancel() #void:
+{}
+{
+    <EDGECANCEL>
+}
+
+void Draw() #void:
+{}
+{
+    <DRAW> (Num() | Func())
+}
+
+void Rate() #void:
+{}
+{
+    <RATE> Num()
+}
+
+void Emphasis() #void:
+{}
+{
+    <EMPHASIS> Num()
+}
+
+void Shader() #void:
+{}
+{
+    <SHADER> Num()
+    <DATA_START> Num() Num() (Num() | Func()) <DATA_END>
+    <DATA_START> Num() Num() (Num() | Func()) <DATA_END>
+    <DATA_START> Num() Num() (Num() | Func()) <DATA_END>
+}
+
+void Emittion():
+{}
+{
+    <EMITTION> Num() Num()
+}

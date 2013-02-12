@@ -10,14 +10,14 @@ import com.google.common.collect.Maps;
 
 public class Suf {
 
-	private final List<Obj> objects = Lists.newArrayList();
-	private final Map<String, Atr> atrMap = Maps.newHashMap();
+    private final List<Obj> objects = Lists.newArrayList();
+    private final Map<String, Atr> atrMap = Maps.newHashMap();
 
-	public List<Obj> getObjects() {
-		return objects;
-	}
+    public List<Obj> getObjects() {
+        return objects;
+    }
 
-	public Map<String, Atr> getAtrMap() {
-		return atrMap;
-	}
+    public Map<String, Atr> getAtrMap() {
+        return atrMap;
+    }
 }

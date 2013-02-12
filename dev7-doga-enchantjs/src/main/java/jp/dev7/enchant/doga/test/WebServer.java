@@ -21,41 +21,41 @@ import org.eclipse.jetty.servlet.ServletHandler;
  */
 public class WebServer {
 
-	private static final int PORT = 8080;
+    private static final int PORT = 8080;
 
-	public static void main(String[] args) throws Exception {
-		new WebServer().start();
-	}
+    public static void main(String[] args) throws Exception {
+        new WebServer().start();
+    }
 
-	public void start() throws Exception {
-		final HandlerList list = new HandlerList();
+    public void start() throws Exception {
+        final HandlerList list = new HandlerList();
 
-		final ServletHandler sh = new ServletHandler();
-		sh.addServletWithMapping(ConvertServlet.class, "/data.l3c.js");
-		list.addHandler(sh);
+        final ServletHandler sh = new ServletHandler();
+        sh.addServletWithMapping(ConvertServlet.class, "/data.l3c.js");
+        list.addHandler(sh);
 
-		final ResourceHandler rh = new ResourceHandler() {
-			@Override
-			public void handle(String target, Request baseRequest,
-					HttpServletRequest request, HttpServletResponse response)
-					throws IOException, ServletException {
-				super.handle(target, baseRequest, request, response);
-				response.addHeader(HttpHeaders.CACHE_CONTROL,
-						HttpHeaderValues.NO_CACHE);
-				response.addHeader(HttpHeaders.PRAGMA,
-						HttpHeaderValues.NO_CACHE);
-				response.addHeader(HttpHeaders.EXPIRES,
-						"Thu, 01 Dec 1994 16:00:00 GMT");
-			}
-		};
-		rh.setResourceBase(getClass().getResource("/").toExternalForm());
-		list.addHandler(rh);
+        final ResourceHandler rh = new ResourceHandler() {
+            @Override
+            public void handle(String target, Request baseRequest,
+                    HttpServletRequest request, HttpServletResponse response)
+                    throws IOException, ServletException {
+                super.handle(target, baseRequest, request, response);
+                response.addHeader(HttpHeaders.CACHE_CONTROL,
+                        HttpHeaderValues.NO_CACHE);
+                response.addHeader(HttpHeaders.PRAGMA,
+                        HttpHeaderValues.NO_CACHE);
+                response.addHeader(HttpHeaders.EXPIRES,
+                        "Thu, 01 Dec 1994 16:00:00 GMT");
+            }
+        };
+        rh.setResourceBase(getClass().getResource("/").toExternalForm());
+        list.addHandler(rh);
 
-		final Server server = new Server(PORT);
-		server.setHandler(list);
-		server.start();
+        final Server server = new Server(PORT);
+        server.setHandler(list);
+        server.start();
 
-		Desktop.getDesktop().browse(
-				new URI("http://localhost:" + PORT + "/test/test.html"));
-	}
+        Desktop.getDesktop().browse(
+                new URI("http://localhost:" + PORT + "/test/test.html"));
+    }
 }

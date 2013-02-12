@@ -8,10 +8,10 @@ import junit.framework.TestCase;
 
 public class Debug2Test extends TestCase {
 
-	public void test1() throws Exception {
-		L3pConverter converter = new L3pConverter();
-		converter.convertAndWriteJson(
-				new File("src/test/resources/sakana.l3p"), new FileWriter(
-						"target/debug2.l3p.js"));
-	}
+    public void test1() throws Exception {
+        L3pConverter converter = new L3pConverter();
+        converter.convertAndWriteJson(
+                new File("src/test/resources/sakana.l3p"), new FileWriter(
+                        "target/debug2.l3p.js"));
+    }
 }
