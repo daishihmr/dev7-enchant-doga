@@ -15,7 +15,7 @@ import net.arnx.jsonic.JSON;
 public class ConvTest extends TestCase {
 
     public void testConv() throws Exception {
-        Suf suf = SufFileParser.parseSufAtr(new File(
+        Suf suf = new SufFileParser().parseSufAtr(new File(
                 "src/test/resources/twitter.SUF"));
 
         final SufConverter converter = new SufConverter();
@@ -32,7 +32,7 @@ public class ConvTest extends TestCase {
     public void testConvUv() throws Exception {
         File file = Utils.dogaPartsFile("mecha\\sfnozzle\\NOZ06.suf", null);
         System.out.println(file.getAbsolutePath());
-        Suf suf = SufFileParser.parseSufAtr(file);
+        Suf suf = new SufFileParser().parseSufAtr(file);
 
         SufConverter converter = new SufConverter();
         converter.loadGenieAtr();

@@ -2,7 +2,10 @@ package jp.dev7.enchant.doga.parser.l3p.data;
 
 import java.util.Arrays;
 
-public class Part extends jp.dev7.enchant.doga.parser.fsc.data.Part {
+/**
+ * L3Pファイル内のobjに相当.
+ */
+public class L3pObj extends jp.dev7.enchant.doga.parser.fsc.data.FscObj {
 
     private String paletteName;
 

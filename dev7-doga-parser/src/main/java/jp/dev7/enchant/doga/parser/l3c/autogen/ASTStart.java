@@ -2,18 +2,20 @@
 /* JavaCCOptions:MULTI=true,NODE_USES_PARSER=false,VISITOR=true,TRACK_TOKENS=false,NODE_PREFIX=AST,NODE_EXTENDS=jp.dev7.enchant.doga.parser.BaseNode,NODE_FACTORY=,SUPPORT_CLASS_VISIBILITY_PUBLIC=true */
 package jp.dev7.enchant.doga.parser.l3c.autogen;
 
-public class ASTStart extends SimpleNode {
-    public ASTStart(int id) {
-        super(id);
-    }
+public
+class ASTStart extends SimpleNode {
+  public ASTStart(int id) {
+    super(id);
+  }
 
-    public ASTStart(L3cParser p, int id) {
-        super(p, id);
-    }
+  public ASTStart(L3cParser p, int id) {
+    super(p, id);
+  }
 
-    /** Accept the visitor. **/
-    public Object jjtAccept(L3cParserVisitor visitor, Object data) {
-        return visitor.visit(this, data);
-    }
+
+  /** Accept the visitor. **/
+  public Object jjtAccept(L3cParserVisitor visitor, Object data) {
+    return visitor.visit(this, data);
+  }
 }
 /* JavaCC - OriginalChecksum=83997452e7fa6d6d3f1e70f5fd6997f2 (do not edit this line) */

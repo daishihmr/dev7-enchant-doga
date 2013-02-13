@@ -34,6 +34,14 @@ import com.google.common.collect.Sets;
 public class SufConverter {
     public static final double C_RATE = 1.0 / 2000.0;
 
+    private static final Atr DEFAULT_ATR = new Atr();
+    static {
+        DEFAULT_ATR.setName("");
+        DEFAULT_ATR.setCol(new Color(1.0, 1.0, 1.0));
+        DEFAULT_ATR.setAmb(0.3);
+        DEFAULT_ATR.setDif(0.7);
+    }
+
     private final Logger logger = LoggerFactory.getLogger(SufConverter.class);
 
     private final Map<String, Atr> atrMap = Maps.newHashMap();
@@ -97,12 +105,12 @@ public class SufConverter {
     public List<EnchantMesh> convert(Obj obj) {
         final List<EnchantMesh> result = Lists.newArrayList();
 
-        logger.debug("ポリゴンを同じ材質毎にMap");
-
-        // 法線ベクトルのない頂点には法線ベクトル生成
+        // atr名毎にprimをまとめる
+        logger.debug("atr名毎にprimをまとめる");
         final Map<String, List<Prim>> atrPrimsMap = Maps.newHashMap();
         {
             for (Prim prim : obj.getPrimitives()) {
+                // 法線ベクトルのない頂点には法線ベクトル生成
                 genNormal(prim);
 
                 final List<Prim> prims;
@@ -115,14 +123,6 @@ public class SufConverter {
 
                 prims.add(prim);
             }
-        }
-
-        final Atr defaultAtr = new Atr();
-        {
-            defaultAtr.setName("");
-            defaultAtr.setCol(new Color(1.0, 1.0, 1.0));
-            defaultAtr.setAmb(0.3);
-            defaultAtr.setDif(0.7);
         }
 
         if (logger.isDebugEnabled()) {
@@ -151,7 +151,7 @@ public class SufConverter {
                 atr = atrMap.get(atrName);
             } else {
                 logger.warn("Atrが見つからない. " + atrName);
-                atr = defaultAtr;
+                atr = DEFAULT_ATR;
             }
 
             // 頂点配列作成

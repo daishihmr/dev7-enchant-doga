@@ -41,10 +41,7 @@ import com.google.common.base.Function;
 import com.google.common.collect.Maps;
 
 public class SufFileParser {
-    private SufFileParser() {
-    }
-
-    public static Suf parseSufAtr(File sufFile) throws Exception {
+    public Suf parseSufAtr(File sufFile) throws Exception {
         // atrファイル
         final File atrFile;
         {
@@ -78,8 +75,8 @@ public class SufFileParser {
         return result;
     }
 
-    public static Suf parse(File file) throws FileNotFoundException,
-            ParseException, UnsupportedEncodingException {
+    public Suf parse(File file) throws FileNotFoundException, ParseException,
+            UnsupportedEncodingException {
         final Reader in = new InputStreamReader(new FileInputStream(file),
                 "Shift_JIS");
         try {

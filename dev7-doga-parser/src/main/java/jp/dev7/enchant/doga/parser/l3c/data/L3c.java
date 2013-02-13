@@ -2,13 +2,13 @@ package jp.dev7.enchant.doga.parser.l3c.data;
 
 public class L3c {
 
-    private Unit rootUnit;
+    private L3cObj rootUnit;
 
-    public Unit getRootUnit() {
+    public L3cObj getRootUnit() {
         return rootUnit;
     }
 
-    public void setRootUnit(Unit rootUnit) {
+    public void setRootUnit(L3cObj rootUnit) {
         this.rootUnit = rootUnit;
     }
 }

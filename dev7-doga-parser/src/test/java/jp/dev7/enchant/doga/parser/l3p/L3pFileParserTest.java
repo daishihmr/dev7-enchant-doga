@@ -34,21 +34,18 @@ public class L3pFileParserTest extends TestCase {
     public void testParse() throws Exception {
 
         L3pFileParser parser1 = new L3pFileParser();
-        parser1.parse(new File("src/test/resources/test.L3P"));
-        L3p result1 = parser1.getResultL3p();
+        L3p result1 = parser1.parse(new File("src/test/resources/test.L3P"));
 
         System.out.println(result1);
 
         L3pFileParser parser2 = new L3pFileParser();
-        parser2.parse(new File("src/test/resources/s.L3P"));
-        L3p result2 = parser2.getResultL3p();
+        L3p result2 = parser2.parse(new File("src/test/resources/s.L3P"));
 
         System.out.println(result2);
 
         L3pFileParser parser3 = new L3pFileParser();
-        parser3.parse(new File(
+        L3p result3 = parser3.parse(new File(
                 "src/test/resources/R-9ND-Daishi-The-Rubicon.L3P"));
-        L3p result3 = parser3.getResultL3p();
         assertEquals(result3.getObjects().get(0).getSufFileName(),
                 "P3\\P305.suf".toLowerCase());
 

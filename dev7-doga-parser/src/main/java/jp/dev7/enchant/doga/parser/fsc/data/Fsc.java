@@ -6,9 +6,9 @@ import com.google.common.collect.Lists;
 
 public class Fsc {
 
-    private final List<Part> objects = Lists.newArrayList();
+    private final List<FscObj> objects = Lists.newArrayList();
 
-    public List<Part> getObjects() {
+    public List<FscObj> getObjects() {
         return objects;
     }
 

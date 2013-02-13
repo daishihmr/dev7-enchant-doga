@@ -22,7 +22,7 @@ import jp.dev7.enchant.doga.parser.l3p.autogen.L3pParser;
 import jp.dev7.enchant.doga.parser.l3p.autogen.L3pParserVisitor;
 import jp.dev7.enchant.doga.parser.l3p.autogen.SimpleNode;
 import jp.dev7.enchant.doga.parser.l3p.data.L3p;
-import jp.dev7.enchant.doga.parser.l3p.data.Part;
+import jp.dev7.enchant.doga.parser.l3p.data.L3pObj;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,9 +31,8 @@ import com.google.common.collect.Maps;
 
 public class L3pFileParser {
 
-    private L3p resultL3p;
-
-    private final Logger logger = LoggerFactory.getLogger(L3pFileParser.class);
+    private static final Logger LOG = LoggerFactory
+            .getLogger(L3pFileParser.class);
 
     public L3p parse(File l3pFile) throws Exception {
         final L3p l3pData = new L3p();
@@ -93,7 +92,7 @@ public class L3pFileParser {
             try {
                 start = l3pParser.Start();
             } catch (Throwable e) {
-                logger.error("L3Pファイルパース中にエラー!! " + l3pFile, e);
+                LOG.error("L3Pファイルパース中にエラー!! " + l3pFile, e);
                 throw (Exception) e;
             }
 
@@ -113,7 +112,7 @@ public class L3pFileParser {
                     L3p l3pData = (L3p) data;
 
                     if (node.nodeValue != null) {
-                        Part l3pObj = new Part();
+                        L3pObj l3pObj = new L3pObj();
 
                         l3pObj.setName(node.nodeValue);
                         l3pObj.setSufFileName(objSufMap.get(i));
@@ -127,8 +126,8 @@ public class L3pFileParser {
                 }
 
                 public Object visit(ASTFunc node, Object data) {
-                    if (data instanceof Part) {
-                        Part l3pObj = (Part) data;
+                    if (data instanceof L3pObj) {
+                        L3pObj l3pObj = (L3pObj) data;
 
                         // funcName
                         _Func f = (_Func) node.jjtGetChild(0).jjtAccept(this,
@@ -189,11 +188,11 @@ public class L3pFileParser {
             try {
                 start.jjtAccept(visitor, l3pData);
             } catch (Throwable e) {
-                logger.error("L3Pファイルパース中にエラー!! " + l3pFile, e);
+                LOG.error("L3Pファイルパース中にエラー!! " + l3pFile, e);
                 throw (Exception) e;
             }
 
-            resultL3p = l3pData;
+            final L3p resultL3p = l3pData;
             resultL3p.getPalette().putAll(palette);
 
             return resultL3p;
@@ -204,9 +203,5 @@ public class L3pFileParser {
             } catch (IOException e) {
             }
         }
-    }
-
-    public L3p getResultL3p() {
-        return resultL3p;
     }
 }

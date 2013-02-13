@@ -2,7 +2,10 @@ package jp.dev7.enchant.doga.parser.fsc.data;
 
 import java.util.Arrays;
 
-public class Part {
+/**
+ * FSCファイル内のobjに相当.
+ */
+public class FscObj {
 
     private String name;
     private String sufFileName;

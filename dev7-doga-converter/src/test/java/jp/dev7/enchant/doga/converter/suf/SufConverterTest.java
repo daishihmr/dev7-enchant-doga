@@ -25,7 +25,7 @@ public class SufConverterTest extends TestCase {
         OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(
                 "target/test.js"), "UTF-8");
 
-        final Suf suf = SufFileParser.parseSufAtr(new File(
+        final Suf suf = new SufFileParser().parseSufAtr(new File(
                 "src/test/resources/test.SUF"));
         final SufConverter converter = new SufConverter();
 

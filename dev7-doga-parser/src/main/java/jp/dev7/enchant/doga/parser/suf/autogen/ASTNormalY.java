@@ -2,18 +2,20 @@
 /* JavaCCOptions:MULTI=true,NODE_USES_PARSER=false,VISITOR=true,TRACK_TOKENS=false,NODE_PREFIX=AST,NODE_EXTENDS=jp.dev7.enchant.doga.parser.BaseNode,NODE_FACTORY=,SUPPORT_CLASS_VISIBILITY_PUBLIC=true */
 package jp.dev7.enchant.doga.parser.suf.autogen;
 
-public class ASTNormalY extends SimpleNode {
-    public ASTNormalY(int id) {
-        super(id);
-    }
+public
+class ASTNormalY extends SimpleNode {
+  public ASTNormalY(int id) {
+    super(id);
+  }
 
-    public ASTNormalY(SufParser p, int id) {
-        super(p, id);
-    }
+  public ASTNormalY(SufParser p, int id) {
+    super(p, id);
+  }
 
-    /** Accept the visitor. **/
-    public Object jjtAccept(SufParserVisitor visitor, Object data) {
-        return visitor.visit(this, data);
-    }
+
+  /** Accept the visitor. **/
+  public Object jjtAccept(SufParserVisitor visitor, Object data) {
+    return visitor.visit(this, data);
+  }
 }
 /* JavaCC - OriginalChecksum=a80eb6577fc9728720b4f089fbfd2c08 (do not edit this line) */

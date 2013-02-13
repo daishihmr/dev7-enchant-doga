@@ -19,7 +19,7 @@ import jp.dev7.enchant.doga.parser.atr.data.Atr;
 import jp.dev7.enchant.doga.parser.atr.data.Color;
 import jp.dev7.enchant.doga.parser.l3p.L3pFileParser;
 import jp.dev7.enchant.doga.parser.l3p.data.L3p;
-import jp.dev7.enchant.doga.parser.l3p.data.Part;
+import jp.dev7.enchant.doga.parser.l3p.data.L3pObj;
 import jp.dev7.enchant.doga.parser.suf.SufFileParser;
 import jp.dev7.enchant.doga.parser.suf.data.Obj;
 import jp.dev7.enchant.doga.parser.suf.data.Prim;
@@ -89,15 +89,15 @@ public class L3pConverter {
 
     public List<EnchantMesh> convert(final File file, final Matrix4d transform)
             throws Exception {
-        final L3pFileParser fileParser = new L3pFileParser();
-        final L3p data = fileParser.parse(file);
+        final SufFileParser sufFileParser = new SufFileParser();
+        final L3p data = new L3pFileParser().parse(file);
 
         sufConverter.putAllAtr(data.getPalette());
         logger.debug("atrMap = " + sufConverter.getAtrMap());
 
         final Suf dest = new Suf();
         int i = 0;
-        for (final Part part : data.getObjects()) {
+        for (final L3pObj part : data.getObjects()) {
             final List<Obj> destObjects = Lists.newArrayList();
 
             logger.debug("パーツ" + (++i) + " : " + part.getName());
@@ -106,7 +106,7 @@ public class L3pConverter {
                 continue;
             }
 
-            final Suf orig = SufFileParser.parse(sufFile);
+            final Suf orig = sufFileParser.parse(sufFile);
             logger.debug("SUFファイル " + sufFile + "をロード");
             if (logger.isDebugEnabled()) {
                 int cnt = 0;
@@ -181,7 +181,7 @@ public class L3pConverter {
                 });
     }
 
-    private Obj transform(Obj obj, Part part) {
+    private Obj transform(Obj obj, L3pObj part) {
         final Obj result = new Obj();
         result.setName(obj.getName());
 

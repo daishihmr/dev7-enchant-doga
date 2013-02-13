@@ -21,7 +21,7 @@ import jp.dev7.enchant.doga.parser.l3c.autogen.L3cParser;
 import jp.dev7.enchant.doga.parser.l3c.autogen.L3cParserVisitor;
 import jp.dev7.enchant.doga.parser.l3c.autogen.SimpleNode;
 import jp.dev7.enchant.doga.parser.l3c.data.L3c;
-import jp.dev7.enchant.doga.parser.l3c.data.Unit;
+import jp.dev7.enchant.doga.parser.l3c.data.L3cObj;
 
 public class L3cFileParser {
 
@@ -43,14 +43,14 @@ public class L3cFileParser {
 
             @Override
             public Object visit(ASTUnit node, Object data) {
-                final Unit unit = new Unit();
+                final L3cObj unit = new L3cObj();
                 node.childrenAccept(this, unit);
 
                 if (data instanceof L3c) {
                     final L3c parent = (L3c) data;
                     parent.setRootUnit(unit);
-                } else if (data instanceof Unit) {
-                    final Unit parent = (Unit) data;
+                } else if (data instanceof L3cObj) {
+                    final L3cObj parent = (L3cObj) data;
                     parent.getChildUnits().add(unit);
                 }
 
@@ -59,8 +59,8 @@ public class L3cFileParser {
 
             @Override
             public Object visit(ASTObj node, Object data) {
-                if (data instanceof Unit) {
-                    Unit unit = (Unit) data;
+                if (data instanceof L3cObj) {
+                    L3cObj unit = (L3cObj) data;
                     unit.setName(node.nodeValue);
                 }
                 return node.childrenAccept(this, data);
@@ -68,8 +68,8 @@ public class L3cFileParser {
 
             @Override
             public Object visit(ASTFileName node, Object data) {
-                if (data instanceof Unit) {
-                    Unit unit = (Unit) data;
+                if (data instanceof L3cObj) {
+                    L3cObj unit = (L3cObj) data;
                     unit.setL3pFileName(node.nodeValue);
                 }
                 return node.childrenAccept(this, data);
@@ -77,8 +77,8 @@ public class L3cFileParser {
 
             @Override
             public Object visit(ASTMov node, Object data) {
-                if (data instanceof Unit) {
-                    Unit unit = (Unit) data;
+                if (data instanceof L3cObj) {
+                    L3cObj unit = (L3cObj) data;
                     Double x = (Double) node.jjtGetChild(0).jjtAccept(this,
                             null);
                     Double y = (Double) node.jjtGetChild(1).jjtAccept(this,
@@ -98,8 +98,8 @@ public class L3cFileParser {
 
             @Override
             public Object visit(ASTUnitMov node, Object data) {
-                if (data instanceof Unit) {
-                    Unit unit = (Unit) data;
+                if (data instanceof L3cObj) {
+                    L3cObj unit = (L3cObj) data;
                     Double x = (Double) node.jjtGetChild(0).jjtAccept(this,
                             null);
                     Double y = (Double) node.jjtGetChild(1).jjtAccept(this,
@@ -113,8 +113,8 @@ public class L3cFileParser {
 
             @Override
             public Object visit(ASTScal node, Object data) {
-                if (data instanceof Unit) {
-                    Unit unit = (Unit) data;
+                if (data instanceof L3cObj) {
+                    L3cObj unit = (L3cObj) data;
                     Double x = (Double) node.jjtGetChild(0).jjtAccept(this,
                             null);
                     Double y = (Double) node.jjtGetChild(1).jjtAccept(this,
@@ -128,8 +128,8 @@ public class L3cFileParser {
 
             @Override
             public Object visit(ASTRotx node, Object data) {
-                if (data instanceof Unit) {
-                    Unit unit = (Unit) data;
+                if (data instanceof L3cObj) {
+                    L3cObj unit = (L3cObj) data;
                     Double value = (Double) node.jjtGetChild(0).jjtAccept(this,
                             null);
                     unit.setRotx(value);
@@ -139,8 +139,8 @@ public class L3cFileParser {
 
             @Override
             public Object visit(ASTRoty node, Object data) {
-                if (data instanceof Unit) {
-                    Unit unit = (Unit) data;
+                if (data instanceof L3cObj) {
+                    L3cObj unit = (L3cObj) data;
                     Double value = (Double) node.jjtGetChild(0).jjtAccept(this,
                             null);
                     unit.setRoty(value);
@@ -150,8 +150,8 @@ public class L3cFileParser {
 
             @Override
             public Object visit(ASTRotz node, Object data) {
-                if (data instanceof Unit) {
-                    Unit unit = (Unit) data;
+                if (data instanceof L3cObj) {
+                    L3cObj unit = (L3cObj) data;
                     Double value = (Double) node.jjtGetChild(0).jjtAccept(this,
                             null);
                     unit.setRotz(value);

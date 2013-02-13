@@ -5,9 +5,12 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 
-public class Unit {
+/**
+ * L3Cファイル内のobjに相当.
+ */
+public class L3cObj {
 
-    private final List<Unit> childUnits = Lists.newArrayList();
+    private final List<L3cObj> childUnits = Lists.newArrayList();
 
     private String name;
 
@@ -22,7 +25,7 @@ public class Unit {
 
     private int posePointer;
 
-    public List<Unit> getChildUnits() {
+    public List<L3cObj> getChildUnits() {
         return childUnits;
     }
 

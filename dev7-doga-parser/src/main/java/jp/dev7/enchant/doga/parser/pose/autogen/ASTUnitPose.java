@@ -2,18 +2,20 @@
 /* JavaCCOptions:MULTI=true,NODE_USES_PARSER=false,VISITOR=true,TRACK_TOKENS=false,NODE_PREFIX=AST,NODE_EXTENDS=jp.dev7.enchant.doga.parser.BaseNode,NODE_FACTORY=,SUPPORT_CLASS_VISIBILITY_PUBLIC=true */
 package jp.dev7.enchant.doga.parser.pose.autogen;
 
-public class ASTUnitPose extends SimpleNode {
-    public ASTUnitPose(int id) {
-        super(id);
-    }
+public
+class ASTUnitPose extends SimpleNode {
+  public ASTUnitPose(int id) {
+    super(id);
+  }
 
-    public ASTUnitPose(PoseParser p, int id) {
-        super(p, id);
-    }
+  public ASTUnitPose(PoseParser p, int id) {
+    super(p, id);
+  }
 
-    /** Accept the visitor. **/
-    public Object jjtAccept(PoseParserVisitor visitor, Object data) {
-        return visitor.visit(this, data);
-    }
+
+  /** Accept the visitor. **/
+  public Object jjtAccept(PoseParserVisitor visitor, Object data) {
+    return visitor.visit(this, data);
+  }
 }
 /* JavaCC - OriginalChecksum=08fc323aa74bb5c1950f9b38bee39858 (do not edit this line) */

@@ -10,10 +10,10 @@ import com.google.common.collect.Maps;
 
 public class L3p {
 
-    private final List<Part> objects = Lists.newArrayList();
+    private final List<L3pObj> objects = Lists.newArrayList();
     private final Map<String, Atr> palette = Maps.newHashMap();
 
-    public List<Part> getObjects() {
+    public List<L3pObj> getObjects() {
         return objects;
     }
 

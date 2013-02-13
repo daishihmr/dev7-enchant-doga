@@ -2,18 +2,20 @@
 /* JavaCCOptions:MULTI=true,NODE_USES_PARSER=false,VISITOR=true,TRACK_TOKENS=false,NODE_PREFIX=AST,NODE_EXTENDS=jp.dev7.enchant.doga.parser.BaseNode,NODE_FACTORY=,SUPPORT_CLASS_VISIBILITY_PUBLIC=true */
 package jp.dev7.enchant.doga.parser.l3p.autogen;
 
-public class ASTFram extends SimpleNode {
-    public ASTFram(int id) {
-        super(id);
-    }
+public
+class ASTFram extends SimpleNode {
+  public ASTFram(int id) {
+    super(id);
+  }
 
-    public ASTFram(L3pParser p, int id) {
-        super(p, id);
-    }
+  public ASTFram(L3pParser p, int id) {
+    super(p, id);
+  }
 
-    /** Accept the visitor. **/
-    public Object jjtAccept(L3pParserVisitor visitor, Object data) {
-        return visitor.visit(this, data);
-    }
+
+  /** Accept the visitor. **/
+  public Object jjtAccept(L3pParserVisitor visitor, Object data) {
+    return visitor.visit(this, data);
+  }
 }
 /* JavaCC - OriginalChecksum=dbd9997a2796e20ace635b730112e75c (do not edit this line) */

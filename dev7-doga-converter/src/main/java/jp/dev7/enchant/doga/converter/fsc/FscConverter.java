@@ -14,7 +14,7 @@ import jp.dev7.enchant.doga.parser.atr.AtrFileParser;
 import jp.dev7.enchant.doga.parser.atr.data.Atr;
 import jp.dev7.enchant.doga.parser.fsc.FscFileParser;
 import jp.dev7.enchant.doga.parser.fsc.data.Fsc;
-import jp.dev7.enchant.doga.parser.fsc.data.Part;
+import jp.dev7.enchant.doga.parser.fsc.data.FscObj;
 import jp.dev7.enchant.doga.parser.suf.SufFileParser;
 import jp.dev7.enchant.doga.parser.suf.data.Obj;
 import jp.dev7.enchant.doga.parser.suf.data.Prim;
@@ -25,7 +25,6 @@ import jp.dev7.enchant.doga.util.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 
 public class FscConverter {
@@ -39,12 +38,12 @@ public class FscConverter {
     }
 
     public List<EnchantMesh> convert(File file) throws Exception {
-        final FscFileParser fileParser = new FscFileParser();
-        final Fsc data = fileParser.parse(file);
+        final SufFileParser sufFileParser = new SufFileParser();
+        final Fsc data = new FscFileParser().parse(file);
 
         final Suf dest = new Suf();
         int i = 0;
-        for (final Part part : data.getObjects()) {
+        for (final FscObj part : data.getObjects()) {
             final List<Obj> destObjects = Lists.newArrayList();
 
             logger.debug("パーツ" + (++i) + " : " + part.getName());
@@ -53,7 +52,7 @@ public class FscConverter {
                 continue;
             }
 
-            final Suf orig = SufFileParser.parse(sufFile);
+            final Suf orig = sufFileParser.parse(sufFile);
             logger.debug("SUFファイル " + sufFile + "をロード");
             if (logger.isDebugEnabled()) {
                 int cnt = 0;
@@ -119,16 +118,10 @@ public class FscConverter {
                 logger.debug(mesh.texCoords.toString());
             }
         }
-        return Lists.transform(meshList,
-                new Function<EnchantMesh, EnchantMesh>() {
-                    @Override
-                    public EnchantMesh apply(EnchantMesh input) {
-                        return input;
-                    }
-                });
+        return meshList;
     }
 
-    private Obj transform(Obj obj, Part part) {
+    private Obj transform(Obj obj, FscObj part) {
         final Obj result = new Obj();
         result.setName(obj.getName());
 

@@ -4,6 +4,9 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 
+/**
+ * SUFファイル内のobjに相当.
+ */
 public class Obj {
 
     private String name;

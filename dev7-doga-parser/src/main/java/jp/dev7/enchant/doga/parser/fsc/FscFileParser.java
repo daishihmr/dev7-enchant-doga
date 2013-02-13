@@ -20,7 +20,7 @@ import jp.dev7.enchant.doga.parser.fsc.autogen.FscParserVisitor;
 import jp.dev7.enchant.doga.parser.fsc.autogen.ParseException;
 import jp.dev7.enchant.doga.parser.fsc.autogen.SimpleNode;
 import jp.dev7.enchant.doga.parser.fsc.data.Fsc;
-import jp.dev7.enchant.doga.parser.fsc.data.Part;
+import jp.dev7.enchant.doga.parser.fsc.data.FscObj;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,9 +29,8 @@ import com.google.common.collect.Maps;
 
 public class FscFileParser {
 
-    private Fsc resultFsc;
-
-    private final Logger logger = LoggerFactory.getLogger(FscFileParser.class);
+    private static final Logger LOG = LoggerFactory
+            .getLogger(FscFileParser.class);
 
     public Fsc parse(File fscFile) throws Exception {
         final Fsc fscData = new Fsc();
@@ -67,7 +66,7 @@ public class FscFileParser {
             try {
                 start = fscParser.Start();
             } catch (ParseException e) {
-                logger.error("FSCファイルパース中にエラー!! " + fscFile, e);
+                LOG.error("FSCファイルパース中にエラー!! " + fscFile, e);
                 throw e;
             }
 
@@ -90,7 +89,7 @@ public class FscFileParser {
                     Fsc fscData = (Fsc) data;
 
                     if (node.nodeValue != null) {
-                        Part obj = new Part();
+                        FscObj obj = new FscObj();
                         obj.setName(node.nodeValue);
                         obj.setSufFileName(objSufMap.get(i));
                         i++;
@@ -103,8 +102,8 @@ public class FscFileParser {
 
                 @Override
                 public Object visit(ASTFunc node, Object data) {
-                    if (data instanceof Part) {
-                        Part obj = (Part) data;
+                    if (data instanceof FscObj) {
+                        FscObj obj = (FscObj) data;
 
                         _Func f = (_Func) node.jjtGetChild(0).jjtAccept(this,
                                 null);
@@ -164,9 +163,7 @@ public class FscFileParser {
 
             start.jjtAccept(visitor, fscData);
 
-            resultFsc = fscData;
-
-            return resultFsc;
+            return fscData;
 
         } finally {
             try {
@@ -174,10 +171,6 @@ public class FscFileParser {
             } catch (IOException e) {
             }
         }
-    }
-
-    public Fsc getResultFsc() {
-        return resultFsc;
     }
 
 }

@@ -1,4 +1,4 @@
-package jp.dev7.enchant.doga.l3p;
+package jp.dev7.enchant.doga.converter.l3p;
 
 import java.io.File;
 import java.io.FileOutputStream;

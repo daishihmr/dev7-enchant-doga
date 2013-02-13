@@ -19,26 +19,27 @@ public class SufFileParserTest extends TestCase {
     private Set<String> atrNameSet = Sets.newHashSet();
 
     public void testParse() throws Exception {
-        SufFileParser.parse(new File("src/test/resources/heavyms.suf"));
-        SufFileParser.parse(new File("src/test/resources/ms_kage.SUF"));
+        SufFileParser parser = new SufFileParser();
+        parser.parse(new File("src/test/resources/heavyms.suf"));
+        parser.parse(new File("src/test/resources/ms_kage.SUF"));
 
         File partsDir = new File(Props.commonDir(), "parts");
         parse(partsDir);
     }
 
     public void testParse2() throws Exception {
-        Suf suf1 = SufFileParser.parseSufAtr(new File(
-                "src/test/resources/heavyms.suf"));
+        SufFileParser parser = new SufFileParser();
+        Suf suf1 = parser
+                .parseSufAtr(new File("src/test/resources/heavyms.suf"));
         assertFalse(suf1.getObjects().isEmpty());
         assertFalse(suf1.getAtrMap().isEmpty());
 
-        Suf suf2 = SufFileParser.parseSufAtr(new File(
-                "src/test/resources/ms_kage.SUF"));
+        Suf suf2 = parser
+                .parseSufAtr(new File("src/test/resources/ms_kage.SUF"));
         assertFalse(suf2.getObjects().isEmpty());
         assertFalse(suf2.getAtrMap().isEmpty());
 
-        Suf suf3 = SufFileParser.parseSufAtr(new File(
-                "src/test/resources/noatr.suf"));
+        Suf suf3 = parser.parseSufAtr(new File("src/test/resources/noatr.suf"));
         assertFalse(suf3.getObjects().isEmpty());
         assertTrue(suf3.getAtrMap().isEmpty());
     }
@@ -48,7 +49,8 @@ public class SufFileParserTest extends TestCase {
         for (File f : dir.listFiles()) {
             if (f.isFile() && f.getName().toLowerCase().endsWith(".suf")) {
                 System.out.println(f);
-                Suf suf = SufFileParser.parse(f);
+                SufFileParser parser = new SufFileParser();
+                Suf suf = parser.parse(f);
                 for (Obj obj : suf.getObjects()) {
                     for (Prim prim : obj.getPrimitives()) {
                         atrNameSet.add(prim.getAtrName());
