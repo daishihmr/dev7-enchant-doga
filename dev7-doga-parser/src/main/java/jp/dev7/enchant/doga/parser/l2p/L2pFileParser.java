@@ -1,4 +1,4 @@
-package jp.dev7.enchant.doga.parser.l3p;
+package jp.dev7.enchant.doga.parser.l2p;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jp.dev7.enchant.doga.parser.atr.AtrLineParser;
 import jp.dev7.enchant.doga.parser.atr.data.Atr;
 import jp.dev7.enchant.doga.parser.data.Unit;
 import jp.dev7.enchant.doga.parser.data.UnitObj;
@@ -30,10 +29,10 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Maps;
 
-public class L3pFileParser {
+public class L2pFileParser {
 
     private static final Logger LOG = LoggerFactory
-            .getLogger(L3pFileParser.class);
+            .getLogger(L2pFileParser.class);
 
     public Unit parse(File file) throws Exception {
         final Unit result = new Unit();
@@ -43,7 +42,7 @@ public class L3pFileParser {
         final Map<Integer, String> objAtrMap = Maps.newHashMap();
         {
             final Pattern pattern = Pattern
-                    .compile(".*obj \\\"?\\w+\\\"? /\\* \\\"?([^\"]+)\\\"? atr \\\"?([^\"]+)\\\"? \\*/.*");
+                    .compile(".*obj \\\"?\\w+\\\"? /\\* \\\"?([^\"]+)\\\"? (\\w+) (\\w+) (\\w+) \\*/.*");
             final BufferedReader reader = new BufferedReader(
                     new InputStreamReader(new FileInputStream(file),
                             "Shift_JIS"));
@@ -53,34 +52,26 @@ public class L3pFileParser {
                 Matcher m = pattern.matcher(l.trim());
                 if (m.matches()) {
                     String sufFile = m.group(1);
-                    String atrName = m.group(2);
+                    String color = m.group(2);
+                    String texture = m.group(3);
+                    String material = m.group(4);
 
                     objSufMap.put(i, sufFile);
-                    objAtrMap.put(i, atrName);
+                    objAtrMap
+                            .put(i, String.format("%s:%s:%s", color, texture,
+                                    material));
                     i++;
                 }
             }
             reader.close();
         }
 
-        // パレット部分解析
+        // パレット生成
         final Map<String, Atr> palette = Maps.newHashMap();
-        {
-            final BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(file),
-                            "Shift_JIS"));
-            String l;
-            while ((l = reader.readLine()) != null && !l.startsWith("Palette:")) {
-                // Palette行まで読み飛ばす
-            }
-            while ((l = reader.readLine()) != null) {
-                l = l.trim();
-                if (l.equals("*/")) {
-                    break;
-                }
-                Atr atr = AtrLineParser.parse(l);
-                palette.put(atr.getName(), atr);
-            }
+        final L2pAtrs atrs = new L2pAtrs();
+        for (Integer i : objAtrMap.keySet()) {
+            final String name = objAtrMap.get(i);
+            palette.put(name, atrs.getAtr(name));
         }
 
         final InputStreamReader in = new InputStreamReader(new FileInputStream(

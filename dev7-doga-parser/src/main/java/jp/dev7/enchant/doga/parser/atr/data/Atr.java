@@ -39,6 +39,40 @@ public class Atr {
     private double[] optShader3 = new double[5];
     private double[] optEmittion = new double[2];
 
+    public Atr clone() {
+        final Atr c = new Atr();
+
+        c.name = name;
+        c.col = new Color(col.red, col.green, col.blue);
+        c.amb = amb;
+        c.dif = dif;
+        c.spc = Arrays.copyOf(spc, 3);
+        c.tra = tra;
+        c.ref = ref;
+        c.colorMap1 = colorMap1;
+        c.colorMap2 = colorMap2;
+        c.bumpMap = bumpMap;
+        c.traMap = traMap;
+        c.spcMap = spcMap;
+        c.refMap = refMap;
+        c.glowPowerMap = glowPowerMap;
+        c.mapSize = Arrays.copyOf(mapSize, 4);
+
+        c.optCastShadow = optCastShadow;
+        c.optReceiveShadow = optReceiveShadow;
+        c.optCellLookEdge = optCellLookEdge;
+        c.optCellLookSpecular = Arrays.copyOf(optCellLookSpecular, 2);
+        c.optDraw = Arrays.copyOf(optDraw, 3);
+        c.optRate = optRate;
+        c.optShader = optShader;
+        c.optShader1 = Arrays.copyOf(optShader1, 5);
+        c.optShader2 = Arrays.copyOf(optShader2, 5);
+        c.optShader3 = Arrays.copyOf(optShader3, 5);
+        c.optEmittion = Arrays.copyOf(optEmittion, 2);
+
+        return c;
+    }
+
     public String getName() {
         return name;
     }

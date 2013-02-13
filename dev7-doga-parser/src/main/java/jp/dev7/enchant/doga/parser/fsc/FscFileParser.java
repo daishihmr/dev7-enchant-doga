@@ -48,8 +48,7 @@ public class FscFileParser {
             while ((l = reader.readLine()) != null) {
                 Matcher m = pattern.matcher(l.trim());
                 if (m.matches()) {
-                    String sufFile;
-                    sufFile = m.group(1);
+                    String sufFile = m.group(1);
 
                     objSufMap.put(i, sufFile);
                     i++;
@@ -66,7 +65,7 @@ public class FscFileParser {
             try {
                 start = parser.Start();
             } catch (ParseException e) {
-                LOG.error("FSCファイルパース中にエラー!! " + file, e);
+                LOG.error("unit file parse error " + file, e);
                 throw e;
             }
 

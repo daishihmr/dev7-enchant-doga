@@ -9,7 +9,6 @@
 	<modules>
 		<module>dev7-doga-parser</module>
 		<module>dev7-doga-converter</module>
-		<module>dev7-doga-enchantjs</module>
 	</modules>
 
 	<build>

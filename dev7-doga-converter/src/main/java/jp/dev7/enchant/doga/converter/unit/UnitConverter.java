@@ -19,6 +19,7 @@ import jp.dev7.enchant.doga.parser.atr.data.Color;
 import jp.dev7.enchant.doga.parser.data.Unit;
 import jp.dev7.enchant.doga.parser.data.UnitObj;
 import jp.dev7.enchant.doga.parser.fsc.FscFileParser;
+import jp.dev7.enchant.doga.parser.l2p.L2pFileParser;
 import jp.dev7.enchant.doga.parser.l3p.L3pFileParser;
 import jp.dev7.enchant.doga.parser.suf.SufFileParser;
 import jp.dev7.enchant.doga.parser.suf.data.Obj;
@@ -80,6 +81,8 @@ public class UnitConverter {
         final Unit data;
         if (file.getName().toLowerCase().endsWith(".fsc")) {
             data = new FscFileParser().parse(file);
+        } else if (file.getName().toLowerCase().endsWith(".l2p")) {
+            data = new L2pFileParser().parse(file);
         } else if (file.getName().toLowerCase().endsWith(".l3p")) {
             data = new L3pFileParser().parse(file);
         } else {
