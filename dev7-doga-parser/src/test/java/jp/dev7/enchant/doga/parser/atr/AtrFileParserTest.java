@@ -12,8 +12,10 @@ import junit.framework.TestCase;
 public class AtrFileParserTest extends TestCase {
 
     public void testParse() throws Exception {
-        AtrFileParser.parse(new File("src/test/resources/heavyms.atr"));
-        AtrFileParser.parse(new File("src/test/resources/ms_kage.atr"));
+        AtrFileParser.parse(new File(Props.dataDir(),
+                "l3_samp/connection/human/robot/heavyms/heavyms.atr"));
+        AtrFileParser.parse(new File(Props.dataDir(),
+                "l3_samp/connection/human/robot/kage/kage.atr"));
 
         File partsDir = Props.commonDir();
         parse(partsDir);

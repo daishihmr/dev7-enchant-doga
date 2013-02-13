@@ -19,21 +19,11 @@ public class SufFileParserTest extends TestCase {
     private Set<String> atrNameSet = Sets.newHashSet();
 
     public void testParse() throws Exception {
-        SufFileParser parser = new SufFileParser();
-        parser.parse(new File("src/test/resources/heavyms.suf"));
-        parser.parse(new File("src/test/resources/ms_kage.SUF"));
-
-        File partsDir = new File(Props.commonDir(), "parts");
-        parse(partsDir);
+        parse(Props.commonDir());
     }
 
     public void testParse2() throws Exception {
         SufFileParser parser = new SufFileParser();
-        Suf suf1 = parser
-                .parseSufAtr(new File("src/test/resources/heavyms.suf"));
-        assertFalse(suf1.getObjects().isEmpty());
-        assertFalse(suf1.getAtrMap().isEmpty());
-
         Suf suf2 = parser
                 .parseSufAtr(new File("src/test/resources/ms_kage.SUF"));
         assertFalse(suf2.getObjects().isEmpty());
