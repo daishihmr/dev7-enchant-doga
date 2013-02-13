@@ -1,7 +1,6 @@
 package jp.dev7.enchant.doga.converter.unit;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.io.StringWriter;
 import java.util.List;
@@ -15,7 +14,6 @@ import javax.vecmath.Vector3d;
 import jp.dev7.enchant.doga.converter.EnchantMesh;
 import jp.dev7.enchant.doga.converter.suf.SufConverter;
 import jp.dev7.enchant.doga.parser.atr.AtrFileParser;
-import jp.dev7.enchant.doga.parser.atr.autogen.ParseException;
 import jp.dev7.enchant.doga.parser.atr.data.Atr;
 import jp.dev7.enchant.doga.parser.atr.data.Color;
 import jp.dev7.enchant.doga.parser.data.Unit;
@@ -41,9 +39,6 @@ public class UnitConverter {
     private static final Logger LOG = LoggerFactory
             .getLogger(UnitConverter.class);
 
-    public UnitConverter() throws IOException, ParseException {
-    }
-
     public String convertToJson(File file) throws Exception {
         final StringWriter result = new StringWriter();
         convertAndWriteJson(file, result);
@@ -58,32 +53,26 @@ public class UnitConverter {
 
     public void convertAndWriteJson(File file, OutputStream out)
             throws Exception {
-        final List<EnchantMesh> result = convert(file);
-        JSON.encode(result, out, false);
+        JSON.encode(convert(file), out, false);
     }
 
     public void convertAndWriteJson(File file, Matrix4d transform,
             OutputStream out) throws Exception {
-        final List<EnchantMesh> result = convert(file, transform);
-        JSON.encode(result, out, false);
+        JSON.encode(convert(file, transform), out, false);
     }
 
     public void convertAndWriteJson(File file, Appendable appendable)
             throws Exception {
-        final List<EnchantMesh> result = convert(file);
-        JSON.encode(result, appendable, false);
+        JSON.encode(convert(file), appendable, false);
     }
 
     public void convertAndWriteJson(File file, Matrix4d transform,
             Appendable appendable) throws Exception {
-        final List<EnchantMesh> result = convert(file, transform);
-        JSON.encode(result, appendable, false);
+        JSON.encode(convert(file, transform), appendable, false);
     }
 
     public List<EnchantMesh> convert(File file) throws Exception {
-        final Matrix4d transform = new Matrix4d();
-        transform.setIdentity();
-        return convert(file, transform);
+        return convert(file, Utils.getIdentity());
     }
 
     public List<EnchantMesh> convert(final File file, final Matrix4d transform)
@@ -101,7 +90,7 @@ public class UnitConverter {
     }
 
     public List<EnchantMesh> convert(final Unit data, final Matrix4d transform,
-            File file) throws Exception {
+            File baseFile) throws Exception {
         final SufConverter sufConverter = new SufConverter();
         sufConverter.loadGenieAtr();
         final SufFileParser sufFileParser = new SufFileParser();
@@ -115,7 +104,7 @@ public class UnitConverter {
             final List<Obj> destObjects = Lists.newArrayList();
 
             LOG.debug("part" + (++i) + " : " + part.getName());
-            File sufFile = Utils.dogaPartsFile(part.getSufFileName(), file);
+            File sufFile = Utils.dogaPartsFile(part.getSufFileName(), baseFile);
             if (sufFile == null) {
                 continue;
             }

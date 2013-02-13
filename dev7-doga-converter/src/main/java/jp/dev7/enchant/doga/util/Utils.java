@@ -191,7 +191,7 @@ public class Utils {
         logger.debug("find " + path);
 
         // 絶対パス？
-        File cur = new File(path);
+        final File cur = new File(path);
         logger.debug("    " + cur.getAbsolutePath() + " ?");
         if (cur.exists()) {
             return cur;
@@ -199,7 +199,7 @@ public class Utils {
 
         // 相対パス？
         if (baseFile != null) {
-            File rel = new File(baseFile.getParentFile(), path);
+            final File rel = new File(baseFile.getParentFile(), path);
             logger.debug("    " + rel.getAbsolutePath() + " ?");
             if (rel.exists()) {
                 return rel;
@@ -207,8 +207,8 @@ public class Utils {
         }
 
         // commonの中？
-        File common = new File(Props.commonDir(), "parts/" + path);
-        logger.debug("    " + common.getAbsolutePath() + "?");
+        final File common = new File(Props.commonDir(), "parts/" + path);
+        logger.debug("    " + common.getAbsolutePath() + " ?");
         if (common.exists()) {
             return common;
         }
