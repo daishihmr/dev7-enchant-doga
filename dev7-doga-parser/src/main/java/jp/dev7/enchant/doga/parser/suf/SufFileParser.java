@@ -41,11 +41,11 @@ import com.google.common.base.Function;
 import com.google.common.collect.Maps;
 
 public class SufFileParser {
-    public Suf parseSufAtr(File sufFile) throws Exception {
+    public Suf parseSufAtr(File file) throws Exception {
         // atrファイル
         final File atrFile;
         {
-            String absolutePath = sufFile.getAbsolutePath();
+            String absolutePath = file.getAbsolutePath();
             int extIndex = absolutePath.lastIndexOf(".suf");
             if (extIndex < 0) {
                 extIndex = absolutePath.lastIndexOf(".SUF");
@@ -58,7 +58,7 @@ public class SufFileParser {
             }
         }
 
-        final Suf result = parse(sufFile);
+        final Suf result = parse(file);
 
         if (atrFile.exists()) {
             List<Atr> atr = AtrFileParser.parse(atrFile);

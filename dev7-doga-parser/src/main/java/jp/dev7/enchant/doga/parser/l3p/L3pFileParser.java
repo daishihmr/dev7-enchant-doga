@@ -11,6 +11,8 @@ import java.util.regex.Pattern;
 
 import jp.dev7.enchant.doga.parser.atr.AtrLineParser;
 import jp.dev7.enchant.doga.parser.atr.data.Atr;
+import jp.dev7.enchant.doga.parser.data.Unit;
+import jp.dev7.enchant.doga.parser.data.UnitObj;
 import jp.dev7.enchant.doga.parser.fsc._Func;
 import jp.dev7.enchant.doga.parser.l3p.autogen.ASTFram;
 import jp.dev7.enchant.doga.parser.l3p.autogen.ASTFunc;
@@ -20,9 +22,8 @@ import jp.dev7.enchant.doga.parser.l3p.autogen.ASTObjData;
 import jp.dev7.enchant.doga.parser.l3p.autogen.ASTStart;
 import jp.dev7.enchant.doga.parser.l3p.autogen.L3pParser;
 import jp.dev7.enchant.doga.parser.l3p.autogen.L3pParserVisitor;
+import jp.dev7.enchant.doga.parser.l3p.autogen.ParseException;
 import jp.dev7.enchant.doga.parser.l3p.autogen.SimpleNode;
-import jp.dev7.enchant.doga.parser.l3p.data.L3p;
-import jp.dev7.enchant.doga.parser.l3p.data.L3pObj;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,8 +35,8 @@ public class L3pFileParser {
     private static final Logger LOG = LoggerFactory
             .getLogger(L3pFileParser.class);
 
-    public L3p parse(File l3pFile) throws Exception {
-        final L3p l3pData = new L3p();
+    public Unit parse(File file) throws Exception {
+        final Unit result = new Unit();
 
         // obj部分のコメント解析
         final Map<Integer, String> objSufMap = Maps.newHashMap();
@@ -44,7 +45,7 @@ public class L3pFileParser {
             final Pattern pattern = Pattern
                     .compile(".*obj \\\"?\\w+\\\"? /\\* \\\"?([^\"]+)\\\"? atr \\\"?([^\"]+)\\\"? \\*/.*");
             final BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(l3pFile),
+                    new InputStreamReader(new FileInputStream(file),
                             "Shift_JIS"));
             String l;
             Integer i = 0;
@@ -68,7 +69,7 @@ public class L3pFileParser {
         final Map<String, Atr> palette = Maps.newHashMap();
         {
             final BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(l3pFile),
+                    new InputStreamReader(new FileInputStream(file),
                             "Shift_JIS"));
             String l;
             while ((l = reader.readLine()) != null && !l.startsWith("Palette:")) {
@@ -85,14 +86,14 @@ public class L3pFileParser {
         }
 
         final InputStreamReader in = new InputStreamReader(new FileInputStream(
-                l3pFile), "Shift_JIS");
+                file), "Shift_JIS");
         try {
-            final L3pParser l3pParser = new L3pParser(in);
+            final L3pParser parser = new L3pParser(in);
             ASTStart start;
             try {
-                start = l3pParser.Start();
-            } catch (Throwable e) {
-                LOG.error("L3Pファイルパース中にエラー!! " + l3pFile, e);
+                start = parser.Start();
+            } catch (ParseException e) {
+                LOG.error("L3Pファイルパース中にエラー!! " + file, e);
                 throw (Exception) e;
             }
 
@@ -100,34 +101,37 @@ public class L3pFileParser {
 
                 int i = 0;
 
+                @Override
                 public Object visit(ASTStart node, Object data) {
                     return node.childrenAccept(this, data);
                 }
 
+                @Override
                 public Object visit(ASTFram node, Object data) {
                     return node.childrenAccept(this, data);
                 }
 
+                @Override
                 public Object visit(ASTObjData node, Object data) {
-                    L3p l3pData = (L3p) data;
+                    final Unit result = (Unit) data;
 
                     if (node.nodeValue != null) {
-                        L3pObj l3pObj = new L3pObj();
-
-                        l3pObj.setName(node.nodeValue);
-                        l3pObj.setSufFileName(objSufMap.get(i));
-                        l3pObj.setPaletteName(objAtrMap.get(i));
+                        final UnitObj obj = new UnitObj();
+                        obj.setName(node.nodeValue);
+                        obj.setSufFileName(objSufMap.get(i));
+                        obj.setPaletteName(objAtrMap.get(i));
                         i++;
-                        node.childrenAccept(this, l3pObj);
+                        node.childrenAccept(this, obj);
 
-                        l3pData.getObjects().add(l3pObj);
+                        result.getObjects().add(obj);
                     }
                     return null;
                 }
 
+                @Override
                 public Object visit(ASTFunc node, Object data) {
-                    if (data instanceof L3pObj) {
-                        L3pObj l3pObj = (L3pObj) data;
+                    if (data instanceof UnitObj) {
+                        final UnitObj obj = (UnitObj) data;
 
                         // funcName
                         _Func f = (_Func) node.jjtGetChild(0).jjtAccept(this,
@@ -143,7 +147,7 @@ public class L3pFileParser {
                             }
                         }
 
-                        f.apply(l3pObj);
+                        f.apply(obj);
 
                         return data;
                     } else {
@@ -151,6 +155,7 @@ public class L3pFileParser {
                     }
                 }
 
+                @Override
                 public Object visit(ASTFuncName node, Object data) {
                     if (node.nodeValue == null) {
                         return null;
@@ -169,6 +174,7 @@ public class L3pFileParser {
                     }
                 }
 
+                @Override
                 public Object visit(ASTNum node, Object data) {
                     _Func f = (_Func) data;
                     if (f == null) {
@@ -179,23 +185,18 @@ public class L3pFileParser {
                     return f;
                 }
 
+                @Override
                 public Object visit(SimpleNode node, Object data) {
                     return null;
                 }
 
             };
 
-            try {
-                start.jjtAccept(visitor, l3pData);
-            } catch (Throwable e) {
-                LOG.error("L3Pファイルパース中にエラー!! " + l3pFile, e);
-                throw (Exception) e;
-            }
+            start.jjtAccept(visitor, result);
 
-            final L3p resultL3p = l3pData;
-            resultL3p.getPalette().putAll(palette);
+            result.getPalette().putAll(palette);
 
-            return resultL3p;
+            return result;
 
         } finally {
             try {
@@ -204,4 +205,5 @@ public class L3pFileParser {
             }
         }
     }
+
 }

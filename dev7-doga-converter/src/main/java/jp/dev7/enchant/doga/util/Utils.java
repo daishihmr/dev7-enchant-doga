@@ -66,7 +66,7 @@ public class Utils {
             return new double[] { 0, 0 };
         }
         if (logger.isDebugEnabled()) {
-            logger.debug("テクスチャ座標を変換");
+            logger.debug("convert texture coords");
             logger.debug("mapsize = " + Arrays.toString(mapsize));
             logger.debug("uv = " + Arrays.toString(uv));
         }
@@ -188,7 +188,7 @@ public class Utils {
                 path = path.replace('\\', File.separatorChar);
             }
         }
-        logger.debug("探す, " + path);
+        logger.debug("find " + path);
 
         // 絶対パス？
         File cur = new File(path);
@@ -213,7 +213,7 @@ public class Utils {
             return common;
         }
 
-        logger.warn("ファイルが見つかりません. " + path);
+        logger.warn("not found " + path);
         return null;
     }
 

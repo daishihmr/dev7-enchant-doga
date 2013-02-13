@@ -3,7 +3,7 @@ package jp.dev7.enchant.doga.parser.fsc;
 import java.io.File;
 import java.util.List;
 
-import jp.dev7.enchant.doga.parser.fsc.data.Fsc;
+import jp.dev7.enchant.doga.parser.data.Unit;
 import junit.framework.TestCase;
 
 import com.google.common.base.Function;
@@ -13,10 +13,10 @@ public class FscFileParserTest extends TestCase {
 
     public void test1() throws Exception {
         final FscFileParser parser = new FscFileParser();
-        List<Fsc> results = scanDir(new File("./src/test/resources/l1_samp"),
-                new Function<File, Fsc>() {
+        List<Unit> results = scanDir(new File("./src/test/resources/l1_samp"),
+                new Function<File, Unit>() {
                     @Override
-                    public Fsc apply(File input) {
+                    public Unit apply(File input) {
                         if (input.getName().toLowerCase().endsWith(".fsc")) {
                             try {
                                 return parser.parse(input);
@@ -30,7 +30,7 @@ public class FscFileParserTest extends TestCase {
                     }
                 });
         assertFalse(results.isEmpty());
-        for (Fsc fsc : results) {
+        for (Unit fsc : results) {
             System.out.println(fsc);
         }
     }

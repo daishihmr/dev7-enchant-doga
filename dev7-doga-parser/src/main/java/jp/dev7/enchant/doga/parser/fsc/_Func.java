@@ -2,7 +2,7 @@ package jp.dev7.enchant.doga.parser.fsc;
 
 import java.util.List;
 
-import jp.dev7.enchant.doga.parser.fsc.data.FscObj;
+import jp.dev7.enchant.doga.parser.data.UnitObj;
 
 import com.google.common.collect.Lists;
 
@@ -13,7 +13,7 @@ abstract public class _Func {
     public static class Mov extends _Func {
 
         @Override
-        public void apply(FscObj part) {
+        public void apply(UnitObj part) {
             part.setMov(new double[] { args.get(0), args.get(1), args.get(2) });
         }
     }
@@ -21,7 +21,7 @@ abstract public class _Func {
     public static class RotX extends _Func {
 
         @Override
-        public void apply(FscObj part) {
+        public void apply(UnitObj part) {
             part.setRotx(args.get(0));
         }
     }
@@ -29,7 +29,7 @@ abstract public class _Func {
     public static class RotY extends _Func {
 
         @Override
-        public void apply(FscObj part) {
+        public void apply(UnitObj part) {
             part.setRoty(args.get(0));
         }
     }
@@ -37,7 +37,7 @@ abstract public class _Func {
     public static class RotZ extends _Func {
 
         @Override
-        public void apply(FscObj part) {
+        public void apply(UnitObj part) {
             part.setRotz(args.get(0));
         }
 
@@ -46,7 +46,7 @@ abstract public class _Func {
     public static class Scal extends _Func {
 
         @Override
-        public void apply(FscObj part) {
+        public void apply(UnitObj part) {
             part.setScal(new double[] { args.get(0), args.get(1), args.get(2) });
         }
 
@@ -60,7 +60,7 @@ abstract public class _Func {
         return args.get(index);
     }
 
-    public abstract void apply(FscObj part);
+    public abstract void apply(UnitObj part);
 
     @Override
     public String toString() {

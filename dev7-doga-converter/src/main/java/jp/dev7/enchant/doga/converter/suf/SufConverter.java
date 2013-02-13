@@ -50,7 +50,7 @@ public class SufConverter {
     }
 
     public void loadGenieAtr() throws IOException, ParseException {
-        loadGenieAtr("genie.atr");
+        loadGenieAtr("genienm.atr");
     }
 
     public void loadGenieAtr(String atrFileName) throws IOException,

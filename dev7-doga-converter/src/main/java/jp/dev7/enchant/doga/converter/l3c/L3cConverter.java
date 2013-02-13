@@ -18,8 +18,8 @@ import jp.dev7.enchant.doga.converter.EnchantMesh;
 import jp.dev7.enchant.doga.converter.EnchantPose;
 import jp.dev7.enchant.doga.converter.EnchantPoseUnit;
 import jp.dev7.enchant.doga.converter.EnchantUnit;
-import jp.dev7.enchant.doga.converter.l3p.L3pConverter;
 import jp.dev7.enchant.doga.converter.suf.SufConverter;
+import jp.dev7.enchant.doga.converter.unit.UnitConverter;
 import jp.dev7.enchant.doga.parser.l3c.L3cFileParser;
 import jp.dev7.enchant.doga.parser.l3c.data.L3c;
 import jp.dev7.enchant.doga.parser.l3c.data.L3cObj;
@@ -61,7 +61,7 @@ public class L3cConverter {
         // モデルデータ
         final L3cObj root = l3c.getRootUnit();
         final File baseDir = l3cFile.getParentFile();
-        final L3pConverter l3pConverter = new L3pConverter();
+        final UnitConverter l3pConverter = new UnitConverter();
         final List<double[]> initialPose = Lists.newArrayList();
         final EnchantUnit model = convert(root, l3pConverter, baseDir,
                 initialPose);
@@ -152,7 +152,7 @@ public class L3cConverter {
         return new Quat4d(x * s, y * s, z * s, c);
     }
 
-    private EnchantUnit convert(L3cObj unit, L3pConverter l3pConverter,
+    private EnchantUnit convert(L3cObj unit, UnitConverter l3pConverter,
             File baseDir, List<double[]> initailPose) throws Exception {
         final EnchantUnit result = new EnchantUnit();
 

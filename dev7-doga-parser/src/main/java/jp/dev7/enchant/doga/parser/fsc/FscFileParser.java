@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import jp.dev7.enchant.doga.parser.data.Unit;
+import jp.dev7.enchant.doga.parser.data.UnitObj;
 import jp.dev7.enchant.doga.parser.fsc.autogen.ASTFram;
 import jp.dev7.enchant.doga.parser.fsc.autogen.ASTFunc;
 import jp.dev7.enchant.doga.parser.fsc.autogen.ASTFuncName;
@@ -19,8 +21,6 @@ import jp.dev7.enchant.doga.parser.fsc.autogen.FscParser;
 import jp.dev7.enchant.doga.parser.fsc.autogen.FscParserVisitor;
 import jp.dev7.enchant.doga.parser.fsc.autogen.ParseException;
 import jp.dev7.enchant.doga.parser.fsc.autogen.SimpleNode;
-import jp.dev7.enchant.doga.parser.fsc.data.Fsc;
-import jp.dev7.enchant.doga.parser.fsc.data.FscObj;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,8 +32,8 @@ public class FscFileParser {
     private static final Logger LOG = LoggerFactory
             .getLogger(FscFileParser.class);
 
-    public Fsc parse(File fscFile) throws Exception {
-        final Fsc fscData = new Fsc();
+    public Unit parse(File file) throws Exception {
+        final Unit result = new Unit();
 
         // obj部分のコメント解析
         final Map<Integer, String> objSufMap = Maps.newHashMap();
@@ -41,7 +41,7 @@ public class FscFileParser {
             final Pattern pattern = Pattern
                     .compile(".*obj \\\"?\\w+\\\"? /\\* \\\"?([^\"]+)\\\"? \\*/.*");
             final BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(fscFile),
+                    new InputStreamReader(new FileInputStream(file),
                             "Shift_JIS"));
             String l;
             Integer i = 0;
@@ -59,14 +59,14 @@ public class FscFileParser {
         }
 
         final InputStreamReader in = new InputStreamReader(new FileInputStream(
-                fscFile), "Shift_JIS");
+                file), "Shift_JIS");
         try {
-            final FscParser fscParser = new FscParser(in);
+            final FscParser parser = new FscParser(in);
             ASTStart start;
             try {
-                start = fscParser.Start();
+                start = parser.Start();
             } catch (ParseException e) {
-                LOG.error("FSCファイルパース中にエラー!! " + fscFile, e);
+                LOG.error("FSCファイルパース中にエラー!! " + file, e);
                 throw e;
             }
 
@@ -86,31 +86,33 @@ public class FscFileParser {
 
                 @Override
                 public Object visit(ASTObjData node, Object data) {
-                    Fsc fscData = (Fsc) data;
+                    final Unit result = (Unit) data;
 
                     if (node.nodeValue != null) {
-                        FscObj obj = new FscObj();
+                        final UnitObj obj = new UnitObj();
                         obj.setName(node.nodeValue);
                         obj.setSufFileName(objSufMap.get(i));
                         i++;
                         node.childrenAccept(this, obj);
 
-                        fscData.getObjects().add(obj);
+                        result.getObjects().add(obj);
                     }
                     return null;
                 }
 
                 @Override
                 public Object visit(ASTFunc node, Object data) {
-                    if (data instanceof FscObj) {
-                        FscObj obj = (FscObj) data;
+                    if (data instanceof UnitObj) {
+                        final UnitObj obj = (UnitObj) data;
 
+                        // funcName
                         _Func f = (_Func) node.jjtGetChild(0).jjtAccept(this,
                                 null);
                         if (f == null) {
                             return null;
                         }
 
+                        // args
                         if (node.jjtGetNumChildren() > 0) {
                             for (int i = 1; i < node.jjtGetNumChildren(); i++) {
                                 node.jjtGetChild(i).jjtAccept(this, f);
@@ -159,11 +161,12 @@ public class FscFileParser {
                 public Object visit(SimpleNode node, Object data) {
                     return null;
                 }
+
             };
 
-            start.jjtAccept(visitor, fscData);
+            start.jjtAccept(visitor, result);
 
-            return fscData;
+            return result;
 
         } finally {
             try {
