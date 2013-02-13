@@ -1,0 +1,70 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	P3\P301.SUF
+	P2\P205.SUF
+Info:
+	DisplayOffset: ( -16.971  -2.828 -127.279 )
+	DisplayScale: 0.176776695297
+	MeshFlag: 1
+	MeshSpacing: 250
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -70   7 -70 )
+	{	mov (  1599  1365  1140 ) eye deg( 60 ) }
+	{	mov (  -122   -37   632 ) target }
+	{	mov (   125  -416  1189 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.058 0.058 2.916 ) obj P301 /* P3\P301.SUF C1 T25 M1 */
+	}
+	{	mov (     1  -422   506 ) rotz(  -90 ) roty(    0 ) rotx(    0 )
+		scal ( 0.398 -1.969 5.063 ) obj P205 /* P2\P205.SUF C1 T25 M1 */
+	}
+	{	mov (    35  -303  1166 ) rotz(   90 ) roty(    0 ) rotx(    0 )
+		scal ( 1.630 1.622 0.164 ) obj P205 /* P2\P205.SUF C1 T25 M1 */
+	}
+	{	mov (    35  -303  1090 ) rotz(   90 ) roty(    0 ) rotx(    0 )
+		scal ( 1.406 1.406 0.796 ) obj P205 /* P2\P205.SUF C1 T25 M1 */
+	}
+	{	mov (     1     0  1011 ) rotz(   90 ) roty(    0 ) rotx(    0 )
+		scal ( 4.929 2.002 0.164 ) obj P205 /* P2\P205.SUF C1 T25 M1 */
+	}
+	{	mov (     1   141   506 ) rotz(   90 ) roty(    0 ) rotx(    0 )
+		scal ( -0.337 1.758 5.063 ) obj P205 /* P2\P205.SUF C1 T25 M1 */
+	}
+	{	mov (     1   281   506 ) rotz(   90 ) roty(    0 ) rotx(    0 )
+		scal ( -0.337 1.758 5.063 ) obj P205 /* P2\P205.SUF C1 T25 M1 */
+	}
+	{	mov (     1     0   506 ) rotz(   90 ) roty(    0 ) rotx(    0 )
+		scal ( 0.337 1.758 5.063 ) obj P205 /* P2\P205.SUF C1 T25 M1 */
+	}
+	{	mov (     1  -281   506 ) rotz(   90 ) roty(    0 ) rotx(    0 )
+		scal ( 0.337 1.758 5.063 ) obj P205 /* P2\P205.SUF C1 T25 M1 */
+	}
+	{	mov (     1  -141   506 ) rotz(   90 ) roty(    0 ) rotx(    0 )
+		scal ( 0.337 1.758 5.063 ) obj P205 /* P2\P205.SUF C1 T25 M1 */
+	}
+	{	mov (     1   422   506 ) rotz(   90 ) roty(    0 ) rotx(    0 )
+		scal ( 0.398 1.969 5.063 ) obj P205 /* P2\P205.SUF C1 T25 M1 */
+	}
+	{	mov (     1     0    84 ) rotz(   90 ) roty(    0 ) rotx(    0 )
+		scal ( 4.501 1.884 0.844 ) obj P205 /* P2\P205.SUF C1 T25 M1 */
+	}
+	{	mov (     1     0   365 ) rotz(   90 ) roty(    0 ) rotx(    0 )
+		scal ( 4.501 1.884 0.844 ) obj P205 /* P2\P205.SUF C1 T25 M1 */
+	}
+	{	mov (     1     0   646 ) rotz(   90 ) roty(    0 ) rotx(    0 )
+		scal ( 4.501 1.884 0.844 ) obj P205 /* P2\P205.SUF C1 T25 M1 */
+	}
+	{	mov (     1     0   928 ) rotz(   90 ) roty(    0 ) rotx(    0 )
+		scal ( 4.501 1.883 0.844 ) obj P205 /* P2\P205.SUF C1 T25 M1 */
+	}
+	{	mov (     1     0   576 ) rotz(   90 ) roty(    0 ) rotx(    0 )
+		scal ( 4.219 1.688 4.219 ) obj P205 /* P2\P205.SUF C3 NO M3 */
+	}
+}

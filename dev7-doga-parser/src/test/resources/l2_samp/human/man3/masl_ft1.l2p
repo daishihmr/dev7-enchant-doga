@@ -1,0 +1,24 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	P1\P116.SUF
+Info:
+	DisplayOffset: (   0.000  22.627  -2.828 )
+	DisplayScale: 0.176776695297
+	MeshFlag: 1
+	MeshSpacing: 250
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 0
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -35  61 -70 )
+	{	mov (   594  -160   364 ) eye deg( 60 ) }
+	{	mov (     4     0    37 ) target }
+	{	mov (     0     0     0 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.387 -0.340 1.148 ) obj P116 /* P1\P116.SUF C3 NO M4 */
+	}
+}

@@ -1,0 +1,24 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	T1\T111.SUF
+Info:
+	DisplayOffset: ( -32.000   0.000 -32.000 )
+	DisplayScale: 1.999999999999
+	MeshFlag: 1
+	MeshSpacing: 250
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 0
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -51  48 -70 )
+	{	mov (    88    30    -3 ) eye deg( 60 ) }
+	{	mov (     2    27    -4 ) target }
+	{	mov (     0     0     0 ) rotz( -171 ) roty(   38 ) rotx(   77 )
+		scal ( 0.036 0.057 0.167 ) obj T111 /* T1\T111.SUF C17 NO M4 */
+	}
+}

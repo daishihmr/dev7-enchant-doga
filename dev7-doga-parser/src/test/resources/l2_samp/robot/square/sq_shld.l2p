@@ -1,0 +1,34 @@
+/*							Parts Assembler
+                                  Version 1.3
+Parts: 
+	P3\P314.SUF
+	P3\P305.SUF
+Info:
+	DisplayOffset: ( -20.000 -176.000 -536.000 )
+	DisplayScale: 0.250000000000
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 0
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 20
+	RotSpacing: 5
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 )  11  69 -70 )
+	{	mov (   635  -206  2266 ) eye deg( 60 ) }
+	{	mov (   142   486  2195 ) target }
+	{	mov (    75   695  2083 ) rotz(    0 ) roty(    0 ) rotx(  -90 )
+		scal ( 0.800 0.900 1.100 ) obj P314 /* P3\P314.SUF C19 M3 M5 */
+	}
+	{	mov (    75   565  2083 ) rotz(  -90 ) roty(  -90 ) rotx(    0 )
+		scal ( -0.400 -1.700 2.600 ) obj P305 /* P3\P305.SUF C19 M3 M5 */
+	}
+	{	mov (    75   565  2083 ) rotz(  -90 ) roty(  -90 ) rotx(    0 )
+		scal ( 0.700 -1.800 3.000 ) obj P305 /* P3\P305.SUF C19 M3 M5 */
+	}
+	{	mov (   -71   559  2213 ) rotz(  175 ) roty(  -23 ) rotx(   90 )
+		scal ( 0.700 -0.800 2.000 ) obj P305 /* P3\P305.SUF C10 M2 M5 */
+	}
+}

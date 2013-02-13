@@ -1,0 +1,66 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	P2\P205.SUF
+	P3\P312.SUF
+	P2\P215.SUF
+	P1\P116.SUF
+Info:
+	DisplayOffset: (   2.828   7.778 -46.669 )
+	DisplayScale: 0.044194173824
+	MeshFlag: 1
+	MeshSpacing: 250
+	ShowStatus: 0
+	ShowAttr: 1
+	GridFlag: 0
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -70   3 -70 )
+	{	mov (  4255  4409  2961 ) eye deg( 60 ) }
+	{	mov (  -207   367  1018 ) target }
+	{	mov (  1254 -1622   453 ) rotz(  -10 ) roty(    0 ) rotx(   40 )
+		scal ( 0.442 8.256 0.295 ) obj P205 /* P2\P205.SUF C17A NO M1 */
+	}
+	{	mov (   886  -590    11 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.032 -1.032 11.941 ) obj P312 /* P3\P312.SUF C17A NO M1 */
+	}
+	{	mov (  -883  -590    11 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( -1.032 -1.032 11.941 ) obj P312 /* P3\P312.SUF C17A NO M1 */
+	}
+	{	mov (  -883 -2359    11 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( -1.032 1.032 11.941 ) obj P312 /* P3\P312.SUF C17A NO M1 */
+	}
+	{	mov (     1 -1475   968 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 7.371 7.371 0.295 ) obj P215 /* P2\P215.SUF C17A NO M1 */
+	}
+	{	mov (   886 -2359    11 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.032 1.032 11.941 ) obj P312 /* P3\P312.SUF C17A NO M1 */
+	}
+	{	mov (     1 -1475  1411 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 6.929 6.929 6.929 ) obj P116 /* P1\P116.SUF C17A NO M1 */
+	}
+	{	mov (     1  1474  1411 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 6.929 6.929 6.929 ) obj P116 /* P1\P116.SUF C17A NO M1 */
+	}
+	{	mov (   886   589    11 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.032 1.032 11.941 ) obj P312 /* P3\P312.SUF C17A NO M1 */
+	}
+	{	mov (     1  1474   968 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 7.371 7.371 0.295 ) obj P215 /* P2\P215.SUF C17A NO M1 */
+	}
+	{	mov (  -883   589    11 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( -1.032 1.032 11.941 ) obj P312 /* P3\P312.SUF C17A NO M1 */
+	}
+	{	mov (  -883  2358    11 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( -1.032 -1.032 11.941 ) obj P312 /* P3\P312.SUF C17A NO M1 */
+	}
+	{	mov (   886  2358    11 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.032 -1.032 11.941 ) obj P312 /* P3\P312.SUF C17A NO M1 */
+	}
+	{	mov (  1254  1326   453 ) rotz(  -10 ) roty(    0 ) rotx(   40 )
+		scal ( 0.442 8.256 0.295 ) obj P205 /* P2\P205.SUF C17A NO M1 */
+	}
+}

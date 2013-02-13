@@ -1,0 +1,49 @@
+/*							Parts Assembler
+                                  Version 1.3
+Parts: 
+	P3\P301.SUF
+	P2\P205.SUF
+Info:
+	DisplayOffset: (   6.000  32.000 -24.000 )
+	DisplayScale: 0.125000000000
+	MeshFlag: 1
+	MeshSpacing: 250
+	ShowStatus: 0
+	ShowAttr: 1
+	GridFlag: 0
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -47 -52 -70 )
+	{	mov (  1031    83   694 ) eye deg( 60 ) }
+	{	mov (     9    25   219 ) target }
+	{	mov (  -229  -333   408 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.036 0.036 2.183 ) obj P301 /* P3\P301.SUF C1 NO M2 */
+	}
+	{	mov (  -159     0   205 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.556 3.890 0.475 ) obj P205 /* P2\P205.SUF C1 NO M6 */
+	}
+	{	mov (   151  -194   229 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.556 1.556 0.432 ) obj P205 /* P2\P205.SUF C1 NO M6 */
+	}
+	{	mov (    87  -194   229 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.901 1.297 0.302 ) obj P205 /* P2\P205.SUF C1 T3 M4 */
+	}
+	{	mov (  -151     0   272 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.167 3.544 0.735 ) obj P205 /* P2\P205.SUF C1 T3 M4 */
+	}
+	{	mov (  -151     0   337 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.599 4.062 0.864 ) obj P205 /* P2\P205.SUF C19B T5 M4 */
+	}
+	{	mov (   151  -194   293 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.599 1.599 0.432 ) obj P205 /* P2\P205.SUF C19B T5 M4 */
+	}
+	{	mov (  -151     0    99 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.599 4.062 0.951 ) obj P205 /* P2\P205.SUF C19B T5 M4 */
+	}
+	{	mov (   151  -194    99 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.599 1.599 0.951 ) obj P205 /* P2\P205.SUF C19B T5 M4 */
+	}
+}

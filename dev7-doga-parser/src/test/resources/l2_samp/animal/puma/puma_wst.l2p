@@ -1,0 +1,28 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	P4\P408.SUF
+	P4\P409.SUF
+Info:
+	DisplayOffset: (   0.000   0.000   0.000 )
+	DisplayScale: 0.353553390593
+	MeshFlag: 1
+	MeshSpacing: 250
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -69  12 -70 )
+	{	mov (   541   381   227 ) eye deg( 60 ) }
+	{	mov (     0     0     0 ) target }
+	{	mov (    -6     0    48 ) rotz(  180 ) roty(    0 ) rotx(  180 )
+		scal ( 1.568 1.827 1.205 ) obj P408 /* P4\P408.SUF C17 T16 M4 */
+	}
+	{	mov (    49     0    52 ) rotz(   90 ) roty(    0 ) rotx( -180 )
+		scal ( 1.353 1.157 1.068 ) obj P409 /* P4\P409.SUF C1 NO M4 */
+	}
+}

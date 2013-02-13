@@ -1,0 +1,24 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	S1\S105.SUF
+Info:
+	DisplayOffset: (   0.000   0.000   0.000 )
+	DisplayScale: 0.088388347648
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 0
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -69 -11 -70 )
+	{	mov (  1074  -685   635 ) eye deg( 60 ) }
+	{	mov (    73    39   -21 ) target }
+	{	mov (     0     0     0 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.000 1.200 1.400 ) obj S105 /* S1\S105.SUF C13 T9 M3 */
+	}
+}

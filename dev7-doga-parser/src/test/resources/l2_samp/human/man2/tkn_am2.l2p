@@ -1,0 +1,28 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	P1\P112.SUF
+	P2\P205.SUF
+Info:
+	DisplayOffset: (   0.000  -5.657 -28.284 )
+	DisplayScale: 0.353553390594
+	MeshFlag: 1
+	MeshSpacing: 250
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 0
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -70   0 -70 )
+	{	mov (   443   422   240 ) eye deg( 60 ) }
+	{	mov (    33    10    19 ) target }
+	{	mov (     0     0  -139 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.700 0.700 0.700 ) obj P112 /* P1\P112.SUF C20 NO M4 */
+	}
+	{	mov (     0     0    54 ) rotz(    0 ) roty(    0 ) rotx(  180 )
+		scal ( 0.757 0.403 -1.239 ) obj P205 /* P2\P205.SUF C2 NO M4 */
+	}
+}

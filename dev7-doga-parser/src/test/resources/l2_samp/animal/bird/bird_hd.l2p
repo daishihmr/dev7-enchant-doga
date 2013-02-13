@@ -1,0 +1,28 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	O2\O201.SUF
+	OT\OT02.SUF
+Info:
+	DisplayOffset: ( -271.529   0.000   0.000 )
+	DisplayScale: 0.353553390592
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 0
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -69  12  70 )
+	{	mov (  1166 -1034   -15 ) eye deg( 60 ) }
+	{	mov (   288   213   255 ) target }
+	{	mov (   400     0   250 ) rotz(    0 ) roty(   30 ) rotx(    0 )
+		scal ( 1.600 1.800 1.000 ) obj O201 /* O2\O201.SUF C17 NO M3 */
+	}
+	{	mov (   827     0   -25 ) rotz(    0 ) roty(  -62 ) rotx(  180 )
+		scal ( 0.121 0.372 0.156 ) obj OT02 /* OT\OT02.SUF C20 NO M2 */
+	}
+}

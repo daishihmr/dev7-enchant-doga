@@ -1,0 +1,37 @@
+/*							Parts Assembler
+                                  Version 1.3
+Parts: 
+	P3\P310.SUF
+	P3\P309.SUF
+Info:
+	DisplayOffset: ( -40.000 -20.000 -38.000 )
+	DisplayScale: 0.125000000000
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 20
+	RotSpacing: 5
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 )  12  69 -70 )
+	{	mov (   738  -432   881 ) eye deg( 60 ) }
+	{	mov (   147   428   186 ) target }
+	{	mov (  -271   520   180 ) rotz(  180 ) roty(  -27 ) rotx(  -90 )
+		scal ( 0.700 1.000 2.900 ) obj P310 /* P3\P310.SUF C19 M3 M5 */
+	}
+	{	mov (   -25   259   300 ) rotz(   90 ) roty(   90 ) rotx(    0 )
+		scal ( 1.300 -1.000 2.100 ) obj P310 /* P3\P310.SUF C2D T21 M4 */
+	}
+	{	mov (   -85   399    36 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.100 5.800 1.300 ) obj P309 /* P3\P309.SUF C2D T21 M4 */
+	}
+	{	mov (   240   300   152 ) rotz( -123 ) roty(   70 ) rotx(  -43 )
+		scal ( 0.600 1.700 1.000 ) obj P310 /* P3\P310.SUF C19 M3 M5 */
+	}
+	{	mov (   240   500   152 ) rotz(  123 ) roty(   70 ) rotx(   43 )
+		scal ( 0.600 -1.700 1.000 ) obj P310 /* P3\P310.SUF C19 M3 M5 */
+	}
+}

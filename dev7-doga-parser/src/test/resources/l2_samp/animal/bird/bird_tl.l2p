@@ -1,0 +1,31 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	W1\W114.SUF
+	OT\OT02.SUF
+Info:
+	DisplayOffset: (   0.000   0.000   0.000 )
+	DisplayScale: 0.088388347648
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 0
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -70  -5 -70 )
+	{	mov (   690  -909   584 ) eye deg( 60 ) }
+	{	mov (  -128  -201   -40 ) target }
+	{	mov (  -600     0   150 ) rotz(  180 ) roty(    0 ) rotx(   90 )
+		scal ( 1.000 1.000 1.300 ) obj W114 /* W1\W114.SUF C14 T9 M3 */
+	}
+	{	mov (  -200     0    50 ) rotz(  -10 ) roty(   10 ) rotx(   90 )
+		scal ( 1.000 0.600 0.500 ) obj OT02 /* OT\OT02.SUF C14 T9 M3 */
+	}
+	{	mov (  -200     0    50 ) rotz(   10 ) roty(   10 ) rotx(  -90 )
+		scal ( 1.000 -0.600 0.500 ) obj OT02 /* OT\OT02.SUF C14 T9 M3 */
+	}
+}

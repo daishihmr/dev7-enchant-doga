@@ -1,0 +1,42 @@
+/*							Parts Assembler
+                                  Version 1.3
+Parts: 
+	P3\P314.SUF
+	P3\P310.SUF
+	P3\P311.SUF
+	P3\P308.SUF
+Info:
+	DisplayOffset: (  -2.828 -124.451 -172.534 )
+	DisplayScale: 0.176776695297
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 20
+	RotSpacing: 5
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -44  54  70 )
+	{	mov (  1264   462   971 ) eye deg( 60 ) }
+	{	mov (  -100   594  1269 ) target }
+	{	mov (    60   569   963 ) rotz(  180 ) roty(    0 ) rotx( -167 )
+		scal ( 0.345 0.500 1.000 ) obj P314 /* P3\P314.SUF C2D T21 M4 */
+	}
+	{	mov (   160   580  1480 ) rotz(   90 ) roty(    0 ) rotx(  -90 )
+		scal ( 1.000 0.900 2.200 ) obj P310 /* P3\P310.SUF C19 M2 M5 */
+	}
+	{	mov (   160   580  1480 ) rotz(   90 ) roty(    0 ) rotx(  -90 )
+		scal ( 1.000 0.900 -0.700 ) obj P311 /* P3\P311.SUF C19 M2 M5 */
+	}
+	{	mov (   -60   580  1480 ) rotz(   90 ) roty(    0 ) rotx(  -90 )
+		scal ( 1.000 0.900 1.000 ) obj P311 /* P3\P311.SUF C19 M2 M5 */
+	}
+	{	mov (    60   640  1476 ) rotz(  -90 ) roty(   88 ) rotx(  180 )
+		scal ( 1.700 1.000 1.692 ) obj P308 /* P3\P308.SUF C19 M3 M5 */
+	}
+	{	mov (    59   620  1380 ) rotz(   90 ) roty(   85 ) rotx(  180 )
+		scal ( 1.100 0.800 2.147 ) obj P308 /* P3\P308.SUF C1 M1 M5 */
+	}
+}

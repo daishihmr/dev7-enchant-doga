@@ -1,0 +1,24 @@
+/*							Parts Assembler
+                                  Version 1.3
+Parts: 
+	RB\RB12.SUF
+Info:
+	DisplayOffset: ( -33.941 -158.392 -260.215 )
+	DisplayScale: 0.353553390593
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 0
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 20
+	RotSpacing: 5
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -21  67  70 )
+	{	mov (   700   200   641 ) eye deg( 60 ) }
+	{	mov (  -100   617   645 ) target }
+	{	mov (    95   595   743 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 1.080 1.080 1.080 ) obj rb12 /* RB\RB12.SUF C1 M1 M5 */
+	}
+}

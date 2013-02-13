@@ -1,0 +1,37 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	P1\P103.SUF
+	JT\JT13.SUF
+Info:
+	DisplayOffset: (  14.142   0.000 -113.137 )
+	DisplayScale: 0.176776695296
+	MeshFlag: 1
+	MeshSpacing: 250
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 0
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 )  70   8 -70 )
+	{	mov (  -912 -1061  1513 ) eye deg( 60 ) }
+	{	mov (  -207  -153   853 ) target }
+	{	mov (   140     0   817 ) rotz(    0 ) roty(   90 ) rotx(    0 )
+		scal ( 4.536 1.386 1.260 ) obj P103 /* P1\P103.SUF C2 T19 M4 */
+	}
+	{	mov (     0     0   626 ) rotz(    0 ) roty(   90 ) rotx(    0 )
+		scal ( 1.260 1.260 1.260 ) obj JT13 /* JT\JT13.SUF C5B T19 M4 */
+	}
+	{	mov (   146     0   542 ) rotz(    0 ) roty(  -90 ) rotx(    0 )
+		scal ( -1.764 1.386 1.260 ) obj P103 /* P1\P103.SUF C5D T19 M4 */
+	}
+	{	mov (  -141     0   817 ) rotz(    0 ) roty(  -90 ) rotx(    0 )
+		scal ( -4.536 1.386 1.260 ) obj P103 /* P1\P103.SUF C2 T19 M4 */
+	}
+	{	mov (  -146     0   539 ) rotz(    0 ) roty(   90 ) rotx(    0 )
+		scal ( 1.764 1.420 1.260 ) obj P103 /* P1\P103.SUF C5D T19 M4 */
+	}
+}

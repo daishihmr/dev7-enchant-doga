@@ -1,0 +1,738 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	P1\P103.SUF
+	P3\P301.SUF
+	P2\P205.SUF
+	P2\P207.SUF
+	P2\P202.SUF
+	P2\P208.SUF
+	T1\T111.SUF
+Info:
+	DisplayOffset: (  48.000  55.000 -104.000 )
+	DisplayScale: 0.062500000000
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 0
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -12 -69 -70 )
+	{	mov ( -1784  2695  2545 ) eye deg( 60 ) }
+	{	mov (   721  -875  1014 ) target }
+	{	mov (   418 -1383  1996 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   395 -1386  1998 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1416 -1167  2016 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1439 -1164  2014 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   737 -1152  2014 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   714 -1155  2016 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1180  -874  1998 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1199  -872  1998 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1124  -864  1996 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1102  -867  1998 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   900  -878  1998 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   923  -874  1996 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   995  -873  1998 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   974  -876  1998 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   908 -1316  2422 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   929 -1312  2422 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   852 -1304  2421 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   830 -1306  2422 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1024 -1311  2422 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1046 -1308  2421 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1118 -1306  2422 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1097 -1310  2422 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1272 -1310  2422 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1294 -1306  2422 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1222 -1306  2421 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1199 -1310  2422 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   814 -1011  2002 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   810  -990  2002 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   810 -1062  2001 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   814 -1084  2002 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   731 -1518  2418 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   728 -1496  2416 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   728 -1424  2418 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   731 -1444  2418 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   748 -1620  2422 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   744 -1599  2422 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   743 -1671  2421 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   746 -1694  2422 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1414  -862  1251 ) rotz(  -51 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1388  -862  1251 ) rotz(  -55 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1478  -862  1252 ) rotz(  -55 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1504  -862  1251 ) rotz(  -51 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   653  -862  1248 ) rotz(  -51 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   674  -860  1248 ) rotz(  -51 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   602  -860  1246 ) rotz(  -51 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   580  -862  1248 ) rotz(  -51 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   947  -858  1251 ) rotz(  -55 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   972  -858  1249 ) rotz(  -55 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1058  -858  1249 ) rotz(  -55 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1031  -858  1251 ) rotz(  -55 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1217  -860  1252 ) rotz(  -55 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1244  -860  1251 ) rotz(  -55 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1158  -860  1249 ) rotz(  -55 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1132  -860  1251 ) rotz(  -55 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   882  -856  1248 ) rotz(  -55 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   857  -856  1249 ) rotz(  -55 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1379 -1090  1536 ) rotz(  -90 ) roty(  -90 ) rotx(    0 )
+		scal ( 0.824 1.910 3.609 ) obj P301 /* P3\P301.SUF C10 T21 M2 */
+	}
+	{	mov (   782 -1056  1530 ) rotz(  -90 ) roty(  -90 ) rotx(    0 )
+		scal ( 0.784 1.914 2.880 ) obj P301 /* P3\P301.SUF C10 T21 M2 */
+	}
+	{	mov (   132 -1636  1536 ) rotz(  180 ) roty(  -90 ) rotx(    0 )
+		scal ( 1.124 -2.646 3.726 ) obj P301 /* P3\P301.SUF C10 T21 M2 */
+	}
+	{	mov (   458 -1636  1938 ) rotz(   90 ) roty(    0 ) rotx(    0 )
+		scal ( 2.206 -1.720 1.616 ) obj P205 /* P2\P205.SUF C1 T25 M4 */
+	}
+	{	mov (   270 -1626  2179 ) rotz(  180 ) roty(  -90 ) rotx(    0 )
+		scal ( 0.824 -1.910 3.726 ) obj P301 /* P3\P301.SUF C10 T21 M2 */
+	}
+	{	mov (  1052 -1268  2202 ) rotz(  -90 ) roty(  -90 ) rotx(    0 )
+		scal ( 0.824 1.910 3.726 ) obj P301 /* P3\P301.SUF C10 T21 M2 */
+	}
+	{	mov (  1052 -1072  1938 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 2.206 1.720 1.616 ) obj P205 /* P2\P205.SUF C1 T25 M4 */
+	}
+	{	mov (  1052 -1636  2482 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 6.000 6.000 1.992 ) obj P207 /* P2\P207.SUF C10 T21 M1 */
+	}
+	{	mov (  1332 -1636  2727 ) rotz(    0 ) roty(  -90 ) rotx(    0 )
+		scal ( 0.906 1.910 6.031 ) obj P301 /* P3\P301.SUF C10 T21 M2 */
+	}
+	{	mov (  1052 -1636  2337 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 3.000 3.000 1.716 ) obj P205 /* P2\P205.SUF C1 T25 M4 */
+	}
+	{	mov (  1052 -1636  2100 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 7.500 7.500 3.045 ) obj P202 /* P2\P202.SUF C10 T21 M1 */
+	}
+	{	mov (  1052 -1636  1956 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 4.500 4.500 1.716 ) obj P205 /* P2\P205.SUF C1 T25 M4 */
+	}
+	{	mov (  1052 -1636  1752 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 9.000 9.000 2.745 ) obj P202 /* P2\P202.SUF C10 T21 M1 */
+	}
+	{	mov (  1052 -1636  1573 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 6.000 6.000 1.716 ) obj P205 /* P2\P205.SUF C1 T25 M4 */
+	}
+	{	mov (  1052 -1636  1387 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 10.500 10.500 2.450 ) obj P202 /* P2\P202.SUF C10 T21 M1 */
+	}
+	{	mov ( -1870   -72    -5 ) rotz(  180 ) roty(    0 ) rotx(    0 )
+		scal ( 1.497 7.755 4.570 ) obj P208 /* P2\P208.SUF C1 T4 M1 */
+	}
+	{	mov ( -1750   104   556 ) rotz( -145 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov ( -1750    78   555 ) rotz( -145 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov ( -1750  -171   558 ) rotz( -145 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov ( -1750  -198   556 ) rotz( -145 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov ( -1750  -284   558 ) rotz( -145 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov ( -1750  -256   559 ) rotz( -145 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov ( -1750   -70   558 ) rotz( -145 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov ( -1750   -98   556 ) rotz( -145 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov ( -1750   -12   556 ) rotz( -145 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov ( -1750    14   558 ) rotz( -145 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov ( -1770   386   555 ) rotz( -141 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov ( -1766   363   553 ) rotz( -141 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov ( -1766   291   555 ) rotz( -141 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov ( -1770   312   555 ) rotz( -141 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov ( -1752  -543   558 ) rotz( -141 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov ( -1752  -518   559 ) rotz( -145 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov ( -1870   510   682 ) rotz(   90 ) roty(  -90 ) rotx(    0 )
+		scal ( 0.206 0.711 15.152 ) obj P301 /* P3\P301.SUF C10 T21 M2 */
+	}
+	{	mov ( -1752  -428   558 ) rotz( -145 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov ( -1752  -453   558 ) rotz( -141 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov ( -1874  -128   514 ) rotz(  -90 ) roty(    0 ) rotx(    0 )
+		scal ( 6.070 0.945 1.530 ) obj P205 /* P2\P205.SUF C1 T25 M4 */
+	}
+	{	mov ( -1544  -693   559 ) rotz(   38 ) roty(   89 ) rotx(  128 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov ( -1570  -693   559 ) rotz(   38 ) roty(   89 ) rotx(  128 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov ( -1500  -954    -6 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 4.338 3.892 4.570 ) obj P208 /* P2\P208.SUF C1 T4 M1 */
+	}
+	{	mov ( -1432  -759   514 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 3.818 0.432 1.501 ) obj P205 /* P2\P205.SUF C1 T25 M4 */
+	}
+	{	mov ( -1830  -657   678 ) rotz(  180 ) roty(  -90 ) rotx(    0 )
+		scal ( 0.162 0.543 8.123 ) obj P301 /* P3\P301.SUF C10 T21 M2 */
+	}
+	{	mov ( -1646  -693   559 ) rotz(   38 ) roty(   89 ) rotx(  128 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov ( -1621  -693   559 ) rotz(   38 ) roty(   89 ) rotx(  128 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   238  -660   559 ) rotz(   38 ) roty(   89 ) rotx(  128 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   263  -660   559 ) rotz(   38 ) roty(   89 ) rotx(  128 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   -62  -664   556 ) rotz(   38 ) roty(   89 ) rotx(  128 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   -88  -664   556 ) rotz(   38 ) roty(   89 ) rotx(  128 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1268   656   498 ) rotz(   90 ) roty(    0 ) rotx(    0 )
+		scal ( 6.070 1.752 1.530 ) obj P205 /* P2\P205.SUF C1 T25 M4 */
+	}
+	{	mov (  1066   260   556 ) rotz(  -39 ) roty(   89 ) rotx(  141 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1066   285   556 ) rotz(  -35 ) roty(   89 ) rotx(  145 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1367  -202   699 ) rotz(  -90 ) roty(  -90 ) rotx(    0 )
+		scal ( 0.616 2.013 15.152 ) obj P301 /* P3\P301.SUF C10 T21 M2 */
+	}
+	{	mov (  1066   195   555 ) rotz(  -35 ) roty(   89 ) rotx(  145 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1066   170   556 ) rotz(  -39 ) roty(   89 ) rotx(  141 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1080  1062   561 ) rotz(  -39 ) roty(   89 ) rotx(  141 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1076  1040   561 ) rotz(  -39 ) roty(   89 ) rotx(  141 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1076  1113   562 ) rotz(  -39 ) roty(   89 ) rotx(  141 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1079  1136   561 ) rotz(  -39 ) roty(   89 ) rotx(  141 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1060   762   558 ) rotz(  -35 ) roty(   89 ) rotx(  145 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1060   736   559 ) rotz(  -35 ) roty(   89 ) rotx(  145 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1060   652   559 ) rotz(  -35 ) roty(   89 ) rotx(  145 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1060   678   558 ) rotz(  -35 ) roty(   89 ) rotx(  145 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1060   492   556 ) rotz(  -35 ) roty(   89 ) rotx(  145 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1060   466   558 ) rotz(  -35 ) roty(   89 ) rotx(  145 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1060   552   559 ) rotz(  -35 ) roty(   89 ) rotx(  145 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1060   578   558 ) rotz(  -35 ) roty(   89 ) rotx(  145 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1060   826   561 ) rotz(  -35 ) roty(   89 ) rotx(  145 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1060   852   559 ) rotz(  -35 ) roty(   89 ) rotx(  145 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1274   573    -5 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 2.590 9.117 4.570 ) obj P208 /* P2\P208.SUF C1 T4 M1 */
+	}
+	{	mov ( -1010  -382   559 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  -985  -382   558 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  -736  -382   559 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  -710  -382   558 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  -625  -382   558 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  -650  -382   559 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  -836  -382   559 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  -811  -382   558 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  -895  -382   558 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  -920  -382   559 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1052 -1636     1 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 10.500 10.500 11.250 ) obj P208 /* P2\P208.SUF C1 T4 M1 */
+	}
+	{	mov (  1052 -1636  1212 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 7.500 7.500 1.716 ) obj P205 /* P2\P205.SUF C1 T25 M4 */
+	}
+	{	mov ( -1294  -386   559 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov ( -1272  -382   558 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov ( -1198  -382   558 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov ( -1220  -387   559 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  -328  -388   558 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  -354  -388   559 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   338  -222   558 ) rotz(    0 ) roty(   89 ) rotx( -180 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   335  -244   553 ) rotz(    0 ) roty(   89 ) rotx( -180 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   342  -162   553 ) rotz(    0 ) roty(  -89 ) rotx(    0 )
+		scal ( 0.399 -0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  -818  -490   210 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.987 -0.314 0.183 ) obj P205 /* P2\P205.SUF C20 T6 M2 */
+	}
+	{	mov ( -1008  -444   210 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.582 -0.314 0.183 ) obj P205 /* P2\P205.SUF C9 T6 M2 */
+	}
+	{	mov (  -680  -446   210 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.582 -0.314 0.183 ) obj P205 /* P2\P205.SUF C20 T6 M2 */
+	}
+	{	mov (  -996  -444   210 ) rotz(    0 ) roty(    0 ) rotx(   90 )
+		scal ( 0.790 -1.704 0.118 ) obj P205 /* P2\P205.SUF C20 T6 M2 */
+	}
+	{	mov (  -656  -434   204 ) rotz(    0 ) roty(    0 ) rotx(   90 )
+		scal ( 0.790 -1.704 0.118 ) obj P205 /* P2\P205.SUF C20 T6 M2 */
+	}
+	{	mov (  -944  -422   210 ) rotz(    0 ) roty(  -90 ) rotx(    0 )
+		scal ( 2.361 -0.314 0.183 ) obj P205 /* P2\P205.SUF C20 T6 M2 */
+	}
+	{	mov (  -726  -423   210 ) rotz(    0 ) roty(  -90 ) rotx(    0 )
+		scal ( 2.361 -0.314 0.183 ) obj P205 /* P2\P205.SUF C20 T6 M2 */
+	}
+	{	mov (  -834  -579   210 ) rotz(    0 ) roty(    0 ) rotx(   90 )
+		scal ( 2.361 -1.910 0.261 ) obj P205 /* P2\P205.SUF C20 T6 M2 */
+	}
+	{	mov (  -818  -448    -6 ) rotz(  180 ) roty(    0 ) rotx(  180 )
+		scal ( 2.361 -1.010 0.519 ) obj P205 /* P2\P205.SUF C20 T6 M2 */
+	}
+	{	mov (  -816  -474   402 ) rotz(  180 ) roty(    0 ) rotx(  180 )
+		scal ( 2.361 -1.010 0.681 ) obj P205 /* P2\P205.SUF C20 T6 M2 */
+	}
+	{	mov ( -1100  -500   246 ) rotz(    0 ) roty(   90 ) rotx(    0 )
+		scal ( 2.361 -1.010 0.825 ) obj P205 /* P2\P205.SUF C20 T6 M2 */
+	}
+	{	mov (  -560  -500   222 ) rotz(    0 ) roty(   90 ) rotx(    0 )
+		scal ( 2.361 1.010 0.825 ) obj P205 /* P2\P205.SUF C20 T6 M2 */
+	}
+	{	mov ( -1255  -669     6 ) rotz(  -90 ) roty(    0 ) rotx(    0 )
+		scal ( 4.373 2.359 4.570 ) obj P208 /* P2\P208.SUF C1 T4 M1 */
+	}
+	{	mov ( -1070  -448   486 ) rotz(   90 ) roty(  -74 ) rotx(   90 )
+		scal ( 0.219 0.940 4.850 ) obj P301 /* P3\P301.SUF C10 T21 M2 */
+	}
+	{	mov ( -1495  -582   717 ) rotz(  180 ) roty(  -90 ) rotx(    0 )
+		scal ( 0.616 2.013 13.294 ) obj P301 /* P3\P301.SUF C10 T21 M2 */
+	}
+	{	mov (  -384  -692     6 ) rotz(  -90 ) roty(    0 ) rotx(    0 )
+		scal ( 4.373 2.415 4.570 ) obj P208 /* P2\P208.SUF C1 T4 M1 */
+	}
+	{	mov (  -818  -585   498 ) rotz( -180 ) roty(    0 ) rotx(    0 )
+		scal ( 5.950 1.752 1.530 ) obj P205 /* P2\P205.SUF C1 T25 M4 */
+	}
+	{	mov (   346  -136   558 ) rotz(    0 ) roty(  -89 ) rotx(    0 )
+		scal ( 0.399 -0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   352  -664   648 ) rotz(  -90 ) roty(  -90 ) rotx(    0 )
+		scal ( 0.122 0.543 7.047 ) obj P301 /* P3\P301.SUF C10 T21 M2 */
+	}
+	{	mov (  -264  -606   666 ) rotz(  180 ) roty(  -90 ) rotx(    0 )
+		scal ( 0.162 0.543 8.123 ) obj P301 /* P3\P301.SUF C10 T21 M2 */
+	}
+	{	mov (   334  -224   696 ) rotz(  180 ) roty(  -90 ) rotx(    0 )
+		scal ( 0.616 2.013 10.676 ) obj P301 /* P3\P301.SUF C10 T21 M2 */
+	}
+	{	mov (   742  -292   384 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 3.858 3.388 2.556 ) obj P205 /* P2\P205.SUF C1 T25 M4 */
+	}
+	{	mov (   107  -730   514 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 3.818 0.432 1.501 ) obj P205 /* P2\P205.SUF C1 T25 M4 */
+	}
+	{	mov (   720  -282    -5 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 4.884 4.518 4.570 ) obj P208 /* P2\P208.SUF C1 T4 M1 */
+	}
+	{	mov (   134  -938    -6 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 4.338 3.892 4.570 ) obj P208 /* P2\P208.SUF C1 T4 M1 */
+	}
+	{	mov (   -68   160    -6 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 18.538 14.516 18.538 ) obj P103 /* P1\P103.SUF C20 T8 M1 */
+	}
+	{	mov (  -444  -388   559 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  -418  -388   558 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   516    66   558 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   491    66   559 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   668    63   558 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   694    63   558 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   778    63   558 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   752    63   558 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   938    63   558 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   964    63   558 ) rotz(  -38 ) roty(  -89 ) rotx(  -52 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   264 -1857  1249 ) rotz(   35 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   266 -1832  1248 ) rotz(   35 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   266 -1582  1251 ) rotz(   35 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   266 -1556  1249 ) rotz(   35 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   266 -1470  1251 ) rotz(   35 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   266 -1497  1252 ) rotz(   35 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   266 -1683  1251 ) rotz(   35 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   266 -1656  1249 ) rotz(   35 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   266 -1742  1249 ) rotz(   35 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   266 -1767  1251 ) rotz(   35 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   440 -2072  1647 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   430 -2049  1645 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   430 -1977  1647 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   432 -1998  1647 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   252 -1210  1251 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   252 -1236  1252 ) rotz(   35 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   251 -1326  1251 ) rotz(   35 ) roty(  -89 ) rotx(  -35 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   252 -1300  1251 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   260 -1989  1255 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   257 -1968  1255 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   257 -2040  1254 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   260 -2062  1255 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   434 -1182  1638 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   431 -1161  1638 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   431 -1233  1636 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   434 -1256  1638 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   260 -1692  1969 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   257 -1671  1969 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   257 -1743  1968 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   268 -1766  1969 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   278 -1590  1969 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   268 -1568  1968 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   268 -1496  1969 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   270 -1516  1969 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   580 -1946  2017 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   590 -1968  2019 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   592 -1293  2011 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   581 -1270  2010 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   737 -1869  2418 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   734 -1846  2416 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   734 -1774  2418 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   737 -1796  2418 ) rotz(   39 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   496 -1392  1998 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   518 -1389  1996 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1031  -945  1638 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1054  -942  1636 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1126  -940  1638 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1104  -945  1638 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1552  -909  1642 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (  1572  -906  1642 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   598  -932  1636 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (   575  -934  1638 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+	{	mov (   776 -1638  2742 ) rotz(    0 ) roty(  -90 ) rotx(    0 )
+		scal ( 1.297 1.297 1.297 ) obj T111 /* T1\T111.SUF C16 NO M3 */
+	}
+	{	mov (  1253 -1644  2742 ) rotz( -180 ) roty(  -90 ) rotx(    0 )
+		scal ( 1.297 1.297 1.297 ) obj T111 /* T1\T111.SUF C16 NO M3 */
+	}
+	{	mov (  1296  1269   555 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.066 0.726 ) obj P103 /* P1\P103.SUF C2 NO M2 */
+	}
+	{	mov (  1274  1266   556 ) rotz(  -50 ) roty(  -89 ) rotx(  -39 )
+		scal ( 0.399 0.231 0.726 ) obj P103 /* P1\P103.SUF C3 NO M2 */
+	}
+}

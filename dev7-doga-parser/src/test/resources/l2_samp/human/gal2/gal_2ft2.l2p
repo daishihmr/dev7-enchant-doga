@@ -1,0 +1,24 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	AN\AN10.SUF
+Info:
+	DisplayOffset: (  12.000   0.000 -12.000 )
+	DisplayScale: 0.250000000000
+	MeshFlag: 1
+	MeshSpacing: 250
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 0
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -69  13  70 )
+	{	mov (   544   350   -13 ) eye deg( 60 ) }
+	{	mov (   232   136    -9 ) target }
+	{	mov (     0     0     0 ) rotz(    0 ) roty(    1 ) rotx(    0 )
+		scal ( 0.375 0.628 0.519 ) obj an10 /* AN\AN10.SUF C20 NO M4 */
+	}
+}

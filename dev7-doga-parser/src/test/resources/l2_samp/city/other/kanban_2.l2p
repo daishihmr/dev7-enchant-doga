@@ -1,0 +1,66 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	JT\JT13.SUF
+	P1\P103.SUF
+	P3\P301.SUF
+	P2\P201.SUF
+Info:
+	DisplayOffset: ( -49.937   4.000 -88.000 )
+	DisplayScale: 0.249999999999
+	MeshFlag: 1
+	MeshSpacing: 100
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 0
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -70   6 -70 )
+	{	mov (   813   848   602 ) eye deg( 60 ) }
+	{	mov (    31   189   296 ) target }
+	{	mov (    -9   385   245 ) rotz(    0 ) roty(   90 ) rotx(    0 )
+		scal ( 0.481 -0.481 0.481 ) obj JT13 /* JT\JT13.SUF C5B T19 M4 */
+	}
+	{	mov (    51     1   244 ) rotz(    0 ) roty(   90 ) rotx(    0 )
+		scal ( 0.721 4.614 0.481 ) obj P103 /* P1\P103.SUF C10 T27 M3 */
+	}
+	{	mov (    48     1   318 ) rotz(    0 ) roty(   90 ) rotx(    0 )
+		scal ( 2.019 4.614 0.481 ) obj P103 /* P1\P103.SUF C1 NO M3 */
+	}
+	{	mov (    -9  -384   245 ) rotz(    0 ) roty(   90 ) rotx(    0 )
+		scal ( 0.481 0.481 0.481 ) obj JT13 /* JT\JT13.SUF C5B T19 M4 */
+	}
+	{	mov (    46   425   515 ) rotz(    0 ) roty(   63 ) rotx(    0 )
+		scal ( 0.010 0.010 1.050 ) obj P301 /* P3\P301.SUF C1 NO M3 */
+	}
+	{	mov (   128   423   550 ) rotz( -163 ) roty(   48 ) rotx( -150 )
+		scal ( 0.157 0.157 0.157 ) obj P201 /* P2\P201.SUF C1 NO M3 */
+	}
+	{	mov (   128  -423   550 ) rotz(  163 ) roty(   48 ) rotx(  150 )
+		scal ( 0.157 -0.157 0.157 ) obj P201 /* P2\P201.SUF C1 NO M3 */
+	}
+	{	mov (    46  -425   515 ) rotz(    0 ) roty(   63 ) rotx(    0 )
+		scal ( 0.010 -0.010 1.050 ) obj P301 /* P3\P301.SUF C1 NO M3 */
+	}
+	{	mov (    52  -205   515 ) rotz(    0 ) roty(   63 ) rotx(    0 )
+		scal ( 0.010 -0.010 1.050 ) obj P301 /* P3\P301.SUF C1 NO M3 */
+	}
+	{	mov (   133  -203   550 ) rotz(  163 ) roty(   48 ) rotx(  150 )
+		scal ( 0.157 -0.157 0.157 ) obj P201 /* P2\P201.SUF C1 NO M3 */
+	}
+	{	mov (   133   203   550 ) rotz( -163 ) roty(   48 ) rotx( -150 )
+		scal ( 0.157 0.157 0.157 ) obj P201 /* P2\P201.SUF C1 NO M3 */
+	}
+	{	mov (    52   205   515 ) rotz(    0 ) roty(   63 ) rotx(    0 )
+		scal ( 0.010 0.010 1.050 ) obj P301 /* P3\P301.SUF C1 NO M3 */
+	}
+	{	mov (    48     4   515 ) rotz(    0 ) roty(   63 ) rotx(    0 )
+		scal ( 0.010 0.010 1.050 ) obj P301 /* P3\P301.SUF C1 NO M3 */
+	}
+	{	mov (   130     2   550 ) rotz(  178 ) roty(   50 ) rotx(  179 )
+		scal ( 0.157 0.157 0.157 ) obj P201 /* P2\P201.SUF C1 NO M3 */
+	}
+}

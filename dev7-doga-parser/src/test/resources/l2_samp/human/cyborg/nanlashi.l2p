@@ -1,0 +1,43 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	SL\SL01.SUF
+	RB\RB07.SUF
+	RB\RB08.SUF
+	RB\RB03.SUF
+	P2\P212.SUF
+Info:
+	DisplayOffset: (   0.000   0.000   0.000 )
+	DisplayScale: 0.125000000000
+	MeshFlag: 1
+	MeshSpacing: 200
+	ShowStatus: 0
+	ShowAttr: 1
+	GridFlag: 0
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -20 -67 -70 )
+	{	mov (  -277  1190   -94 ) eye deg( 60 ) }
+	{	mov (   330    55  -274 ) target }
+	{	mov (   559     0  -434 ) rotz(  180 ) roty(  -15 ) rotx(  -90 )
+		scal ( 0.673 0.786 0.653 ) obj SL01 /* SL\SL01.SUF C2D T11 M5 */
+	}
+	{	mov (   514     0  -285 ) rotz(  -90 ) roty(    0 ) rotx(  -15 )
+		scal ( 0.428 0.786 -0.786 ) obj rb07 /* RB\RB07.SUF C5 T11 M5 */
+	}
+	{	mov (   424     0  -268 ) rotz(   89 ) roty(    0 ) rotx(   30 )
+		scal ( 0.453 0.693 0.576 ) obj rb08 /* RB\RB08.SUF C5 T11 M5 */
+	}
+	{	mov (    19     0  -191 ) rotz(    0 ) roty(   15 ) rotx(    0 )
+		scal ( -0.744 0.786 0.786 ) obj rb03 /* RB\RB03.SUF C1 NO M4 */
+	}
+	{	mov (   -36     0  -154 ) rotz(  180 ) roty(    1 ) rotx(  180 )
+		scal ( 0.379 0.379 2.019 ) obj P212 /* P2\P212.SUF C5 T11 M5 */
+	}
+	{	mov (  -112     0  -217 ) rotz(   91 ) roty(    0 ) rotx(   66 )
+		scal ( 0.550 0.550 0.550 ) obj rb07 /* RB\RB07.SUF C5 T11 M5 */
+	}
+}

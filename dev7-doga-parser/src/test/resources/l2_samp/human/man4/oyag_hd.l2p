@@ -1,0 +1,42 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	AN\AN05.SUF
+	P1\P101.SUF
+	P1\P114.SUF
+	P4\P413.SUF
+Info:
+	DisplayOffset: (   0.000   0.000  32.000 )
+	DisplayScale: 0.500000000001
+	MeshFlag: 1
+	MeshSpacing: 250
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 1
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -65  26  70 )
+	{	mov (   597   255   -12 ) eye deg( 60 ) }
+	{	mov (     0     0     0 ) target }
+	{	mov (    16     0     3 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.535 0.593 0.461 ) obj an05 /* AN\AN05.SUF C20 NO M4 */
+	}
+	{	mov (   185   -16   -93 ) rotz( -107 ) roty(   37 ) rotx(  -99 )
+		scal ( 0.503 0.180 0.503 ) obj P101 /* P1\P101.SUF C3 NO M4 */
+	}
+	{	mov (   185    16   -93 ) rotz(  107 ) roty(   37 ) rotx(   99 )
+		scal ( 0.503 -0.180 0.503 ) obj P101 /* P1\P101.SUF C3 NO M4 */
+	}
+	{	mov (    16  -179    -2 ) rotz(   49 ) roty(  -42 ) rotx(  -92 )
+		scal ( 0.253 0.353 0.210 ) obj P114 /* P1\P114.SUF C20 NO M4 */
+	}
+	{	mov (    16   179    -2 ) rotz(  -49 ) roty(  -42 ) rotx(   92 )
+		scal ( 0.253 -0.353 0.210 ) obj P114 /* P1\P114.SUF C20 NO M4 */
+	}
+	{	mov (   141     0  -160 ) rotz(   65 ) roty(  -35 ) rotx(  130 )
+		scal ( 0.251 0.251 0.251 ) obj P413 /* P4\P413.SUF C5 NO M4 */
+	}
+}

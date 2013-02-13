@@ -1,0 +1,49 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	P3\P310.SUF
+	P2\P205.SUF
+Info:
+	DisplayOffset: (   2.000   0.000 -144.000 )
+	DisplayScale: 0.125000000000
+	MeshFlag: 1
+	MeshSpacing: 250
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 0
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 )  55 -44 -70 )
+	{	mov (  -380  3290  2952 ) eye deg( 60 ) }
+	{	mov (    21  -430   609 ) target }
+	{	mov (  -104     2    17 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 5.268 5.268 15.494 ) obj P310 /* P3\P310.SUF C3 NO M3 */
+	}
+	{	mov (  -104     2   265 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 5.423 5.423 1.784 ) obj P310 /* P3\P310.SUF C19B T8 M4 */
+	}
+	{	mov (  -104     2   512 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 5.423 5.423 1.784 ) obj P310 /* P3\P310.SUF C19B T8 M4 */
+	}
+	{	mov (  -104     2   759 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 5.423 5.423 1.784 ) obj P310 /* P3\P310.SUF C19B T8 M4 */
+	}
+	{	mov (  -104     2  1009 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 5.423 5.423 1.784 ) obj P310 /* P3\P310.SUF C19B T8 M4 */
+	}
+	{	mov (  -104     2  1256 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 5.423 5.423 1.784 ) obj P310 /* P3\P310.SUF C19B T8 M4 */
+	}
+	{	mov (  -104     2  1504 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 5.423 5.423 1.784 ) obj P310 /* P3\P310.SUF C19B T8 M4 */
+	}
+	{	mov (  -650   411  1988 ) rotz(   90 ) roty(    0 ) rotx(    0 )
+		scal ( 1.550 1.550 4.033 ) obj P205 /* P2\P205.SUF C19B T8 M4 */
+	}
+	{	mov (  -104     2     3 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 5.423 5.423 1.784 ) obj P310 /* P3\P310.SUF C19B T8 M4 */
+	}
+}

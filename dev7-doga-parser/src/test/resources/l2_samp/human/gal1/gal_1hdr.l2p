@@ -1,0 +1,24 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	P1\P111.SUF
+Info:
+	DisplayOffset: (   0.000  16.000 -24.000 )
+	DisplayScale: 0.500000000000
+	MeshFlag: 1
+	MeshSpacing: 250
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 0
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -59  38 -70 )
+	{	mov (   314    22   211 ) eye deg( 60 ) }
+	{	mov (   -43   -51    50 ) target }
+	{	mov (     0     0     0 ) rotz(    0 ) roty(    0 ) rotx(   27 )
+		scal ( 0.591 0.470 1.615 ) obj P111 /* P1\P111.SUF C22 NO M1 */
+	}
+}

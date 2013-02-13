@@ -1,0 +1,31 @@
+/*							Parts Assembler
+                                  Version 1.1
+Parts: 
+	P2\P215.SUF
+	P1\P114.SUF
+Info:
+	DisplayOffset: (   0.000   0.000  88.000 )
+	DisplayScale: 0.500000000000
+	MeshFlag: 1
+	MeshSpacing: 250
+	ShowStatus: 1
+	ShowAttr: 1
+	GridFlag: 0
+	GridSpacing: 50
+	RotSpacing: 10
+*/
+fram
+{
+	light pal( rgb ( 1.00 1.00 1.00 ) -52  47 -70 )
+	{	mov (   551     8    80 ) eye deg( 60 ) }
+	{	mov (   340    -3     2 ) target }
+	{	mov (     0     0     0 ) rotz(    0 ) roty(    0 ) rotx( -180 )
+		scal ( 0.404 0.315 1.483 ) obj P215 /* P2\P215.SUF C2 NO M4 */
+	}
+	{	mov (     0     0    -1 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.404 0.314 0.322 ) obj P114 /* P1\P114.SUF C2 NO M4 */
+	}
+	{	mov (     0     0  -295 ) rotz(    0 ) roty(    0 ) rotx(    0 )
+		scal ( 0.404 0.314 -0.402 ) obj P114 /* P1\P114.SUF C2 NO M4 */
+	}
+}
