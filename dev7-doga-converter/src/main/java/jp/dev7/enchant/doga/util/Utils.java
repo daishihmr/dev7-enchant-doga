@@ -213,6 +213,13 @@ public class Utils {
             return common;
         }
 
+        // dataの中？
+        final File data = new File(Props.dataDir(), path);
+        logger.debug("    " + data.getAbsolutePath() + " ?");
+        if (data.exists()) {
+            return data;
+        }
+
         logger.warn("not found " + path);
         return null;
     }

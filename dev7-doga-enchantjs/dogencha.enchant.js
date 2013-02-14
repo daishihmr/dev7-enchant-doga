@@ -90,6 +90,7 @@
         };
 
         if (endsWith(src, ".fsc.js")    || endsWith(src, ".l2p.js")    || endsWith(src, ".l3p.js") ||
+            endsWith(src, ".fsc.json")  || endsWith(src, ".l2p.json")  || endsWith(src, ".l3p.json") ||
             endsWith(src, ".fsc.jsonp") || endsWith(src, ".l2p.jsonp") || endsWith(src, ".l3p.jsonp")) {
             console.info("request unit [" + src + "]");
             ajaxFunc(src, function(data) {
@@ -104,7 +105,7 @@
                     throw e;
                 }
             });
-        } else if (endsWith(src, ".l3c.js") || endsWith(src, ".l3c.jsonp")) {
+        } else if (endsWith(src, ".l3c.js") || endsWith(src, ".l3c.json") || endsWith(src, ".l3c.jsonp")) {
             console.info("request l3c [" + src + "]");
             ajaxFunc(src, function(data) {
                 console.info("load l3c [" + src + "] ok");
@@ -136,7 +137,7 @@
             origJsonpLoadFunc.apply(this, arguments);
         }
     };
-    enchant.Game._loadFuncs["js"] = function(src, callback, ext) {
+    enchant.Game._loadFuncs["js"] = enchant.Game._loadFuncs["json"] = function(src, callback, ext) {
         loadFunc(this, src, callback, ext, getJson);
     };
 

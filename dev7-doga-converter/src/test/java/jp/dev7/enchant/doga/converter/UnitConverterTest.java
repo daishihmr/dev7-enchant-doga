@@ -1,14 +1,20 @@
 package jp.dev7.enchant.doga.converter;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import jp.dev7.enchant.doga.converter.UnitConverter;
 import jp.dev7.enchant.doga.parser.util.FileTreeUtil;
 import jp.dev7.enchant.doga.parser.util.Props;
 import junit.framework.TestCase;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import ch.qos.logback.classic.Level;
+
 import com.google.common.base.Function;
+import com.google.common.io.NullOutputStream;
 
 public class UnitConverterTest extends TestCase {
 
@@ -43,6 +49,9 @@ public class UnitConverterTest extends TestCase {
     }
 
     public void testAllFsc() throws Exception {
+        final Logger logger = LoggerFactory.getLogger("jp.dev7");
+        ((ch.qos.logback.classic.Logger) logger).setLevel(Level.WARN);
+
         final UnitConverter conv = new UnitConverter();
         FileTreeUtil.scanDir(Props.dataDir(), new Function<File, Void>() {
             @Override
@@ -51,8 +60,13 @@ public class UnitConverterTest extends TestCase {
                         || input.getName().toLowerCase().endsWith(".l2p")
                         || input.getName().toLowerCase().endsWith(".l3p")) {
                     try {
-                        conv.convert(input);
+
+                        conv.convertAndWriteJson(
+                                input,
+                                new BufferedOutputStream(new NullOutputStream()));
+
                     } catch (Exception e) {
+                        logger.error(input.getAbsolutePath());
                         e.printStackTrace();
                     }
                 }
