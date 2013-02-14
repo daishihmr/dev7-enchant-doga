@@ -23,6 +23,7 @@ public class L3cFileParserTest extends TestCase {
 
         assertNotNull(l3c);
         assertNotNull(l3c.getRootUnit());
+
         assertEquals(l3c.getRootUnit().getName(), "MSHip");
         assertEquals(l3c.getRootUnit().getL3pFileName(), "HeavyMS\\MSHip.l3p");
         assertEquals(l3c.getRootUnit().getMov()[0], 0.0);
@@ -43,20 +44,40 @@ public class L3cFileParserTest extends TestCase {
 
         L3cObj bust = waist.getChildUnits().get(0);
         assertEquals(bust.getName(), "MSBust");
-        assertEquals(bust.getPosePointer(), 36);
 
         L3cObj joint = bust.getChildUnits().get(3);
         assertEquals(joint.getName(), "MSJoint");
         assertEquals(joint.getUnitMov()[0], 907.0);
         assertEquals(joint.getUnitMov()[1], -13.0);
-        assertEquals(joint.getUnitMov()[2], -0.0);
-        assertEquals(joint.getPosePointer(), 102);
+        assertEquals(joint.getUnitMov()[2], 0.0);
 
         L3cObj gun = joint.getChildUnits().get(0);
         assertEquals(gun.getName(), "MSGun");
         assertEquals(gun.getRotz(), 180.0);
         assertEquals(gun.getRoty(), -50.0);
         assertEquals(gun.getRotx(), -90.0);
+    }
+
+    public void testParse2() throws Exception {
+
+        L3cFileParser parser = new L3cFileParser();
+        L3c l3c = parser.parse(new File(Props.dataDir(),
+                "l3_samp/connection/human/robot/ms_kage.l3c"));
+
+        L3cObj kgleg = l3c.getRootUnit().getChildUnits().get(0).getChildUnits()
+                .get(0);
+        assertEquals(kgleg.getName(), "kgleg");
+        assertEquals(kgleg.getPosePointer(), 12);
+    }
+
+    public void testParse3() throws Exception {
+
+        L3cFileParser parser = new L3cFileParser();
+        L3c l3c = parser.parse(new File(Props.dataDir(),
+                "l3_samp/connection/human/woman/idol.l3c"));
+
+        assertNotNull(l3c);
+        assertNotNull(l3c.getRootUnit());
     }
 
 }
