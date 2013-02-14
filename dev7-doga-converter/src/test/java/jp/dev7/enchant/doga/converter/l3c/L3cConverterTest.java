@@ -3,8 +3,9 @@ package jp.dev7.enchant.doga.converter.l3c;
 import java.io.File;
 import java.io.PrintWriter;
 
-import jp.dev7.enchant.doga.converter.EnchantArticulated;
-import jp.dev7.enchant.doga.parser.Props;
+import jp.dev7.enchant.doga.converter.L3cConverter;
+import jp.dev7.enchant.doga.converter.data.EnchantArticulated;
+import jp.dev7.enchant.doga.parser.util.Props;
 import junit.framework.TestCase;
 import net.arnx.jsonic.JSON;
 

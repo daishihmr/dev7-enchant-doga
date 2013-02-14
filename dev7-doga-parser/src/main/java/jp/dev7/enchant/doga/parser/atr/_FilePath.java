@@ -1,6 +1,6 @@
 package jp.dev7.enchant.doga.parser.atr;
 
-class _FilePath implements _Value {
+public class _FilePath implements _Value {
 
     private String value;
 

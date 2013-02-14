@@ -3,7 +3,7 @@ package jp.dev7.enchant.doga.converter.unit;
 import java.io.File;
 import java.io.FileWriter;
 
-import jp.dev7.enchant.doga.converter.unit.UnitConverter;
+import jp.dev7.enchant.doga.converter.UnitConverter;
 import junit.framework.TestCase;
 
 public class Debug2Test extends TestCase {

@@ -6,14 +6,15 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.List;
 
-import jp.dev7.enchant.doga.converter.EnchantMesh;
-import jp.dev7.enchant.doga.parser.atr.data.Atr;
-import jp.dev7.enchant.doga.parser.atr.data.Color;
+import jp.dev7.enchant.doga.converter.SufConverter;
+import jp.dev7.enchant.doga.converter.data.EnchantMesh;
+import jp.dev7.enchant.doga.parser.SufFileParser;
+import jp.dev7.enchant.doga.parser.data.Atr;
+import jp.dev7.enchant.doga.parser.data.Color;
 import jp.dev7.enchant.doga.parser.data.Obj;
 import jp.dev7.enchant.doga.parser.data.Prim;
 import jp.dev7.enchant.doga.parser.data.Suf;
 import jp.dev7.enchant.doga.parser.data.Vertex;
-import jp.dev7.enchant.doga.parser.suf.SufFileParser;
 import junit.framework.TestCase;
 import net.arnx.jsonic.JSON;
 

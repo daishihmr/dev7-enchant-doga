@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import jp.dev7.enchant.doga.parser.Props;
-import jp.dev7.enchant.doga.parser.atr.AtrFileParser;
+import jp.dev7.enchant.doga.parser.AtrFileParser;
 import jp.dev7.enchant.doga.parser.atr.autogen.ParseException;
-import jp.dev7.enchant.doga.parser.atr.data.Atr;
-import jp.dev7.enchant.doga.parser.atr.data.Color;
+import jp.dev7.enchant.doga.parser.data.Atr;
+import jp.dev7.enchant.doga.parser.data.Color;
+import jp.dev7.enchant.doga.parser.util.Props;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Maps;
@@ -19,6 +19,8 @@ public class L2pAtrs {
     private final Map<String, Color> colors = Maps.newHashMap();
     private final Map<String, String> textures = Maps.newHashMap();
     private final Map<String, Atr> materials = Maps.newHashMap();
+
+    private final Map<String, Atr> cache = Maps.newHashMap();
 
     public L2pAtrs() throws ParseException, IOException {
         colors.put("C1", new Color(1.00, 1.00, 1.00));
@@ -134,16 +136,21 @@ public class L2pAtrs {
     }
 
     public Atr getAtr(String name) {
+        if (cache.get(name) != null) {
+            return cache.get(name);
+        }
+
         final String[] names = name.split(":");
 
         final Atr result = materials.get(names[2]).clone();
+        result.setName(name);
+
         result.setCol(colors.get(names[0]));
         if (textures.get(names[1]) != null) {
             result.setColorMap1(textures.get(names[1]));
         }
 
-        result.setName(name);
-
+        cache.put(name, result);
         return result;
     }
 }

@@ -11,13 +11,13 @@ import javax.vecmath.Matrix4d;
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3d;
 
-import jp.dev7.enchant.doga.converter.EnchantMesh;
-import jp.dev7.enchant.doga.converter.EnchantTexture;
-import jp.dev7.enchant.doga.parser.Props;
-import jp.dev7.enchant.doga.parser.atr.data.Atr;
-import jp.dev7.enchant.doga.parser.atr.data.Color;
+import jp.dev7.enchant.doga.converter.data.EnchantMesh;
+import jp.dev7.enchant.doga.converter.data.EnchantTexture;
+import jp.dev7.enchant.doga.parser.data.Atr;
+import jp.dev7.enchant.doga.parser.data.Color;
 import jp.dev7.enchant.doga.parser.data.Prim;
 import jp.dev7.enchant.doga.parser.data.Vertex;
+import jp.dev7.enchant.doga.parser.util.Props;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

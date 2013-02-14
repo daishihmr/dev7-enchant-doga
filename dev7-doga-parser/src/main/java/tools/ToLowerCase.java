@@ -2,7 +2,7 @@ package tools;
 
 import java.io.File;
 
-import jp.dev7.enchant.doga.parser.utils.Utils;
+import jp.dev7.enchant.doga.parser.util.FileTreeUtil;
 
 import com.google.common.base.Function;
 
@@ -22,7 +22,7 @@ public class ToLowerCase {
                 return null;
             }
         };
-        Utils.scanDir(new File(args[0]), toLowerCase, toLowerCase);
+        FileTreeUtil.scanDir(new File(args[0]), toLowerCase, toLowerCase);
     }
 
 }

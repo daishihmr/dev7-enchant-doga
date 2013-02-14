@@ -3,8 +3,9 @@ package jp.dev7.enchant.doga.converter.unit;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import jp.dev7.enchant.doga.parser.Props;
-import jp.dev7.enchant.doga.parser.utils.Utils;
+import jp.dev7.enchant.doga.converter.UnitConverter;
+import jp.dev7.enchant.doga.parser.util.FileTreeUtil;
+import jp.dev7.enchant.doga.parser.util.Props;
 import junit.framework.TestCase;
 
 import com.google.common.base.Function;
@@ -43,7 +44,7 @@ public class UnitConverterTest extends TestCase {
 
     public void testAllFsc() throws Exception {
         final UnitConverter conv = new UnitConverter();
-        Utils.scanDir(Props.dataDir(), new Function<File, Void>() {
+        FileTreeUtil.scanDir(Props.dataDir(), new Function<File, Void>() {
             @Override
             public Void apply(File input) {
                 if (input.getName().toLowerCase().endsWith(".fsc")
