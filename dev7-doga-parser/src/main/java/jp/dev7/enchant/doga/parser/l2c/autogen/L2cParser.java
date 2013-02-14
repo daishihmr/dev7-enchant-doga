@@ -9,7 +9,7 @@ public class L2cParser/*@bgen(jjtree)*/implements L2cParserTreeConstants, L2cPar
   boolean jjtc000 = true;
   jjtree.openNodeScope(jjtn000);
     try {
-      L3c();
+      L2c();
             jjtree.closeNodeScope(jjtn000, true);
             jjtc000 = false;
             {if (true) return jjtn000;}
@@ -35,7 +35,7 @@ public class L2cParser/*@bgen(jjtree)*/implements L2cParserTreeConstants, L2cPar
     throw new Error("Missing return statement in function");
   }
 
-  final public void L3c() throws ParseException {
+  final public void L2c() throws ParseException {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case FUNC_START:
       OuterStart();
@@ -785,8 +785,8 @@ public class L2cParser/*@bgen(jjtree)*/implements L2cParserTreeConstants, L2cPar
           jj_la1[24] = jj_gen;
           break label_4;
         }
-        t = jj_consume_token(YEN);
-                        s += t.image;
+        Yens();
+                     s += "\u005c\u005c";
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
         case NAME:
           t = jj_consume_token(NAME);
@@ -814,12 +814,41 @@ public class L2cParser/*@bgen(jjtree)*/implements L2cParserTreeConstants, L2cPar
       jjtc000 = false;
         jjtn000.nodeValue = s;
         {if (true) return s;}
+    } catch (Throwable jjte000) {
+          if (jjtc000) {
+            jjtree.clearNodeScope(jjtn000);
+            jjtc000 = false;
+          } else {
+            jjtree.popNode();
+          }
+          if (jjte000 instanceof RuntimeException) {
+            {if (true) throw (RuntimeException)jjte000;}
+          }
+          if (jjte000 instanceof ParseException) {
+            {if (true) throw (ParseException)jjte000;}
+          }
+          {if (true) throw (Error)jjte000;}
     } finally {
           if (jjtc000) {
             jjtree.closeNodeScope(jjtn000, true);
           }
     }
     throw new Error("Missing return statement in function");
+  }
+
+  final public void Yens() throws ParseException {
+    label_5:
+    while (true) {
+      jj_consume_token(YEN);
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case YEN:
+        ;
+        break;
+      default:
+        jj_la1[27] = jj_gen;
+        break label_5;
+      }
+    }
   }
 
   /** Generated Token Manager. */
@@ -831,7 +860,7 @@ public class L2cParser/*@bgen(jjtree)*/implements L2cParserTreeConstants, L2cPar
   public Token jj_nt;
   private int jj_ntk;
   private int jj_gen;
-  final private int[] jj_la1 = new int[27];
+  final private int[] jj_la1 = new int[28];
   static private int[] jj_la1_0;
   static private int[] jj_la1_1;
   static {
@@ -839,10 +868,10 @@ public class L2cParser/*@bgen(jjtree)*/implements L2cParserTreeConstants, L2cPar
       jj_la1_init_1();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {0x100,0x0,0x10000000,0x20000000,0x4000000,0x10000000,0x20000000,0x10000000,0x20000000,0x10000000,0x20000000,0x10000000,0x20000000,0x8000,0x200,0x10010000,0x400000,0x1000000,0x1000000,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,};
+      jj_la1_0 = new int[] {0x100,0x0,0x10000000,0x20000000,0x4000000,0x10000000,0x20000000,0x10000000,0x20000000,0x10000000,0x20000000,0x10000000,0x20000000,0x8000,0x200,0x10010000,0x400000,0x1000000,0x1000000,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,};
    }
    private static void jj_la1_init_1() {
-      jj_la1_1 = new int[] {0x40,0x100,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x204,0x204,0x4,0xc00,0x4,0x4,0xc00,0x8,0xc00,0x4,};
+      jj_la1_1 = new int[] {0x40,0x80,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x104,0x104,0x4,0x600,0x4,0x4,0x600,0x8,0x600,0x4,0x8,};
    }
 
   /** Constructor with InputStream. */
@@ -856,7 +885,7 @@ public class L2cParser/*@bgen(jjtree)*/implements L2cParserTreeConstants, L2cPar
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 27; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 28; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -871,7 +900,7 @@ public class L2cParser/*@bgen(jjtree)*/implements L2cParserTreeConstants, L2cPar
     jj_ntk = -1;
     jjtree.reset();
     jj_gen = 0;
-    for (int i = 0; i < 27; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 28; i++) jj_la1[i] = -1;
   }
 
   /** Constructor. */
@@ -881,7 +910,7 @@ public class L2cParser/*@bgen(jjtree)*/implements L2cParserTreeConstants, L2cPar
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 27; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 28; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -892,7 +921,7 @@ public class L2cParser/*@bgen(jjtree)*/implements L2cParserTreeConstants, L2cPar
     jj_ntk = -1;
     jjtree.reset();
     jj_gen = 0;
-    for (int i = 0; i < 27; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 28; i++) jj_la1[i] = -1;
   }
 
   /** Constructor with generated Token Manager. */
@@ -901,7 +930,7 @@ public class L2cParser/*@bgen(jjtree)*/implements L2cParserTreeConstants, L2cPar
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 27; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 28; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -911,7 +940,7 @@ public class L2cParser/*@bgen(jjtree)*/implements L2cParserTreeConstants, L2cPar
     jj_ntk = -1;
     jjtree.reset();
     jj_gen = 0;
-    for (int i = 0; i < 27; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 28; i++) jj_la1[i] = -1;
   }
 
   private Token jj_consume_token(int kind) throws ParseException {
@@ -962,12 +991,12 @@ public class L2cParser/*@bgen(jjtree)*/implements L2cParserTreeConstants, L2cPar
   /** Generate ParseException. */
   public ParseException generateParseException() {
     jj_expentries.clear();
-    boolean[] la1tokens = new boolean[44];
+    boolean[] la1tokens = new boolean[43];
     if (jj_kind >= 0) {
       la1tokens[jj_kind] = true;
       jj_kind = -1;
     }
-    for (int i = 0; i < 27; i++) {
+    for (int i = 0; i < 28; i++) {
       if (jj_la1[i] == jj_gen) {
         for (int j = 0; j < 32; j++) {
           if ((jj_la1_0[i] & (1<<j)) != 0) {
@@ -979,7 +1008,7 @@ public class L2cParser/*@bgen(jjtree)*/implements L2cParserTreeConstants, L2cPar
         }
       }
     }
-    for (int i = 0; i < 44; i++) {
+    for (int i = 0; i < 43; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;

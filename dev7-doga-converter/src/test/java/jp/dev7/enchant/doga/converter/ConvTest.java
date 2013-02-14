@@ -30,7 +30,7 @@ public class ConvTest extends TestCase {
     }
 
     public void testConvUv() throws Exception {
-        File file = Utils.dogaPartsFile("mecha/sfnozzle/noz06.suf", null);
+        File file = Utils.findSufFile("mecha/sfnozzle/noz06.suf", null);
         System.out.println(file.getAbsolutePath());
         Suf suf = new SufFileParser().parseSufAtr(file);
 

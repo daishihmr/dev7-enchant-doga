@@ -53,7 +53,6 @@ TOKEN:
     |   <COM: ",">
     |   <EQUAL: "==">
     |   <FUNC_START: "#func">
-    |   <CONNECTION_FUNCNAME: "CONNECTION_FUNCNAME">
     |   <FUNC_END: "#endfunc">
     |   <NUM: ("-")?(["0"-"9"])+("."(["0"-"9"])+)?(("E-")(["0"-"9"])+)?>
     |   <NAME: [         "a"-"z", "A"-"Z", "_", "#", ".", ":", "-", "\u3040"-"\u309f", "\u30a0"-"\u30ff", "\u4e00"-"\u9fff", "\uff10"-"\uff19", "\uff21"-"\uff3a", "\uff41"-"\uff5a", "\uff1f", "\uff01", "\uff08", "\uff09"]
@@ -65,10 +64,10 @@ TOKEN:
 ASTStart Start():
 {}
 {
-    L3c() { return jjtThis; }
+    L2c() { return jjtThis; }
 }
 
-void L3c() #void:
+void L2c() #void:
 {}
 {
     (OuterStart() | <FRAM>)
@@ -281,7 +280,7 @@ String FileName():
 	        |   t = <NUMNAME> { s += t.image; }
 	    )
 	    (
-            t = <YEN> { s += t.image; }
+            Yens() { s += "\\"; }
             (
                     t = <NAME> { s += t.image; }
                 |   t = <NUMNAME> { s += t.image; }
@@ -292,4 +291,10 @@ String FileName():
         jjtThis.nodeValue = s;
         return s;
     }
+}
+
+void Yens() #void:
+{}
+{
+    (<YEN>)+
 }

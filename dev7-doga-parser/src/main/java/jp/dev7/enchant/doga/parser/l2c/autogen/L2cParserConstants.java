@@ -75,15 +75,13 @@ public interface L2cParserConstants {
   /** RegularExpression Id. */
   int FUNC_START = 38;
   /** RegularExpression Id. */
-  int CONNECTION_FUNCNAME = 39;
+  int FUNC_END = 39;
   /** RegularExpression Id. */
-  int FUNC_END = 40;
+  int NUM = 40;
   /** RegularExpression Id. */
-  int NUM = 41;
+  int NAME = 41;
   /** RegularExpression Id. */
-  int NAME = 42;
-  /** RegularExpression Id. */
-  int NUMNAME = 43;
+  int NUMNAME = 42;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -131,7 +129,6 @@ public interface L2cParserConstants {
     "\",\"",
     "\"==\"",
     "\"#func\"",
-    "\"CONNECTION_FUNCNAME\"",
     "\"#endfunc\"",
     "<NUM>",
     "<NAME>",

@@ -106,7 +106,7 @@ public class UnitConverter {
             final List<Obj> destObjects = Lists.newArrayList();
 
             LOG.debug("part" + (++i) + " : " + part.getName());
-            File sufFile = Utils.dogaPartsFile(part.getSufFileName(), baseFile);
+            File sufFile = Utils.findSufFile(part.getSufFileName(), baseFile);
             if (sufFile == null) {
                 continue;
             }

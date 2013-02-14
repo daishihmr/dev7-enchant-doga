@@ -176,7 +176,7 @@ public class Utils {
         }
     }
 
-    public static File dogaPartsFile(String path, File baseFile)
+    public static File findSufFile(String path, File baseFile)
             throws IOException {
         logger.debug("dogaPartsFile: " + path);
         if (path == null || path.equals("")) {
@@ -189,13 +189,6 @@ public class Utils {
             }
         }
         logger.debug("find " + path);
-
-        // 絶対パス？
-        final File cur = new File(path);
-        logger.debug("    " + cur.getAbsolutePath() + " ?");
-        if (cur.exists()) {
-            return cur;
-        }
 
         // 相対パス？
         if (baseFile != null) {
@@ -218,6 +211,53 @@ public class Utils {
         logger.debug("    " + data.getAbsolutePath() + " ?");
         if (data.exists()) {
             return data;
+        }
+
+        // 絶対パス？
+        final File cur = new File(path);
+        logger.debug("    " + cur.getAbsolutePath() + " ?");
+        if (cur.exists()) {
+            return cur;
+        }
+
+        logger.warn("not found " + path);
+        return null;
+    }
+
+    public static File findL2pFile(String path, File l2cFile)
+            throws IOException {
+        if (path == null || path.equals("")) {
+            return null;
+        }
+        path = path.toLowerCase();
+        if (File.separatorChar != '\\') {
+            while (path.contains("\\")) {
+                path = path.replace('\\', File.separatorChar);
+            }
+        }
+        logger.debug("find " + path);
+
+        // 相対パス？
+        if (l2cFile != null) {
+            final File rel = new File(l2cFile.getParentFile(), path);
+            logger.debug("    " + rel.getAbsolutePath() + " ?");
+            if (rel.exists()) {
+                return rel;
+            }
+        }
+
+        // data/mechaの中？
+        final File data = new File(Props.dataDir(), "mecha/" + path);
+        logger.debug("    " + data.getAbsolutePath() + " ?");
+        if (data.exists()) {
+            return data;
+        }
+
+        // 絶対パス？
+        final File cur = new File(path);
+        logger.debug("    " + cur.getAbsolutePath() + " ?");
+        if (cur.exists()) {
+            return cur;
         }
 
         logger.warn("not found " + path);

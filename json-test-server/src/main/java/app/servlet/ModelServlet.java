@@ -40,6 +40,8 @@ public class ModelServlet extends HttpServlet {
             } else if (name.toLowerCase().endsWith(".l2c")) {
 
                 // TODO
+                resp.sendError(404);
+                return;
 
             } else if (name.toLowerCase().endsWith(".l3c")) {
 
