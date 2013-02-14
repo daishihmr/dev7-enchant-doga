@@ -1,4 +1,4 @@
-package jp.dev7.enchant.doga.parser.pose.data;
+package jp.dev7.enchant.doga.parser.data;
 
 import java.util.List;
 

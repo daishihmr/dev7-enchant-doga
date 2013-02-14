@@ -1,9 +1,12 @@
-package jp.dev7.enchant.doga.parser.suf.data;
+package jp.dev7.enchant.doga.parser.data;
 
 import java.util.List;
 
 import com.google.common.collect.Lists;
 
+/**
+ * SUFファイル内の面データ(prim)に相当.
+ */
 public class Prim {
 
     private String atrName;

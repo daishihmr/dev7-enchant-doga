@@ -20,11 +20,11 @@ import jp.dev7.enchant.doga.converter.EnchantPoseUnit;
 import jp.dev7.enchant.doga.converter.EnchantUnit;
 import jp.dev7.enchant.doga.converter.suf.SufConverter;
 import jp.dev7.enchant.doga.converter.unit.UnitConverter;
+import jp.dev7.enchant.doga.parser.data.Connection;
+import jp.dev7.enchant.doga.parser.data.ConnectionObj;
+import jp.dev7.enchant.doga.parser.data.Pose;
 import jp.dev7.enchant.doga.parser.l3c.L3cFileParser;
-import jp.dev7.enchant.doga.parser.l3c.data.L3c;
-import jp.dev7.enchant.doga.parser.l3c.data.L3cObj;
 import jp.dev7.enchant.doga.parser.pose.PoseLineParser;
-import jp.dev7.enchant.doga.parser.pose.data.Pose;
 import jp.dev7.enchant.doga.util.Utils;
 import net.arnx.jsonic.JSON;
 
@@ -53,13 +53,13 @@ public class L3cConverter {
     public EnchantArticulated convert(File l3cFile) throws Exception {
         // L3Cファイルをパース
         final L3cFileParser p = new L3cFileParser();
-        final L3c l3c = p.parse(l3cFile);
+        final Connection l3c = p.parse(l3cFile);
 
         // ポーズデータの一時保存用
         final Map<String, List<double[]>> tempPoseMap = Maps.newHashMap();
 
         // モデルデータ
-        final L3cObj root = l3c.getRootUnit();
+        final ConnectionObj root = l3c.getRootUnit();
         final File baseDir = l3cFile.getParentFile();
         final UnitConverter l3pConverter = new UnitConverter();
         final List<double[]> initialPose = Lists.newArrayList();
@@ -152,7 +152,7 @@ public class L3cConverter {
         return new Quat4d(x * s, y * s, z * s, c);
     }
 
-    private EnchantUnit convert(L3cObj unit, UnitConverter l3pConverter,
+    private EnchantUnit convert(ConnectionObj unit, UnitConverter l3pConverter,
             File baseDir, List<double[]> initailPose) throws Exception {
         final EnchantUnit result = new EnchantUnit();
 
@@ -173,7 +173,7 @@ public class L3cConverter {
         result.setBasePosition(basePosition(unit));
         initailPose.add(initialPose(unit));
 
-        for (L3cObj child : unit.getChildUnits()) {
+        for (ConnectionObj child : unit.getChildUnits()) {
             result.getChildUnits().add(
                     convert(child, l3pConverter, baseDir, initailPose));
         }
@@ -181,8 +181,8 @@ public class L3cConverter {
         return result;
     }
 
-    private String l3pFileName(L3cObj unit) {
-        String result = unit.getL3pFileName().toLowerCase();
+    private String l3pFileName(ConnectionObj unit) {
+        String result = unit.getUnitFileName().toLowerCase();
         if (File.separatorChar != '\\') {
             while (result.indexOf('\\') >= 0) {
                 result = result.replace('\\', File.separatorChar);
@@ -191,7 +191,7 @@ public class L3cConverter {
         return result;
     }
 
-    private Matrix4d scale(L3cObj unit) {
+    private Matrix4d scale(ConnectionObj unit) {
         final Matrix4d result = Utils.getIdentity();
         result.m00 = unit.getUnitScal()[1]; // x
         result.m11 = unit.getUnitScal()[2]; // y
@@ -199,7 +199,7 @@ public class L3cConverter {
         return result;
     }
 
-    private Matrix4d mov(L3cObj unit) {
+    private Matrix4d mov(ConnectionObj unit) {
         final Matrix4d result = Utils.getIdentity();
         final Vector3d v = new Vector3d();
         v.x = unit.getUnitMov()[1] * SufConverter.C_RATE; // x
@@ -209,7 +209,7 @@ public class L3cConverter {
         return result;
     }
 
-    private double[] basePosition(L3cObj unit) {
+    private double[] basePosition(ConnectionObj unit) {
         return new double[] {
                 // mov
                 unit.getMov()[1] * SufConverter.C_RATE, // x
@@ -218,7 +218,7 @@ public class L3cConverter {
         };
     }
 
-    private double[] initialPose(L3cObj unit) {
+    private double[] initialPose(ConnectionObj unit) {
         return new double[] {
                 // rot
                 unit.getRoty() * Math.PI / 180, // x

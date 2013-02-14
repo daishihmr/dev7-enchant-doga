@@ -6,10 +6,10 @@ import java.io.UnsupportedEncodingException;
 import java.util.Set;
 
 import jp.dev7.enchant.doga.parser.Props;
+import jp.dev7.enchant.doga.parser.data.Obj;
+import jp.dev7.enchant.doga.parser.data.Prim;
+import jp.dev7.enchant.doga.parser.data.Suf;
 import jp.dev7.enchant.doga.parser.suf.autogen.ParseException;
-import jp.dev7.enchant.doga.parser.suf.data.Obj;
-import jp.dev7.enchant.doga.parser.suf.data.Prim;
-import jp.dev7.enchant.doga.parser.suf.data.Suf;
 import junit.framework.TestCase;
 
 import com.google.common.collect.Sets;

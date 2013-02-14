@@ -1,4 +1,4 @@
-package jp.dev7.enchant.doga.parser.l3c.data;
+package jp.dev7.enchant.doga.parser.data;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,15 +6,15 @@ import java.util.List;
 import com.google.common.collect.Lists;
 
 /**
- * L3Cファイル内のobjに相当.
+ * 多関節物体ファイル(*.l2c, *.l3c)内のobjに相当.
  */
-public class L3cObj {
+public class ConnectionObj {
 
-    private final List<L3cObj> childUnits = Lists.newArrayList();
+    private final List<ConnectionObj> childUnits = Lists.newArrayList();
 
     private String name;
 
-    private String l3pFileName;
+    private String unitFileName;
     private double[] mov = { 0, 0, 0 };
     private double rotz;
     private double roty;
@@ -25,7 +25,7 @@ public class L3cObj {
 
     private int posePointer;
 
-    public List<L3cObj> getChildUnits() {
+    public List<ConnectionObj> getChildUnits() {
         return childUnits;
     }
 
@@ -37,12 +37,12 @@ public class L3cObj {
         this.name = name;
     }
 
-    public String getL3pFileName() {
-        return l3pFileName;
+    public String getUnitFileName() {
+        return unitFileName;
     }
 
-    public void setL3pFileName(String l3pFileName) {
-        this.l3pFileName = l3pFileName;
+    public void setUnitFileName(String unitFileName) {
+        this.unitFileName = unitFileName;
     }
 
     public double[] getMov() {
@@ -103,7 +103,7 @@ public class L3cObj {
 
     @Override
     public String toString() {
-        return "Unit [l3pFileName=" + l3pFileName + ", mov="
+        return "Unit [l3pFileName=" + unitFileName + ", mov="
                 + Arrays.toString(mov) + ", rotz=" + rotz + ", roty=" + roty
                 + ", rotx=" + rotx + ", unitScal=" + Arrays.toString(unitScal)
                 + ", unitMov=" + Arrays.toString(unitMov) + "]";

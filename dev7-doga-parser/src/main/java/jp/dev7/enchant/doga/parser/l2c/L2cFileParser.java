@@ -1,4 +1,4 @@
-package jp.dev7.enchant.doga.parser.l3c;
+package jp.dev7.enchant.doga.parser.l2c;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,24 +6,24 @@ import java.io.InputStreamReader;
 
 import jp.dev7.enchant.doga.parser.data.Connection;
 import jp.dev7.enchant.doga.parser.data.ConnectionObj;
-import jp.dev7.enchant.doga.parser.l3c.autogen.ASTFileName;
-import jp.dev7.enchant.doga.parser.l3c.autogen.ASTFunc;
-import jp.dev7.enchant.doga.parser.l3c.autogen.ASTMov;
-import jp.dev7.enchant.doga.parser.l3c.autogen.ASTNum;
-import jp.dev7.enchant.doga.parser.l3c.autogen.ASTObj;
-import jp.dev7.enchant.doga.parser.l3c.autogen.ASTRotx;
-import jp.dev7.enchant.doga.parser.l3c.autogen.ASTRoty;
-import jp.dev7.enchant.doga.parser.l3c.autogen.ASTRotz;
-import jp.dev7.enchant.doga.parser.l3c.autogen.ASTScal;
-import jp.dev7.enchant.doga.parser.l3c.autogen.ASTStart;
-import jp.dev7.enchant.doga.parser.l3c.autogen.ASTText;
-import jp.dev7.enchant.doga.parser.l3c.autogen.ASTUnit;
-import jp.dev7.enchant.doga.parser.l3c.autogen.ASTUnitMov;
-import jp.dev7.enchant.doga.parser.l3c.autogen.L3cParser;
-import jp.dev7.enchant.doga.parser.l3c.autogen.L3cParserVisitor;
-import jp.dev7.enchant.doga.parser.l3c.autogen.SimpleNode;
+import jp.dev7.enchant.doga.parser.l2c.autogen.ASTFileName;
+import jp.dev7.enchant.doga.parser.l2c.autogen.ASTFunc;
+import jp.dev7.enchant.doga.parser.l2c.autogen.ASTMov;
+import jp.dev7.enchant.doga.parser.l2c.autogen.ASTNum;
+import jp.dev7.enchant.doga.parser.l2c.autogen.ASTObj;
+import jp.dev7.enchant.doga.parser.l2c.autogen.ASTRotx;
+import jp.dev7.enchant.doga.parser.l2c.autogen.ASTRoty;
+import jp.dev7.enchant.doga.parser.l2c.autogen.ASTRotz;
+import jp.dev7.enchant.doga.parser.l2c.autogen.ASTScal;
+import jp.dev7.enchant.doga.parser.l2c.autogen.ASTStart;
+import jp.dev7.enchant.doga.parser.l2c.autogen.ASTText;
+import jp.dev7.enchant.doga.parser.l2c.autogen.ASTUnit;
+import jp.dev7.enchant.doga.parser.l2c.autogen.ASTUnitMov;
+import jp.dev7.enchant.doga.parser.l2c.autogen.L2cParser;
+import jp.dev7.enchant.doga.parser.l2c.autogen.L2cParserVisitor;
+import jp.dev7.enchant.doga.parser.l2c.autogen.SimpleNode;
 
-public class L3cFileParser {
+public class L2cFileParser {
 
     public Connection parse(File file) throws Exception {
         final Connection result = new Connection();
@@ -31,10 +31,10 @@ public class L3cFileParser {
         final InputStreamReader in = new InputStreamReader(new FileInputStream(
                 file), "Shift_JIS");
 
-        final L3cParser parser = new L3cParser(in);
+        final L2cParser parser = new L2cParser(in);
         final ASTStart start = parser.Start();
 
-        final L3cParserVisitor visitor = new L3cParserVisitor() {
+        final L2cParserVisitor visitor = new L2cParserVisitor() {
 
             @Override
             public Object visit(ASTStart node, Object data) {

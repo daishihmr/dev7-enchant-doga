@@ -1,11 +1,11 @@
-package jp.dev7.enchant.doga.parser.suf.data;
+package jp.dev7.enchant.doga.parser.data;
 
 import java.util.List;
 
 import com.google.common.collect.Lists;
 
 /**
- * SUFファイル内のobjに相当.
+ * SUFファイル内のパーツ単体(obj)に相当.
  */
 public class Obj {
 

@@ -9,11 +9,11 @@ import java.util.List;
 import jp.dev7.enchant.doga.converter.EnchantMesh;
 import jp.dev7.enchant.doga.parser.atr.data.Atr;
 import jp.dev7.enchant.doga.parser.atr.data.Color;
+import jp.dev7.enchant.doga.parser.data.Obj;
+import jp.dev7.enchant.doga.parser.data.Prim;
+import jp.dev7.enchant.doga.parser.data.Suf;
+import jp.dev7.enchant.doga.parser.data.Vertex;
 import jp.dev7.enchant.doga.parser.suf.SufFileParser;
-import jp.dev7.enchant.doga.parser.suf.data.Obj;
-import jp.dev7.enchant.doga.parser.suf.data.Prim;
-import jp.dev7.enchant.doga.parser.suf.data.Suf;
-import jp.dev7.enchant.doga.parser.suf.data.Vertex;
 import junit.framework.TestCase;
 import net.arnx.jsonic.JSON;
 

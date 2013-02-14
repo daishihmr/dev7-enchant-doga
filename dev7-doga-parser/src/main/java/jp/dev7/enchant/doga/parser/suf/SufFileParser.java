@@ -11,6 +11,10 @@ import java.util.List;
 
 import jp.dev7.enchant.doga.parser.atr.AtrFileParser;
 import jp.dev7.enchant.doga.parser.atr.data.Atr;
+import jp.dev7.enchant.doga.parser.data.Obj;
+import jp.dev7.enchant.doga.parser.data.Prim;
+import jp.dev7.enchant.doga.parser.data.Suf;
+import jp.dev7.enchant.doga.parser.data.Vertex;
 import jp.dev7.enchant.doga.parser.suf.autogen.ASTAttrObj;
 import jp.dev7.enchant.doga.parser.suf.autogen.ASTAttribute;
 import jp.dev7.enchant.doga.parser.suf.autogen.ASTNormalX;
@@ -32,10 +36,6 @@ import jp.dev7.enchant.doga.parser.suf.autogen.ParseException;
 import jp.dev7.enchant.doga.parser.suf.autogen.SimpleNode;
 import jp.dev7.enchant.doga.parser.suf.autogen.SufParser;
 import jp.dev7.enchant.doga.parser.suf.autogen.SufParserVisitor;
-import jp.dev7.enchant.doga.parser.suf.data.Obj;
-import jp.dev7.enchant.doga.parser.suf.data.Prim;
-import jp.dev7.enchant.doga.parser.suf.data.Suf;
-import jp.dev7.enchant.doga.parser.suf.data.Vertex;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Maps;

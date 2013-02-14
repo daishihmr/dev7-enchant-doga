@@ -19,10 +19,10 @@ import jp.dev7.enchant.doga.parser.atr.AtrFileParser;
 import jp.dev7.enchant.doga.parser.atr.autogen.ParseException;
 import jp.dev7.enchant.doga.parser.atr.data.Atr;
 import jp.dev7.enchant.doga.parser.atr.data.Color;
-import jp.dev7.enchant.doga.parser.suf.data.Obj;
-import jp.dev7.enchant.doga.parser.suf.data.Prim;
-import jp.dev7.enchant.doga.parser.suf.data.Suf;
-import jp.dev7.enchant.doga.parser.suf.data.Vertex;
+import jp.dev7.enchant.doga.parser.data.Obj;
+import jp.dev7.enchant.doga.parser.data.Prim;
+import jp.dev7.enchant.doga.parser.data.Suf;
+import jp.dev7.enchant.doga.parser.data.Vertex;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

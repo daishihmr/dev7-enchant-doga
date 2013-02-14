@@ -1,5 +1,8 @@
-package jp.dev7.enchant.doga.parser.suf.data;
+package jp.dev7.enchant.doga.parser.data;
 
+/**
+ * SUFファイル内の頂点データに相当.
+ */
 public class Vertex implements Comparable<Vertex> {
 
     public double x;
