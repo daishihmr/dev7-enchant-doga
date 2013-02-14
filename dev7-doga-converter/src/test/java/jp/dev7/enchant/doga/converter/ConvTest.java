@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.List;
 
-import jp.dev7.enchant.doga.converter.SufConverter;
 import jp.dev7.enchant.doga.converter.data.EnchantMesh;
 import jp.dev7.enchant.doga.parser.SufFileParser;
 import jp.dev7.enchant.doga.parser.data.Suf;
@@ -31,7 +30,7 @@ public class ConvTest extends TestCase {
     }
 
     public void testConvUv() throws Exception {
-        File file = Utils.dogaPartsFile("mecha\\sfnozzle\\NOZ06.suf", null);
+        File file = Utils.dogaPartsFile("mecha/sfnozzle/noz06.suf", null);
         System.out.println(file.getAbsolutePath());
         Suf suf = new SufFileParser().parseSufAtr(file);
 
