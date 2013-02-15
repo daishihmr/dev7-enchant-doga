@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jp.dev7.enchant.doga.converter.L2cConverter;
 import jp.dev7.enchant.doga.converter.L3cConverter;
 import jp.dev7.enchant.doga.converter.UnitConverter;
 import jp.dev7.enchant.doga.parser.util.Props;
@@ -39,9 +40,7 @@ public class ModelServlet extends HttpServlet {
 
             } else if (name.toLowerCase().endsWith(".l2c")) {
 
-                // TODO
-                resp.sendError(404);
-                return;
+                new L2cConverter().convertAndWriteJson(file, resp.getWriter());
 
             } else if (name.toLowerCase().endsWith(".l3c")) {
 

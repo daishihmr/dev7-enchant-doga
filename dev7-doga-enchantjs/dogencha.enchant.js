@@ -105,7 +105,8 @@
                     throw e;
                 }
             });
-        } else if (endsWith(src, ".l3c.js") || endsWith(src, ".l3c.json") || endsWith(src, ".l3c.jsonp")) {
+        } else if (endsWith(src, ".l2c.js") || endsWith(src, ".l2c.json") || endsWith(src, ".l2c.jsonp") ||
+                   endsWith(src, ".l3c.js") || endsWith(src, ".l3c.json") || endsWith(src, ".l3c.jsonp")) {
             console.info("request l3c [" + src + "]");
             ajaxFunc(src, function(data) {
                 console.info("load l3c [" + src + "] ok");

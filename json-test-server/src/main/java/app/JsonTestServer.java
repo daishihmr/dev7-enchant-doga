@@ -1,5 +1,8 @@
 package app;
 
+import java.awt.Desktop;
+import java.net.URI;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
@@ -11,7 +14,7 @@ import app.servlet.ModelServlet;
 public class JsonTestServer {
 
     public static void main(String[] args) throws Exception {
-        String baseDir = ".";
+        String baseDir = "..";
         int port = 8080;
         for (int i = 0; i < args.length; i++) {
             if (args[i].equals("-b") || args[i].equals("--baseDir")) {
@@ -40,6 +43,10 @@ public class JsonTestServer {
         Server server = new Server(port);
         server.setHandler(handlers);
         server.start();
+
+        Desktop.getDesktop().browse(
+                new URI("http://localhost:" + port
+                        + "/json-test-server/index.html"));
     }
 
 }
