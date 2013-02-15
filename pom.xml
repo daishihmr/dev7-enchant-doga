@@ -9,6 +9,7 @@
 	<modules>
 		<module>dev7-doga-parser</module>
 		<module>dev7-doga-converter</module>
+		<module>json-test-server</module>
 	</modules>
 
 	<build>

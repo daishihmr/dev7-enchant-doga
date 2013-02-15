@@ -1,6 +1,6 @@
 package jp.dev7.enchant.doga.parser.atr;
 
-class _Num implements _Value {
+public class _Num implements _Value {
 
     private double value;
 

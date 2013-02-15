@@ -1,5 +1,5 @@
 package jp.dev7.enchant.doga.parser.atr;
 
-interface _Value {
+public interface _Value {
 
 }

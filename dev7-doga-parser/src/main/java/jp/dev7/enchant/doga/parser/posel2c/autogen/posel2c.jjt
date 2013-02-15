@@ -1,0 +1,88 @@
+options {
+    STATIC = false;
+    MULTI = true;
+    VISITOR = true;
+    NODE_EXTENDS = "jp.dev7.enchant.doga.parser.BaseNode";
+}
+
+PARSER_BEGIN(PoseL2cParser)
+package jp.dev7.enchant.doga.parser.posel2c.autogen;
+@SuppressWarnings("unused") public class PoseL2cParser {
+}
+PARSER_END(PoseL2cParser)
+
+SKIP:
+{
+    " " | "\r" | "\t" | "\n"
+}
+
+MORE: { "/*": COMMENT_TEXT }
+<COMMENT_TEXT> SPECIAL_TOKEN: { <COMMENT: "*/">: DEFAULT }
+<COMMENT_TEXT> MORE: { < ~[] > }
+
+TOKEN:
+{
+        <CM: ":">
+    |   <DQ: "\"">
+    |   <DATA_START: "(">
+    |   <DATA_END: ")">
+    |   <NUM: ("-")?(["0"-"9"])+("."(["0"-"9"])+)?(("E-")(["0"-"9"])+)?>
+    |   <NAME: [         "a"-"z", "A"-"Z", "_", "#", ".", ":", "-", "\u3040"-"\u309f", "\u30a0"-"\u30ff", "\u4e00"-"\u9fff", "\uff10"-"\uff19", "\uff21"-"\uff3a", "\uff41"-"\uff5a", "\uff1f", "\uff01", "\uff08", "\uff09"]
+              (["0"-"9", "a"-"z", "A"-"Z", "_", "#", ".", ":", "-", "\u3040"-"\u309f", "\u30a0"-"\u30ff", "\u4e00"-"\u9fff", "\uff10"-"\uff19", "\uff21"-"\uff3a", "\uff41"-"\uff5a", "\uff1f", "\uff01", "\uff08", "\uff09"])*>
+}
+
+ASTStart Start():
+{}
+{
+    Pose() { return jjtThis; }
+}
+
+void Pose():
+{}
+{
+    <NUM><CM>
+    Name()
+    <DATA_START>
+    <NUM> <NUM>
+    UnitMov()
+    (UnitRot())*
+    <DATA_END>
+}
+
+void UnitMov():
+{}
+{
+    <DATA_START>
+    Num() Num() Num()
+    <DATA_END>
+}
+
+void UnitRot():
+{}
+{
+    <DATA_START>
+    Num() Num() Num()
+    <DATA_END>
+}
+
+void Name():
+{
+    Token t;
+}
+{
+    (<DQ>)? t = <NAME> (<DQ>)? 
+    {
+        jjtThis.nodeValue = t.image;
+    }
+}
+
+void Num():
+{
+    Token t;
+}
+{
+    t = <NUM>
+    {
+        jjtThis.nodeValue = t.image;
+    }
+}

@@ -1,0 +1,300 @@
+options {
+    STATIC = false;
+    MULTI = true;
+    VISITOR = true;
+    NODE_EXTENDS = "jp.dev7.enchant.doga.parser.BaseNode";
+}
+
+PARSER_BEGIN(L2cParser)
+package jp.dev7.enchant.doga.parser.l2c.autogen;
+public class L2cParser {
+}
+PARSER_END(L2cParser)
+
+SKIP:
+{
+    " " | "\r" | "\t" | "\n"
+}
+
+MORE: { "/*": COMMENT_TEXT }
+<COMMENT_TEXT> SPECIAL_TOKEN: { <COMMENT: "*/">: DEFAULT }
+<COMMENT_TEXT> MORE: { < ~[] > }
+
+TOKEN:
+{
+        <FRAM: "fram">
+    |   <MOV: "mov">
+    |   <ROTZ: "rotz">
+    |   <ROTY: "roty">
+    |   <ROTX: "rotx">
+    |   <POSE: "pose">
+    |   <P: "p">
+    |   <SCAL: "scal">
+    |   <OBJ: "obj">
+    |   <LIGHT: "light">
+    |   <EYE: "eye">
+    |   <TARGET: "target">
+    |   <SELECTIVE: "Selective">
+    |   <DONE: "Done">
+    |   <SELECTIVEIF: "#if">
+    |   <SELECTIVEENDIF: "#endif">
+    |   <FUNCNAME: ( "deg" | "rgb" | "pal" )>
+    |   <PLUS: "+">
+    |   <BLOCK_START: "{">
+    |   <BLOCK_END: "}">
+    |   <PARAM_START: "(:">
+    |   <PARAM_END: ":)">
+    |   <DATA_START: "(">
+    |   <DATA_END: ")">
+    |   <INDEX_START: "[">
+    |   <INDEX_END: "]">
+    |   <DQ: "\"">
+    |   <YEN: "\\">
+    |   <COM: ",">
+    |   <EQUAL: "==">
+    |   <FUNC_START: "#func">
+    |   <FUNC_END: "#endfunc">
+    |   <NUM: ("-")?(["0"-"9"])+("."(["0"-"9"])+)?(("E-")(["0"-"9"])+)?>
+    |   <NAME: [         "a"-"z", "A"-"Z", "_", "#", ".", ":", "-", "\u3040"-"\u309f", "\u30a0"-"\u30ff", "\u4e00"-"\u9fff", "\uff10"-"\uff19", "\uff21"-"\uff3a", "\uff41"-"\uff5a", "\uff1f", "\uff01", "\uff08", "\uff09"]
+              (["0"-"9", "a"-"z", "A"-"Z", "_", "#", ".", ":", "-", "\u3040"-"\u309f", "\u30a0"-"\u30ff", "\u4e00"-"\u9fff", "\uff10"-"\uff19", "\uff21"-"\uff3a", "\uff41"-"\uff5a", "\uff1f", "\uff01", "\uff08", "\uff09"])*>
+    |   <NUMNAME: ["0"-"9"]
+              (["0"-"9", "a"-"z", "A"-"Z", "_", "#", ".", ":", "-", "\u3040"-"\u309f", "\u30a0"-"\u30ff", "\u4e00"-"\u9fff", "\uff10"-"\uff19", "\uff21"-"\uff3a", "\uff41"-"\uff5a", "\uff1f", "\uff01", "\uff08", "\uff09"])*>
+}
+
+ASTStart Start():
+{}
+{
+    L2c() { return jjtThis; }
+}
+
+void L2c() #void:
+{}
+{
+    (OuterStart() | <FRAM>)
+    <BLOCK_START>
+        Env()
+        Unit()
+    <BLOCK_END>
+    (OuterEnd())?
+}
+
+void OuterStart() #void:{}{ <FUNC_START> Name() <DATA_START><POSE><INDEX_START><INDEX_END><COM> <P><DATA_END> }
+void OuterEnd() #void:{}{ <FUNC_END> <DATA_START> <DATA_END> }
+
+void Env() #void:{}{ (<PARAM_START>)? Light() Eye() Target() (<PARAM_END>)? }
+void Light() #void:{}{ <LIGHT> Func() }
+void Eye() #void:{}{ <BLOCK_START> UnitMov() <EYE> Func() <BLOCK_END> }
+void Target() #void:{}{ <BLOCK_START> UnitMov() <TARGET> <BLOCK_END> }
+
+void Unit():
+{}
+{
+	<BLOCK_START>
+	Mov() Rotz() Roty() Rotx() Obj() (Unit())*
+	<BLOCK_END>
+}
+
+void Mov():
+{}
+{
+	<MOV>
+	<DATA_START>
+		(<PARAM_START>)?
+			Num() Num() Num()
+		(<PARAM_END>
+		<YEN>
+			<DATA_START><POSE><INDEX_START><DATA_START><P><PLUS> Num() <DATA_END><INDEX_END><DATA_END><COM>
+			<DATA_START><POSE><INDEX_START><DATA_START><P><PLUS> Num() <DATA_END><INDEX_END><DATA_END><COM>
+			<DATA_START><POSE><INDEX_START><DATA_START><P><PLUS> Num() <DATA_END><INDEX_END><DATA_END>
+		<YEN>)?
+	<DATA_END>
+}
+
+void Rotz():
+{}
+{
+	<ROTZ>
+	<DATA_START>
+		(<PARAM_START>)?
+			Num()
+		(<PARAM_END>
+		<YEN>
+			<POSE><INDEX_START><DATA_START><P><PLUS> Num() <DATA_END><INDEX_END>
+		<YEN>)?
+	<DATA_END>
+}
+
+void Roty():
+{}
+{
+	<ROTY>
+	<DATA_START>
+		(<PARAM_START>)?
+			Num()
+		(<PARAM_END>
+		<YEN>
+			<POSE><INDEX_START><DATA_START><P><PLUS> Num() <DATA_END><INDEX_END>
+		<YEN>)?
+	<DATA_END>
+}
+
+void Rotx():
+{}
+{
+	<ROTX>
+	<DATA_START>
+		(<PARAM_START>)?
+			Num()
+		(<PARAM_END>
+		<YEN>
+			<POSE><INDEX_START><DATA_START><P><PLUS> Num() <DATA_END><INDEX_END>
+		<YEN>)?
+	<DATA_END>
+}
+
+void Obj():
+{}
+{
+	<BLOCK_START>
+		(Scal())?
+		(UnitMov())?
+		(jjtThis.nodeValue = NormalObj() | jjtThis.nodeValue = SelectiveObj())
+	<BLOCK_END>
+}
+
+String NormalObj() #void:
+{
+    String result;
+}
+{
+	<OBJ> result = Name()
+	<PARAM_START>
+		FileName()
+	<PARAM_END>
+	{
+	    return result;
+	}
+}
+
+String SelectiveObj() #void:
+{
+    String result;
+}
+{
+    <PARAM_START> <SELECTIVE> <PARAM_END>
+        SelectiveIf()
+            <OBJ> result = Name() <PARAM_START> FileName() <PARAM_END>
+        SelectiveEndIf()
+        (
+            SelectiveIf()
+                <OBJ> Name() <PARAM_START> FileName() <PARAM_END>
+            SelectiveEndIf()
+        )*
+    <PARAM_START> <SELECTIVE> <DONE> <PARAM_END>
+	{
+	    return result;
+	}
+}
+
+void SelectiveIf() #void:
+{}
+{
+    <SELECTIVEIF> <DATA_START> 
+        <POSE><INDEX_START><DATA_START><P><PLUS>Num()<DATA_END><INDEX_END> <EQUAL> Num()
+    <DATA_END>
+}
+
+void SelectiveEndIf() #void:
+{}
+{
+    <SELECTIVEENDIF>
+}
+
+void Scal():
+{}
+{
+	<SCAL> <DATA_START> Num() Num() Num() <DATA_END>
+}
+
+void UnitMov():
+{}
+{
+	<MOV> <DATA_START> Num() Num() Num() <DATA_END>
+}
+
+void Func():
+{}
+{
+	<FUNCNAME> <DATA_START> (Num() | Text() | Func())* <DATA_END>
+}
+
+String Num():
+{
+    Token t;
+}
+{
+	t = <NUM>
+	{
+	    jjtThis.nodeValue = t.image;
+	    return jjtThis.nodeValue;
+	}
+}
+
+String Text():
+{
+    Token t;
+}
+{
+	<DQ> t = <NAME><DQ>
+	{
+	    jjtThis.nodeValue = t.image;
+	    return jjtThis.nodeValue;
+	}
+}
+
+String Name() #void:
+{
+    Token t;
+}
+{
+    (<DQ>)?
+    (
+        t = <NAME>
+    |   t = <NUMNAME>
+    )
+    (<DQ>)?
+    {
+        return t.image;
+    }
+}
+
+String FileName():
+{
+    Token t;
+    String s = "";
+}
+{
+	(<DQ>)?
+	    (
+	            t = <NAME> { s += t.image; }
+	        |   t = <NUMNAME> { s += t.image; }
+	    )
+	    (
+            Yens() { s += "\\"; }
+            (
+                    t = <NAME> { s += t.image; }
+                |   t = <NUMNAME> { s += t.image; }
+            )
+        )*
+    (<DQ>)?
+    {
+        jjtThis.nodeValue = s;
+        return s;
+    }
+}
+
+void Yens() #void:
+{}
+{
+    (<YEN>)+
+}

@@ -2,12 +2,12 @@ package jp.dev7.enchant.doga.parser.atr;
 
 import java.util.List;
 
-import jp.dev7.enchant.doga.parser.atr.data.Atr;
-import jp.dev7.enchant.doga.parser.atr.data.Color;
+import jp.dev7.enchant.doga.parser.data.Atr;
+import jp.dev7.enchant.doga.parser.data.Color;
 
 import com.google.common.collect.Lists;
 
-abstract class _Func implements _Value {
+abstract public class _Func implements _Value {
 
     static class IgnoreFunction extends _Func {
         @Override
