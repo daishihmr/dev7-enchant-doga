@@ -46,10 +46,7 @@ public class SufConverter {
 
     private final Map<String, Atr> atrMap = Maps.newHashMap();
 
-    public SufConverter() {
-    }
-
-    public void loadGenieAtr() throws IOException, ParseException {
+    public SufConverter() throws IOException, ParseException {
         loadGenieAtr("genienm.atr");
     }
 
@@ -57,9 +54,6 @@ public class SufConverter {
             ParseException {
         final File genieAtr = new File(Props.commonDir(), "atr/" + atrFileName);
         final List<Atr> genie = AtrFileParser.parse(genieAtr);
-        for (Atr atr : genie) {
-            atr.setColorMap1(null);
-        }
         putAllAtr(genie);
     }
 

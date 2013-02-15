@@ -30,10 +30,9 @@
             tex.specular = data.texture.specular;
             tex.emission = data.texture.emission;
             tex.shininess = data.texture.shininess;
-            // TODO いつか対応する
-            // if (data.texture.src) {
-            // tex.src = data.texture.src;
-            // }
+            if (data.texture.src) {
+                tex.src = data.texture.src;
+            }
             mesh.texture = tex;
             part.mesh = mesh;
 

@@ -35,7 +35,6 @@ public class ConvTest extends TestCase {
         Suf suf = new SufFileParser().parseSufAtr(file);
 
         SufConverter converter = new SufConverter();
-        converter.loadGenieAtr();
         List<EnchantMesh> result = converter.convert(suf);
 
         for (EnchantMesh mesh : result) {

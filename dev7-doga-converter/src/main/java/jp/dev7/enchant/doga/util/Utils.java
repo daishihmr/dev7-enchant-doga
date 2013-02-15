@@ -1,5 +1,7 @@
 package jp.dev7.enchant.doga.util;
 
+import java.awt.image.RenderedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
@@ -7,10 +9,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import javax.imageio.ImageIO;
 import javax.vecmath.Matrix4d;
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3d;
 
+import jp.dev7.enchant.doga.converter.PicLoader;
 import jp.dev7.enchant.doga.converter.data.EnchantMesh;
 import jp.dev7.enchant.doga.converter.data.EnchantTexture;
 import jp.dev7.enchant.doga.parser.data.Atr;
@@ -19,6 +23,7 @@ import jp.dev7.enchant.doga.parser.data.Prim;
 import jp.dev7.enchant.doga.parser.data.Vertex;
 import jp.dev7.enchant.doga.parser.util.Props;
 
+import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -332,4 +337,87 @@ public class Utils {
         result.setIdentity();
         return result;
     }
+
+    private static String encode(File imageFile) throws IOException {
+        if (imageFile.getName().toLowerCase().endsWith(".pic")) {
+            final PicLoader loader = new PicLoader();
+            return toDataURL(loader.load(imageFile));
+        } else {
+            return toDataURL(ImageIO.read(imageFile));
+        }
+    }
+
+    public static String toDataURL(RenderedImage image) throws IOException {
+        final ByteArrayOutputStream buf = new ByteArrayOutputStream();
+        ImageIO.write(image, "png", buf);
+        return "data:image/png;base64,"
+                + new String(Base64.encodeBase64(buf.toByteArray()));
+    }
+
+    public static void convertTextureImage(List<Atr> atrList, File baseFile)
+            throws IOException {
+        for (final Atr atr : atrList) {
+            if (atr.getColorMap1() == null) {
+                continue;
+            }
+
+            // 絶対パス？
+            final File absolute = new File(atr.getColorMap1());
+            if (absolute.exists()) {
+                atr.setColorMap1(encode(absolute));
+                continue;
+            }
+
+            // common/atrの中？
+            final File common = new File(Props.commonDir(), "atr/"
+                    + atr.getColorMap1());
+            if (common.exists()) {
+                atr.setColorMap1(encode(common));
+                continue;
+            }
+
+            // baseFileからの相対パス？
+            final File relative = new File(baseFile.getParentFile(),
+                    atr.getColorMap1());
+            if (relative.exists()) {
+                atr.setColorMap1(encode(relative));
+                continue;
+            }
+        }
+    }
+
+    public static void convertTextureImage(Map<String, Atr> atrMap,
+            File baseFile) throws IOException {
+        for (String name : atrMap.keySet()) {
+            final Atr atr = atrMap.get(name);
+
+            if (atr.getColorMap1() == null) {
+                continue;
+            }
+
+            // 絶対パス？
+            final File absolute = new File(atr.getColorMap1());
+            if (absolute.exists()) {
+                atr.setColorMap1(encode(absolute));
+                continue;
+            }
+
+            // common/atrの中？
+            final File common = new File(Props.commonDir(), "atr/"
+                    + atr.getColorMap1());
+            if (common.exists()) {
+                atr.setColorMap1(encode(common));
+                continue;
+            }
+
+            // baseFileからの相対パス？
+            final File relative = new File(baseFile.getParentFile(),
+                    atr.getColorMap1());
+            if (relative.exists()) {
+                atr.setColorMap1(encode(relative));
+                continue;
+            }
+        }
+    }
+
 }

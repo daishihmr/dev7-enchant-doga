@@ -1,8 +1,5 @@
 package app;
 
-import java.awt.Desktop;
-import java.net.URI;
-
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
@@ -44,9 +41,9 @@ public class JsonTestServer {
         server.setHandler(handlers);
         server.start();
 
-        Desktop.getDesktop().browse(
-                new URI("http://localhost:" + port
-                        + "/json-test-server/index.html"));
+        //        Desktop.getDesktop().browse(
+        //                new URI("http://localhost:" + port
+        //                        + "/json-test-server/index.html"));
     }
 
 }

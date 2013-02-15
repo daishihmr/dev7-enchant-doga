@@ -92,46 +92,52 @@ public class UnitConverter {
     }
 
     public List<EnchantMesh> convert(final Unit data, final Matrix4d transform,
-            File baseFile) throws Exception {
+            final File baseFile) throws Exception {
         final SufConverter sufConverter = new SufConverter();
-        sufConverter.loadGenieAtr();
-        final SufFileParser sufFileParser = new SufFileParser();
+
+        // ここでパレット内のテクスチャ画像をエンコードする(baseFile基点)
+        Utils.convertTextureImage(data.getPalette(), baseFile);
 
         sufConverter.putAllAtr(data.getPalette());
-        LOG.debug("atrMap = " + sufConverter.getAtrMap());
 
         final Suf dest = new Suf();
-        int i = 0;
+        final SufFileParser sufFileParser = new SufFileParser();
         for (final UnitObj part : data.getObjects()) {
             final List<Obj> destObjects = Lists.newArrayList();
 
-            LOG.debug("part" + (++i) + " : " + part.getName());
+            LOG.debug("part" + " : " + part.getName());
             File sufFile = Utils.findSufFile(part.getSufFileName(), baseFile);
             if (sufFile == null) {
                 continue;
             }
 
-            final Suf orig = sufFileParser.parse(sufFile);
+            final Suf originalSuf = sufFileParser.parse(sufFile);
             LOG.debug("load SUFfile " + sufFile);
             if (LOG.isDebugEnabled()) {
                 int cnt = 0;
-                for (Obj obj : orig.getObjects()) {
+                for (Obj obj : originalSuf.getObjects()) {
                     for (Prim prim : obj.getPrimitives()) {
                         cnt += prim.getVertices().size();
                     }
                 }
                 LOG.debug("number of vertex = " + cnt);
             }
-            File atrFile = new File(sufFile.getAbsolutePath().replace(".suf",
-                    ".atr"));
+
+            // sufファイルと同じ場所にatrがある場合
+            final File atrFile = new File(sufFile.getAbsolutePath().replace(
+                    ".suf", ".atr"));
             if (atrFile.exists()) {
-                List<Atr> atrs = AtrFileParser.parse(atrFile);
-                sufConverter.putAllAtr(atrs);
+                final List<Atr> atrs = AtrFileParser.parse(atrFile);
                 LOG.debug("load ATRfile " + atrFile);
+
+                // ここでテクスチャ画像をエンコードする(sufファイル基点)
+                Utils.convertTextureImage(atrs, sufFile);
+
+                sufConverter.putAllAtr(atrs);
             }
 
             int j = 0;
-            for (Obj origObj : orig.getObjects()) {
+            for (Obj origObj : originalSuf.getObjects()) {
                 LOG.debug("    convert obj(" + j + ") begin");
                 if (LOG.isDebugEnabled()) {
                     int cnt = 0;
@@ -177,18 +183,21 @@ public class UnitConverter {
                 LOG.debug(mesh.texCoords.toString());
             }
         }
-        return Lists.transform(meshList,
-                new Function<EnchantMesh, EnchantMesh>() {
-                    @Override
-                    public EnchantMesh apply(EnchantMesh input) {
-                        return Utils.transform(input, transform);
-                    }
-                });
+
+        // Meshをアフィン変換する関数
+        final Function<EnchantMesh, EnchantMesh> funcTransform = new Function<EnchantMesh, EnchantMesh>() {
+            @Override
+            public EnchantMesh apply(EnchantMesh input) {
+                return Utils.transform(input, transform);
+            }
+        };
+
+        return Lists.transform(meshList, funcTransform);
     }
 
-    private Obj transform(Obj obj, UnitObj part, SufConverter sufConverter) {
-        final Obj result = new Obj();
-        result.setName(obj.getName());
+    private Obj transform(Obj origin, UnitObj part, SufConverter sufConverter) {
+        final Obj dest = new Obj();
+        dest.setName(origin.getName());
 
         // アフィン変換
         final Matrix4d affineTransform = new Matrix4d();
@@ -217,11 +226,11 @@ public class UnitConverter {
 
         final boolean reverse = (minus % 2 == 1);
 
-        for (Prim origPrim : obj.getPrimitives()) {
+        for (Prim origPrim : origin.getPrimitives()) {
             final Prim destPrim = new Prim();
 
-            String destAtrName = convertAtr(origPrim.getAtrName(),
-                    part.getPaletteName(), obj.getName(), sufConverter);
+            String destAtrName = synthesizeAtr(origPrim.getAtrName(),
+                    part.getPaletteName(), origin.getName(), sufConverter);
             destPrim.setAtrName(destAtrName);
 
             for (Vertex vertex : origPrim.getVertices()) {
@@ -258,13 +267,16 @@ public class UnitConverter {
                 destPrim.getVertices().addAll(reversed);
             }
 
-            result.getPrimitives().add(destPrim);
+            dest.getPrimitives().add(destPrim);
         }
 
-        return result;
+        return dest;
     }
 
-    private String convertAtr(String genieName, String paletteName,
+    /**
+     * sufに設定されたatrとユニットに設定されたatrを合成する.
+     */
+    private String synthesizeAtr(String genieName, String paletteName,
             String objName, SufConverter sufConverter) {
         final Map<String, Atr> atrMap = sufConverter.getAtrMap();
         if (genieName == null && paletteName == null) {
@@ -294,6 +306,10 @@ public class UnitConverter {
                 newAtr.setSpc(paletteAtr.getSpc());
                 newAtr.setMapSize(paletteAtr.getMapSize());
                 newAtr.setOptEmittion(paletteAtr.getOptEmittion());
+
+                // TODO 画像の合成???
+                newAtr.setColorMap1(paletteAtr.getColorMap1());
+
                 sufConverter.putAtr(newAtr);
             }
             return destAtrName;
