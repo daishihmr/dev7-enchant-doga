@@ -1,5 +1,6 @@
 /**
- * dogencha.enchant.js - v0.5-SNAPSHOT
+ * dogencha.enchant.js
+ * version 0.5-RC1
  */
 (function() {
 
@@ -98,11 +99,11 @@
                     var root = buildUnit(data);
                     console.info("parse unit [" + src + "] ok");
                     game.assets[src] = root;
-                    callback();
                 } catch (e) {
                     console.error("unit [" + src + "] のビルド中にエラー");
                     throw e;
                 }
+                callback();
             });
         } else if (endsWith(src, ".l2c.js") || endsWith(src, ".l2c.json") || endsWith(src, ".l2c.jsonp") ||
                    endsWith(src, ".l3c.js") || endsWith(src, ".l3c.json") || endsWith(src, ".l3c.jsonp")) {
@@ -110,14 +111,14 @@
             ajaxFunc(src, function(data) {
                 console.info("load l3c [" + src + "] ok");
                 try {
-                    var result = buildL3c(data);
+                    var result = new enchant.gl.dogencha.Articulated(buildL3c(data));
                     console.info("parse l3c [" + src + "] ok");
                     game.assets[src] = result;
-                    callback();
                 } catch (e) {
                     console.error("l3c [" + src + "] のビルド中にエラー");
                     throw e;
                 }
+                callback();
             });
         } else {
             console.debug("request js [" + src + "]");
@@ -142,7 +143,29 @@
     };
 
     /**
-     * DoGA L3Cモデルのユニット.
+     * DOGA多関節物体.
+     */
+    enchant.gl.dogencha.Articulated = enchant.Class.create(enchant.gl.Sprite3D, {
+        initialize: function(unit) {
+            enchant.gl.Sprite3D.call(this);
+            this.root = unit.clone();
+            this.addChild(this.root);
+
+            this.poses = this.root.poses;
+        },
+        animate: function() {
+            this.root.animate.apply(this.root, arguments);
+        },
+        setPose: function() {
+            this.root.setPose.apply(this.root, arguments);
+        },
+        clone: function() {
+            return new enchant.gl.dogencha.Articulated(this.root.clone());
+        }
+    });
+
+    /**
+     * DOGA多関節物体の部品.
      */
     enchant.gl.dogencha.Unit = enchant.Class.create(enchant.gl.Sprite3D, {
         initialize : function(entity, basePosition) {
@@ -209,7 +232,7 @@
             this.childUnits[this.childUnits.length] = childUnit;
         },
         animate : function(pose, frameNum, callback) {
-            if (typeof (pose) == "string") {
+            if (typeof (pose) === "string") {
                 pose = this.poses[pose];
             }
             if (!pose) {
@@ -294,6 +317,9 @@
             _setFrameToUnit(this, from, to, ratio);
         },
         setPose : function(pose) {
+            if (typeof (pose) === "string") {
+                pose = this.poses[pose];
+            }
             if (!pose) {
                 pose = this.poses._initialPose;
             }

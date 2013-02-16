@@ -69,10 +69,25 @@ public class L2cConverter extends L3cConverter {
             } else if (start) {
                 try {
                     final Pose pose = PoseL2cLineParser.parse(line);
-                    LOG.info("Pose" + pose.getName() + "ユニット数="
+                    LOG.info("Pose [" + pose.getName() + "] ユニット数="
                             + pose.getUnitPose().size());
-                    tempPoseMap.put(pose.getName(), Lists.transform(
-                            pose.getUnitPose(), poseTransformFunc));
+
+                    final List<double[]> basePoses = Lists.transform(
+                            pose.getUnitPose(), poseTransformFunc);
+
+                    // ルートユニットの位置変化を補正
+                    double[] rootUnitPose = basePoses.get(0);
+                    rootUnitPose[3] -= model.getBasePosition()[0];
+                    rootUnitPose[4] -= model.getBasePosition()[1];
+                    rootUnitPose[5] -= model.getBasePosition()[2];
+
+                    final List<double[]> ajustPoses = Lists.newArrayList();
+                    ajustPoses.add(rootUnitPose);
+                    for (int i = 1; i < basePoses.size(); i++) {
+                        ajustPoses.add(basePoses.get(i));
+                    }
+
+                    tempPoseMap.put(pose.getName(), ajustPoses);
                 } catch (Exception e) {
                     if (line.substring(0, 1).matches("[0-9]")) {
                         LOG.error("ポーズデータのパースに失敗 [" + line + "]", e);

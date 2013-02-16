@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>jp.dev7</groupId>
 	<artifactId>dev7-doga-parent</artifactId>
-	<version>5.0-SNAPSHOT</version>
+	<version>5.0-RC1</version>
 	<packaging>pom</packaging>
 
 	<modules>
@@ -72,14 +72,14 @@
 	<distributionManagement>
 		<repository>
 			<id>dev7-enchant-doga</id>
-			<!-- <url>file:///D:\study\dev7-enchant-doga\maven-repo</url> -->
-			<url>file:///Users/narasakitaishi/maven-repo/dev7-enchant-doga-release</url>
+			<url>file:///D:\study\dev7-enchant-doga\maven-repo</url>
+			<!-- <url>file:///Users/narasakitaishi/maven-repo/dev7-enchant-doga-release</url> -->
 			<!-- <url>file:///Users/daishi_hmr/Documents/workspaces/dogarepo/product</url> -->
 		</repository>
 		<snapshotRepository>
 			<id>dev7-enchant-doga-snapshot</id>
-			<!-- <url>file:///D:\study\dev7-enchant-doga\maven-repo-snapshot</url> -->
-			<url>file:///Users/narasakitaishi/maven-repo/dev7-enchant-doga-snapshot</url>
+			<url>file:///D:\study\dev7-enchant-doga\maven-repo-snapshot</url>
+			<!-- <url>file:///Users/narasakitaishi/maven-repo/dev7-enchant-doga-snapshot</url> -->
 			<!-- <url>file:///Users/daishi_hmr/Documents/workspaces/dogarepo/snapshot</url> -->
 		</snapshotRepository>
 	</distributionManagement>

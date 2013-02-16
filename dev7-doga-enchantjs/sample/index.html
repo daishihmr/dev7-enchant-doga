@@ -1,0 +1,102 @@
+<html>
+<head>
+<meta charset=UTF-8>
+<script type="text/javascript" src="gl-matrix-min.js"></script>
+<script type="text/javascript" src="enchant.min.js"></script>
+<script type="text/javascript" src="gl.enchant.js"></script>
+<script type="text/javascript" src="primitive.gl.enchant.js"></script>
+<script type="text/javascript" src="../dogencha.enchant.js"></script>
+<script type="text/javascript">
+enchant();
+window.onload = function() {
+    var game = new Core();
+    game.preload("walker_a.l2c.json");
+    game.onload = function() {
+        var scene = new Scene3D();
+
+        var floor = new Floor();
+        scene.addChild(floor);
+
+        var walker = game.assets["walker_a.l2c.json"];
+        var walkingMotion = [ "Walk1", "Walk2", "Walk3", "Walk4" ];
+        var motionIndex = 0;
+
+        walker.walkStartAge = 0;
+        walker.walking = false;
+
+        scene.addChild(walker);
+        walker.on("enterframe", function() {
+            if (game.input.up)    this.forward(+0.1);
+            if (game.input.down)  this.forward(-0.1);
+            if (game.input.left)  this.rotateYaw(+0.1);
+            if (game.input.right) this.rotateYaw(-0.1);
+
+            var beforeInput = this.walking;
+            this.walking = (game.input.up || game.input.down || game.input.left || game.input.right);
+
+            if (!beforeInput && this.walking) {
+                this.walkStartAge = this.age;
+                motionIndex = 0;
+                console.log("start");
+            } else if (beforeInput && !this.walking) {
+                this.animate("_initialPose", 5);
+                console.log("stop");
+            }
+
+            if (this.walking && (this.age - this.walkStartAge) % 5 === 0) {
+                this.animate(walkingMotion[motionIndex], 5);
+
+                if (game.input.down) {
+                    motionIndex -= 1;
+                } else {
+                    motionIndex += 1;
+                }
+                motionIndex = (motionIndex + walkingMotion.length) % walkingMotion.length;
+            }
+        });
+
+        var camera = scene.getCamera();
+        camera.x = 0;
+        camera.y = 1;
+        camera.z = -5;
+        camera.centerX = walker.x + walker._rotation[8]*10;
+        camera.centerY = walker.y + 0.5;
+        camera.centerZ = walker.z + walker._rotation[10]*10;
+        game.on("enterframe", function() {
+            camera.centerX += ((walker.x + walker._rotation[8]*10) - camera.centerX) / 10;
+            camera.centerY = walker.y + 0.5;
+            camera.centerZ += ((walker.z + walker._rotation[10]*10) - camera.centerZ) / 10;
+            camera.chase(walker, -7, 10);
+            camera.y = 1;
+        });
+    };
+    game.start();
+};
+
+var Floor = Class.create(Sprite3D, {
+    initialize: function() {
+        Sprite3D.call(this);
+        var black = new Cube();
+        black.mesh.setBaseColor([ 0.2, 0.2, 0.2, 1.0 ]);
+        var white = new Cube();
+        white.mesh.setBaseColor([ 0.8, 0.8, 0.8, 1.0 ]);
+
+        var tiles = [ black, white ];
+
+        for (var i = 0; i < 27; i++) {
+            for (var j = 0; j < 27; j++) {
+                var tile = tiles[ (i*9+j) % 2 ].clone();
+                tile.x = i - (27-1)/2;
+                tile.z = j - (27-1)/2;
+                this.addChild(tile);
+            }
+        }
+
+        this.y = -0.5;
+    }
+});
+</script>
+</head>
+<body style="margin:0">
+</body>
+</html>
