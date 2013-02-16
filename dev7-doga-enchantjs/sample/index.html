@@ -17,51 +17,73 @@ window.onload = function() {
         var floor = new Floor();
         scene.addChild(floor);
 
-        // var walker = game.assets["walker_a.l2c.json"];
-        // var standPose = "_initialPose";
-        // var walkingMotion = [ "Walk1", "Walk2", "Walk3", "Walk4" ];
+        var robots = [
+            {
+                walker: game.assets["square.l2c.json"],
+                standPose: "stand",
+                walkingMotion: [ "walk1", "walk2", "walk3", "walk4" ],
+            },
+            {
+                walker: game.assets["walker_a.l2c.json"],
+                standPose: "_initialPose",
+                walkingMotion: [ "Walk1", "Walk2", "Walk3", "Walk4" ],
+            }
+        ];
 
-        var walker = game.assets["square.l2c.json"];
-        var standPose = "stand";
-        var walkingMotion = [ "walk1", "walk2", "walk3", "walk4" ];
+        var walker;
+        var standPose;
+        var walkingMotion;
+
+        var select = function(n) {
+            if (walker) {
+                scene.removeChild(walker);
+            }
+            walker = robots[n].walker;
+            standPose = robots[n].standPose;
+            walkingMotion = robots[n].walkingMotion;
+            walker.walkStartAge = 0;
+            walker.walking = false;
+            walker.setPose(standPose);
+
+            scene.addChild(walker);
+        };
+
+        document.getElementById("robotSelect").onchange = function() {
+            select(this.selectedIndex);
+        }
+        select(0);
 
         var motionIndex = 0;
+        robots.forEach(function(robot) {
+            robot.walker.on("enterframe", function() {
+                if (game.input.up)    this.forward(+0.1);
+                if (game.input.down)  this.forward(-0.1);
+                if (game.input.left)  this.rotateYaw(+0.1);
+                if (game.input.right) this.rotateYaw(-0.1);
 
+                var beforeInput = this.walking;
+                this.walking = (game.input.up || game.input.down || game.input.left || game.input.right);
 
-        walker.walkStartAge = 0;
-        walker.walking = false;
-
-        walker.setPose(standPose);
-        scene.addChild(walker);
-
-        walker.on("enterframe", function() {
-            if (game.input.up)    this.forward(+0.1);
-            if (game.input.down)  this.forward(-0.1);
-            if (game.input.left)  this.rotateYaw(+0.1);
-            if (game.input.right) this.rotateYaw(-0.1);
-
-            var beforeInput = this.walking;
-            this.walking = (game.input.up || game.input.down || game.input.left || game.input.right);
-
-            if (!beforeInput && this.walking) {
-                this.walkStartAge = this.age;
-                motionIndex = 0;
-                console.log("start");
-            } else if (beforeInput && !this.walking) {
-                this.animate(standPose, 5);
-                console.log("stop");
-            }
-
-            if (this.walking && (this.age - this.walkStartAge) % 5 === 0) {
-                this.animate(walkingMotion[motionIndex], 5);
-
-                if (game.input.down) {
-                    motionIndex -= 1;
-                } else {
-                    motionIndex += 1;
+                if (!beforeInput && this.walking) {
+                    this.walkStartAge = this.age;
+                    motionIndex = 0;
+                    console.log("start");
+                } else if (beforeInput && !this.walking) {
+                    this.animate(standPose, 5);
+                    console.log("stop");
                 }
-                motionIndex = (motionIndex + walkingMotion.length) % walkingMotion.length;
-            }
+
+                if (this.walking && (this.age - this.walkStartAge) % 5 === 0) {
+                    this.animate(walkingMotion[motionIndex], 5);
+
+                    if (game.input.down) {
+                        motionIndex -= 1;
+                    } else {
+                        motionIndex += 1;
+                    }
+                    motionIndex = (motionIndex + walkingMotion.length) % walkingMotion.length;
+                }
+            });
         });
 
         var camera = scene.getCamera();
@@ -109,6 +131,10 @@ var Floor = Class.create(Sprite3D, {
 </script>
 </head>
 <body>
+    ROBOT: <select id="robotSelect">
+        <option>square.l2c</option>
+        <option>walker_a.l2c</option>
+    </select>
     <div id="enchant-stage"></div>
 </body>
 </html>
