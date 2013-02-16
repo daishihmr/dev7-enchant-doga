@@ -9,22 +9,31 @@
 <script type="text/javascript">
 enchant();
 window.onload = function() {
-    var game = new Core();
-    game.preload("walker_a.l2c.json");
+    var game = new Core(512, 512);
+    game.preload("walker_a.l2c.json", "square.l2c.json");
     game.onload = function() {
         var scene = new Scene3D();
 
         var floor = new Floor();
         scene.addChild(floor);
 
-        var walker = game.assets["walker_a.l2c.json"];
-        var walkingMotion = [ "Walk1", "Walk2", "Walk3", "Walk4" ];
+        // var walker = game.assets["walker_a.l2c.json"];
+        // var standPose = "_initialPose";
+        // var walkingMotion = [ "Walk1", "Walk2", "Walk3", "Walk4" ];
+
+        var walker = game.assets["square.l2c.json"];
+        var standPose = "stand";
+        var walkingMotion = [ "walk1", "walk2", "walk3", "walk4" ];
+
         var motionIndex = 0;
+
 
         walker.walkStartAge = 0;
         walker.walking = false;
 
+        walker.setPose(standPose);
         scene.addChild(walker);
+
         walker.on("enterframe", function() {
             if (game.input.up)    this.forward(+0.1);
             if (game.input.down)  this.forward(-0.1);
@@ -39,7 +48,7 @@ window.onload = function() {
                 motionIndex = 0;
                 console.log("start");
             } else if (beforeInput && !this.walking) {
-                this.animate("_initialPose", 5);
+                this.animate(standPose, 5);
                 console.log("stop");
             }
 
@@ -57,17 +66,19 @@ window.onload = function() {
 
         var camera = scene.getCamera();
         camera.x = 0;
-        camera.y = 1;
+        camera.y = 5;
         camera.z = -5;
-        camera.centerX = walker.x + walker._rotation[8]*10;
-        camera.centerY = walker.y + 0.5;
-        camera.centerZ = walker.z + walker._rotation[10]*10;
+        // camera.centerX = walker.x + walker._rotation[8]*10;
+        // camera.centerY = walker.y + 0.5;
+        // camera.centerZ = walker.z + walker._rotation[10]*10;
         game.on("enterframe", function() {
-            camera.centerX += ((walker.x + walker._rotation[8]*10) - camera.centerX) / 10;
+            // camera.centerX += ((walker.x + walker._rotation[8]*10) - camera.centerX) / 10;
+            // camera.centerY = walker.y + 0.5;
+            // camera.centerZ += ((walker.z + walker._rotation[10]*10) - camera.centerZ) / 10;
+            // camera.chase(walker, -7, 10);
+            // camera.y = 1;
+            camera.lookAt(walker);
             camera.centerY = walker.y + 0.5;
-            camera.centerZ += ((walker.z + walker._rotation[10]*10) - camera.centerZ) / 10;
-            camera.chase(walker, -7, 10);
-            camera.y = 1;
         });
     };
     game.start();
@@ -97,6 +108,7 @@ var Floor = Class.create(Sprite3D, {
 });
 </script>
 </head>
-<body style="margin:0">
+<body>
+    <div id="enchant-stage"></div>
 </body>
 </html>
