@@ -11,4 +11,9 @@
 		<level value="INFO" />
 		<appender-ref ref="STDOUT" />
 	</root>
+	
+	<logger name="jp.dev7.enchant.doga.util.Utils">
+	   <level value="DEBUG" />
+	   <appender-ref ref="STDOUT" />
+	</logger>
 </configuration>

@@ -10,7 +10,7 @@ import junit.framework.TestCase;
 
 public class UtilsTest extends TestCase {
 
-    public void testToDataURL() throws IOException {
+    void testToDataURL() throws IOException {
         PicLoader loader = new PicLoader();
         BufferedImage image = loader.load(new File(Props.commonDir(),
                 "atr/ami1.pic"));

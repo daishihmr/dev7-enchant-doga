@@ -31,7 +31,7 @@ import com.google.common.collect.Lists;
 
 public class Utils {
 
-    private static Logger logger = LoggerFactory.getLogger(Utils.class);
+    private static Logger LOG = LoggerFactory.getLogger(Utils.class);
 
     /**
      * 多角形を三角形に分割.
@@ -70,10 +70,10 @@ public class Utils {
                 && Arrays.toString(uv).equals("[0.0, 0.0]")) {
             return new double[] { 0, 0 };
         }
-        if (logger.isDebugEnabled()) {
-            logger.debug("convert texture coords");
-            logger.debug("mapsize = " + Arrays.toString(mapsize));
-            logger.debug("uv = " + Arrays.toString(uv));
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("convert texture coords");
+            LOG.debug("mapsize = " + Arrays.toString(mapsize));
+            LOG.debug("uv = " + Arrays.toString(uv));
         }
         // mapsize(umin vmin umax vmax)のとき、
         double umin = mapsize[0];
@@ -155,6 +155,7 @@ public class Utils {
         tex.emission.add(1.0);
 
         tex.src = atr.getColorMap1();
+        tex.srcFile = atr.getColorMap1File();
 
         return tex;
     }
@@ -183,7 +184,7 @@ public class Utils {
 
     public static File findSufFile(String path, File baseFile)
             throws IOException {
-        logger.debug("dogaPartsFile: " + path);
+        LOG.debug("dogaPartsFile: " + path);
         if (path == null || path.equals("")) {
             return null;
         }
@@ -193,12 +194,12 @@ public class Utils {
                 path = path.replace('\\', File.separatorChar);
             }
         }
-        logger.debug("find " + path);
+        LOG.debug("find " + path);
 
         // 相対パス？
         if (baseFile != null) {
             final File rel = new File(baseFile.getParentFile(), path);
-            logger.debug("    " + rel.getAbsolutePath() + " ?");
+            LOG.debug("    " + rel.getAbsolutePath() + " ?");
             if (rel.exists()) {
                 return rel;
             }
@@ -206,26 +207,26 @@ public class Utils {
 
         // commonの中？
         final File common = new File(Props.commonDir(), "parts/" + path);
-        logger.debug("    " + common.getAbsolutePath() + " ?");
+        LOG.debug("    " + common.getAbsolutePath() + " ?");
         if (common.exists()) {
             return common;
         }
 
         // dataの中？
         final File data = new File(Props.dataDir(), path);
-        logger.debug("    " + data.getAbsolutePath() + " ?");
+        LOG.debug("    " + data.getAbsolutePath() + " ?");
         if (data.exists()) {
             return data;
         }
 
         // 絶対パス？
         final File cur = new File(path);
-        logger.debug("    " + cur.getAbsolutePath() + " ?");
+        LOG.debug("    " + cur.getAbsolutePath() + " ?");
         if (cur.exists()) {
             return cur;
         }
 
-        logger.warn("not found " + path);
+        LOG.warn("not found " + path);
         return null;
     }
 
@@ -240,12 +241,12 @@ public class Utils {
                 path = path.replace('\\', File.separatorChar);
             }
         }
-        logger.debug("find " + path);
+        LOG.debug("find " + path);
 
         // 相対パス？
         if (l2cFile != null) {
             final File rel = new File(l2cFile.getParentFile(), path);
-            logger.debug("    " + rel.getAbsolutePath() + " ?");
+            LOG.debug("    " + rel.getAbsolutePath() + " ?");
             if (rel.exists()) {
                 return rel;
             }
@@ -253,19 +254,19 @@ public class Utils {
 
         // data/mechaの中？
         final File data = new File(Props.dataDir(), "mecha/" + path);
-        logger.debug("    " + data.getAbsolutePath() + " ?");
+        LOG.debug("    " + data.getAbsolutePath() + " ?");
         if (data.exists()) {
             return data;
         }
 
         // 絶対パス？
         final File cur = new File(path);
-        logger.debug("    " + cur.getAbsolutePath() + " ?");
+        LOG.debug("    " + cur.getAbsolutePath() + " ?");
         if (cur.exists()) {
             return cur;
         }
 
-        logger.warn("not found " + path);
+        LOG.warn("not found " + path);
         return null;
     }
 
@@ -338,7 +339,7 @@ public class Utils {
         return result;
     }
 
-    private static String encode(File imageFile) throws IOException {
+    public static String encode(File imageFile) throws IOException {
         if (imageFile.getName().toLowerCase().endsWith(".pic")) {
             final PicLoader loader = new PicLoader();
             return toDataURL(loader.load(imageFile));
@@ -347,24 +348,27 @@ public class Utils {
         }
     }
 
-    public static String toDataURL(RenderedImage image) throws IOException {
+    static String toDataURL(RenderedImage image) throws IOException {
         final ByteArrayOutputStream buf = new ByteArrayOutputStream();
         ImageIO.write(image, "png", buf);
         return "data:image/png;base64,"
                 + new String(Base64.encodeBase64(buf.toByteArray()));
     }
 
-    public static void convertTextureImage(List<Atr> atrList, File baseFile)
+    public static void getTextureImageFile(List<Atr> atrList, File baseFile)
             throws IOException {
         for (final Atr atr : atrList) {
             if (atr.getColorMap1() == null) {
                 continue;
             }
 
+            LOG.info("search texture file: " + atr.getColorMap1());
+
             // 絶対パス？
             final File absolute = new File(atr.getColorMap1());
             if (absolute.exists()) {
-                atr.setColorMap1(encode(absolute));
+                atr.setColorMap1File(absolute);
+                LOG.info("    find!! -> " + absolute.getAbsolutePath());
                 continue;
             }
 
@@ -372,7 +376,8 @@ public class Utils {
             final File common = new File(Props.commonDir(), "atr/"
                     + atr.getColorMap1());
             if (common.exists()) {
-                atr.setColorMap1(encode(common));
+                atr.setColorMap1File(common);
+                LOG.info("    find!! -> " + common.getAbsolutePath());
                 continue;
             }
 
@@ -380,13 +385,17 @@ public class Utils {
             final File relative = new File(baseFile.getParentFile(),
                     atr.getColorMap1());
             if (relative.exists()) {
-                atr.setColorMap1(encode(relative));
+                atr.setColorMap1File(relative);
+                LOG.info("    find!! -> " + relative.getAbsolutePath());
                 continue;
             }
+
+            LOG.warn("texture file is not exists!! " + atr.getColorMap1()
+                    + ", " + baseFile.getAbsolutePath());
         }
     }
 
-    public static void convertTextureImage(Map<String, Atr> atrMap,
+    public static void getTextureImageFile(Map<String, Atr> atrMap,
             File baseFile) throws IOException {
         for (String name : atrMap.keySet()) {
             final Atr atr = atrMap.get(name);
@@ -395,10 +404,13 @@ public class Utils {
                 continue;
             }
 
+            LOG.info("find texture file: " + atr.getColorMap1());
+
             // 絶対パス？
             final File absolute = new File(atr.getColorMap1());
             if (absolute.exists()) {
-                atr.setColorMap1(encode(absolute));
+                atr.setColorMap1File(absolute);
+                LOG.info("    find!! -> " + absolute.getAbsolutePath());
                 continue;
             }
 
@@ -406,7 +418,8 @@ public class Utils {
             final File common = new File(Props.commonDir(), "atr/"
                     + atr.getColorMap1());
             if (common.exists()) {
-                atr.setColorMap1(encode(common));
+                atr.setColorMap1File(common);
+                LOG.info("    find!! -> " + common.getAbsolutePath());
                 continue;
             }
 
@@ -414,9 +427,13 @@ public class Utils {
             final File relative = new File(baseFile.getParentFile(),
                     atr.getColorMap1());
             if (relative.exists()) {
-                atr.setColorMap1(encode(relative));
+                atr.setColorMap1File(relative);
+                LOG.info("    find!! -> " + relative.getAbsolutePath());
                 continue;
             }
+
+            LOG.warn("texture file is not exists!! " + atr.getColorMap1()
+                    + ", " + baseFile.getAbsolutePath());
         }
     }
 

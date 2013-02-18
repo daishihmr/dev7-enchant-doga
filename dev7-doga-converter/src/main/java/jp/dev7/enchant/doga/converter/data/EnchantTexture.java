@@ -1,9 +1,9 @@
 package jp.dev7.enchant.doga.converter.data;
 
+import java.io.File;
 import java.util.List;
 
 import jp.dev7.enchant.doga.converter.JsonHintFormat;
-
 import net.arnx.jsonic.JSONHint;
 
 import com.google.common.collect.Lists;
@@ -16,7 +16,11 @@ public class EnchantTexture {
     public final List<Double> emission = Lists.newArrayList();
     public double shininess;
     public final List<Double> specular = Lists.newArrayList();
+    /** テクスチャ画像の名前 */
     public String src;
+    /** テクスチャ画像ファイル */
+    @JSONHint(ignore = true)
+    public File srcFile;
 
     public String getName() {
         return name;
@@ -65,7 +69,7 @@ public class EnchantTexture {
 
     @Override
     public String toString() {
-        return "EnchantTexture [name=" + name + "]";
+        return "EnchantTexture [name=" + name + ", src=" + src + "]";
     }
 
     public EnchantTexture clone() {
@@ -76,6 +80,7 @@ public class EnchantTexture {
         result.shininess = shininess;
         result.specular.addAll(specular);
         result.src = src;
+        result.srcFile = srcFile;
         return result;
     }
 

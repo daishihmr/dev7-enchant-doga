@@ -1,6 +1,7 @@
 package jp.dev7.enchant.doga.converter;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.StringWriter;
 import java.util.List;
@@ -12,6 +13,7 @@ import javax.vecmath.Quat4d;
 import javax.vecmath.Vector3d;
 
 import jp.dev7.enchant.doga.converter.data.EnchantMesh;
+import jp.dev7.enchant.doga.converter.data.EnchantTexture;
 import jp.dev7.enchant.doga.parser.AtrFileParser;
 import jp.dev7.enchant.doga.parser.FscFileParser;
 import jp.dev7.enchant.doga.parser.L2pFileParser;
@@ -33,6 +35,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 public class UnitConverter {
 
@@ -51,24 +54,67 @@ public class UnitConverter {
         return result.toString();
     }
 
+    private Map<String, String> createTextureMap(List<EnchantMesh> data)
+            throws IOException {
+        final Map<String, String> result = Maps.newHashMap();
+        for (EnchantMesh mesh : data) {
+            final EnchantTexture texture = mesh.getTexture();
+            if (texture.src == null) {
+                continue;
+            } else if (texture.srcFile == null) {
+                LOG.warn("texture file is not found " + texture.src);
+                continue;
+            }
+
+            if (!result.containsKey(texture.src)) {
+                result.put(texture.src, Utils.encode(texture.srcFile));
+            }
+        }
+        return result;
+    }
+
     public void convertAndWriteJson(File file, OutputStream out)
             throws Exception {
-        JSON.encode(convert(file), out, false);
+        final List<EnchantMesh> data = convert(file);
+
+        final Map<String, Object> finalData = Maps.newHashMap();
+        finalData.put("textures", createTextureMap(data));
+        finalData.put("data", data);
+
+        JSON.encode(finalData, out, false);
     }
 
     public void convertAndWriteJson(File file, Matrix4d transform,
             OutputStream out) throws Exception {
-        JSON.encode(convert(file, transform), out, false);
+        final List<EnchantMesh> data = convert(file, transform);
+
+        final Map<String, Object> finalData = Maps.newHashMap();
+        finalData.put("textures", createTextureMap(data));
+        finalData.put("data", data);
+
+        JSON.encode(finalData, out, false);
     }
 
     public void convertAndWriteJson(File file, Appendable appendable)
             throws Exception {
-        JSON.encode(convert(file), appendable, false);
+        final List<EnchantMesh> data = convert(file);
+
+        final Map<String, Object> finalData = Maps.newHashMap();
+        finalData.put("textures", createTextureMap(data));
+        finalData.put("data", data);
+
+        JSON.encode(finalData, appendable, false);
     }
 
     public void convertAndWriteJson(File file, Matrix4d transform,
             Appendable appendable) throws Exception {
-        JSON.encode(convert(file, transform), appendable, false);
+        final List<EnchantMesh> data = convert(file, transform);
+
+        final Map<String, Object> finalData = Maps.newHashMap();
+        finalData.put("textures", createTextureMap(data));
+        finalData.put("data", data);
+
+        JSON.encode(finalData, appendable, false);
     }
 
     public List<EnchantMesh> convert(File file) throws Exception {
@@ -95,8 +141,8 @@ public class UnitConverter {
             final File baseFile) throws Exception {
         final SufConverter sufConverter = new SufConverter();
 
-        // ここでパレット内のテクスチャ画像をエンコードする(baseFile基点)
-        Utils.convertTextureImage(data.getPalette(), baseFile);
+        // TODO ここでパレット内のテクスチャ画像のFileを特定する(baseFile基点)
+        Utils.getTextureImageFile(data.getPalette(), baseFile);
 
         sufConverter.putAllAtr(data.getPalette());
 
@@ -130,8 +176,8 @@ public class UnitConverter {
                 final List<Atr> atrs = AtrFileParser.parse(atrFile);
                 LOG.debug("load ATRfile " + atrFile);
 
-                // ここでテクスチャ画像をエンコードする(sufファイル基点)
-                Utils.convertTextureImage(atrs, sufFile);
+                // TODO ここでテクスチャ画像のFileを特定する(sufファイル基点)
+                Utils.getTextureImageFile(atrs, sufFile);
 
                 sufConverter.putAllAtr(atrs);
             }
@@ -309,6 +355,9 @@ public class UnitConverter {
 
                 // TODO 画像の合成???
                 newAtr.setColorMap1(paletteAtr.getColorMap1());
+                newAtr.setColorMap1File(paletteAtr.getColorMap1File());
+                //                newAtr.setColorMap1(paletteAtr.getColorMap1());
+                //                newAtr.setColorMap1File(paletteAtr.getColorMap1File());
 
                 sufConverter.putAtr(newAtr);
             }

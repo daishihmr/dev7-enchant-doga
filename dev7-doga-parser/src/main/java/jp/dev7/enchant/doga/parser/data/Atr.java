@@ -1,5 +1,6 @@
 package jp.dev7.enchant.doga.parser.data;
 
+import java.io.File;
 import java.util.Arrays;
 
 public class Atr {
@@ -19,6 +20,7 @@ public class Atr {
     private double tra;
     private double ref;
     private String colorMap1;
+    private File colorMap1File;
     private String colorMap2;
     private String bumpMap;
     private String traMap;
@@ -50,6 +52,7 @@ public class Atr {
         c.tra = tra;
         c.ref = ref;
         c.colorMap1 = colorMap1;
+        c.colorMap1File = colorMap1File;
         c.colorMap2 = colorMap2;
         c.bumpMap = bumpMap;
         c.traMap = traMap;
@@ -135,6 +138,14 @@ public class Atr {
 
     public void setColorMap1(String colormap1) {
         this.colorMap1 = colormap1;
+    }
+
+    public File getColorMap1File() {
+        return colorMap1File;
+    }
+
+    public void setColorMap1File(File colorMap1File) {
+        this.colorMap1File = colorMap1File;
     }
 
     public String getColorMap2() {

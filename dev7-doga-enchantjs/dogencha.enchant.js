@@ -14,9 +14,12 @@
     /**
      * ajaxで取得したL3Pオブジェクトを元に、Sprite3Dを作成する.
      */
-    function buildUnit(obj) {
+    function buildUnit(obj, textures) {
+        textures = textures || obj.textures;
+
         var root = new Sprite3D();
-        each(obj, function(atrName, data) {
+        console.log(textures);
+        each(obj.data, function(atrName, data) {
             var part = new Sprite3D();
             var mesh = new Mesh();
             mesh.vertices = data.vertices;
@@ -31,8 +34,9 @@
             tex.specular = data.texture.specular;
             tex.emission = data.texture.emission;
             tex.shininess = data.texture.shininess;
-            if (data.texture.src) {
-                tex.src = data.texture.src;
+            console.log(data.texture.src);
+            if (data.texture.src && textures[data.texture.src]) {
+                tex.src = textures[data.texture.src];
             }
             mesh.texture = tex;
             part.mesh = mesh;
