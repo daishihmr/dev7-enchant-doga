@@ -1,0 +1,183 @@
+options {
+	STATIC = false;
+	MULTI = true;
+	VISITOR = true;
+    NODE_EXTENDS = "jp.dev7.enchant.doga.parser.BaseNode";
+}
+
+PARSER_BEGIN(SufParser)
+package jp.dev7.enchant.doga.parser.suf;
+public class SufParser {
+}
+PARSER_END(SufParser)
+
+SKIP:
+{
+	" " | "\r" | "\t" | "\n"
+}
+
+MORE: { "/*": COMMENT_TEXT }
+<COMMENT_TEXT> SPECIAL_TOKEN: { <COMMENT: "*/">: DEFAULT }
+<COMMENT_TEXT> MORE: { < ~[] > }
+
+TOKEN:
+{
+		<OBJ: "obj">
+	|	<SUF: "suf">
+	|	<ATR: "atr">
+	|	<PRIM: "prim">
+	|	<POLY: "poly">
+	|   <SHADE: "shade">
+	|   <UVPOLY: "uvpoly">
+	|   <UVSHADE: "uvshade">
+	|	<NUM: ("-")?(["0"-"9"])+("."(["0"-"9"])+)?(("E-")(["0"-"9"])+)?>
+    |   <NAME: ["0"-"9", "a"-"z", "A"-"Z", "_", "#", ".", ":", "\\", "[", "]", "-", "\u3040"-"\u309f", "\u30a0"-"\u30ff", "\u4e00"-"\u9fff", "\uff10"-"\uff19", "\uff21"-"\uff3a", "\uff41"-"\uff5a", "\uff1f", "\uff01", "\uff08", "\uff09"]
+              (["0"-"9", "a"-"z", "A"-"Z", "_", "#", ".", ":", "\\", "[", "]", "-", "\u3040"-"\u309f", "\u30a0"-"\u30ff", "\u4e00"-"\u9fff", "\uff10"-"\uff19", "\uff21"-"\uff3a", "\uff41"-"\uff5a", "\uff1f", "\uff01", "\uff08", "\uff09"])*>
+	|	<BLOCK_START: "{">
+	|	<BLOCK_END: "}">
+	|	<DATA_START: "(">
+	|	<DATA_END: ")">
+	|	<DQ: "\"">
+}
+
+ASTStart Start():
+{}
+{
+	(Obj())+
+	{
+		return jjtThis;
+	}
+}
+
+void Obj():
+{}
+{
+	<OBJ> <SUF> jjtThis.nodeValue = ObjectName() <BLOCK_START>
+		ObjectBody()
+	<BLOCK_END>
+}
+
+String ObjectName() #void:
+{
+	String name;
+}
+{
+	(
+    	name = Name()
+    |	<DQ> name = Name() <DQ>
+    )
+    {
+    	return name;
+    }
+}
+
+void ObjectBody() #void:
+{}
+{
+    (AttrObj())*
+}
+
+void AttrObj():
+{}
+{
+	Attribute()
+	(Func())?
+	(Primitive())*
+}
+
+void Attribute():
+{}
+{
+    <ATR> jjtThis.nodeValue = AttrName()
+}
+
+String AttrName() #void:
+{
+	String name;
+}
+{
+	(
+    	name = Name()
+    |	<DQ> name = Name() <DQ>
+    )
+    {
+    	return name;
+    }
+}
+
+void Func() #void:
+{}
+{
+	<NAME> <DATA_START> (Func() | Num())+ <DATA_END>
+}
+
+void Primitive():
+{}
+{
+    <PRIM> 
+        ((<POLY> <DATA_START> (PolygonVertex())* <DATA_END>)
+    |   (<SHADE> <DATA_START> (ShadeVertex())* <DATA_END>)
+    |   (<UVPOLY> <DATA_START> (UvPolyVertex())* <DATA_END>)
+    |   (<UVSHADE> <DATA_START> (UvShadeVertex())* <DATA_END>))
+}
+
+void PolygonVertex():
+{}
+{
+    X() Y() Z()
+}
+
+void ShadeVertex():
+{}
+{
+    X() Y() Z() NormalX() NormalY() NormalZ()
+}
+
+void UvPolyVertex():
+{}
+{
+    X() Y() Z() U() V()
+}
+
+void UvShadeVertex():
+{}
+{
+    X() Y() Z() NormalX() NormalY() NormalZ() U() V()
+}
+
+String Name() #void:
+{ Token t; }
+{
+	(
+		t = <NAME>
+    |	t = <OBJ>
+    |	t = <SUF>
+    |	t = <ATR>
+    |	t = <PRIM>
+    |	t = <POLY>
+    |	t = <SHADE>
+    |	t = <UVPOLY>
+    |	t = <UVSHADE>
+    )
+    {
+    	return t.image;
+    }
+}
+
+void X():{}{ jjtThis.nodeValue = Num() }
+void Y():{}{ jjtThis.nodeValue = Num() }
+void Z():{}{ jjtThis.nodeValue = Num() }
+void NormalX():{}{ jjtThis.nodeValue = Num() }
+void NormalY():{}{ jjtThis.nodeValue = Num() }
+void NormalZ():{}{ jjtThis.nodeValue = Num() }
+void U():{}{ jjtThis.nodeValue = Num() }
+void V():{}{ jjtThis.nodeValue = Num() }
+
+String Num() #void:
+{ Token t; }
+{
+	t = <NUM>
+	{
+		return t.image;
+	}
+}
