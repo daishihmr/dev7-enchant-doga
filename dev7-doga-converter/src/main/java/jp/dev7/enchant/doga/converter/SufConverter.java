@@ -12,7 +12,7 @@ import java.util.Set;
 
 import javax.vecmath.Vector3d;
 
-import jp.dev7.enchant.doga.converter.data.EnchantMesh;
+import jp.dev7.enchant.doga.converter.data.enchantjs.EnchantMesh;
 import jp.dev7.enchant.doga.parser.AtrFileParser;
 import jp.dev7.enchant.doga.parser.atr.autogen.ParseException;
 import jp.dev7.enchant.doga.parser.data.Atr;

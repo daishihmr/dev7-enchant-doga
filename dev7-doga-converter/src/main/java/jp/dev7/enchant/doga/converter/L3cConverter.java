@@ -14,11 +14,11 @@ import javax.vecmath.Matrix4d;
 import javax.vecmath.Quat4d;
 import javax.vecmath.Vector3d;
 
-import jp.dev7.enchant.doga.converter.data.EnchantArticulated;
-import jp.dev7.enchant.doga.converter.data.EnchantMesh;
-import jp.dev7.enchant.doga.converter.data.EnchantPose;
-import jp.dev7.enchant.doga.converter.data.EnchantPoseUnit;
-import jp.dev7.enchant.doga.converter.data.EnchantUnit;
+import jp.dev7.enchant.doga.converter.data.enchantjs.EnchantArticulated;
+import jp.dev7.enchant.doga.converter.data.enchantjs.EnchantMesh;
+import jp.dev7.enchant.doga.converter.data.enchantjs.EnchantPose;
+import jp.dev7.enchant.doga.converter.data.enchantjs.EnchantPoseUnit;
+import jp.dev7.enchant.doga.converter.data.enchantjs.EnchantUnit;
 import jp.dev7.enchant.doga.parser.L3cFileParser;
 import jp.dev7.enchant.doga.parser.PoseLineParser;
 import jp.dev7.enchant.doga.parser.data.Connection;

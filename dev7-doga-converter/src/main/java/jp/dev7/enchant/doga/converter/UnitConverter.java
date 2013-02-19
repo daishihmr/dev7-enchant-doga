@@ -12,7 +12,7 @@ import javax.vecmath.Point3d;
 import javax.vecmath.Quat4d;
 import javax.vecmath.Vector3d;
 
-import jp.dev7.enchant.doga.converter.data.EnchantMesh;
+import jp.dev7.enchant.doga.converter.data.enchantjs.EnchantMesh;
 import jp.dev7.enchant.doga.parser.AtrFileParser;
 import jp.dev7.enchant.doga.parser.FscFileParser;
 import jp.dev7.enchant.doga.parser.L2pFileParser;

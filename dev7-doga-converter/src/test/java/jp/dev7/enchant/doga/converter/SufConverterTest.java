@@ -7,7 +7,7 @@ import java.io.OutputStreamWriter;
 import java.util.List;
 
 import jp.dev7.enchant.doga.converter.SufConverter;
-import jp.dev7.enchant.doga.converter.data.EnchantMesh;
+import jp.dev7.enchant.doga.converter.data.enchantjs.EnchantMesh;
 import jp.dev7.enchant.doga.parser.SufFileParser;
 import jp.dev7.enchant.doga.parser.data.Atr;
 import jp.dev7.enchant.doga.parser.data.Color;

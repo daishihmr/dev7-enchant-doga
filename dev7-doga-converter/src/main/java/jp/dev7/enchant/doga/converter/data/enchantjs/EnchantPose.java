@@ -1,4 +1,4 @@
-package jp.dev7.enchant.doga.converter.data;
+package jp.dev7.enchant.doga.converter.data.enchantjs;
 
 public class EnchantPose {
 

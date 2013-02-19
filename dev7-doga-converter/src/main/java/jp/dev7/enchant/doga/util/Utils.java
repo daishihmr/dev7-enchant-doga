@@ -15,10 +15,10 @@ import javax.vecmath.Point3d;
 import javax.vecmath.Vector3d;
 
 import jp.dev7.enchant.doga.converter.PicLoader;
-import jp.dev7.enchant.doga.converter.data.EnchantArticulated;
-import jp.dev7.enchant.doga.converter.data.EnchantMesh;
-import jp.dev7.enchant.doga.converter.data.EnchantTexture;
-import jp.dev7.enchant.doga.converter.data.EnchantUnit;
+import jp.dev7.enchant.doga.converter.data.enchantjs.EnchantArticulated;
+import jp.dev7.enchant.doga.converter.data.enchantjs.EnchantMesh;
+import jp.dev7.enchant.doga.converter.data.enchantjs.EnchantTexture;
+import jp.dev7.enchant.doga.converter.data.enchantjs.EnchantUnit;
 import jp.dev7.enchant.doga.parser.data.Atr;
 import jp.dev7.enchant.doga.parser.data.Color;
 import jp.dev7.enchant.doga.parser.data.Prim;
