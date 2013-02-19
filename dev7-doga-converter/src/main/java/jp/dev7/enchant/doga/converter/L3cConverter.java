@@ -3,6 +3,7 @@ package jp.dev7.enchant.doga.converter;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.util.Iterator;
@@ -46,7 +47,15 @@ public class L3cConverter {
 
     public void convertAndWriteJson(File l3cFile, Appendable writer)
             throws Exception {
-        JSON.encode(convert(l3cFile), writer, false);
+        JSON.encode(toFinalData(convert(l3cFile)), writer, false);
+    }
+
+    private Map<String, Object> toFinalData(final EnchantArticulated data)
+            throws IOException {
+        final Map<String, Object> finalData = Maps.newHashMap();
+        finalData.put("textures", Utils.createTextureMap(data));
+        finalData.put("data", data);
+        return finalData;
     }
 
     public EnchantArticulated convert(File l3cFile) throws Exception {

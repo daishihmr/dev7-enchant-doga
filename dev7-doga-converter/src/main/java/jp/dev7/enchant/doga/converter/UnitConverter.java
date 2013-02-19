@@ -13,7 +13,6 @@ import javax.vecmath.Quat4d;
 import javax.vecmath.Vector3d;
 
 import jp.dev7.enchant.doga.converter.data.EnchantMesh;
-import jp.dev7.enchant.doga.converter.data.EnchantTexture;
 import jp.dev7.enchant.doga.parser.AtrFileParser;
 import jp.dev7.enchant.doga.parser.FscFileParser;
 import jp.dev7.enchant.doga.parser.L2pFileParser;
@@ -54,67 +53,32 @@ public class UnitConverter {
         return result.toString();
     }
 
-    private Map<String, String> createTextureMap(List<EnchantMesh> data)
-            throws IOException {
-        final Map<String, String> result = Maps.newHashMap();
-        for (EnchantMesh mesh : data) {
-            final EnchantTexture texture = mesh.getTexture();
-            if (texture.src == null) {
-                continue;
-            } else if (texture.srcFile == null) {
-                LOG.warn("texture file is not found " + texture.src);
-                continue;
-            }
-
-            if (!result.containsKey(texture.src)) {
-                result.put(texture.src, Utils.encode(texture.srcFile));
-            }
-        }
-        return result;
-    }
-
     public void convertAndWriteJson(File file, OutputStream out)
             throws Exception {
-        final List<EnchantMesh> data = convert(file);
-
-        final Map<String, Object> finalData = Maps.newHashMap();
-        finalData.put("textures", createTextureMap(data));
-        finalData.put("data", data);
-
-        JSON.encode(finalData, out, false);
+        JSON.encode(toFinalData(convert(file)), out, false);
     }
 
     public void convertAndWriteJson(File file, Matrix4d transform,
             OutputStream out) throws Exception {
-        final List<EnchantMesh> data = convert(file, transform);
-
-        final Map<String, Object> finalData = Maps.newHashMap();
-        finalData.put("textures", createTextureMap(data));
-        finalData.put("data", data);
-
-        JSON.encode(finalData, out, false);
+        JSON.encode(toFinalData(convert(file, transform)), out, false);
     }
 
     public void convertAndWriteJson(File file, Appendable appendable)
             throws Exception {
-        final List<EnchantMesh> data = convert(file);
-
-        final Map<String, Object> finalData = Maps.newHashMap();
-        finalData.put("textures", createTextureMap(data));
-        finalData.put("data", data);
-
-        JSON.encode(finalData, appendable, false);
+        JSON.encode(toFinalData(convert(file)), appendable, false);
     }
 
     public void convertAndWriteJson(File file, Matrix4d transform,
             Appendable appendable) throws Exception {
-        final List<EnchantMesh> data = convert(file, transform);
+        JSON.encode(toFinalData(convert(file, transform)), appendable, false);
+    }
 
+    private Map<String, Object> toFinalData(final List<EnchantMesh> data)
+            throws IOException {
         final Map<String, Object> finalData = Maps.newHashMap();
-        finalData.put("textures", createTextureMap(data));
+        finalData.put("textures", Utils.createTextureMap(data));
         finalData.put("data", data);
-
-        JSON.encode(finalData, appendable, false);
+        return finalData;
     }
 
     public List<EnchantMesh> convert(File file) throws Exception {

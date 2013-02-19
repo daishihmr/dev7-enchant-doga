@@ -4,7 +4,6 @@ import static jp.dev7.enchant.doga.util.Utils.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -58,7 +57,7 @@ public class SufConverter {
     }
 
     public void putAtr(Atr atr) {
-        logger.debug("アトリビュート追加 '" + atr.getName() + "' : [" + atr + "]");
+        logger.debug("add attribute '" + atr.getName() + "' : [" + atr + "]");
         atrMap.put(atr.getName().toLowerCase(), atr);
     }
 
@@ -100,7 +99,7 @@ public class SufConverter {
         final List<EnchantMesh> result = Lists.newArrayList();
 
         // atr名毎にprimをまとめる
-        logger.debug("atr名毎にprimをまとめる");
+        logger.debug("join prims by atr name");
         final Map<String, List<Prim>> atrPrimsMap = Maps.newHashMap();
         {
             for (Prim prim : obj.getPrimitives()) {
@@ -298,14 +297,4 @@ public class SufConverter {
         return atrMap;
     }
 
-    /**
-     * 実験用.
-     */
-    @SuppressWarnings("unused")
-    private int d(double d) {
-        DecimalFormat df = new DecimalFormat("#0");
-        String fmtd = df.format(d);
-        int result = Integer.parseInt(fmtd) / 10 * 10;
-        return result;
-    }
 }

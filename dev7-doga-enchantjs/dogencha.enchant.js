@@ -15,11 +15,10 @@
      * ajaxで取得したL3Pオブジェクトを元に、Sprite3Dを作成する.
      */
     function buildUnit(obj, textures) {
-        textures = textures || obj.textures;
+        textures = textures || {};
 
         var root = new Sprite3D();
-        console.log(textures);
-        each(obj.data, function(atrName, data) {
+        each(obj, function(atrName, data) {
             var part = new Sprite3D();
             var mesh = new Mesh();
             mesh.vertices = data.vertices;
@@ -34,7 +33,6 @@
             tex.specular = data.texture.specular;
             tex.emission = data.texture.emission;
             tex.shininess = data.texture.shininess;
-            console.log(data.texture.src);
             if (data.texture.src && textures[data.texture.src]) {
                 tex.src = textures[data.texture.src];
             }
@@ -49,12 +47,12 @@
     }
 
     /**
-     * ajaxで取得したL3Cオブジェクトを元に、Sprite3Dを作成する.
+     * ajaxで取得した多関節物体オブジェクトを元に、Sprite3Dを作成する.
      */
-    function buildL3c(data) {
+    function buildArticulated(data, textures) {
         function _tree(_unit) {
             var _result = {};
-            _result.node = buildUnit(_unit.l3p);
+            _result.node = buildUnit(_unit.l3p, textures);
             _result.basePosition = _unit.basePosition;
             if (_unit.childUnits instanceof Array) {
                 _result.child = _unit.childUnits.map(function(c) {
@@ -100,7 +98,7 @@
             ajaxFunc(src, function(data) {
                 console.info("load unit [" + src + "] ok");
                 try {
-                    var root = buildUnit(data);
+                    var root = buildUnit(data.data, data.textures);
                     console.info("parse unit [" + src + "] ok");
                     game.assets[src] = root;
                 } catch (e) {
@@ -115,7 +113,7 @@
             ajaxFunc(src, function(data) {
                 console.info("load l3c [" + src + "] ok");
                 try {
-                    var result = new enchant.gl.dogencha.Articulated(buildL3c(data));
+                    var result = new enchant.gl.dogencha.Articulated(buildArticulated(data.data, data.textures));
                     console.info("parse l3c [" + src + "] ok");
                     game.assets[src] = result;
                 } catch (e) {
@@ -125,7 +123,7 @@
                 callback();
             });
         } else {
-            console.debug("request js [" + src + "]");
+            console.info("request js [" + src + "]");
             ajaxFunc(src, function(data) {
                 console.info("load js [" + src + "] ok");
                 game.assets[src] = data;

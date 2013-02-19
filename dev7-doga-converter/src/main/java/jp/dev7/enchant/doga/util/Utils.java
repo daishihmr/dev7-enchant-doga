@@ -15,8 +15,10 @@ import javax.vecmath.Point3d;
 import javax.vecmath.Vector3d;
 
 import jp.dev7.enchant.doga.converter.PicLoader;
+import jp.dev7.enchant.doga.converter.data.EnchantArticulated;
 import jp.dev7.enchant.doga.converter.data.EnchantMesh;
 import jp.dev7.enchant.doga.converter.data.EnchantTexture;
+import jp.dev7.enchant.doga.converter.data.EnchantUnit;
 import jp.dev7.enchant.doga.parser.data.Atr;
 import jp.dev7.enchant.doga.parser.data.Color;
 import jp.dev7.enchant.doga.parser.data.Prim;
@@ -28,6 +30,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 public class Utils {
 
@@ -69,11 +72,6 @@ public class Utils {
         if (Arrays.toString(mapsize).equals("[0.0, 0.0, 255.0, 255.0]")
                 && Arrays.toString(uv).equals("[0.0, 0.0]")) {
             return new double[] { 0, 0 };
-        }
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("convert texture coords");
-            LOG.debug("mapsize = " + Arrays.toString(mapsize));
-            LOG.debug("uv = " + Arrays.toString(uv));
         }
         // mapsize(umin vmin umax vmax)のとき、
         double umin = mapsize[0];
@@ -355,7 +353,7 @@ public class Utils {
                 + new String(Base64.encodeBase64(buf.toByteArray()));
     }
 
-    public static void getTextureImageFile(List<Atr> atrList, File baseFile)
+    public static void getTextureImageFile(Iterable<Atr> atrList, File baseFile)
             throws IOException {
         for (final Atr atr : atrList) {
             if (atr.getColorMap1() == null) {
@@ -364,29 +362,32 @@ public class Utils {
 
             LOG.info("search texture file: " + atr.getColorMap1());
 
+            File result;
+
             // 絶対パス？
-            final File absolute = new File(atr.getColorMap1());
-            if (absolute.exists()) {
-                atr.setColorMap1File(absolute);
-                LOG.info("    find!! -> " + absolute.getAbsolutePath());
+            result = new File(atr.getColorMap1());
+            if (result.exists()) {
+                atr.setColorMap1("" + result.getAbsolutePath().hashCode());
+                atr.setColorMap1File(result);
+                LOG.info("    find!! -> " + result.getAbsolutePath());
                 continue;
             }
 
             // common/atrの中？
-            final File common = new File(Props.commonDir(), "atr/"
-                    + atr.getColorMap1());
-            if (common.exists()) {
-                atr.setColorMap1File(common);
-                LOG.info("    find!! -> " + common.getAbsolutePath());
+            result = new File(Props.commonDir(), "atr/" + atr.getColorMap1());
+            if (result.exists()) {
+                atr.setColorMap1("" + result.getAbsolutePath().hashCode());
+                atr.setColorMap1File(result);
+                LOG.info("    find!! -> " + result.getAbsolutePath());
                 continue;
             }
 
             // baseFileからの相対パス？
-            final File relative = new File(baseFile.getParentFile(),
-                    atr.getColorMap1());
-            if (relative.exists()) {
-                atr.setColorMap1File(relative);
-                LOG.info("    find!! -> " + relative.getAbsolutePath());
+            result = new File(baseFile.getParentFile(), atr.getColorMap1());
+            if (result.exists()) {
+                atr.setColorMap1("" + result.getAbsolutePath().hashCode());
+                atr.setColorMap1File(result);
+                LOG.info("    find!! -> " + result.getAbsolutePath());
                 continue;
             }
 
@@ -397,43 +398,45 @@ public class Utils {
 
     public static void getTextureImageFile(Map<String, Atr> atrMap,
             File baseFile) throws IOException {
-        for (String name : atrMap.keySet()) {
-            final Atr atr = atrMap.get(name);
+        getTextureImageFile(atrMap.values(), baseFile);
+    }
 
-            if (atr.getColorMap1() == null) {
+    public static Map<String, String> createTextureMap(List<EnchantMesh> data)
+            throws IOException {
+        final Map<String, String> result = Maps.newHashMap();
+        putToMap(data, result);
+        return result;
+    }
+
+    public static Map<String, String> createTextureMap(EnchantArticulated data)
+            throws IOException {
+        final Map<String, String> result = Maps.newHashMap();
+        scanNode(data.getRoot(), result);
+        return result;
+    }
+
+    private static void scanNode(EnchantUnit unit, Map<String, String> result)
+            throws IOException {
+        putToMap(unit.getL3p(), result);
+        for (EnchantUnit child : unit.getChildUnits()) {
+            scanNode(child, result);
+        }
+    }
+
+    private static void putToMap(List<EnchantMesh> data,
+            final Map<String, String> result) throws IOException {
+        for (EnchantMesh mesh : data) {
+            final EnchantTexture texture = mesh.getTexture();
+            if (texture.src == null) {
+                continue;
+            } else if (texture.srcFile == null) {
+                LOG.warn("texture file is not found " + texture.src);
                 continue;
             }
 
-            LOG.info("find texture file: " + atr.getColorMap1());
-
-            // 絶対パス？
-            final File absolute = new File(atr.getColorMap1());
-            if (absolute.exists()) {
-                atr.setColorMap1File(absolute);
-                LOG.info("    find!! -> " + absolute.getAbsolutePath());
-                continue;
+            if (!result.containsKey(texture.src)) {
+                result.put(texture.src, Utils.encode(texture.srcFile));
             }
-
-            // common/atrの中？
-            final File common = new File(Props.commonDir(), "atr/"
-                    + atr.getColorMap1());
-            if (common.exists()) {
-                atr.setColorMap1File(common);
-                LOG.info("    find!! -> " + common.getAbsolutePath());
-                continue;
-            }
-
-            // baseFileからの相対パス？
-            final File relative = new File(baseFile.getParentFile(),
-                    atr.getColorMap1());
-            if (relative.exists()) {
-                atr.setColorMap1File(relative);
-                LOG.info("    find!! -> " + relative.getAbsolutePath());
-                continue;
-            }
-
-            LOG.warn("texture file is not exists!! " + atr.getColorMap1()
-                    + ", " + baseFile.getAbsolutePath());
         }
     }
 
