@@ -6,7 +6,6 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.List;
 
-import jp.dev7.enchant.doga.converter.SufConverter;
 import jp.dev7.enchant.doga.converter.data.enchantjs.EnchantMesh;
 import jp.dev7.enchant.doga.parser.SufFileParser;
 import jp.dev7.enchant.doga.parser.data.Atr;
@@ -97,7 +96,7 @@ public class SufConverterTest extends TestCase {
             atr.setTra(1.0);
             atr.setColorMap1("test1.png");
             atr.setColorMap2("test2.png");
-            atr.setMapSize(new double[] { 63.750, 63.750, 191.250, 191.250 });
+            atr.setMapSize(new double[] { 128, 128, 255, 255 });
             atrs.add(atr);
         }
 
@@ -124,10 +123,10 @@ public class SufConverterTest extends TestCase {
         assertEquals(0.6 * 0.5, result.getTexture().getAmbient().get(2)); // b
         assertEquals(1.0, result.getTexture().getAmbient().get(3)); // a
 
-        assertEquals(-0.5, result.getTexCoords().get(0)); // u
-        assertEquals(1.5, result.getTexCoords().get(1)); // v
-        assertEquals(1.5, result.getTexCoords().get(2)); // u
-        assertEquals(-0.5, result.getTexCoords().get(3)); // v
+        assertEquals(0.0, result.getTexCoords().get(0), 3); // u
+        assertEquals(1.0, result.getTexCoords().get(1), 3); // v
+        assertEquals(1.0, result.getTexCoords().get(2), 3); // u
+        assertEquals(0.0, result.getTexCoords().get(3), 3); // v
 
         assertEquals("test1.png", result.getTexture().src);
 
