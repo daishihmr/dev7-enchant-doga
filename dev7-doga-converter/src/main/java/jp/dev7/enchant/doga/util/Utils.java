@@ -64,11 +64,13 @@ public class Utils {
      * DoGA式マッピング座標をGL式に変換する.
      * 
      * @param mapsize
-     *            atrのmapsize
+     *            atrのmapsize(例:0, 0, 1, 1)
      * @param uv
-     *            テクスチャ座標uとv
+     *            テクスチャ座標uとv(例: 255, 255)
      */
     public static double[] convertTexCoords(double[] mapsize, double[] uv) {
+        LOG.info("convert uv from " + Arrays.toString(mapsize) + " "
+                + Arrays.toString(uv));
         if (Arrays.toString(mapsize).equals("[0.0, 0.0, 255.0, 255.0]")
                 && Arrays.toString(uv).equals("[0.0, 0.0]")) {
             return new double[] { 0, 0 };
@@ -78,10 +80,10 @@ public class Utils {
         double vmin = mapsize[1];
         double umax = mapsize[2];
         double vmax = mapsize[3];
-        // u倍率 = (umax-umin) / 255
-        double ru = (umax - umin) / 255;
-        // v倍率 = (vmax-vmin) / 255
-        double rv = (vmax - vmin) / 255;
+        // u倍率
+        double ru = umax - umin;
+        // v倍率
+        double rv = vmax - vmin;
         // uズレ = umin/ru
         double uz = umin / ru;
         // vズレ = vmin/rv
@@ -111,6 +113,8 @@ public class Utils {
         // System.out.println("U=" + (bu - uz) / 255);
         // System.out.println("V=" + (bv - vz) / 255);
         // System.out.println();
+
+        LOG.info("convert uv to   " + Arrays.toString(result));
 
         return result;
     }

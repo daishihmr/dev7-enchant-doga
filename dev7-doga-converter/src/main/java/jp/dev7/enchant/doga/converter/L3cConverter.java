@@ -54,7 +54,7 @@ public class L3cConverter {
             throws IOException {
         final Map<String, Object> finalData = Maps.newHashMap();
         finalData.put("textures", Utils.createTextureMap(data));
-        finalData.put("data", data);
+        finalData.put("geometries", data);
         return finalData;
     }
 

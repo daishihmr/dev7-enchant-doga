@@ -16,7 +16,7 @@ public class Atr {
      * 1:鏡面係数 0.0(でかい) - 1.0(小さい)<br>
      * 2:？
      */
-    private double[] spc = new double[3];
+    private double[] spc = { 0, 0, 0 };
     private double tra;
     private double ref;
     private String colorMap1;
@@ -27,7 +27,7 @@ public class Atr {
     private String spcMap;
     private String refMap;
     private String glowPowerMap;
-    private double[] mapSize = { 0, 0, 255, 255 };
+    private double[] mapSize = { 0, 0, 1, 1 };
 
     private boolean optCastShadow;
     private boolean optReceiveShadow;

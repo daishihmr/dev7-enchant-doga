@@ -14,32 +14,32 @@
     /**
      * ajaxで取得したL3Pオブジェクトを元に、Sprite3Dを作成する.
      */
-    function buildUnit(obj, textures) {
+    function buildUnit(geometries, textures) {
         textures = textures || {};
 
         var root = new Sprite3D();
-        each(obj, function(atrName, data) {
+        each(geometries, function(atrName, geom) {
             var part = new Sprite3D();
             var mesh = new Mesh();
-            mesh.vertices = data.vertices;
-            mesh.normals = data.normals;
-            mesh.texCoords = data.texCoords;
-            mesh.indices = data.indices;
+            mesh.vertices = geom.vertices;
+            mesh.normals = geom.normals;
+            mesh.texCoords = geom.texCoords;
+            mesh.indices = geom.indices;
             mesh.setBaseColor("#ffffffff");
 
             var tex = new Texture();
-            tex.ambient = data.texture.ambient;
-            tex.diffuse = data.texture.diffuse;
-            tex.specular = data.texture.specular;
-            tex.emission = data.texture.emission;
-            tex.shininess = data.texture.shininess;
-            if (data.texture.src && textures[data.texture.src]) {
-                tex.src = textures[data.texture.src];
+            tex.ambient = geom.texture.ambient;
+            tex.diffuse = geom.texture.diffuse;
+            tex.specular = geom.texture.specular;
+            tex.emission = geom.texture.emission;
+            tex.shininess = geom.texture.shininess;
+            if (geom.texture.src && textures[geom.texture.src]) {
+                tex.src = textures[geom.texture.src];
             }
             mesh.texture = tex;
             part.mesh = mesh;
 
-            part.name = data.name;
+            part.name = geom.name;
 
             root.addChild(part);
         });
@@ -49,7 +49,7 @@
     /**
      * ajaxで取得した多関節物体オブジェクトを元に、Sprite3Dを作成する.
      */
-    function buildArticulated(data, textures) {
+    function buildArticulated(geometries, textures) {
         function _tree(_unit) {
             var _result = {};
             _result.node = buildUnit(_unit.l3p, textures);
@@ -73,10 +73,10 @@
             });
         }
 
-        var result = enchant.gl.dogencha.Unit.build(_tree(data.root));
+        var result = enchant.gl.dogencha.Unit.build(_tree(geometries.root));
 
         result.poses = {};
-        each(data.poses, function(k, v) {
+        each(geometries.poses, function(k, v) {
             result.poses[v.name] = v.root;
             _setupPoseNode(result.poses[v.name]);
         });
@@ -98,7 +98,7 @@
             ajaxFunc(src, function(data) {
                 console.info("load unit [" + src + "] ok");
                 try {
-                    var root = buildUnit(data.data, data.textures);
+                    var root = buildUnit(data.geometries, data.textures);
                     console.info("parse unit [" + src + "] ok");
                     game.assets[src] = root;
                 } catch (e) {
@@ -113,7 +113,7 @@
             ajaxFunc(src, function(data) {
                 console.info("load l3c [" + src + "] ok");
                 try {
-                    var result = new enchant.gl.dogencha.Articulated(buildArticulated(data.data, data.textures));
+                    var result = new enchant.gl.dogencha.Articulated(buildArticulated(data.geometries, data.textures));
                     console.info("parse l3c [" + src + "] ok");
                     game.assets[src] = result;
                 } catch (e) {
