@@ -24,8 +24,10 @@ public class ModelServlet extends HttpServlet {
 
         try {
 
-            String name = req.getRequestURI().replace("/model/", "")
+            String requri = req.getRequestURI();
+            String name = requri.substring(requri.indexOf("/model/") + 7)
                     .replace(".json", "");
+            System.out.println(name);
             File file = new File(Props.dataDir(), name);
             if (!file.exists()) {
                 resp.sendError(404);

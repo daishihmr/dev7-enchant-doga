@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss" />
+
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>/opt/tomcat6/logs/convert-test.log</file>
+		<encoder>
+			<pattern>%logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<root>
+		<level value="WARN" />
+		<appender-ref ref="FILE" />
+	</root>
+
+</configuration>

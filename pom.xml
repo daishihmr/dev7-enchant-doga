@@ -10,6 +10,7 @@
 		<module>dev7-doga-parser</module>
 		<module>dev7-doga-converter</module>
 		<module>json-test-server</module>
+		<module>convert-test</module>
 		<module>old-version</module>
 	</modules>
 

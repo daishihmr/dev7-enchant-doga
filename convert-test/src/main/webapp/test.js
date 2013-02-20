@@ -8,7 +8,7 @@ window.onload = function() {
             }
         }
     };
-    xhr.open("GET", "/modelList");
+    xhr.open("GET", "./modelList");
     xhr.send();
 };
 
@@ -141,7 +141,7 @@ var start = function(modelList) {
     menu.onchange = function() {
         var modelName = modelList[this.selectedIndex];
         if (modelName) {
-            game.loadModel("/" + modelName);
+            game.loadModel("./" + modelName);
         }
     };
     menu.onchange();
