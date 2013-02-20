@@ -12,12 +12,14 @@ window.onload = function() {
     xhr.send();
 };
 
+var game;
 var model;
 var start = function(modelList) {
-    var game = new Game();
+    game = new Game();
     game.keybind("Z".charCodeAt(0), "a");
     game.keybind("X".charCodeAt(0), "b");
     game.keybind("C".charCodeAt(0), "c");
+    game.preload("test.js");
     game.onload = function() {
         var scene = new Scene3D();
         scene.backgroundColor = [1,1,1,0];
@@ -99,7 +101,7 @@ var start = function(modelList) {
                 poseList.onchange = function() {
                     var p = poses[this.selectedIndex];
                     if (p) {
-                        model.tl.motion(p, 30);
+                        model.motion(p, 30);
                     }
                 };
                 poseList.style.display = "inline-block";

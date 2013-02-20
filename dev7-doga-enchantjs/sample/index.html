@@ -1,7 +1,8 @@
 <html>
 <head>
 <meta charset=UTF-8>
-<script type="text/javascript" src="gl-matrix-min.js"></script>
+<title>WALKING!</title>
+<script type="text/javascript" src="gl-matrix.js"></script>
 <script type="text/javascript" src="enchant.min.js"></script>
 <script type="text/javascript" src="gl.enchant.js"></script>
 <script type="text/javascript" src="primitive.gl.enchant.js"></script>
@@ -9,103 +10,115 @@
 <script type="text/javascript">
 enchant();
 window.onload = function() {
+    var menu = document.getElementById("menu");
     var game = new Core(512, 512);
-    game.preload("walker_a.l2c.json", "square.l2c.json");
+
+    // JSONモデルデータ読み込み
+    game.preload("walker_a.l2c.json", "square.l2c.json", "bird.l2c.json");
+
     game.onload = function() {
         var scene = new Scene3D();
 
+        // 床を表示
         var floor = new Floor();
         scene.addChild(floor);
 
-        var robots = [
+        // キャラクターデータ
+        var dataTable = [
             {
-                walker: game.assets["square.l2c.json"],
+                name: "ロボ",
+                entity: game.assets["square.l2c.json"],
                 standPose: "stand",
                 walkingMotion: [ "walk1", "walk2", "walk3", "walk4" ],
             },
             {
-                walker: game.assets["walker_a.l2c.json"],
+                name: "ウォーカー",
+                entity: game.assets["walker_a.l2c.json"],
                 standPose: "_initialPose",
                 walkingMotion: [ "Walk1", "Walk2", "Walk3", "Walk4" ],
-            }
+            },
+            {
+                name: "とり",
+                entity: game.assets["bird.l2c.json"],
+                standPose: "Stop",
+                walkingMotion: [ "Fly1", "Fly2", "Fly3", "Fly4" ],
+            },
         ];
 
-        var walker;
-        var standPose;
-        var walkingMotion;
+        // 初期設定
+        dataTable.forEach(function(data) {
+            // メニューにアイテム追加
+            var option = document.createElement("option");
+            option.textContent = data.name;
+            menu.appendChild(option);
 
-        var select = function(n) {
-            if (walker) {
-                scene.removeChild(walker);
-            }
-            walker = robots[n].walker;
-            standPose = robots[n].standPose;
-            walkingMotion = robots[n].walkingMotion;
-            walker.walkStartAge = 0;
-            walker.walking = false;
-            walker.setPose(standPose);
+            // 歩いてるフラグ
+            data.walking = false;
 
-            scene.addChild(walker);
+            // ポーズを立ちポーズにセット
+            data.entity.setPose(data.standPose);
+
+            scene.addChild(data.entity);
+        });
+        dataTable[2].entity.y = 0.5;
+
+        // 操作する対象
+        var controlTarget = 0;
+        // メニュー変更時に操作対象を変更する
+        menu.onchange = function() {
+            controlTarget = this.selectedIndex;
         };
 
-        document.getElementById("robotSelect").onchange = function() {
-            select(this.selectedIndex);
-        }
-        select(0);
-
-        var motionIndex = 0;
-        robots.forEach(function(robot) {
-            robot.walker.on("enterframe", function() {
-                if (game.input.up)    this.forward(+0.1);
-                if (game.input.down)  this.forward(-0.1);
-                if (game.input.left)  this.rotateYaw(+0.1);
-                if (game.input.right) this.rotateYaw(-0.1);
-
-                var beforeInput = this.walking;
-                this.walking = (game.input.up || game.input.down || game.input.left || game.input.right);
-
-                if (!beforeInput && this.walking) {
-                    this.walkStartAge = this.age;
-                    motionIndex = 0;
-                    console.log("start");
-                } else if (beforeInput && !this.walking) {
-                    this.animate(standPose, 5);
-                    console.log("stop");
-                }
-
-                if (this.walking && (this.age - this.walkStartAge) % 5 === 0) {
-                    this.animate(walkingMotion[motionIndex], 5);
-
-                    if (game.input.down) {
-                        motionIndex -= 1;
-                    } else {
-                        motionIndex += 1;
-                    }
-                    motionIndex = (motionIndex + walkingMotion.length) % walkingMotion.length;
-                }
-            });
-        });
-
+        // カメラ位置
         var camera = scene.getCamera();
         camera.x = 0;
         camera.y = 5;
         camera.z = -5;
-        // camera.centerX = walker.x + walker._rotation[8]*10;
-        // camera.centerY = walker.y + 0.5;
-        // camera.centerZ = walker.z + walker._rotation[10]*10;
+
         game.on("enterframe", function() {
-            // camera.centerX += ((walker.x + walker._rotation[8]*10) - camera.centerX) / 10;
-            // camera.centerY = walker.y + 0.5;
-            // camera.centerZ += ((walker.z + walker._rotation[10]*10) - camera.centerZ) / 10;
-            // camera.chase(walker, -7, 10);
-            // camera.y = 1;
-            camera.lookAt(walker);
-            camera.centerY = walker.y + 0.5;
+            var data = dataTable[controlTarget];
+            var entity = data.entity;
+
+            // キー入力
+            var kb = game.input;
+            if (kb.up)    entity.forward(+0.1); // 前進
+            if (kb.down)  entity.forward(-0.1); // 後退
+            if (kb.left)  entity.rotateYaw(+0.1); // 左旋回
+            if (kb.right) entity.rotateYaw(-0.1); // 右旋回
+
+            // 直前まで歩いていたか
+            var beforeWalking = data.walking;
+
+            // いずれかのカーソルキー入力がある場合は歩いてるフラグオン
+            data.walking = kb.up || kb.down || kb.left || kb.right;
+
+            if (!beforeWalking && data.walking) {
+
+                // 直前までは歩いていない & 今歩いている => 歩き出した
+                console.log("start");
+                entity.mtl.clear();
+                for (var i = 0, end = data.walkingMotion.length; i < end; i++) {
+                    entity.mtl.motion(data.walkingMotion[i], 5);
+                }
+                entity.mtl.loop();
+
+            } else if (beforeWalking && !data.walking) {
+
+                // 直前まで歩いた & 今歩いていない => 立ち止まった
+                console.log("stop");
+                entity.mtl.clear().motion(data.standPose, 5);
+
+            }
+
+            // カメラを向ける
+            camera.lookAt(entity);
+            camera.centerY = entity.y + 0.5;
         });
     };
     game.start();
 };
 
+// 床クラス
 var Floor = Class.create(Sprite3D, {
     initialize: function() {
         Sprite3D.call(this);
@@ -131,10 +144,7 @@ var Floor = Class.create(Sprite3D, {
 </script>
 </head>
 <body>
-    ROBOT: <select id="robotSelect">
-        <option>square.l2c</option>
-        <option>walker_a.l2c</option>
-    </select>
+    DATA: <select id="menu"></select>
     <div id="enchant-stage"></div>
 </body>
 </html>

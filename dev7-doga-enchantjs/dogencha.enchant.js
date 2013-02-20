@@ -9,6 +9,62 @@ enchant.gl.dogencha = {};
 (function() {
 
     /**
+     * DOGAメカ.
+     */
+    enchant.gl.dogencha.Unit = enchant.Class.create(enchant.gl.Sprite3D, {
+        initialize : function(entity, basePosition) {
+            enchant.gl.Sprite3D.call(this);
+
+            /**
+             * データの実体
+             *
+             * @type {Sprite3D}
+             */
+            this._entity = entity;
+
+            /**
+             * ユニットの基本位置.
+             */
+            this.baseX = basePosition[0];
+            this.baseY = basePosition[1];
+            this.baseZ = basePosition[2];
+
+            /**
+             * ユニットツリーの子ノード.
+             *
+             * enchant.jsのイベントツリーとは関係ない.
+             */
+            this.childUnits = [];
+
+            this.addChild(entity);
+        },
+        entity : {
+            get : function() {
+                return this._entity;
+            }
+        },
+        /**
+         * 子ユニットを追加する.
+         */
+        addChildUnit : function(childUnit) {
+            this.addChild(childUnit);
+            this.childUnits[this.childUnits.length] = childUnit;
+        },
+        clone : function() {
+            var clone = new enchant.gl.dogencha.Unit(this._entity.clone(), [
+                    this.baseX, this.baseY, this.baseZ ]);
+            for ( var i = 0, end = this.childUnits.length; i < end; i++) {
+                clone.addChildUnit(this.childUnits[i].clone());
+            }
+            if (this.poses) {
+                clone.poses = this.poses;
+                clone.setPose(clone.poses._initialPose);
+            }
+            return clone;
+        }
+    });
+
+    /**
      * DOGA多関節物体.
      */
     enchant.gl.dogencha.Articulated = enchant.Class.create(enchant.gl.Sprite3D, {
@@ -17,20 +73,16 @@ enchant.gl.dogencha = {};
             this.root = unit.clone();
             this.addChild(this.root);
 
-            this.poses = this.root.poses;
+            this.poses = null;
 
-            this.animationFrame = 1.0;
+            this.motionFrame = 1.0;
             this.beforePose = this.nextPose = null;
-            this.on("enterframe", function() {
-                if (this.animationFrame === 1.0 || this.beforePose === this.nextPose) {
-                    return;
-                }
-                this.setFrame(this.beforePose, this.nextPose, this.animationFrame);
-            });
 
-            this.tl = this.tl || new enchant.Timeline(this);
+            /** モーション用のTimeline */
+            this.mtl = new enchant.Timeline(this);
+
             var self = this;
-            this.tl.motion = function(pose, time, easing) {
+            this.mtl.motion = function(pose, time, easing) {
                 if (typeof (pose) === "string") {
                     pose = self.poses[pose];
                 }
@@ -41,13 +93,20 @@ enchant.gl.dogencha = {};
                 return this.then(function() {
                     self.beforePose = self.getCurrentPose();
                     self.nextPose = pose;
-                    self.animationFrame = 0.0;
+                    self.motionFrame = 0.0;
                 }).tween({
-                    animationFrame: 1.0,
+                    motionFrame: 1.0,
                     time: time,
                     easing: easing
                 });
             };
+
+            this.on("enterframe", function() {
+                if (this.motionFrame === 1.0 || this.beforePose === this.nextPose) {
+                    return;
+                }
+                this.setFrame(this.beforePose, this.nextPose, this.motionFrame);
+            });
         },
         getCurrentPose : function() {
             function _currentPose(node, parent) {
@@ -93,8 +152,10 @@ enchant.gl.dogencha = {};
             }
             _setPoseToUnit(this.root, pose);
 
-            this.animationFrame = 1.0;
+            this.motionFrame = 1.0;
             this.beforePose = this.nextPose = pose;
+
+            return this;
         },
         setFrame : function(beforePose, nextPose, ratio) {
             if (!beforePose) {
@@ -104,36 +165,21 @@ enchant.gl.dogencha = {};
                 nextPose = this.poses._initialPose;
             }
             function _setFrameToUnit(unit, before, next, ratio) {
-                if (!before) {
-                    before = {};
-                    before.pose = [ 0, 0, 0, 0, 0, 0 ];
-                    before.quat = new Quat(0, 0, 0, 0);
-                    before.childUnits = [];
-                }
-                if (!next) {
-                    next = {};
-                    next.pose = [ 0, 0, 0, 0, 0, 0 ];
-                    next.quat = new Quat(0, 0, 0, 0);
-                    next.childUnits = [];
-                }
+                before = before || {
+                    pose: [ 0, 0, 0, 0, 0, 0 ],
+                    quat: new Quat(0, 0, 0, 0),
+                    childUnits: [],
+                };
+                next = next || {
+                    pose: [ 0, 0, 0, 0, 0, 0 ],
+                    quat: new Quat(0, 0, 0, 0),
+                    childUnits: [],
+                };
 
-                var unitQuat = new Quat(0, 0, 0, 0);
-                unitQuat._quat = quat4.create(before.quat._quat);
+                var newQuat = new enchant.gl.Quat();
+                quat4.slerp(before.quat._quat, next.quat._quat, ratio, newQuat._quat);
 
-                var toQ = new Quat(0, 0, 0, 0);
-                toQ._quat = quat4.create(next.quat._quat);
-
-                (function(quat, another, ratio) {
-                    var ac = another.clone();
-                    if (quat4.dot(quat._quat, ac._quat) < 0) {
-                        quat4.reverse(ac._quat);
-                    }
-                    quat4.slerp(quat._quat, ac._quat, ratio);
-                    return quat;
-                })(unitQuat, toQ, ratio);
-
-                unit.quat = unitQuat;
-                unit.rotationSet(unitQuat);
+                unit.rotationSet(unit.quat = newQuat);
 
                 unit.x = before.pose[3] + (next.pose[3] - before.pose[3]) * ratio + unit.baseX;
                 unit.y = before.pose[4] + (next.pose[4] - before.pose[4]) * ratio + unit.baseY;
@@ -144,68 +190,11 @@ enchant.gl.dogencha = {};
                 }
             }
             _setFrameToUnit(this.root, beforePose, nextPose, ratio);
+
+            return this;
         },
         clone: function() {
             return new enchant.gl.dogencha.Articulated(this.root.clone());
-        }
-    });
-
-    /**
-     * DOGA多関節物体の部品.
-     */
-    enchant.gl.dogencha.Unit = enchant.Class.create(enchant.gl.Sprite3D, {
-        initialize : function(entity, basePosition) {
-            enchant.gl.Sprite3D.call(this);
-
-            /**
-             * データの実体
-             *
-             * @type {Sprite3D}
-             */
-            this._entity = entity;
-
-            /**
-             * ユニットの基本位置.
-             */
-            this.baseX = basePosition[0];
-            this.baseY = basePosition[1];
-            this.baseZ = basePosition[2];
-
-            /**
-             * ユニットツリーの子ノード.
-             *
-             * enchant.jsのイベントツリーとは関係ない.
-             */
-            this.childUnits = [];
-
-            /** ポーズデータ.ルートオブジェクトのみが持つ. */
-            this.poses = null;
-
-            this.addChild(entity);
-        },
-        entity : {
-            get : function() {
-                return this._entity;
-            }
-        },
-        /**
-         * 子ユニットを追加する.
-         */
-        addChildUnit : function(childUnit) {
-            this.addChild(childUnit);
-            this.childUnits[this.childUnits.length] = childUnit;
-        },
-        clone : function() {
-            var clone = new enchant.gl.dogencha.Unit(this._entity.clone(), [
-                    this.baseX, this.baseY, this.baseZ ]);
-            for ( var i = 0, end = this.childUnits.length; i < end; i++) {
-                clone.addChildUnit(this.childUnits[i].clone());
-            }
-            if (this.poses) {
-                clone.poses = this.poses;
-                clone.setPose(clone.poses._initialPose);
-            }
-            return clone;
         }
     });
 
@@ -245,11 +234,7 @@ enchant.gl.dogencha = {};
         return dest;
     };
 
-    /**
-     * 複製する.
-     *
-     * @scope enchant.gl.Quat.prototype
-     */
+    /** クォータニオンを複製 */
     enchant.gl.Quat.prototype.clone = function() {
         var clone = new Quat(0, 0, 0, 0);
         clone._quat[0] = this._quat[0];
@@ -266,7 +251,7 @@ enchant.gl.dogencha = {};
     enchant.gl.dogencha.DOMAIN = "doga.dev7.jp";
     // enchant.gl.dogencha.DOMAIN = "localhost:9000";
 
-    function getJson(src, success) {
+    var getJson = function(src, success) {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', src, true);
         xhr.onreadystatechange = function(e) {
@@ -278,8 +263,9 @@ enchant.gl.dogencha = {};
             }
         };
         xhr.send(null);
-    }
-    function getJsonp(url, success) {
+    };
+
+    var getJsonp = function(url, success) {
         var callbackName = "dogencha" + ("" + Math.random()).replace(/\D/g, "") + "_" + new Date().getTime();
         var elm = document.createElement("script");
         elm.src = url + "?callback=" + callbackName;
@@ -291,7 +277,132 @@ enchant.gl.dogencha = {};
                 document.body.removeChild(elm);
             }
         };
-    }
+    };
+
+    /** loadFuncsの上書き回避用 */
+    var defaultLoadFunc = function(src, callback) {
+        callback = callback || function(){};
+
+        var core = this;
+        var req = new XMLHttpRequest();
+        req.open('GET', src, true);
+        req.onreadystatechange = function(e) {
+            if (req.readyState === 4) {
+                if (req.status !== 200 && req.status !== 0) {
+                    throw new Error(req.status + ': ' + 'Cannot load an asset: ' + src);
+                }
+
+                var type = req.getResponseHeader('Content-Type') || '';
+                if (type.match(/^image/)) {
+                    core.assets[src] = enchant.Surface.load(src);
+                    core.assets[src].addEventListener('load', callback);
+                } else if (type.match(/^audio/)) {
+                    core.assets[src] = enchant.Sound.load(src, type);
+                    core.assets[src].addEventListener('load', callback);
+                } else {
+                    core.assets[src] = req.responseText;
+                    callback();
+                }
+            }
+        };
+        req.send(null);
+    };
+
+    /** loadFuncの退避 */
+    var origLoadFuncs = {
+        "jsonp": enchant.Game._loadFuncs["jsonp"] || defaultLoadFunc,
+        "json": enchant.Game._loadFuncs["json"] || defaultLoadFunc,
+        "js": enchant.Game._loadFuncs["js"] || defaultLoadFunc,
+    };
+
+    enchant.Game._loadFuncs["jsonp"] = function(src, callback, ext) {
+        if (loadFunc(this, src, callback, getJsonp, ext) === false) {
+            origLoadFuncs["jsonp"].apply(this, arguments);
+        }
+    };
+
+    enchant.Game._loadFuncs["js"] = enchant.Game._loadFuncs["json"] = function(src, callback, ext) {
+        if (loadFunc(this, src, callback, getJson, ext) === false) {
+            origLoadFuncs[ext].apply(this, arguments);
+        }
+    };
+
+    /**
+     * 以下のサフィックスに対応するファイルのロード関数.
+     * <ul>
+     *   <li>.fsc.js
+     *   <li>.l2p.js
+     *   <li>.l3p.js
+     *   <li>.fsc.json
+     *   <li>.l2p.json
+     *   <li>.l3p.json
+     *   <li>.fsc.jsonp
+     *   <li>.l2p.jsonp
+     *   <li>.l3p.jsonp
+     *   <li>.l2c.js
+     *   <li>.l3c.js
+     *   <li>.l2c.json
+     *   <li>.l3c.json
+     *   <li>.l2c.jsonp
+     *   <li>.l3c.jsonp
+     * </ul>
+     * 上記に該当しないsrcの場合、または末尾が.jsonpで要求ドメインがhttp://doga.dev7.jp以外の場合はfalseを返す.
+     */
+    var loadFunc = function(game, src, callback, getFunc) {
+        calback = callback || function() {};
+
+        var endsWith = function(string, value) {
+            return new RegExp(value + "$").test(string);
+        }
+
+        if (endsWith(src, ".jsonp") && src.indexOf(enchant.gl.dogencha.DOMAIN) !== 0) {
+            return false;
+        }
+
+        if (endsWith(src, ".fsc.js")    || endsWith(src, ".l2p.js")    || endsWith(src, ".l3p.js") ||
+            endsWith(src, ".fsc.json")  || endsWith(src, ".l2p.json")  || endsWith(src, ".l3p.json") ||
+            endsWith(src, ".fsc.jsonp") || endsWith(src, ".l2p.jsonp") || endsWith(src, ".l3p.jsonp")) {
+
+            console.info("request unit [" + src + "]");
+            getFunc(src, function(data) {
+                // console.debug("load unit [" + src + "] ok");
+                try {
+                    var root = buildUnit(data.geometries, data.textures);
+                    console.info("parse unit [" + src + "] ok");
+                    game.assets[src] = root;
+                } catch (e) {
+                    console.error("unit [" + src + "] のビルド中にエラー");
+                    throw e;
+                }
+                callback();
+            });
+
+            return true;
+
+        } else if (endsWith(src, ".l2c.js")    || endsWith(src, ".l3c.js") ||
+                   endsWith(src, ".l2c.json")  || endsWith(src, ".l3c.json") ||
+                   endsWith(src, ".l2c.jsonp") || endsWith(src, ".l3c.jsonp")) {
+
+            console.info("request l3c [" + src + "]");
+            getFunc(src, function(data) {
+                // console.debug("load l3c [" + src + "] ok");
+                try {
+                    var result = buildArticulated(data.geometries, data.textures);
+                    console.info("parse l3c [" + src + "] ok");
+                    game.assets[src] = result;
+                } catch (e) {
+                    console.error("l3c [" + src + "] のビルド中にエラー");
+                    throw e;
+                }
+                callback();
+            });
+
+            return true;
+
+        } else {
+            return false;
+        }
+    };
 
     /**
      * ajaxで取得したユニットオブジェクトを元に、Sprite3Dを作成する.
@@ -358,80 +469,22 @@ enchant.gl.dogencha = {};
         }
 
         var rootUnit = enchant.gl.dogencha.Unit.build(_tree(geometries.root));
-        var result = new enchant.gl.dogencha.Articulated(rootUnit);
+        var articulated = new enchant.gl.dogencha.Articulated(rootUnit);
 
-        result.poses = {};
+        // ポーズデータ
+        articulated.poses = {};
         for (var i = 0, end = geometries.poses.length; i < end; i++) {
             var pose = geometries.poses[i];
-            result.poses[pose.name] = pose.root;
-            _setupPoseNode(result.poses[pose.name]);
+            articulated.poses[pose.name] = pose.root;
+            _setupPoseNode(articulated.poses[pose.name]);
         }
 
-        if (result.poses._initialPose) {
-            result.setPose(result.poses._initialPose);
+        // 初期ポーズをセット
+        if (articulated.poses._initialPose) {
+            articulated.setPose(articulated.poses._initialPose);
         }
-        return result;
+
+        return articulated;
     }
-
-    var loadFunc = function(game, src, callback, ext, ajaxFunc) {
-        calback = callback || function() {
-        };
-
-        var endsWith = function(string, value) {
-            return new RegExp(value + "$").test(string);
-        }
-
-        if (endsWith(src, ".fsc.js")    || endsWith(src, ".l2p.js")    || endsWith(src, ".l3p.js") ||
-            endsWith(src, ".fsc.json")  || endsWith(src, ".l2p.json")  || endsWith(src, ".l3p.json") ||
-            endsWith(src, ".fsc.jsonp") || endsWith(src, ".l2p.jsonp") || endsWith(src, ".l3p.jsonp")) {
-            console.info("request unit [" + src + "]");
-            ajaxFunc(src, function(data) {
-                // console.debug("load unit [" + src + "] ok");
-                try {
-                    var root = buildUnit(data.geometries, data.textures);
-                    console.info("parse unit [" + src + "] ok");
-                    game.assets[src] = root;
-                } catch (e) {
-                    console.error("unit [" + src + "] のビルド中にエラー");
-                    throw e;
-                }
-                callback();
-            });
-        } else if (endsWith(src, ".l2c.js") || endsWith(src, ".l2c.json") || endsWith(src, ".l2c.jsonp") ||
-                   endsWith(src, ".l3c.js") || endsWith(src, ".l3c.json") || endsWith(src, ".l3c.jsonp")) {
-            console.info("request l3c [" + src + "]");
-            ajaxFunc(src, function(data) {
-                // console.debug("load l3c [" + src + "] ok");
-                try {
-                    var result = buildArticulated(data.geometries, data.textures);
-                    console.info("parse l3c [" + src + "] ok");
-                    game.assets[src] = result;
-                } catch (e) {
-                    console.error("l3c [" + src + "] のビルド中にエラー");
-                    throw e;
-                }
-                callback();
-            });
-        } else {
-            console.info("request js [" + src + "]");
-            ajaxFunc(src, function(data) {
-                // console.debug("load js [" + src + "] ok");
-                game.assets[src] = data;
-                callback();
-            });
-        }
-    };
-
-    var origJsonpLoadFunc = enchant.Game._loadFuncs["jsonp"];
-    enchant.Game._loadFuncs["jsonp"] = function(src, callback, ext) {
-        if (src.indexOf(enchant.gl.dogencha.DOMAIN) != -1) {
-            loadFunc(this, src, callback, ext, getJsonp);
-        } else {
-            origJsonpLoadFunc.apply(this, arguments);
-        }
-    };
-    enchant.Game._loadFuncs["js"] = enchant.Game._loadFuncs["json"] = function(src, callback, ext) {
-        loadFunc(this, src, callback, ext, getJson);
-    };
 
 })();
