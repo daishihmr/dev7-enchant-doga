@@ -12,13 +12,14 @@
     // enchant.gl.dogencha.DOMAIN = "localhost:9000";
 
     /**
-     * ajaxで取得したL3Pオブジェクトを元に、Sprite3Dを作成する.
+     * ajaxで取得したユニットオブジェクトを元に、Sprite3Dを作成する.
      */
     function buildUnit(geometries, textures) {
         textures = textures || {};
 
         var root = new Sprite3D();
-        each(geometries, function(atrName, geom) {
+        for (var atrName in geometries) {
+            var geom = geometries[atrName];
             var part = new Sprite3D();
             var mesh = new Mesh();
             mesh.vertices = geom.vertices;
@@ -42,7 +43,7 @@
             part.name = geom.name;
 
             root.addChild(part);
-        });
+        }
         return root;
     }
 
@@ -67,19 +68,22 @@
                 newQuat._quat = quat4.create(poseNode.quat);
                 return newQuat;
             })();
-            each(poseNode.childUnits, function(i, v) {
-                v.parentNode = poseNode;
-                _setupPoseNode(v);
-            });
+            for (var i = 0, end = poseNode.childUnits.length; i < end; i++) {
+                var child = poseNode.childUnits[i];
+                child.parentNode = poseNode;
+                _setupPoseNode(child);
+            }
         }
 
-        var result = enchant.gl.dogencha.Unit.build(_tree(geometries.root));
+        var rootUnit = enchant.gl.dogencha.Unit.build(_tree(geometries.root));
+        var result = new enchant.gl.dogencha.Articulated(rootUnit);
 
         result.poses = {};
-        each(geometries.poses, function(k, v) {
-            result.poses[v.name] = v.root;
-            _setupPoseNode(result.poses[v.name]);
-        });
+        for (var i = 0, end = geometries.poses.length; i < end; i++) {
+            var pose = geometries.poses[i];
+            result.poses[pose.name] = pose.root;
+            _setupPoseNode(result.poses[pose.name]);
+        }
 
         if (result.poses._initialPose) {
             result.setPose(result.poses._initialPose);
@@ -91,12 +95,16 @@
         calback = callback || function() {
         };
 
+        var endsWith = function(string, value) {
+            return new RegExp(value + "$").test(string);
+        }
+
         if (endsWith(src, ".fsc.js")    || endsWith(src, ".l2p.js")    || endsWith(src, ".l3p.js") ||
             endsWith(src, ".fsc.json")  || endsWith(src, ".l2p.json")  || endsWith(src, ".l3p.json") ||
             endsWith(src, ".fsc.jsonp") || endsWith(src, ".l2p.jsonp") || endsWith(src, ".l3p.jsonp")) {
             console.info("request unit [" + src + "]");
             ajaxFunc(src, function(data) {
-                console.info("load unit [" + src + "] ok");
+                // console.debug("load unit [" + src + "] ok");
                 try {
                     var root = buildUnit(data.geometries, data.textures);
                     console.info("parse unit [" + src + "] ok");
@@ -111,9 +119,9 @@
                    endsWith(src, ".l3c.js") || endsWith(src, ".l3c.json") || endsWith(src, ".l3c.jsonp")) {
             console.info("request l3c [" + src + "]");
             ajaxFunc(src, function(data) {
-                console.info("load l3c [" + src + "] ok");
+                // console.debug("load l3c [" + src + "] ok");
                 try {
-                    var result = new enchant.gl.dogencha.Articulated(buildArticulated(data.geometries, data.textures));
+                    var result = buildArticulated(data.geometries, data.textures);
                     console.info("parse l3c [" + src + "] ok");
                     game.assets[src] = result;
                 } catch (e) {
@@ -125,7 +133,7 @@
         } else {
             console.info("request js [" + src + "]");
             ajaxFunc(src, function(data) {
-                console.info("load js [" + src + "] ok");
+                // console.debug("load js [" + src + "] ok");
                 game.assets[src] = data;
                 callback();
             });
@@ -154,12 +162,132 @@
             this.addChild(this.root);
 
             this.poses = this.root.poses;
+
+            this.animationFrame = 1.0;
+            this.beforePose = this.nextPose = null;
+            this.on("enterframe", function() {
+                if (this.animationFrame === 1.0 || this.beforePose === this.nextPose) {
+                    return;
+                }
+                this.setFrame(this.beforePose, this.nextPose, this.animationFrame);
+            });
+
+            this.tl = this.tl || new enchant.Timeline(this);
+            var self = this;
+            this.tl.motion = function(pose, time, easing) {
+                if (typeof (pose) === "string") {
+                    pose = self.poses[pose];
+                }
+                if (!pose) {
+                    pose = self.poses._initialPose;
+                }
+
+                return this.then(function() {
+                    self.beforePose = self.getCurrentPose();
+                    self.nextPose = pose;
+                    self.animationFrame = 0.0;
+                }).tween({
+                    animationFrame: 1.0,
+                    time: time,
+                    easing: easing
+                });
+            };
         },
-        animate: function() {
-            this.root.animate.apply(this.root, arguments);
+        getCurrentPose : function() {
+            function _currentPose(node, parent) {
+                var p = {};
+                p.pose = [ 0, 0, 0, node.x - node.baseX, node.y - node.baseY, node.z - node.baseZ ];
+                p.quat = node.quat;
+                p.parentNode = parent;
+                p.childUnits = [];
+                for (var i = 0, end = node.childUnits.length; i < end; i++) {
+                    p.childUnits[i] = _currentPose(node.childUnits[i], p);
+                }
+                return p;
+            }
+
+            return _currentPose(this.root, null);
         },
-        setPose: function() {
-            this.root.setPose.apply(this.root, arguments);
+        setPose : function(pose) {
+            if (typeof (pose) === "string") {
+                pose = this.poses[pose];
+            }
+            if (!pose) {
+                pose = this.poses._initialPose;
+            }
+
+            function _setPoseToUnit(node, p) {
+                if (!p) {
+                    p = {};
+                    p.pose = [ 0, 0, 0, 0, 0, 0 ];
+                    p.childUnits = [];
+                    p.quat = new Quat(0, 0, 0, 0);
+                }
+
+                node.quat = p.quat;
+                node.rotationSet(p.quat);
+
+                node.x = p.pose[3] + node.baseX;
+                node.y = p.pose[4] + node.baseY;
+                node.z = p.pose[5] + node.baseZ;
+
+                node.childUnits.forEach(function(child, i) {
+                    _setPoseToUnit(child, p.childUnits[i]);
+                });
+            }
+            _setPoseToUnit(this.root, pose);
+
+            this.animationFrame = 1.0;
+            this.beforePose = this.nextPose = pose;
+        },
+        setFrame : function(beforePose, nextPose, ratio) {
+            if (!beforePose) {
+                beforePose = this.poses._initialPose;
+            }
+            if (!nextPose) {
+                nextPose = this.poses._initialPose;
+            }
+            function _setFrameToUnit(unit, before, next, ratio) {
+                if (!before) {
+                    before = {};
+                    before.pose = [ 0, 0, 0, 0, 0, 0 ];
+                    before.quat = new Quat(0, 0, 0, 0);
+                    before.childUnits = [];
+                }
+                if (!next) {
+                    next = {};
+                    next.pose = [ 0, 0, 0, 0, 0, 0 ];
+                    next.quat = new Quat(0, 0, 0, 0);
+                    next.childUnits = [];
+                }
+
+                var unitQuat = new Quat(0, 0, 0, 0);
+                unitQuat._quat = quat4.create(before.quat._quat);
+
+                var toQ = new Quat(0, 0, 0, 0);
+                toQ._quat = quat4.create(next.quat._quat);
+
+                (function(quat, another, ratio) {
+                    var ac = another.clone();
+                    if (quat4.dot(quat._quat, ac._quat) < 0) {
+                        quat4.reverse(ac._quat);
+                    }
+                    quat4.slerp(quat._quat, ac._quat, ratio);
+                    return quat;
+                })(unitQuat, toQ, ratio);
+
+                unit.quat = unitQuat;
+                unit.rotationSet(unitQuat);
+
+                unit.x = before.pose[3] + (next.pose[3] - before.pose[3]) * ratio + unit.baseX;
+                unit.y = before.pose[4] + (next.pose[4] - before.pose[4]) * ratio + unit.baseY;
+                unit.z = before.pose[5] + (next.pose[5] - before.pose[5]) * ratio + unit.baseZ;
+
+                for (var i = 0, end = unit.childUnits.length; i < end; i++) {
+                    _setFrameToUnit(unit.childUnits[i], before.childUnits[i], next.childUnits[i], ratio);
+                }
+            }
+            _setFrameToUnit(this.root, beforePose, nextPose, ratio);
         },
         clone: function() {
             return new enchant.gl.dogencha.Articulated(this.root.clone());
@@ -194,36 +322,14 @@
              */
             this.childUnits = [];
 
-            /**
-             * アニメーション中に毎フレーム実行される関数.
-             */
-            this.tickListener = null;
-
             /** ポーズデータ.ルートオブジェクトのみが持つ. */
             this.poses = null;
 
-            /** モーション中. */
-            this._inMotion = false;
-
             this.addChild(entity);
-            this.addEventListener("enterframe", (function() {
-                var listener = function() {
-                    if (this.tickListener) {
-                        this.tickListener();
-                    }
-                };
-                listener.animation = true;
-                return listener;
-            })());
         },
         entity : {
             get : function() {
                 return this._entity;
-            }
-        },
-        inMotion : {
-            get : function() {
-                return this._inMotion;
             }
         },
         /**
@@ -232,135 +338,6 @@
         addChildUnit : function(childUnit) {
             this.addChild(childUnit);
             this.childUnits[this.childUnits.length] = childUnit;
-        },
-        animate : function(pose, frameNum, callback) {
-            if (typeof (pose) === "string") {
-                pose = this.poses[pose];
-            }
-            if (!pose) {
-                pose = this.poses._initialPose;
-            }
-            this._inMotion = true;
-            var startFrame = this.age;
-            var endFrame = this.age + frameNum;
-
-            var from = this.getPose();
-
-            this.tickListener = function(e) {
-                // この内部のthisはUnitを指す
-                this.setFrame(from, pose, (this.age - startFrame) / frameNum);
-                if (this.age >= endFrame) {
-                    this._inMotion = false;
-                    this.setPose(pose);
-                    this.tickListener = null;
-                    if (callback) {
-                        callback.apply(this);
-                    }
-                }
-            };
-        },
-        wait : function(frameNum, callback) {
-            this.animate(this.getPose(), frameNum, callback);
-        },
-        cancelAnimation : function() {
-            this.tickListener = null;
-        },
-        setFrame : function(from, to, ratio) {
-            if (!from) {
-                from = this.poses._initialPose;
-            }
-            if (!to) {
-                to = this.poses._initialPose;
-            }
-            function _setFrameToUnit(node, fromNode, toNode, ratio) {
-                if (!fromNode) {
-                    fromNode = {};
-                    fromNode.pose = [ 0, 0, 0, 0, 0, 0 ];
-                    fromNode.quat = new Quat(0, 0, 0, 0);
-                    fromNode.childUnits = [];
-                }
-                if (!toNode) {
-                    toNode = {};
-                    toNode.pose = [ 0, 0, 0, 0, 0, 0 ];
-                    toNode.quat = new Quat(0, 0, 0, 0);
-                    toNode.childUnits = [];
-                }
-
-                var nodeQuat = new Quat(0, 0, 0, 0);
-                nodeQuat._quat = quat4.create(fromNode.quat._quat);
-
-                var toQ = new Quat(0, 0, 0, 0);
-                toQ._quat = quat4.create(toNode.quat._quat);
-
-                (function(quat, another, ratio) {
-                    var ac = another.clone();
-                    if (quat4.dot(quat._quat, ac._quat) < 0) {
-                        quat4.reverse(ac._quat);
-                    }
-                    quat4.slerp(quat._quat, ac._quat, ratio);
-                    return quat;
-                })(nodeQuat, toQ, ratio);
-
-                node.quat = nodeQuat;
-                node.rotationSet(nodeQuat);
-
-                node.x = fromNode.pose[3] + (toNode.pose[3] - fromNode.pose[3])
-                        * ratio + node.baseX;
-                node.y = fromNode.pose[4] + (toNode.pose[4] - fromNode.pose[4])
-                        * ratio + node.baseY;
-                node.z = fromNode.pose[5] + (toNode.pose[5] - fromNode.pose[5])
-                        * ratio + node.baseZ;
-
-                node.childUnits.forEach(function(v, i) {
-                    _setFrameToUnit(node.childUnits[i], fromNode.childUnits[i],
-                            toNode.childUnits[i], ratio);
-                });
-            }
-            _setFrameToUnit(this, from, to, ratio);
-        },
-        setPose : function(pose) {
-            if (typeof (pose) === "string") {
-                pose = this.poses[pose];
-            }
-            if (!pose) {
-                pose = this.poses._initialPose;
-            }
-            function _setPoseToUnit(node, p) {
-                if (!p) {
-                    p = {};
-                    p.pose = [ 0, 0, 0, 0, 0, 0 ];
-                    p.childUnits = [];
-                    p.quat = new Quat(0, 0, 0, 0);
-                }
-
-                node.quat = p.quat;
-                node.rotationSet(p.quat);
-
-                node.x = p.pose[3] + node.baseX;
-                node.y = p.pose[4] + node.baseY;
-                node.z = p.pose[5] + node.baseZ;
-
-                node.childUnits.forEach(function(child, i) {
-                    _setPoseToUnit(child, p.childUnits[i]);
-                });
-            }
-            _setPoseToUnit(this, pose);
-        },
-        getPose : function() {
-            function _getPose(node, parent) {
-                var p = {};
-                p.pose = [ 0, 0, 0, node.x - node.baseX, node.y - node.baseY,
-                        node.z - node.baseZ ];
-                p.quat = node.quat;
-                p.parentNode = parent;
-                p.childUnits = [];
-                node.childUnits.forEach(function(v, i) {
-                    p.childUnits[i] = _getPose(node.childUnits[i], p);
-                });
-                return p;
-            }
-
-            return _getPose(this, null);
         },
         clone : function() {
             var clone = new enchant.gl.dogencha.Unit(this._entity.clone(), [
@@ -393,9 +370,9 @@
 
     /** クォータニオンの内積. */
     quat4.dot = function(quat, quat2) {
-        return quat[0] * quat2[0] + quat[1] * quat2[1] + quat[2] * quat2[2]
-                + quat[3] * quat2[3];
+        return quat[0] * quat2[0] + quat[1] * quat2[1] + quat[2] * quat2[2] + quat[3] * quat2[3];
     };
+
     /** 逆回転クォータニオン */
     quat4.reverse = function(quat, dest) {
         if (!dest || quat == dest) {
@@ -411,6 +388,7 @@
         dest[3] = -quat[3];
         return dest;
     };
+
     /**
      * 複製する.
      *
@@ -429,10 +407,9 @@
         var xhr = new XMLHttpRequest();
         xhr.open('GET', src, true);
         xhr.onreadystatechange = function(e) {
-            if (xhr.readyState == 4) {
-                if (xhr.status != 200 && xhr.status != 0) {
-                    throw new Error(xhr.status + ': '
-                            + 'Cannot load an asset: ' + src);
+            if (xhr.readyState === 4) {
+                if (xhr.status !== 200 && xhr.status !== 0) {
+                    throw new Error(xhr.status + ': ' + 'Cannot load an asset: ' + src);
                 }
                 success(JSON.parse(xhr.responseText));
             }
@@ -440,25 +417,17 @@
         xhr.send(null);
     }
     function getJsonp(url, success) {
-        var callbackName = "dogencha" + ("" + Math.random()).replace(/\D/g, "")
-                + "_" + new Date().getTime();
+        var callbackName = "dogencha" + ("" + Math.random()).replace(/\D/g, "") + "_" + new Date().getTime();
         var elm = document.createElement("script");
         elm.src = url + "?callback=" + callbackName;
         document.body.appendChild(elm);
         window[callbackName] = function() {
-            success.apply(null, arguments);
-        };
-    }
-
-    function endsWith(string, value) {
-        return string.indexOf(value) === string.length - value.length;
-    }
-    function each(obj, func) {
-        for ( var k in obj) {
-            if (obj.hasOwnProperty(k)) {
-                func(k, obj[k]);
+            try {
+                success.apply(null, arguments);
+            } finally {
+                document.body.removeChild(elm);
             }
-        }
+        };
     }
 
 })();

@@ -99,7 +99,7 @@ var start = function(modelList) {
                 poseList.onchange = function() {
                     var p = poses[this.selectedIndex];
                     if (p) {
-                        model.animate(p, 30);
+                        model.tl.motion(p, 30);
                     }
                 };
                 poseList.style.display = "inline-block";
