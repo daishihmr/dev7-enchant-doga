@@ -25,7 +25,7 @@ public class ModelListServlet extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");
 
-        List<String> list = getList();
+        final List<String> list = getList();
         Collections.sort(list);
 
         JSON.encode(list, resp.getWriter());

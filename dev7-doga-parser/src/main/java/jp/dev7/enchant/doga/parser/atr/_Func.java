@@ -78,6 +78,12 @@ abstract public class _Func implements _Value {
         public void apply(Atr atr) {
             if (atr.getColorMap1() == null) {
                 atr.setColorMap1(((_FilePath) args.get(0)).getValue());
+                if (args.size() >= 2) {
+                    atr.setColorMap1Min(((_Num) args.get(1)).getValue());
+                }
+                if (args.size() >= 3) {
+                    atr.setColorMap1Max(((_Num) args.get(2)).getValue());
+                }
             } else {
                 atr.setColorMap2(((_FilePath) args.get(0)).getValue());
             }

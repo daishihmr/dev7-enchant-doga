@@ -21,6 +21,8 @@ public class Atr {
     private double ref;
     private String colorMap1;
     private File colorMap1File;
+    private double colorMap1Min = 0.0;
+    private double colorMap1Max = 1.0;
     private String colorMap2;
     private String bumpMap;
     private String traMap;
@@ -53,6 +55,8 @@ public class Atr {
         c.ref = ref;
         c.colorMap1 = colorMap1;
         c.colorMap1File = colorMap1File;
+        c.colorMap1Min = colorMap1Min;
+        c.colorMap1Max = colorMap1Max;
         c.colorMap2 = colorMap2;
         c.bumpMap = bumpMap;
         c.traMap = traMap;
@@ -146,6 +150,22 @@ public class Atr {
 
     public void setColorMap1File(File colorMap1File) {
         this.colorMap1File = colorMap1File;
+    }
+
+    public void setColorMap1Min(double colorMap1Min) {
+        this.colorMap1Min = colorMap1Min;
+    }
+
+    public double getColorMap1Min() {
+        return colorMap1Min;
+    }
+
+    public void setColorMap1Max(double colorMap1Max) {
+        this.colorMap1Max = colorMap1Max;
+    }
+
+    public double getColorMap1Max() {
+        return colorMap1Max;
     }
 
     public String getColorMap2() {
