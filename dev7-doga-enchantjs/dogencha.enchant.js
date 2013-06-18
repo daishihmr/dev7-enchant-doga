@@ -356,7 +356,7 @@ enchant.gl.dogencha = {};
             return new RegExp(value + "$").test(string);
         }
 
-        if (endsWith(src, ".jsonp") && src.indexOf(enchant.gl.dogencha.DOMAIN) !== 0 && src.indexOf(enchant.gl.dogencha.DOMAIN_TEST) !== 0) {
+        if (endsWith(src, ".jsonp") && src.indexOf(enchant.gl.dogencha.DOMAIN) === -1 && src.indexOf(enchant.gl.dogencha.DOMAIN_TEST) === -1) {
             return false;
         }
 
