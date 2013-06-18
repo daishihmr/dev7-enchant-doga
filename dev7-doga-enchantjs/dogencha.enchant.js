@@ -1,6 +1,6 @@
 /**
  * dogencha.enchant.js
- * version 0.5-RC1
+ * version 5.1
  */
 
 /** @namespace */
