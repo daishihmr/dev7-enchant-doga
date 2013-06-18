@@ -249,6 +249,7 @@ enchant.gl.dogencha = {};
 (function() {
 
     enchant.gl.dogencha.DOMAIN = "doga.dev7.jp";
+    enchant.gl.dogencha.DOMAIN_TEST = "localhost:9000";
     // enchant.gl.dogencha.DOMAIN = "localhost:9000";
 
     var getJson = function(src, success) {
@@ -355,7 +356,7 @@ enchant.gl.dogencha = {};
             return new RegExp(value + "$").test(string);
         }
 
-        if (endsWith(src, ".jsonp") && src.indexOf(enchant.gl.dogencha.DOMAIN) !== 0) {
+        if (endsWith(src, ".jsonp") && src.indexOf(enchant.gl.dogencha.DOMAIN) !== 0 && src.indexOf(enchant.gl.dogencha.DOMAIN_TEST) !== 0) {
             return false;
         }
 
