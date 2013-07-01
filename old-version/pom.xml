@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>dev7-doga-parent</artifactId>
 		<groupId>jp.dev7</groupId>
-		<version>5.0-SNAPSHOT</version>
+		<version>5.1</version>
 	</parent>
 	<artifactId>old-version</artifactId>
 
