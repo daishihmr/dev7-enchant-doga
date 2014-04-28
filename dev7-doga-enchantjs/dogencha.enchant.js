@@ -1,6 +1,8 @@
 /**
  * dogencha.enchant.js
- * version 5.1
+ * version 5.2
+ * require enchant.js v0.8.1+
+ * require gl.enchant.js v0.3.7+
  */
 
 /** @namespace */
