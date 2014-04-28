@@ -3,7 +3,7 @@
 <meta charset=UTF-8>
 <title>WALKING!</title>
 <script type="text/javascript" src="gl-matrix.js"></script>
-<script type="text/javascript" src="enchant.min.js"></script>
+<script type="text/javascript" src="enchant.js"></script>
 <script type="text/javascript" src="gl.enchant.js"></script>
 <script type="text/javascript" src="primitive.gl.enchant.js"></script>
 <script type="text/javascript" src="../dogencha.enchant.js"></script>
@@ -106,7 +106,7 @@ window.onload = function() {
 
                 // 直前まで歩いた & 今歩いていない => 立ち止まった
                 console.log("stop");
-                entity.mtl.clear().motion(data.standPose, 5);
+                entity.mtl.clear().motion(data.standPose, 20, enchant.Easing.QUAD_EASEINOUT);
 
             }
 

@@ -1,7 +1,7 @@
 /**
  * @fileOverview
  * gl.enchant.js
- * @version 0.3.6
+ * @version 0.3.7
  * @require enchant.js v0.4.5+
  * @require gl-matrix.js 1.3.7+
  * @author Ubiquitous Entertainment Inc.
@@ -14,7 +14,6 @@
  * Uses gl-matrix.js in vector, matrix operation.
  * gl-matrix.js:
  * https://github.com/toji/gl-matrix/
- *
  */
 
 /**
@@ -1655,7 +1654,6 @@ if (typeof glMatrixArrayType === 'undefined') {
          *   var sp = new Sprite3D();
          *   sp.set(core.assets['sample.dae']);
          *   //Becomes Sprite3D with sample.dae model information
-         *
          */
         set: function(sprite) {
             for (var prop in sprite) {

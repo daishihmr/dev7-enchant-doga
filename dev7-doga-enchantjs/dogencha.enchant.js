@@ -311,19 +311,19 @@ enchant.gl.dogencha = {};
 
     /** loadFuncの退避 */
     var origLoadFuncs = {
-        "jsonp": enchant.Game._loadFuncs["jsonp"] || defaultLoadFunc,
-        "json": enchant.Game._loadFuncs["json"] || defaultLoadFunc,
-        "js": enchant.Game._loadFuncs["js"] || defaultLoadFunc,
+        "jsonp": enchant.Core._loadFuncs["jsonp"] || defaultLoadFunc,
+        "json": enchant.Core._loadFuncs["json"] || defaultLoadFunc,
+        "js": enchant.Core._loadFuncs["js"] || defaultLoadFunc,
     };
 
-    enchant.Game._loadFuncs["jsonp"] = function(src, callback, ext) {
-        if (loadFunc(this, src, callback, getJsonp, ext) === false) {
+    enchant.Core._loadFuncs["jsonp"] = function(src, ext, callback) {
+        if (loadFunc(src, ext, callback, getJsonp) === false) {
             origLoadFuncs["jsonp"].apply(this, arguments);
         }
     };
 
-    enchant.Game._loadFuncs["js"] = enchant.Game._loadFuncs["json"] = function(src, callback, ext) {
-        if (loadFunc(this, src, callback, getJson, ext) === false) {
+    enchant.Core._loadFuncs["js"] = enchant.Core._loadFuncs["json"] = function(src, ext, callback) {
+        if (loadFunc(src, ext, callback, getJson) === false) {
             origLoadFuncs[ext].apply(this, arguments);
         }
     };
@@ -349,7 +349,7 @@ enchant.gl.dogencha = {};
      * </ul>
      * 上記に該当しないsrcの場合、または末尾が.jsonpで要求ドメインがhttp://doga.dev7.jp以外の場合はfalseを返す.
      */
-    var loadFunc = function(game, src, callback, getFunc) {
+    var loadFunc = function(src, ext, callback, getFunc) {
         calback = callback || function() {};
 
         var endsWith = function(string, value) {
@@ -370,7 +370,7 @@ enchant.gl.dogencha = {};
                 try {
                     var root = buildUnit(data.geometries, data.textures);
                     console.info("parse unit [" + src + "] ok");
-                    game.assets[src] = root;
+                    enchant.Core.instance.assets[src] = root;
                 } catch (e) {
                     console.error("unit [" + src + "] のビルド中にエラー");
                     throw e;
@@ -390,7 +390,7 @@ enchant.gl.dogencha = {};
                 try {
                     var result = buildArticulated(data.geometries, data.textures);
                     console.info("parse l3c [" + src + "] ok");
-                    game.assets[src] = result;
+                    enchant.Core.instance.assets[src] = result;
                 } catch (e) {
                     console.error("l3c [" + src + "] のビルド中にエラー");
                     throw e;
